@@ -91,6 +91,10 @@ The API commands are read-only. `fetch_originals.py` invokes only `gh api graphq
 collector invokes only `gh api` GET requests. `verification.md` and
 `verification_results.json` contain the results.
 
-Part B replay, workflow-run and scoring commands will be added only after the Builder configuration
-exists. Their absence here is deliberate: Part A must be committed before the first configuration
-commit, and no model run is authorized yet.
+## Part B commands
+
+The readiness harness and exact approval-gated commands are in [`harness/README.md`](harness/README.md).
+Preparation (`build_replay_plan.py`, `static_audit.py`, plan-only `replay.py`) is inert. The first
+credit-spending command is deliberately blocked until Jasmine directly approves it, GitHub CLI is
+re-authenticated, the Copilot secret is confirmed, and the kill-switch variable is enabled. No
+model run has been authorized or executed yet.
