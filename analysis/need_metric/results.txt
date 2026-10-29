@@ -1,0 +1,24 @@
+Apache Airflow issue-triage need metric
+Collected UTC: 2026-10-29T14:51:36.0370829Z
+Window UTC: 2026-07-01T00:00:00.0000000Z through 2026-09-30T23:59:59.0000000Z
+Snapshot SHA for copied repository standards: 270b2abfc258c512a0b931af425904321360d043
+Search population: 477 issues; excluded bot-authored: 0; analysed: 477
+
+Metric: time from issue creation to the first timeline comment, label change, close, or conversion by a non-author human.
+Whole-population Kaplan-Meier (n=477, events=378, right-censored=99): Q1=4.85 h; median=54.88 h; Q3=1178.73 h; S(48h)=0.524109; S(168h)=0.396226.
+KM quartiles are earliest event times where cumulative incidence reaches 25%, 50%, and 75%; an unreached quantile is null.
+Observed-delay quartiles below use only n=378 issues with a signal; 2-day/7-day/never shares use the full n=477 population.
+
+[all_human_authored_issues] n=477; observed=378; median=18.12 h; IQR=2.31-146.65 h; range=0.06-2534.09 h; >2d=250/477 (52.4%); >7d=189/477 (39.6%); never=99/477 (20.8%)
+[open] n=204; observed=131; median=16.37 h; IQR=3.61-99.98 h; range=0.14-2534.09 h; >2d=123/204 (60.3%); >7d=103/204 (50.5%); never=73/204 (35.8%)
+[closed] n=273; observed=247; median=18.92 h; IQR=1.92-158.34 h; range=0.06-2501.25 h; >2d=127/273 (46.5%); >7d=86/273 (31.5%); never=26/273 (9.5%)
+[converted_to_discussion] n=0; observed=0; median/IQR/range=n/a; >2d/>7d/never=n/a
+
+Limitations:
+- Triage in Slack or mailing lists is invisible.
+- Template/bot labels are not human triage signals.
+- Discussions are a separate queue; converted issues can disappear from Issues search, so zero observed conversions may be an undercount.
+- Deleted spam issues are absent from Issues search, so the search population can undercount them.
+- Issue bodies can be edited after opening; this metric does not reconstruct the first body version.
+- Observed-delay summaries omit right-censored issues, so use them together with the never-signal share.
+- Actor-type and login-pattern bot detection may misclassify unusual automation or human accounts.
