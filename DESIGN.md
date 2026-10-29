@@ -26,22 +26,23 @@ both. The observed-subset summary omits censoring; the leading KM estimate does 
 Untrusted inputs are issue titles, bodies, comments, attachments, linked pages, repository files,
 and GitHub/tool outputs that echo them. The agent can read repository and issue context, execute only
 three named scripts, and request only labels or one comment
-([workflow lines 14–63](.github/workflows/issue-triage.md#L14-L63)).
+([workflow lines 14–74](.github/workflows/issue-triage.md#L14-L74)).
 
 - **Identity — implemented:** the separate safe-output job uses the Actions bot, not Jasmine's
   token; Part B must capture the posting identity.
 - **Least privilege — implemented:** the agent has explicit `contents: read` and `issues: read`,
-  restricted network and no write token ([lines 13–25](.github/workflows/issue-triage.md#L13-L25)).
+  restricted network and no write token ([lines 13–27](.github/workflows/issue-triage.md#L13-L27)).
 - **Safe outputs — implemented:** one call adding at most three explicit labels and one triggering-
   issue comment; mentions and cross-references are escaped
-  ([lines 32–63](.github/workflows/issue-triage.md#L32-L63)).
+  ([lines 36–74](.github/workflows/issue-triage.md#L36-L74)).
 - **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files,
   but branch protection still needs enabling ([CODEOWNERS](.github/CODEOWNERS)). Runtime labels and
   fixed comments are reversible; closure and conversion stay human-only.
 - **Budgets — implemented:** 10 minutes, 100 AIC/run, 5,000 AIC/day, one label call and one comment
-  ([lines 26–31](.github/workflows/issue-triage.md#L26-L31)). Part B must test an enforced limit.
+  ([lines 28–30](.github/workflows/issue-triage.md#L28-L30)). Part B must test an enforced limit.
 - **Audit trail — implemented:** Actions retains trigger/config SHA; `gh aw audit` supplies model,
-  calls, tokens and AIC. No run evidence exists yet.
+  calls, tokens and AIC. The first approved run's evidence is committed under
+  `evals/golden/actual/round_1/`.
 - **Kill switch — implemented:** repository variable `TRIAGE_AGENT_ENABLED` gates every run
   ([line 12](.github/workflows/issue-triage.md#L12)). Skip, cancellation and phone tests are pending.
 - **Drift detection — partly implemented:** deterministic checks run on config/eval changes
@@ -74,9 +75,13 @@ step rather than the agent's sole workflow ([selection rationale](notes/ideation
 Tester Part A froze 18 real cases (three no-action) plus three adversarial cases before this config
 commit; 18/18 fresh source hashes and all temporal boundaries passed
 ([verification](evals/golden/verification.md), [commit order](evals/golden/commit_order.md)).
-No model run has occurred. Therefore decision accuracy, safe-output enforcement, bot identity,
-skill calls/marker, kill switch, cancellation, limits, burst behaviour and control-without-skill
-are unresolved, not claimed tested. Historical replay also changes the issue author.
+The first approved replay, `airflow-69284`, failed before task execution: `auto` resolved the main
+agent to unsupported `claude-sonnet-5.5` and detection to unsupported `claude-haiku-5.5`. It used
+**0 AIC ($0)**, made no task tool or script calls, emitted no requested labels/comments, and scored
+0/1 ([Tester report](notes/test_report_1.md)). This round pins both roles to the concrete
+`gpt-5-mini` present in that run's captured GitHub Copilot catalog; compilation passes, but no live
+rerun has tested the fix. Decision accuracy, mutation identity, skill marker, cancellation, limits,
+burst behaviour and control-without-skill remain unresolved. Historical replay changes the author.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
 generates `pull-requests: write` in the isolated safe-output job. No PR mutation tool or PR target
@@ -85,7 +90,9 @@ compiler-generated residual boundary rather than treating compilation as behavio
 
 ## Agent bill of materials
 
-- **Engine/model:** GitHub Copilot engine; provider default model is not pinned and can drift.
+- **Engine/model:** GitHub Copilot with `gpt-5-mini` pinned separately for the main agent and threat
+  detection. The ID was present in the captured active Copilot catalog; provider implementation
+  behind the same ID can still drift.
 - **Instructions:** [workflow](.github/workflows/issue-triage.md), [AGENTS.md](AGENTS.md), and
   [skill](.claude/skills/airflow-issue-triage/SKILL.md), all versioned at the submission SHA.
 - **Tools/MCP:** GitHub issue-read toolset and three allowlisted Python scripts; no custom MCP.
@@ -98,11 +105,12 @@ compiler-generated residual boundary rather than treating compilation as behavio
 ## Five scenarios
 
 1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
-   ([workflow lines 68–88](.github/workflows/issue-triage.md#L68-L88)). The frozen adversarial
+   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). The frozen adversarial
    expectation is no action; execution is pending Part B, so this is not yet a passed test.
-2. **Model update:** the model is unpinned. Re-run the golden set on every model, workflow,
-   AGENTS or skill change and weekly; Jasmine reviews per-case diffs, not only an average. The CI
-   integrity check is implemented; the credit-spending scheduled rerun is proposed.
+2. **Model update:** both roles pin `gpt-5-mini`, but behaviour behind that ID can change. Re-run the
+   golden set on every model, workflow, AGENTS or skill change and weekly; Jasmine reviews per-case
+   diffs, not only an average. CI integrity is implemented; scheduled credit-spending runs remain
+   proposed.
 3. **300 issues/week:** per-issue concurrency keys prevent one issue cancelling another. At the
    100-AIC maximum, 300 runs could consume 30,000 AIC; the 5,000/day admission cap bounds worst-case
    daily spend to 50 full-cap runs. Excess issues receive no agent output and remain for humans;
@@ -116,6 +124,7 @@ compiler-generated residual boundary rather than treating compilation as behavio
 ## AI-use statement
 
 AI agents produced the configuration, scripts, evaluation scaffolding and this draft under
-Jasmine's direction. Deterministic tests and compiler checks are recorded; model behaviour is not
-yet verified. Jasmine must complete: **[state what you wrote]**, **[state what you reviewed]**, and
+Jasmine's direction. Deterministic tests and compiler checks are recorded; the only model attempt
+failed before task execution and the pin fix is not live-tested. Jasmine must complete:
+**[state what you wrote]**, **[state what you reviewed]**, and
 **[state what evidence and claims you personally verified]** before signing and submitting.

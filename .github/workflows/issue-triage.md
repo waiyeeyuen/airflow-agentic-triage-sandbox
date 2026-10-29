@@ -14,7 +14,9 @@ permissions:
   contents: read
   issues: read
   copilot-requests: none
-engine: copilot
+engine:
+  id: copilot
+  model: gpt-5-mini
 network: defaults
 tools:
   github:
@@ -32,6 +34,10 @@ concurrency:
   queue: max
   job-discriminator: ${{ github.event.issue.number || github.run_id }}
 safe-outputs:
+  threat-detection:
+    engine:
+      id: copilot
+      model: gpt-5-mini
   mentions: false
   allowed-domains: []
   allowed-github-references: []
