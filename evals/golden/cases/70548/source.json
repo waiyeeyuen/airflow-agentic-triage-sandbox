@@ -1,0 +1,15 @@
+{
+  "case_id": "airflow-70548",
+  "group": "meta_or_task",
+  "source_url": "https://github.com/apache/airflow/issues/70548",
+  "number": 70548,
+  "created_at": "2026-07-27T17:12:44Z",
+  "author_login": "jason810496",
+  "original_title": "Batch and memoize upstream map-length lookups for mapped stub arg bindings",
+  "original_body": "### Background\n\nSince https://github.com/apache/airflow/pull/69757, ti_run derives per-map-index arg bindings for mapped `@task.stub` tasks via `SchedulerDictOfListsExpandInput.resolve_expansion_sub_indexes` → `_get_map_lengths` (`airflow-core/src/airflow/models/expandinput.py`). `_get_map_lengths` carries a pre-existing TODO:\n\n```python\n# TODO: This initiates one database call for each XComArg. Would it be\n# more efficient to do one single db call and unpack the value here?\n```\n\nUpstream map lengths are immutable once populated for a DagRun, yet every ti_run of every map index re-queries them: a stub expanded over K XComArg kwargs producing N map indexes issues N×K identical `get_task_map_length` queries per DagRun, on the hot ti_run route. (Stubs expanding over a single kwarg short-circuit and skip the lookups; literal kwargs cost `len()` only.)\n\n### What needs to happen\n\n1. Batch the per-kwarg length lookups into a single query (addressing the pre-existing `_get_map_lengths` TODO).\n2. Consider memoizing resolved lengths per `(dag_id, run_id, task_id)` so repeated ti_run calls for sibling map indexes stop re-querying.\n\n### Acceptance criteria\n\n- One ti_run of a mapped stub issues at most one map-length query.\n- Existing sub-index decomposition tests (`airflow-core/tests/unit/api_fastapi/execution_api/versions/head/test_task_instances.py`) stay green.\n\n### Context\n\n- Originating PR: https://github.com/apache/airflow/pull/69757 (review finding)\n- Caller: `airflow-core/src/airflow/api_fastapi/execution_api/services/task_instances.py` (`_resolve_mapped_stub_arg_bindings`)\n\n---\nDrafted-by: Claude Code (Fable 5); reviewed by @jason810496 before posting",
+  "original_body_sha256": "3839b98ec45ac629c3a1d4c7caabc8333ef2c3e543afde8afa19842e0d88010a",
+  "original_text_sha256": "ebded7f4480ed3a3485d9c17c436b9ceb9830617c9e9cdf3405717ed0b19cbce",
+  "first_version_method": "oldest GraphQL userContentEdits.diff; editedAt equals issue createdAt",
+  "graphql_edit_count": 2,
+  "graphql_raw_file": "../../raw/graphql/70548.json"
+}

@@ -1,0 +1,112 @@
+{
+  "case_id": "airflow-71246",
+  "group": "meta_or_task",
+  "number": 71246,
+  "created_at": "2026-08-06T16:33:03Z",
+  "author_login": "potiuk",
+  "initial_labels": [
+    "kind:meta",
+    "testing status"
+  ],
+  "template": "3-free_form.yml",
+  "first_48h_maintainer_outcome": [
+    {
+      "event": "commented",
+      "created_at": "2026-08-06T16:48:34Z",
+      "actor": "onlyarnav",
+      "label": null,
+      "body": "#71053 was an output rendering change `conflictswith` -> `conflicts with`\nVerified it, no testing required"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-06T18:09:12Z",
+      "actor": "SEPURI-SAI-KRISHNA",
+      "label": null,
+      "body": "Tested `google 22.3.0rc3` for [#70430](https://github.com/apache/airflow/pull/70430) (Fail deferred Cloud Composer tasks when the GCP operation errors) — works as expected.\n\nInstalled the RC from PyPI into a clean venv (`apache-airflow-providers-google==22.3.0rc3`, resolved against `apache-airflow` 3.3.0) and verified against the installed artifact rather than a source checkout.\n\n**Unit tests** — the trigger tests ship green against the RC:\n\n```\ntest_cloud_composer.py::TestCloudComposerExecutionTrigger::test_run_raises_when_operation_finished_with_error PASSED\ntest_cloud_composer.py::TestCloudComposerExecutionTrigger::test_run_yields_event_when_operation_finished_without_error PASSED\n... 6 passed\n```\n\n**Behavioural check with real LRO objects** — the unit tests use a stand-in, so I also exercised the trigger against actual `google.longrunning.operations_pb2.Operation` values:\n\n| Scenario | Result |\n|---|---|\n| `done=True` with `error.message` set | raises `AirflowException: Cloud Composer Environment error: quota exceeded` |\n| `done=True`, no error | yields `{'operation_name': ..., 'operation_done': True}` |\n| polls `done=False` twice, then fails | raises after polling |\n\nFor contrast, the pre-fix loop on that same failed `Operation` returns `{'operation_name': 'op', 'operation_done': True}` — a success event for a failed operation, which is the bug. The RC no longer does this.\n\nI don't have a live Composer environment, so this is verification against the released artifact rather than a real environment creation/update failure.\n\n---\nDrafted-by: Claude Code (Opus 5); reviewed by @SEPURI-SAI-KRISHNA before posting"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-06T21:30:48Z",
+      "actor": "fallintoplace",
+      "label": null,
+      "body": "Tested `apache-airflow-providers-sftp==6.0.1rc2` for #70858.\n\nInstalled the provider from PyPI in a clean Python 3.13 virtualenv with Airflow 3.3.0. The environment resolved Paramiko 5.0.0 and AsyncSSH 2.24.0.\n\nThe documented `private_key_passphrase` extra was passed correctly to `asyncssh.import_private_key`. I also tested an encrypted private key against a temporary local AsyncSSH server and successfully opened an SFTP session.\n\nThe existing `passphrase` extra behavior still works, and the shared Paramiko 5 RSA private-key validation also passed.\n\nNo issues found."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T00:55:16Z",
+      "actor": "takayoshi-makabe",
+      "label": null,
+      "body": "Tested apache-airflow-providers-openai==1.8.2rc2 for #69506.\n\nInstalled Airflow 3.3.0 + the RC into a clean venv from PyPI and exercised OpenAITriggerBatchOperator.execute_complete / validate_execute_complete_event / OpenAIBatchTrigger.run() directly (no live OpenAI API needed, this is pure trigger-event branching logic).\n\nAs a control, I also installed the pre-fix 1.8.1 and confirmed all three bugs actually reproduce there:\n\n| Case | 1.8.1 (pre-fix) | 1.8.2rc2 |\n|---|---|---|\n| `status=\"cancelled\"` | treated as SUCCESS, returns `batch_id` | raises `OpenAIBatchJobException` |\n| `event=None` | crashes with raw `TypeError: 'NoneType' object is not subscriptable` | raises `OpenAITriggerEventError` |\n| unknown `status` (e.g. `\"expired\"`) | silently treated as SUCCESS | raises `OpenAITriggerEventError` |\n| `status=\"success\"` / `\"error\"` | works | still works |\n\nAlso confirmed OpenAIBatchTrigger.run() now yields exactly one terminal event (no spurious duplicate error event after a terminal event).\nAll checks pass on the RC. No issues found.\n\n---\nDrafted-by: Claude Code; reviewed by @takayoshi-makabe before posting"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T01:14:43Z",
+      "actor": "seanghaeli",
+      "label": null,
+      "body": "Verified https://github.com/apache/airflow/pull/70206"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T08:03:27Z",
+      "actor": "k-popov",
+      "label": null,
+      "body": "Verified #70790"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T08:12:32Z",
+      "actor": "radhwene",
+      "label": null,
+      "body": "Tested apache-airflow-providers-google==22.3.0rc3 for #68151 (CloudSQLNoOperationInProgressSensor).\n\nI installed the RC from PyPI in a clean Python 3.12 environment with Airflow 3.3.0. pip check is clean, including the RC dependencies on common-sql and common-compat.\n\nI also compared it with Google provider 19.5.0 to confirm that the new sensor, trigger, status constant and CloudSQLHook.list_operations() are all present only in the RC.\n\nFor poke(), I checked the main paths:\n\n* RUNNING or PENDING operation → keeps waiting\n* only DONE operations, or no operations → succeeds\n* mixed DONE and RUNNING → keeps waiting\n* operation without a status → does not block\n* HTTP 403/404 → raises CloudSQLOperationError\n* HTTP 500 → re-raises the original HttpError\n\nI also confirmed that the existing Cloud SQL import and export operators still import correctly.\n\nI did not run a real parallel workload against Cloud SQL, so this validates the released artifact and its synchronous sensor behaviour, not the remaining timing window under live concurrency.\n\nNo issues found in the scope tested.\n\n⸻\n\nDrafted with Claude ; reviewed by @radhwene before posting."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T08:51:49Z",
+      "actor": "michaelneely",
+      "label": null,
+      "body": "Verified #67848\n\nThe result of a SnowflakeSqlApiOperator is now correctly displayed:\n\n> [2026-08-07 08:49:33] INFO - Snowflake SQL GET statements status API response: {'resultSetMetaData': {'numRows': 1, 'format': 'jsonv2', 'partitionInfo': [{'rowCount': 1, 'uncompressedSize': 13}], 'rowType': [{'name': 'CURRENT_VERSION()', 'database': '', 'schema': '', 'table': '', 'scale': None, 'byteLength': 134217728, 'nullable': True, 'precision': None, 'collation': None, 'length': 134217728, 'type': 'text'}]}, 'data': [['10.27.100']], 'code': '090001', 'statementStatusUrl': '/api/v2/statements/01c63a11-0003-ce9d-0000-2405aa0ac8c6?requestId=484ca2aa-2f44-4e29-967c-bb4dd064ad70', 'requestId': '484ca2aa-2f44-4e29-967c-bb4dd064ad70', 'sqlState': '00000', 'statementHandle': '01c63a11-0003-ce9d-0000-2405aa0ac8c6', 'message': 'Statement executed successfully.', 'createdOn': 1786092573014}\n"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T10:42:08Z",
+      "actor": "YAshhh29",
+      "label": null,
+      "body": "Tested `apache-airflow-providers-openai==1.8.2rc2` for #69534.\n\nI installed the PyPI wheel in a clean Python 3.10.20 environment with\nAirflow 3.1.3, OpenAI provider 1.8.2rc2, and OpenAI SDK 2.53.0.\n`pip check` is clean. The wheel SHA-256 is\n`c7b9e56d38b3edd914780e11a94e048c7905dfaf70999b7c2c1365d89c63f570`,\nmatching the PyPI artifact.\n\nFor #69534, I verified that:\n\n- `OpenAITriggerBatchOperator` passes `timeout` to `OpenAIBatchTrigger`.\n- The preferred `timeout` and legacy `end_time` forms both serialize correctly.\n- Supplying both arguments, or neither argument, is rejected.\n- With monotonic time advancing `100 -> 101 -> 106`, the trigger reports\n  timeout after six elapsed seconds.\n- A simulated wall-clock jump is never read by the RC timeout path.\n- As a control, provider 1.8.1 reads wall time and times out early after\n  the same simulated jump.\n\nI also confirmed that the dependency change from #69408 remains present:\nthe RC metadata requires plain `openai>=2.37.0` without the `datalib`\nextra. The clean environment contains no `numpy`, `pandas`, or\n`pandas-stubs`. This metadata change was already present in provider 1.8.1,\nso this part is regression verification rather than an RC-versus-1.8.1\ndifference.\n\nRC artifact checks: 9 passed.\nPre-fix comparison: 1 passed.\n\nI used the clean-virtualenv contributor verification method. No live\nOpenAI API call was made; this validates the published artifact's metadata,\nserialization, validation, operator handoff, and timeout behavior.\n\nNo issues found in the tested scope.\n\n---\nDrafted-by: GitHub Copilot; reviewed by @YAshhh29 before posting"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T13:48:17Z",
+      "actor": "Eason09053360",
+      "label": null,
+      "body": "Verified my three items on this wave, all against the RC wheels from PyPI\ninstalled into the official `apache/airflow:3.1.3-python3.10` image\n\n- **fab 3.8.0rc2** — #70939: with 82 example Dags serialized in the DB,`airflow sync-perm --include-dags` now prints only the two expected\n  \n- **teradata 3.6.2rc2** — #70862: `BteqOperator.template_fields == (\"sql\",)`,and `sql=\"SELECT '{{ ds }}';\"` actually renders to `SELECT '2026-08-07';`\n- **google 22.3.0rc3** — #70919: a property named `properties/s123` now persists `property_id=\"s123\"`. The previous `lstrip(\"properties/\")` ate the leading `s` and persisted `123`.\n\nAll three look good to me :)\n\n---\nDrafted-by: Claude Code (Opus 5); reviewed by @Eason09053360 before posting"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-07T15:07:48Z",
+      "actor": "molcay",
+      "label": null,
+      "body": "Thank you very much @potiuk for the RC.\n\nFrom google provider perspective, we did **NOT** find any regression. \n\nWe are giving +1."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-08T01:42:02Z",
+      "actor": "dhkim1920",
+      "label": null,
+      "body": "Verified https://github.com/apache/airflow/pull/68716\n`apache-airflow-providers-cncf-kubernetes==10.21.0rc2` with Airflow 3.3.0 on Kind Kubernetes v1.30.13.\n\n  I re-ran the RBAC scenarios covered by #68716 using restricted ServiceAccounts, including Pod and Job operators,\n  deferrable Jobs, KubernetesExecutor with multi-namespace mode, cleanup, SparkApplication, generic custom resources,\n  and Kueue installation/Jobs.\n\n  All expected operations succeeded, while out-of-scope permissions were denied. I found no rc2-specific issues, and\n  #40210 appears addressed from the documented RBAC perspective.\n\n  ---\n  Drafted-by: Codex (GPT-5); reviewed by @dhkim1920 before posting"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-08-08T07:51:58Z",
+      "actor": "fat-catTW",
+      "label": null,
+      "body": "Verified the following Amazon provider changes with `apache-airflow-providers-amazon==9.34.0rc2` on Airflow 3.3.0 in clean venvs. I also compared each relevant behavior with `apache-airflow-providers-amazon==9.33.0`.\n\n#70445: `AwsToAwsBaseOperator` destination connection fallback\nChecked `dest_aws_conn_id` fallback behavior when `dest_aws_conn_id` is omitted:\n- previous release `9.33.0`: after `source_aws_conn_id` changes from `'source_before_render'` to `'source_after_render'`, `dest_aws_conn_id` still returns `'source_before_render'`\n- RC `9.34.0rc2`: `dest_aws_conn_id` follows the updated source and returns `'source_after_render'`\n\nAlso checked that explicit `dest_aws_conn_id=None` and templated `dest_aws_conn_id` are preserved during operator construction.\n\n#70440: templated validation fields in AppFlow operators\nChecked `AppflowRunDailyOperator` with templated `source`, `source_field`, and `filter_date`.\n\nPrevious release `9.33.0` rejects the operator during construction:\n`Source {{ params.source }} is not supported for AppflowRunDailyOperator!`\n\nRC `9.34.0rc2` allows construction, renders the fields, validates after rendering, and executes the patched run path with:\n- `source='salesforce'`\n- `source_field='CreatedDate'`\n- `filter_date='2022-05-26T00:00:00+00:00`\n\n#70464: deferred ECS logs region selection\nChecked `EcsRunTaskOperator.execute_complete()` when `region_name='task-region'` and `awslogs_region='logs-region'`.\n\nPrevious release `9.33.0` calls `AwsLogsHook` with `region_name='task-region'`.\n\nRC `9.34.0rc2` calls `AwsLogsHook` with `region_name='logs-region'` and returns the expected log output.\n\nResult: all three work as expected.\n\n---\nDrafted-by: Codex (GPT-5); reviewed by @fat-catTW before posting"
+    }
+  ],
+  "final_labels_at_collection": [
+    "area:providers",
+    "kind:meta",
+    "testing status"
+  ],
+  "prior_snapshot_cutoff_exclusive": "2026-08-06T16:33:03Z",
+  "prior_snapshot_count": 215
+}

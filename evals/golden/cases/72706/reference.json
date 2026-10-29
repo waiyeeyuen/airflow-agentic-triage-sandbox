@@ -1,0 +1,18 @@
+{
+  "case_id": "airflow-72706",
+  "not_agent_input": true,
+  "first_48h_maintainer_outcome": [
+    {
+      "event": "commented",
+      "created_at": "2026-09-10T09:23:07Z",
+      "actor": "hasansyed107",
+      "label": null,
+      "body": "Hi! I took a look at the current implementation, and it seems the team-scoped resource change spans several layers.\n\nFor Pool and Variable, the existing models already carry `team_name`, but their database uniqueness/lookups are still globally scoped. These seem like a relatively self-contained first step.\n\nThe Connection and especially DAG cases appear to have a larger impact because `dag_id` is currently part of the core identity/foreign-key model.\n\nWould it make sense to start by implementing team-scoped uniqueness and lookup semantics for Pool and Variable as a first PR, and handle the larger DAG/connection changes separately?\n\nIf that scope makes sense, I'd be happy to work on the first part."
+    }
+  ],
+  "labels_at_collection": [
+    "area:core",
+    "kind:feature"
+  ],
+  "explanation": "Post-event fields are reference-only and must never be supplied to the agent."
+}

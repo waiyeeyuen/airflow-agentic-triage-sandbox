@@ -1,0 +1,27 @@
+{
+  "case_id": "airflow-72706",
+  "group": "feature_request",
+  "number": 72706,
+  "created_at": "2026-09-08T12:30:00Z",
+  "author_login": "stephen-bracken",
+  "initial_labels": [
+    "kind:feature",
+    "needs-triage"
+  ],
+  "template": "2-feature_request.yml",
+  "first_48h_maintainer_outcome": [
+    {
+      "event": "commented",
+      "created_at": "2026-09-10T09:23:07Z",
+      "actor": "hasansyed107",
+      "label": null,
+      "body": "Hi! I took a look at the current implementation, and it seems the team-scoped resource change spans several layers.\n\nFor Pool and Variable, the existing models already carry `team_name`, but their database uniqueness/lookups are still globally scoped. These seem like a relatively self-contained first step.\n\nThe Connection and especially DAG cases appear to have a larger impact because `dag_id` is currently part of the core identity/foreign-key model.\n\nWould it make sense to start by implementing team-scoped uniqueness and lookup semantics for Pool and Variable as a first PR, and handle the larger DAG/connection changes separately?\n\nIf that scope makes sense, I'd be happy to work on the first part."
+    }
+  ],
+  "final_labels_at_collection": [
+    "area:core",
+    "kind:feature"
+  ],
+  "prior_snapshot_cutoff_exclusive": "2026-09-08T12:30:00Z",
+  "prior_snapshot_count": 380
+}

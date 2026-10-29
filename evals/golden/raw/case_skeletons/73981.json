@@ -1,0 +1,28 @@
+{
+  "case_id": "airflow-73981",
+  "group": "provider_bug",
+  "number": 73981,
+  "created_at": "2026-09-30T19:19:02Z",
+  "author_login": "roykoand",
+  "initial_labels": [
+    "kind:bug",
+    "needs-triage"
+  ],
+  "template": "1-airflow_bug_report.yml",
+  "first_48h_maintainer_outcome": [
+    {
+      "event": "commented",
+      "created_at": "2026-09-30T19:46:19Z",
+      "actor": "bingqin2",
+      "label": null,
+      "body": "I'd like to fix this. @roykoand, you left the PR box unticked, so I'm picking it up; say so if you would rather do it yourself.\n\nThe fix gives both triggers the order the other triggers in the module already use: success, then error, then keep polling for any other status. `BigQueryIntervalCheckTrigger` also reports the job that failed. One more effect of the same branch: while one job has failed and the other is still `pending`, the interval check keeps polling until the other job finishes, instead of failing right away. The PR covers that too.\n"
+    }
+  ],
+  "final_labels_at_collection": [
+    "area:providers",
+    "kind:bug",
+    "provider:google"
+  ],
+  "prior_snapshot_cutoff_exclusive": "2026-09-30T19:19:02Z",
+  "prior_snapshot_count": 476
+}
