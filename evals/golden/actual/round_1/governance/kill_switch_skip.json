@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "test": "disabled_kill_switch_skip",
+  "collected_at_utc": "2026-10-29T15:53:00Z",
+  "repository": {
+    "name_with_owner": "waiyeeyuen/airflow-agentic-triage-sandbox",
+    "visibility": "PRIVATE"
+  },
+  "configuration_before": {
+    "triage_agent_enabled": "false",
+    "copilot_github_token_present": false,
+    "prior_issue_triggered_runs": []
+  },
+  "synthetic_issue": {
+    "number": 1,
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/issues/1",
+    "title": "Disabled kill switch verification synthetic issue",
+    "body": "Synthetic issue created solely to verify that disabled triage remains inert. Expected result is a skipped workflow with no labels, comments, or state change.",
+    "created_at": "2026-10-29T15:52:16Z",
+    "state_after_run": "OPEN",
+    "closed_at": null,
+    "labels_after_run": [],
+    "comments_after_run": [],
+    "timeline_events_after_run": []
+  },
+  "workflow_run": {
+    "database_id": 40905907762,
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40905907762",
+    "event": "issues",
+    "workflow_name": "Bounded Airflow issue triage",
+    "head_sha": "e7b28935290422390bd3fa473b07e44b6fe512e6",
+    "created_at": "2026-10-29T15:52:19Z",
+    "updated_at": "2026-10-29T15:52:21Z",
+    "status": "completed",
+    "conclusion": "skipped",
+    "jobs": [
+      {"database_id": 123560467548, "name": "pre_activation", "status": "completed", "conclusion": "skipped", "steps": []},
+      {"database_id": 123560469302, "name": "agent", "status": "completed", "conclusion": "skipped", "steps": []},
+      {"database_id": 123560469497, "name": "detection", "status": "completed", "conclusion": "skipped", "steps": []},
+      {"database_id": 123560472069, "name": "safe_outputs", "status": "completed", "conclusion": "skipped", "steps": []},
+      {"database_id": 123560473185, "name": "conclusion", "status": "completed", "conclusion": "skipped", "steps": []},
+      {"database_id": 123560548016, "name": "activation", "status": "completed", "conclusion": "skipped", "steps": []}
+    ]
+  },
+  "configuration_after": {
+    "triage_agent_enabled": "false",
+    "copilot_github_token_present": false
+  },
+  "assertions": {
+    "exactly_one_synthetic_issue_created": true,
+    "run_logged_and_skipped": true,
+    "all_jobs_logged_and_skipped": true,
+    "agent_job_had_zero_steps": true,
+    "safe_outputs_job_had_zero_steps": true,
+    "issue_remained_open": true,
+    "no_labels": true,
+    "no_comments": true,
+    "no_timeline_mutations": true,
+    "kill_switch_remained_false": true,
+    "secret_not_added": true,
+    "inference_started": false,
+    "ai_credits_spent": 0,
+    "pass": true
+  }
+}
