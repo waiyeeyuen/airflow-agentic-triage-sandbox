@@ -1,0 +1,79 @@
+﻿2026-10-29T16:30:07.3726106Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-29T16:30:07.3726656Z with:
+2026-10-29T16:30:07.3727613Z   script: const { setupGlobals } = require(process.env.GH_AW_ACTIONS_DIR + '/setup_globals.cjs');
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(process.env.GH_AW_ACTIONS_DIR + '/create_prompt.cjs');
+await main(core);
+
+2026-10-29T16:30:07.3731518Z   github-token: ***
+2026-10-29T16:30:07.3731830Z   debug: false
+2026-10-29T16:30:07.3732118Z   user-agent: actions/github-script
+2026-10-29T16:30:07.3732450Z   result-encoding: json
+2026-10-29T16:30:07.3732731Z   retries: 0
+2026-10-29T16:30:07.3733028Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-29T16:30:07.3733388Z env:
+2026-10-29T16:30:07.3733650Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:30:07.3733983Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:30:07.3735085Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:30:07.3736092Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:30:07.3736433Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:30:07.3736802Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:30:07.3737113Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-29T16:30:07.3737432Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:30:07.3738315Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:30:07.3738823Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: c11e640032d7094f
+2026-10-29T16:30:07.3739237Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291399928
+2026-10-29T16:30:07.3739636Z   GH_AW_ACTIONS_DIR: /home/runner/work/_temp/gh-aw/actions
+2026-10-29T16:30:07.3740123Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-29T16:30:07.3740680Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-29T16:30:07.3742754Z   GH_AW_PROMPT_CONFIG: {"items":[{"content_env":"GH_AW_PROMPT_CONTENT_0000"},{"file":"xpia.md"},{"file":"temp_folder_prompt.md"},{"file":"markdown.md"},{"file":"safe_outputs_mcp_transport_prompt.md"},{"file":"safe_outputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0001"},{"content_env":"GH_AW_PROMPT_CONTENT_0002"},{"file":"mcp_cli_tools_with_safeoutputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0003"},{"file":"github_mcp_tools_with_safeoutputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0004"},{"content_env":"GH_AW_PROMPT_CONTENT_0005"}],"system_item_count":12}
+2026-10-29T16:30:07.3744728Z   GH_AW_EXPR_76DF9333: false
+2026-10-29T16:30:07.3745037Z   GH_AW_EXPR_77C1A4D2: 
+2026-10-29T16:30:07.3745316Z   GH_AW_EXPR_7C248226: 2
+2026-10-29T16:30:07.3745610Z   GH_AW_EXPR_C19C384F: false
+2026-10-29T16:30:07.3745914Z   GH_AW_GITHUB_ACTOR: waiyeeyuen
+2026-10-29T16:30:07.3746331Z   GH_AW_GITHUB_REPOSITORY: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-29T16:30:07.3746772Z   GH_AW_GITHUB_RUN_ID: 40911954325
+2026-10-29T16:30:07.3747344Z   GH_AW_GITHUB_WORKSPACE: /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-29T16:30:07.3748141Z   GH_AW_PROMPT_CONTENT_0000: <system>
+
+2026-10-29T16:30:07.3748791Z   GH_AW_PROMPT_CONTENT_0001: <safe-output-tools>
+Tools: add_comment, add_labels, report_missing_tool, report_missing_data, noop(max:2)
+
+2026-10-29T16:30:07.3749491Z   GH_AW_PROMPT_CONTENT_0002: </safe-output-tools>
+
+2026-10-29T16:30:07.3753251Z   GH_AW_PROMPT_CONTENT_0003: <github-context>
+The following GitHub context information is available for this workflow:
+{{#if github.actor}}
+- **actor**: __GH_AW_GITHUB_ACTOR__
+{{/if}}
+{{#if github.repository}}
+- **repository**: __GH_AW_GITHUB_REPOSITORY__
+{{/if}}
+{{#if github.workspace}}
+- **workspace**: __GH_AW_GITHUB_WORKSPACE__
+{{/if}}
+{{#if github.event.issue.number || (github.aw.context.item_type == 'issue' && github.aw.context.item_number)}}
+- **issue-number**: #__GH_AW_EXPR_7C248226__
+{{/if}}
+{{#if github.event.discussion.number || (github.aw.context.item_type == 'discussion' && github.aw.context.item_number)}}
+- **discussion-number**: #__GH_AW_EXPR_C19C384F__
+{{/if}}
+{{#if github.event.pull_request.number || (github.aw.context.item_type == 'pull_request' && github.aw.context.item_number)}}
+- **pull-request-number**: #__GH_AW_EXPR_76DF9333__
+{{/if}}
+{{#if github.event.comment.id || github.aw.context.comment_id}}
+- **comment-id**: __GH_AW_EXPR_77C1A4D2__
+{{/if}}
+{{#if github.run_id}}
+- **workflow-run-id**: __GH_AW_GITHUB_RUN_ID__
+{{/if}}
+</github-context>
+
+
+2026-10-29T16:30:07.3757266Z   GH_AW_PROMPT_CONTENT_0004: </system>
+
+2026-10-29T16:30:07.3757740Z   GH_AW_PROMPT_CONTENT_0005: {{#runtime-import .github/workflows/issue-triage.md}}
+
+2026-10-29T16:30:07.3758437Z ##[endgroup]
+2026-10-29T16:30:07.5029820Z Created prompt at /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt (11755 bytes)

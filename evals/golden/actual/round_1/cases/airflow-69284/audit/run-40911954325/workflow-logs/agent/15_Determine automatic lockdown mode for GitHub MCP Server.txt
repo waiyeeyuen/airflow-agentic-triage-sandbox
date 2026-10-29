@@ -1,0 +1,49 @@
+﻿2026-10-29T16:30:47.7345283Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-29T16:30:47.7345568Z with:
+2026-10-29T16:30:47.7346135Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const determineAutomaticLockdown = require(path.join(actionsDir, 'determine_automatic_lockdown.cjs'));
+await determineAutomaticLockdown(github, context, core);
+
+2026-10-29T16:30:47.7347883Z   github-token: ***
+2026-10-29T16:30:47.7348014Z   debug: false
+2026-10-29T16:30:47.7348151Z   user-agent: actions/github-script
+2026-10-29T16:30:47.7348313Z   result-encoding: json
+2026-10-29T16:30:47.7348447Z   retries: 0
+2026-10-29T16:30:47.7348588Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-29T16:30:47.7348761Z env:
+2026-10-29T16:30:47.7348887Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:30:47.7349044Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:30:47.7349545Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:30:47.7350096Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:30:47.7350261Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:30:47.7350447Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:30:47.7350591Z   DEFAULT_BRANCH: main
+2026-10-29T16:30:47.7350727Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-29T16:30:47.7350876Z   GH_AW_ASSETS_BRANCH: 
+2026-10-29T16:30:47.7351011Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-29T16:30:47.7351181Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-29T16:30:47.7351370Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-29T16:30:47.7351518Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-29T16:30:47.7351667Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-29T16:30:47.7351806Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-29T16:30:47.7351954Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-29T16:30:47.7352101Z   GH_AW_PR_HEAD_REPO: 
+2026-10-29T16:30:47.7352245Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:30:47.7352399Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-29T16:30:47.7352564Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-29T16:30:47.7352992Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:30:47.7353220Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 474beca09d7f94e1
+2026-10-29T16:30:47.7353415Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291440270
+2026-10-29T16:30:47.7353580Z   GH_AW_GITHUB_TOKEN: 
+2026-10-29T16:30:47.7353731Z   GH_AW_GITHUB_MCP_SERVER_TOKEN: 
+2026-10-29T16:30:47.7353887Z ##[endgroup]
+2026-10-29T16:30:47.8141183Z Determining automatic guard policy for GitHub MCP server
+2026-10-29T16:30:47.8142176Z Checking repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-29T16:30:48.2394081Z Repository visibility: private
+2026-10-29T16:30:48.2430523Z Repository is private: true
+2026-10-29T16:30:48.2431194Z Configured min-integrity: (not set)
+2026-10-29T16:30:48.2431833Z Configured repos: (not set)
+2026-10-29T16:30:48.2432837Z min-integrity not configured — automatically setting to 'none' for private repository
+2026-10-29T16:30:48.2433708Z repos not configured — automatically setting to 'all' for private repository
+2026-10-29T16:30:48.2434419Z Automatic guard policy determination complete for private/internal repository

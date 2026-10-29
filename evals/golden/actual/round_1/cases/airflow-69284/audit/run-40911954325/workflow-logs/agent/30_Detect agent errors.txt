@@ -1,0 +1,46 @@
+﻿2026-10-29T16:32:19.0886163Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-29T16:32:19.0886603Z with:
+2026-10-29T16:32:19.0887630Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'detect_agent_errors.cjs'));
+await main();
+
+2026-10-29T16:32:19.0890593Z   github-token: ***
+2026-10-29T16:32:19.0890828Z   debug: false
+2026-10-29T16:32:19.0891038Z   user-agent: actions/github-script
+2026-10-29T16:32:19.0891295Z   result-encoding: json
+2026-10-29T16:32:19.0891509Z   retries: 0
+2026-10-29T16:32:19.0891732Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-29T16:32:19.0892008Z env:
+2026-10-29T16:32:19.0892210Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:32:19.0892467Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:32:19.0893271Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:32:19.0894116Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:32:19.0894386Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:32:19.0894690Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:32:19.0895162Z   DEFAULT_BRANCH: main
+2026-10-29T16:32:19.0896466Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-29T16:32:19.0896775Z   GH_AW_ASSETS_BRANCH: 
+2026-10-29T16:32:19.0896986Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-29T16:32:19.0897253Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-29T16:32:19.0897536Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-29T16:32:19.0897772Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-29T16:32:19.0898001Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-29T16:32:19.0898221Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-29T16:32:19.0898441Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-29T16:32:19.0898659Z   GH_AW_PR_HEAD_REPO: 
+2026-10-29T16:32:19.0898873Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:32:19.0899082Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-29T16:32:19.0899337Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-29T16:32:19.0899638Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:32:19.0899982Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 474beca09d7f94e1
+2026-10-29T16:32:19.0900274Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291440270
+2026-10-29T16:32:19.0900721Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: 52dfe3848ad8792ba0724186ff31ffcaa8570513cc9287335ec4f811941b046f
+2026-10-29T16:32:19.0901304Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-29T16:32:19.0901707Z   GH_AW_AGENTIC_EXECUTION_OUTCOME: failure
+2026-10-29T16:32:19.0901971Z   GH_AW_ENGINE_STEP_TIMEOUT_MINUTES: 10
+2026-10-29T16:32:19.0902223Z ##[endgroup]
+2026-10-29T16:32:19.1841536Z [detect-agent-errors] Detected model configuration error: configured model is invalid or unavailable for this engine/account
+2026-10-29T16:32:19.1876041Z [detect-agent-errors] Debug playbook: https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#agent-model-and-proxy-classifications

@@ -1,0 +1,104 @@
+﻿2026-10-29T16:32:20.9202687Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-29T16:32:20.9203093Z with:
+2026-10-29T16:32:20.9204118Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_copilot_log.cjs'));
+await main();
+
+2026-10-29T16:32:20.9207473Z   github-token: ***
+2026-10-29T16:32:20.9207702Z   debug: false
+2026-10-29T16:32:20.9207920Z   user-agent: actions/github-script
+2026-10-29T16:32:20.9208186Z   result-encoding: json
+2026-10-29T16:32:20.9208399Z   retries: 0
+2026-10-29T16:32:20.9208612Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-29T16:32:20.9208885Z env:
+2026-10-29T16:32:20.9209083Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:32:20.9209336Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:32:20.9210153Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:32:20.9210987Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:32:20.9211264Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:32:20.9211564Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:32:20.9211795Z   DEFAULT_BRANCH: main
+2026-10-29T16:32:20.9212015Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-29T16:32:20.9212264Z   GH_AW_ASSETS_BRANCH: 
+2026-10-29T16:32:20.9212476Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-29T16:32:20.9212741Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-29T16:32:20.9213025Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-29T16:32:20.9213263Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-29T16:32:20.9213716Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-29T16:32:20.9213940Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-29T16:32:20.9214168Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-29T16:32:20.9214380Z   GH_AW_PR_HEAD_REPO: 
+2026-10-29T16:32:20.9214592Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:32:20.9214809Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-29T16:32:20.9215145Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-29T16:32:20.9215455Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:32:20.9215792Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 474beca09d7f94e1
+2026-10-29T16:32:20.9216076Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291440270
+2026-10-29T16:32:20.9216523Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: 52dfe3848ad8792ba0724186ff31ffcaa8570513cc9287335ec4f811941b046f
+2026-10-29T16:32:20.9217094Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-29T16:32:20.9217522Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/sandbox/agent/logs/
+2026-10-29T16:32:20.9217899Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-29T16:32:20.9218245Z ##[endgroup]
+2026-10-29T16:32:21.0424185Z Using Copilot session log from: copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0447271Z [log-parser] Wrote Copilot result entry to agent-stdio.log: num_turns=1
+2026-10-29T16:32:21.0501414Z [log-parser] Persisted 13 canonical session events
+2026-10-29T16:32:21.0589503Z === Unified session ===
+2026-10-29T16:32:21.0590192Z Records: 12 (agent=12)
+2026-10-29T16:32:21.0590461Z 
+2026-10-29T16:32:21.0590883Z Agent source: agent/copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0591508Z Model: claude-sonnet-5.5
+2026-10-29T16:32:21.0591856Z Initialization:
+2026-10-29T16:32:21.0592179Z   Engine: copilot
+2026-10-29T16:32:21.0592537Z   Session ID: dd4d4337-ffcb-48be-8cfc-2d1b618df2e0
+2026-10-29T16:32:21.0593150Z   Working Directory: /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-29T16:32:21.0593640Z 
+2026-10-29T16:32:21.0593835Z Statistics:
+2026-10-29T16:32:21.0594134Z   Turns: 1
+2026-10-29T16:32:21.0594431Z   Duration: 4s
+2026-10-29T16:32:21.0594728Z   Errors:
+2026-10-29T16:32:21.0595784Z     {
+2026-10-29T16:32:21.0596083Z   "errorType": "query",
+2026-10-29T16:32:21.0596468Z   "message": "400 The requested model is not supported.",
+2026-10-29T16:32:21.0596906Z   "statusCode": 400,
+2026-10-29T16:32:21.0597283Z   "providerCallId": "E444:67129:6C7446:728EB7:6AE3750F",
+2026-10-29T16:32:21.0597767Z   "serviceRequestId": "e59cefc7-e6d3-4703-a7b6-fb850e780984",
+2026-10-29T16:32:21.0598288Z   "originatingMessageId": "5b89bd9b-a539-4b88-a368-dfb4c91d5a04"
+2026-10-29T16:32:21.0598923Z }
+2026-10-29T16:32:21.0599137Z 
+2026-10-29T16:32:21.0599424Z Chronological trace (user prompts omitted; untimed observations follow):
+2026-10-29T16:32:21.0599806Z 
+2026-10-29T16:32:21.0600591Z [1] agent/agent session.start model=claude-sonnet-5.5 sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0 reasoningEffort=medium cwd=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox [untimed]
+2026-10-29T16:32:21.0601846Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0
+2026-10-29T16:32:21.0602442Z 
+2026-10-29T16:32:21.0603312Z [2] agent/agent session.init sourceEngine=copilot model=claude-sonnet-5.5 sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0 reasoningEffort=medium cwd=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox [untimed]
+2026-10-29T16:32:21.0604653Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0
+2026-10-29T16:32:21.0605366Z 
+2026-10-29T16:32:21.0605799Z [3] agent/agent session.info message=Integration ID overridden via environment variable: agentic-workflows [untimed]
+2026-10-29T16:32:21.0606533Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0606935Z 
+2026-10-29T16:32:21.0607202Z [5] agent/agent system.message [system instructions omitted] [untimed]
+2026-10-29T16:32:21.0607772Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0608207Z 
+2026-10-29T16:32:21.0608597Z [6] agent/agent assistant.turn_start turnId=0 interactionId=8e9c326a-4f14-48e3-8594-6ef65de75491 [untimed]
+2026-10-29T16:32:21.0609241Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0609634Z 
+2026-10-29T16:32:21.0609869Z [7] agent/agent assistant.turn_end turnId=0 [untimed]
+2026-10-29T16:32:21.0610379Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0610785Z 
+2026-10-29T16:32:21.0611218Z [8] agent/agent session.error errorType=query statusCode=400 message=400 The requested model is not supported. [untimed]
+2026-10-29T16:32:21.0611938Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0612334Z 
+2026-10-29T16:32:21.0615109Z [9] agent/agent session.result  [untimed]
+2026-10-29T16:32:21.0615961Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0
+2026-10-29T16:32:21.0616528Z 
+2026-10-29T16:32:21.0616989Z [10] agent/agent session.shutdown shutdownType=routine premiumRequests=0 totalApiDurationMs=0 totalNanoAiu=0 [untimed]
+2026-10-29T16:32:21.0617737Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl
+2026-10-29T16:32:21.0618139Z 
+2026-10-29T16:32:21.0618390Z [11] agent/agent session.result durationMs=4259 [untimed]
+2026-10-29T16:32:21.0619074Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0
+2026-10-29T16:32:21.0619643Z 
+2026-10-29T16:32:21.0619883Z [12] agent/agent session.result numTurns=1 [untimed]
+2026-10-29T16:32:21.0620655Z   path=copilot-session-state/dd4d4337-ffcb-48be-8cfc-2d1b618df2e0/events.jsonl sessionId=dd4d4337-ffcb-48be-8cfc-2d1b618df2e0

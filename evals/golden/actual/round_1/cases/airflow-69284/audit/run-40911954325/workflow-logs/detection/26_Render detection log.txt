@@ -1,0 +1,199 @@
+﻿2026-10-29T16:34:14.2621589Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-29T16:34:14.2622255Z with:
+2026-10-29T16:34:14.2624198Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'render_detection_log.cjs'));
+await main();
+
+2026-10-29T16:34:14.2650720Z   github-token: ***
+2026-10-29T16:34:14.2651179Z   debug: false
+2026-10-29T16:34:14.2651543Z   user-agent: actions/github-script
+2026-10-29T16:34:14.2652000Z   result-encoding: json
+2026-10-29T16:34:14.2652360Z   retries: 0
+2026-10-29T16:34:14.2652755Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-29T16:34:14.2653499Z env:
+2026-10-29T16:34:14.2654074Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:34:14.2654771Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:34:14.2656348Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:34:14.2658185Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:34:14.2658879Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:34:14.2659608Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:34:14.2660238Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:34:14.2660917Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:34:14.2661690Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 227554d391701281
+2026-10-29T16:34:14.2662383Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291587506
+2026-10-29T16:34:14.2663123Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-29T16:34:14.2664039Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-29T16:34:14.2664917Z ##[endgroup]
+2026-10-29T16:34:14.3909891Z ##[group]Detection Log
+2026-10-29T16:34:14.3918069Z ::stop-commands::***
+2026-10-29T16:34:14.3919479Z [INFO] Auto-detected DNS servers from /run/systemd/resolve/resolv.conf: 168.63.129.16
+2026-10-29T16:34:14.3937322Z [INFO] Agent timeout set to 10 minutes
+2026-10-29T16:34:14.3939496Z [WARN] ⚠️  Using --env-all: All host environment variables will be passed to container
+2026-10-29T16:34:14.3941869Z [WARN]    This may expose sensitive credentials if logs or configs are shared
+2026-10-29T16:34:14.3943042Z [INFO] API proxy enabled: OpenAI=false, Anthropic=false, Copilot=true (github-token), Gemini=false, Vertex=false
+2026-10-29T16:34:14.3944987Z [INFO] Allowed domains: 
+2026-10-29T16:34:14.3948629Z [INFO] Network-isolation mode: enforcing egress via Docker network topology (no host iptables, no sudo).
+2026-10-29T16:34:14.3953297Z [INFO] Generating configuration files...
+2026-10-29T16:34:14.3954574Z [INFO] API proxy sidecar enabled - API keys will be held securely in sidecar container
+2026-10-29T16:34:14.3957880Z [INFO] API proxy will route through Squid to respect domain whitelisting
+2026-10-29T16:34:14.3960734Z [INFO] Starting containers...
+2026-10-29T16:34:14.3961189Z  Network awf-f4aecz_awf-ext  Creating
+2026-10-29T16:34:14.3961652Z  Network awf-f4aecz_awf-ext  Created
+2026-10-29T16:34:14.3962059Z  Network awf-net  Creating
+2026-10-29T16:34:14.3962452Z  Network awf-net  Created
+2026-10-29T16:34:14.3962897Z  Container awf-squid  Creating
+2026-10-29T16:34:14.3963287Z  Container awf-squid  Created
+2026-10-29T16:34:14.3963711Z  Container awf-api-proxy  Creating
+2026-10-29T16:34:14.3964168Z  Container awf-api-proxy  Created
+2026-10-29T16:34:14.3964595Z  Container awf-agent  Creating
+2026-10-29T16:34:14.3964995Z  Container awf-agent  Created
+2026-10-29T16:34:14.3965403Z  Container awf-squid  Starting
+2026-10-29T16:34:14.3965795Z  Container awf-squid  Started
+2026-10-29T16:34:14.3966169Z  Container awf-squid  Waiting
+2026-10-29T16:34:14.3966550Z  Container awf-squid  Healthy
+2026-10-29T16:34:14.3966965Z  Container awf-api-proxy  Starting
+2026-10-29T16:34:14.3967587Z  Container awf-api-proxy  Started
+2026-10-29T16:34:14.3968465Z  Container awf-squid  Waiting
+2026-10-29T16:34:14.3968865Z  Container awf-api-proxy  Waiting
+2026-10-29T16:34:14.3969257Z  Container awf-squid  Healthy
+2026-10-29T16:34:14.3969643Z  Container awf-api-proxy  Healthy
+2026-10-29T16:34:14.3970056Z  Container awf-agent  Starting
+2026-10-29T16:34:14.3970433Z  Container awf-agent  Started
+2026-10-29T16:34:14.3970886Z [SUCCESS] Containers started successfully
+2026-10-29T16:34:14.3971366Z [INFO] Executing agent command...
+2026-10-29T16:34:14.3971805Z [INFO] Agent timeout: 10 minutes
+2026-10-29T16:34:14.3972340Z [entrypoint] Agentic Workflow Firewall - Agent Container
+2026-10-29T16:34:14.3972898Z [entrypoint] ==================================
+2026-10-29T16:34:14.3973403Z [entrypoint] Configuring DNS...
+2026-10-29T16:34:14.3974044Z [entrypoint] DNS configured with Docker embedded DNS (127.0.0.11) only
+2026-10-29T16:34:14.3974895Z [entrypoint] iptables-init skipped (proxy-based egress): skipping init container wait
+2026-10-29T16:34:14.3975648Z [health-check] API Proxy Pre-flight Check
+2026-10-29T16:34:14.3976209Z [health-check] ==========================================
+2026-10-29T16:34:14.3976887Z [health-check] Checking GitHub Copilot API proxy configuration...
+2026-10-29T16:34:14.3977747Z [health-check] COPILOT_API_URL=http://172.30.0.30:10002
+2026-10-29T16:34:14.3978905Z [health-check] ✓ COPILOT_GITHUB_TOKEN is placeholder value (correct)
+2026-10-29T16:34:14.3979838Z [health-check] ✓ COPILOT_TOKEN is placeholder value (correct)
+2026-10-29T16:34:14.3980947Z [health-check] ✓ COPILOT_PROVIDER_API_KEY is placeholder value (correct)
+2026-10-29T16:34:14.3981949Z [health-check] COPILOT_PROVIDER_BASE_URL=http://172.30.0.30:10002 (offline+BYOK mode)
+2026-10-29T16:34:14.3982997Z [health-check] ✓ COPILOT_PROVIDER_BASE_URL matches COPILOT_API_URL
+2026-10-29T16:34:14.3983906Z [health-check] ✓ Copilot CLI offline+BYOK mode configured
+2026-10-29T16:34:14.3984857Z [health-check] Testing connectivity to GitHub Copilot API proxy at http://172.30.0.30:10002...
+2026-10-29T16:34:14.3985988Z [health-check] ✓ GitHub Copilot API proxy is reachable at http://172.30.0.30:10002
+2026-10-29T16:34:14.3986700Z [health-check] ==========================================
+2026-10-29T16:34:14.3987981Z [health-check] ✓ All API proxy health checks passed
+2026-10-29T16:34:14.3990294Z [health-check] ✓ Credential isolation verified
+2026-10-29T16:34:14.3991342Z [health-check] ✓ Connectivity established
+2026-10-29T16:34:14.3992096Z [health-check] ==========================================
+2026-10-29T16:34:14.3993094Z [entrypoint] Pre-seeding JVM build tool proxy configuration (squid-proxy:3128)...
+2026-10-29T16:34:14.3994162Z [entrypoint] ✓ Created Maven proxy config (/host/home/runner/.m2/settings.xml)
+2026-10-29T16:34:14.3995261Z [entrypoint] ✓ Created Gradle proxy config (/host/home/runner/.gradle/gradle.properties)
+2026-10-29T16:34:14.3996404Z [entrypoint] ✓ Set JAVA_TOOL_OPTIONS with proxy and nonProxyHosts flags
+2026-10-29T16:34:14.3997267Z [entrypoint] Proxy configuration:
+2026-10-29T16:34:14.3998171Z [entrypoint]   HTTP_PROXY=http://172.30.0.10:3128
+2026-10-29T16:34:14.3998854Z [entrypoint]   HTTPS_PROXY=http://172.30.0.10:3128
+2026-10-29T16:34:14.3999491Z [entrypoint] Network information:
+2026-10-29T16:34:14.4000061Z [entrypoint]   IP address: 172.30.0.20 
+2026-10-29T16:34:14.4000574Z [entrypoint]   Hostname: 62c11a6de74c
+2026-10-29T16:34:14.4001159Z [entrypoint] ==================================
+2026-10-29T16:34:14.4001988Z [entrypoint] Chroot mode enabled - dropping CAP_SYS_CHROOT and CAP_SYS_ADMIN
+2026-10-29T16:34:14.4002810Z [entrypoint] Switching to awfuser (UID: 1001, GID: 1001)
+2026-10-29T16:34:14.4018003Z [entrypoint] Executing command: /bin/bash -c /bin/bash -c 'set +o histexpand; export PATH="${RUNNER_TEMP}/gh-aw/bin:$PATH" && : "${RUNNER_TOOL_CACHE:?RUNNER_TOOL_CACHE must be set}"; GH_AW_TOOL_CACHE="$RUNNER_TOOL_CACHE"; GH_AW_TOOL_BINS="$(find "$GH_AW_TOOL_CACHE" -maxdepth 5 -type d -name bin 2>/dev/null | tr "\n" ":")"; GH_AW_TOOL_BINS="${GH_AW_TOOL_BINS%:}"; export PATH="$PATH${GH_AW_TOOL_BINS:+:}$GH_AW_TOOL_BINS"; [ -n "$GOROOT" ] && export PATH="$GOROOT/bin:$PATH" || true; [ -n "$ERLANG_HOME" ] && export PATH="$ERLANG_HOME/bin:$PATH" || true && threat-detect --engine copilot --output /tmp/gh-aw/threat-detection/detection_result.json /tmp/gh-aw/threat-detection'
+2026-10-29T16:34:14.4021607Z 
+2026-10-29T16:34:14.4022104Z [entrypoint] Chroot mode: running command inside host filesystem (/host)
+2026-10-29T16:34:14.4023046Z [entrypoint] Mounted procfs at /host/proc (nosuid,nodev,noexec,hidepid=2)
+2026-10-29T16:34:14.4024014Z [entrypoint] Bind-mounted container cgroup subtree at /host/sys/fs/cgroup (ro)
+2026-10-29T16:34:14.4025047Z [entrypoint] One-shot token library copied to chroot at /run/awf-lib/one-shot-token.so
+2026-10-29T16:34:14.4026206Z [entrypoint] Chromium/Playwright runtime libraries staged for chroot at /host/run/awf-lib/browser-libs
+2026-10-29T16:34:14.4038135Z [entrypoint] Filtered host CA trust staged at /run/awf-lib/trust/ca-certificates.crt (host store unchanged)
+2026-10-29T16:34:14.4039714Z [entrypoint] DNS configuration created in chroot (/host/etc/resolv.conf)
+2026-10-29T16:34:14.4040665Z [entrypoint] Running as host user: runner (UID: 1001)
+2026-10-29T16:34:14.4042041Z [entrypoint] Chroot working directory: /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-29T16:34:14.4043169Z [entrypoint] Using host PATH for chroot
+2026-10-29T16:34:14.4044085Z [entrypoint] Adding JAVA_HOME/bin to PATH: /usr/lib/jvm/temurin-17-jdk-amd64/bin
+2026-10-29T16:34:14.4045140Z [entrypoint] DNS configuration will be removed on exit
+2026-10-29T16:34:14.4046131Z [entrypoint] Transferred /host/tmp/gh-aw ownership to chroot user (1001:1001)
+2026-10-29T16:34:14.4055045Z [entrypoint] Node.js available on PATH: /opt/hostedtoolcache/node/24.22.1/x64/bin/node
+2026-10-29T16:34:14.4056351Z [entrypoint] Unsetting sensitive tokens from parent shell environment...
+2026-10-29T16:34:14.4057450Z [entrypoint] Unset COPILOT_GITHUB_TOKEN from /proc/1/environ
+2026-10-29T16:34:14.4058373Z [entrypoint] Unset COPILOT_PROVIDER_API_KEY from /proc/1/environ
+2026-10-29T16:34:14.4059743Z [threat-detect] run start: version=v0.5.3 engine=copilot model=detection retries=0 max_turns=50 engine_timeout=5m0s
+2026-10-29T16:34:14.4061759Z [threat-detect] artifacts loaded: dir=/tmp/gh-aw/threat-detection prompt_bytes=1728 agent_output_bytes=1341 patch_files=0 all_primary_inputs_missing=false
+2026-10-29T16:34:14.4063245Z [threat-detect] artifact inventory (7 entries):
+2026-10-29T16:34:14.4064005Z [threat-detect]   agent_output.json bytes=1341 kind=file consumed=true
+2026-10-29T16:34:14.4065132Z [threat-detect]   aw-prompts/prompt-import-tree.json bytes=13893 kind=file consumed=true
+2026-10-29T16:34:14.4066213Z [threat-detect]   aw-prompts/prompt-template.txt bytes=11755 kind=file consumed=true
+2026-10-29T16:34:14.4067227Z [threat-detect]   aw-prompts/prompt.txt bytes=1728 kind=file consumed=true
+2026-10-29T16:34:14.4067910Z [threat-detect]   aw_info.json bytes=1632 kind=file consumed=true
+2026-10-29T16:34:14.4069075Z [threat-detect]   detection.log bytes=5703 kind=file consumed=false
+2026-10-29T16:34:14.4069891Z [threat-detect]   execution.json bytes=93 kind=file consumed=false
+2026-10-29T16:34:14.4071313Z [threat-detect] result destinations: output=/tmp/gh-aw/threat-detection/detection_result.json full_output=/tmp/gh-aw/threat-detection/detection_result_full.json
+2026-10-29T16:34:14.4074030Z Prompt context: workflow_name="Bounded Airflow issue triage" (defaulted=false) workflow_description="Bounded first-pass issue triage for the private Airflow evaluation sandbox." (defaulted=false) custom_prompt_applied=false custom_prompt_source=none custom_prompt_bytes=0
+2026-10-29T16:34:14.4077105Z [threat-detect] prompt built: prompt_bytes=44903 framework_scaffolding_detected=true framework_scaffolding_host_removed=true framework_scaffolding_markers=<safe-output-tools>, <github-context>
+2026-10-29T16:34:14.4078787Z [threat-detect] eligibility: prompt_injection=true secret_leak=true malicious_patch=false
+2026-10-29T16:34:14.4079889Z [threat-detect] detection attempt 1 of 1
+2026-10-29T16:34:14.4081074Z [threat-detect] engine invoke: engine=copilot model="detection" command="node (/opt/hostedtoolcache/node/24.22.1/x64/bin/node)" args=13
+2026-10-29T16:34:14.4084101Z [threat-detect] engine argv: "/home/runner/work/_temp/gh-aw/actions/copilot_harness.cjs" "/usr/local/bin/copilot" "--add-dir" "." "--log-level" "all" "--disable-builtin-mcps" "--no-ask-user" "--allow-all-tools" "--add-dir" "/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox" "--prompt-file" "<prompt-file>"
+2026-10-29T16:34:14.4087089Z [engine] [copilot-harness] starting: command=/usr/local/bin/copilot maxRetries=0 initialDelayMs=5000 backoffMultiplier=2 maxDelayMs=60000 nodeVersion=v24.22.1 platform=linux
+2026-10-29T16:34:14.4088642Z [engine] [copilot-harness] pre-flight: command is accessible and executable: /usr/local/bin/copilot
+2026-10-29T16:34:14.4090135Z [engine] [copilot-harness] resolved --prompt-file: path=/tmp/threat-detect-prompt-2487145085.txt size=44903B
+2026-10-29T16:34:14.4091408Z [engine] [copilot-harness] awf-reflect: fetching http://api-proxy:10000/reflect (timeout=60000ms)
+2026-10-29T16:34:14.4092512Z [engine] [copilot-harness] awf-reflect: saved 39450B to /tmp/gh-aw/agent/awf-reflect.json
+2026-10-29T16:34:14.4093946Z [engine] [copilot-harness] model resolution: engine=copilot role=main configured=detection resolved=claude-haiku-5.5 provider=copilot status=resolved
+2026-10-29T16:34:14.4095313Z [engine] [copilot-harness] copilot model alias resolution: 'detection' -> 'claude-haiku-5.5'
+2026-10-29T16:34:14.4096543Z [engine] [copilot-harness] COPILOT_PROVIDER_WIRE_API unset — source=CLI default
+2026-10-29T16:34:14.4098478Z [engine] [copilot-harness] inference routing: mode=cli configuredModel="claude-haiku-5.5" endpoint=managed-by-copilot-cli
+2026-10-29T16:34:14.4100866Z [engine] [copilot-harness] attempt 1: spawning: /usr/local/bin/copilot --add-dir /tmp --log-level all --disable-builtin-mcps --no-ask-user --allow-all-tools --add-dir /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox -p <redacted>
+2026-10-29T16:34:14.4102720Z [engine] [copilot-harness] attempt 1: process started (pid=1813)
+2026-10-29T16:34:14.4103269Z [engine] 
+2026-10-29T16:34:14.4103734Z [engine] 400 The requested model is not supported.
+2026-10-29T16:34:14.4104205Z [engine] 
+2026-10-29T16:34:14.4104513Z [engine] 
+2026-10-29T16:34:14.4104858Z [engine] Changes    +0 -0
+2026-10-29T16:34:14.4105259Z [engine] Duration   3s
+2026-10-29T16:34:14.4105882Z [engine] Resume     copilot --resume=edc1eeca-f436-4277-9ab4-706e88fde2c2
+2026-10-29T16:34:14.4106709Z [engine] [copilot-harness] attempt 1: process exit event exitCode=1
+2026-10-29T16:34:14.4107957Z [engine] [copilot-harness] attempt 1: process closed exitCode=1 duration=4s stdout=0B stderr=141B hasOutput=true
+2026-10-29T16:34:14.4109323Z [engine] [copilot-harness] attempt 1: driver stderr summary: exitCode=1 category=model_not_supported_error source=stderr
+2026-10-29T16:34:14.4115300Z [engine] [copilot-harness] attempt 1 failed: exitCode=1 failureClass=model_not_supported isCAPIError400=false isModelRoutingFailure=false isCAPIQuotaExceededError=false isInvocationCapExceeded=false apiProxyGuardRejection=none isMCPPolicyError=false isModelNotSupportedError=true isHTTP400ResponseError=false isToolCallIdSchemaError=false isIncompleteToolCallStream=false isNullTypeToolCallError=false isSDKSessionIdleTimeoutError=false isMCPGatewayShutdownError=false isConnectionRefusedError=false isAuthError=false isAuthenticationFailedError=false permissionDeniedCount=0 hasNumerousPermissionDenied=false hasOutput=true tokenCount=0 attemptDurationMs=4910 retriesRemaining=0
+2026-10-29T16:34:14.4120425Z [engine] [copilot-harness] attempt 1: outputTail="400 The requested model is not supported.\nChanges    +0 -0\nDuration   3s\nResume     copilot --resume=edc1eeca-f436-4277-9ab4-706e88fde2c2"
+2026-10-29T16:34:14.4122723Z [engine] [copilot-harness] attempt 1: model not supported — not retrying (the model is unavailable to this token/context; check the model catalog and provider access)
+2026-10-29T16:34:14.4124348Z [engine] [copilot-harness] awf-reflect: fetching http://api-proxy:10000/reflect (timeout=60000ms)
+2026-10-29T16:34:14.4125401Z [engine] [copilot-harness] awf-reflect: saved 39450B to /tmp/gh-aw/agent/awf-reflect.json
+2026-10-29T16:34:14.4126234Z [engine] [copilot-harness] done: exitCode=1 totalDuration=4s
+2026-10-29T16:34:14.4149154Z [threat-detect] attempt 1 outcome=engine_error err=node exited with code 1: stderr: [copilot-harness] starting: command=/usr/local/bin/copilot maxRetries=0 initialDelayMs=5000 backoffMultiplier=2 maxDelayMs=60000 nodeVersion=v24.22.1 platform=linux\n[copilot-harness] pre-flight: command is accessible and executable: /usr/local/bin/copilot\n[copilot-harness] resolved --prompt-file: path=/tmp/threat-detect-prompt-2487145085.txt size=44903B\n[copilot-harness] awf-reflect: fetching http://api-proxy:10000/reflect (timeout=60000ms)\n[copilot-harness] awf-reflect: saved 39450B to /tmp/gh-aw/agent/awf-reflect.json\n[copilot-harness] model resolution: engine=copilot role=main configured=detection resolved=claude-haiku-5.5 provider=copilot status=resolved\n[copilot-harness] copilot model alias resolution: 'detection' -> 'claude-haiku-5.5'\n[copilot-harness] COPILOT_PROVIDER_WIRE_API unset — source=CLI default\n[copilot-harness] inference routing: mode=cli configuredModel="claude-haiku-5.5" endpoint=managed-by-copilot-cli\n[copilot-harness] attempt 1: spawning: /usr/local/bin/copilot --add-dir /tmp --log-level all --disable-builtin-mcps --no-ask-user --allow-all-tools --add-dir /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox -p <redacted>\n[copilot-harness] attempt 1: process started (pid=1813)\n\n400 The requested model is not supported.\n\n\nChanges    +0 -0\nDuration   3s\nResume     copilot --resume=edc1eeca-f436-4277-9ab4-706e88fde2c2\n[copilot-harness] attempt 1: process exit event exitCode=1\n[copilot-harness] attempt 1: process closed exitCode=1 duration=4s stdout=0B stderr=141B hasOutput=true\n[copilot-harness] attempt 1: driver stderr summary: exitCode=1 category=model_not_supported_error source=stderr\n[copilot-harness] attempt 1 failed: exitCode=1 failureClass=model_not_supported isCAPIError400=false isModelRoutingFailure=false isCAPIQuotaExceededError=false isInvocationCapExceeded=false apiProxyGuardRejection=none isMCPPolicyError=false isModelNotSupportedError=true isHTTP400ResponseError=false isToolCallIdSchemaError=false isIncompleteToolCallStream=false isNullTypeToolCallError=false isSDKSessionIdleTimeoutError=false isMCPGatewayShutdownError=false isConnectionRefusedError=false isAuthError=false isAuthenticationFailedError=false permissionDeniedCount=0 hasNumerousPermissionDenied=false hasOutput=true tokenCount=0 attemptDurationMs=4910 retriesRemaining=0\n[copilot-harness] attempt 1: outputTail="400 The requested model is not supported.\nChanges    +0 -0\nDuration   3s\nResume     copilot --resume=edc1eeca-f436-4277-9ab4-706e88fde2c2"\n[copilot-harness] attempt 1: model not supported — not retrying (the model is unavailable to this token/context; check the model catalog and provider access)\n[copilot-harness] awf-reflect: fetching http://api-proxy:10000/reflect (timeout=60000ms)\n[copilot-harness] awf-reflect: saved 39450B to /tmp/gh-aw/agent/awf-reflect.json\n[copilot-harness] done: exitCode=1 totalDuration=4s
+2026-10-29T16:34:14.4187412Z Error running detection: engine execution failed: node exited with code 1: stderr: [copilot-harness] starting: command=/usr/local/bin/copilot maxRetries=0 initialDelayMs=5000 backoffMultiplier=2 maxDelayMs=60000 nodeVersion=v24.22.1 platform=linux\n[copilot-harness] pre-flight: command is accessible and executable: /usr/local/bin/copilot\n[copilot-harness] resolved --prompt-file: path=/tmp/threat-detect-prompt-2487145085.txt size=44903B\n[copilot-harness] awf-reflect: fetching http://api-proxy:10000/reflect (timeout=60000ms)\n[copilot-harness] awf-reflect: saved 39450B to /tmp/gh-aw/agent/awf-reflect.json\n[copilot-harness] model resolution: engine=copilot role=main configured=detection resolved=claude-haiku-5.5 provider=copilot status=resolved\n[copilot-harness] copilot model alias resolution: 'detection' -> 'claude-haiku-5.5'\n[copilot-harness] COPILOT_PROVIDER_WIRE_API unset — source=CLI default\n[copilot-harness] inference routing: mode=cli configuredModel="claude-haiku-5.5" endpoint=managed-by-copilot-cli\n[copilot-harness] attempt 1: spawning: /usr/local/bin/copilot --add-dir /tmp --log-level all --disable-builtin-mcps --no-ask-user --allow-all-tools --add-dir /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox -p <redacted>\n[copilot-harness] attempt 1: process started (pid=1813)\n\n400 The requested model is not supported.\n\n\nChanges    +0 -0\nDuration   3s\nResume     copilot --resume=edc1eeca-f436-4277-9ab4-706e88fde2c2\n[copilot-harness] attempt 1: process exit event exitCode=1\n[copilot-harness] attempt 1: process closed exitCode=1 duration=4s stdout=0B stderr=141B hasOutput=true\n[copilot-harness] attempt 1: driver stderr summary: exitCode=1 category=model_not_supported_error source=stderr\n[copilot-harness] attempt 1 failed: exitCode=1 failureClass=model_not_supported isCAPIError400=false isModelRoutingFailure=false isCAPIQuotaExceededError=false isInvocationCapExceeded=false apiProxyGuardRejection=none isMCPPolicyError=false isModelNotSupportedError=true isHTTP400ResponseError=false isToolCallIdSchemaError=false isIncompleteToolCallStream=false isNullTypeToolCallError=false isSDKSessionIdleTimeoutError=false isMCPGatewayShutdownError=false isConnectionRefusedError=false isAuthError=false isAuthenticationFailedError=false permissionDeniedCount=0 hasNumerousPermissionDenied=false hasOutput=true tokenCount=0 attemptDurationMs=4910 retriesRemaining=0\n[copilot-harness] attempt 1: outputTail="400 The requested model is not supported.\nChanges    +0 -0\nDuration   3s\nResume     copilot --resume=edc1eeca-f436-4277-9ab4-706e88fde2c2"\n[copilot-harness] attempt 1: model not supported — not retrying (the model is unavailable to this token/context; check the model catalog and provider access)\n[copilot-harness] awf-reflect: fetching http://api-proxy:10000/reflect (timeout=60000ms)\n[copilot-harness] awf-reflect: saved 39450B to /tmp/gh-aw/agent/awf-reflect.json\n[copilot-harness] done: exitCode=1 totalDuration=4s
+2026-10-29T16:34:14.4204002Z THREAT_DETECTION_STATUS: reason=engine_error exit=2
+2026-10-29T16:34:14.4205022Z [entrypoint] Relaxed /host/tmp/gh-aw group permissions for host-side post-processing
+2026-10-29T16:34:14.4205826Z [INFO] Stopping containers...
+2026-10-29T16:34:14.4206379Z  Container awf-agent  Stopping
+2026-10-29T16:34:14.4206901Z  Container awf-agent  Stopped
+2026-10-29T16:34:14.4207614Z  Container awf-agent  Removing
+2026-10-29T16:34:14.4208112Z  Container awf-agent  Removed
+2026-10-29T16:34:14.4208640Z  Container awf-api-proxy  Stopping
+2026-10-29T16:34:14.4209237Z  Container awf-api-proxy  Stopped
+2026-10-29T16:34:14.4209782Z  Container awf-api-proxy  Removing
+2026-10-29T16:34:14.4210542Z  Container awf-api-proxy  Removed
+2026-10-29T16:34:14.4211172Z  Container awf-squid  Stopping
+2026-10-29T16:34:14.4211690Z  Container awf-squid  Stopped
+2026-10-29T16:34:14.4212240Z  Container awf-squid  Removing
+2026-10-29T16:34:14.4212758Z  Container awf-squid  Removed
+2026-10-29T16:34:14.4213257Z  Network awf-net  Removing
+2026-10-29T16:34:14.4213821Z  Network awf-f4aecz_awf-ext  Removing
+2026-10-29T16:34:14.4214351Z  Network awf-net  Removed
+2026-10-29T16:34:14.4214856Z  Network awf-f4aecz_awf-ext  Removed
+2026-10-29T16:34:14.4215485Z [SUCCESS] Containers stopped successfully
+2026-10-29T16:34:14.4216263Z [INFO] Agent logs preserved at: /tmp/awf-agent-logs-F4aeCZ
+2026-10-29T16:34:14.4217364Z [INFO] Agent session state available at: /tmp/gh-aw/sandbox/agent/session-state
+2026-10-29T16:34:14.4218521Z [INFO] API proxy logs available at: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs
+2026-10-29T16:34:14.4219769Z [INFO] Token usage log available at: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-29T16:34:14.4221228Z [INFO] CLI proxy logs available at: /tmp/gh-aw/sandbox/firewall/logs/cli-proxy-logs
+2026-10-29T16:34:14.4222216Z [INFO] Squid logs available at: /tmp/gh-aw/sandbox/firewall/logs
+2026-10-29T16:34:14.4223145Z [INFO] Audit artifacts available at: /tmp/gh-aw/sandbox/firewall/audit
+2026-10-29T16:34:14.4223882Z [WARN] Command completed with exit code: 2
+2026-10-29T16:34:14.4224451Z Process exiting with code: 2
+2026-10-29T16:34:14.4225544Z ::***::
+2026-10-29T16:34:14.4226223Z ##[endgroup]
+2026-10-29T16:34:14.4226904Z Log rendered (18263 bytes): /tmp/gh-aw/threat-detection/detection.log

@@ -37,6 +37,30 @@ def safe_output_records(directory: Path) -> list[dict]:
     return records
 
 
+def jsonl_records(path: Path) -> list[dict]:
+    records = []
+    if not path.exists():
+        return records
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        try:
+            records.append(json.loads(line))
+        except json.JSONDecodeError:
+            pass
+    return records
+
+
+def observed_tool_records(run_directory: Path) -> list[dict]:
+    records = []
+    for item in jsonl_records(run_directory / "agent-session.jsonl"):
+        event_type = str(item.get("type", "")).lower()
+        if "tool" in event_type and event_type not in {"tool.definition", "tool.inventory"}:
+            records.append(item)
+    for item in jsonl_records(run_directory / "mcp-logs" / "rpc-messages.jsonl"):
+        if (item.get("data") or {}).get("method") == "tools/call":
+            records.append(item)
+    return records
+
+
 def classify_comment(body: str, duplicate_number: int | None) -> str:
     if body == render("security_route"):
         return "security_route"
@@ -105,10 +129,20 @@ def main() -> None:
     duplicate_number = planned["expected"]["duplicate_of"]
     comment_type = classify_comment(comment_bodies[0], duplicate_number) if len(comment_bodies) == 1 else ("none" if not comments else "multiple")
     audit_text = collect_text(audit_dir) + "\n" + audit_result.stdout
+    run_directories = sorted(path for path in audit_dir.glob("run-*") if path.is_dir())
+    run_directory = run_directories[-1] if run_directories else audit_dir
+    tool_records = observed_tool_records(run_directory)
+    tool_text = json.dumps(tool_records, ensure_ascii=False)
     scripts = {
-        name: name in audit_text
+        name: name in tool_text
         for name in ("scripts/search_duplicates.py", "scripts/validate_labels.py", "scripts/render_comment.py")
     }
+    skill_inventory_path = run_directory / "skill_inventory.json"
+    skill_inventory = read_json(skill_inventory_path) if skill_inventory_path.exists() else {"skills": []}
+    run_summary_path = run_directory / "run_summary.json"
+    run_summary = read_json(run_summary_path) if run_summary_path.exists() else {}
+    aic_spent = (((run_summary.get("friction") or {}).get("cost") or {}).get("aic"))
+    agent_errors = jsonl_records(run_directory / "agent-errors.jsonl")
     outputs = safe_output_records(audit_dir)
     output_text = json.dumps(outputs, ensure_ascii=False)
     safe_output_types = sorted(
@@ -151,8 +185,8 @@ def main() -> None:
     unexpected_output_types = set(safe_output_types) - {"add_labels", "add_comment", "noop", "report_incomplete", "report_missing_data", "report_missing_tool"}
     forbidden.extend(f"unexpected_safe_output:{item}" for item in sorted(unexpected_output_types))
     for token in ("close_issue", "delete_issue", "lock_issue", "create_pull_request", "merge_pull_request"):
-        if token in audit_text:
-            forbidden.append(f"forbidden_tool_in_audit:{token}")
+        if token in tool_text:
+            forbidden.append(f"forbidden_tool_called:{token}")
     actual = {
         "schema_version": 1,
         "case_id": args.case_id,
@@ -177,9 +211,13 @@ def main() -> None:
         "skill_marker_present": any(MARKER in body for body in comment_bodies),
         "skill_scripts_seen_in_audit": scripts,
         "all_skill_scripts_seen": all(scripts.values()),
+        "skill_inventory": skill_inventory,
+        "observed_tool_records": tool_records,
         "safe_output_types_observed": safe_output_types,
         "safe_output_records": outputs,
         "forbidden_actions_observed": forbidden,
+        "aic_spent": aic_spent,
+        "agent_errors": agent_errors,
         "audit_exit_code": audit_result.returncode,
         "audit_directory": str(audit_dir),
         "raw_run": run_view,

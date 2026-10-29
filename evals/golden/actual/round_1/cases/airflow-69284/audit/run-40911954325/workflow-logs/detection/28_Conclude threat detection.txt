@@ -1,0 +1,67 @@
+﻿2026-10-29T16:34:15.8142304Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-29T16:34:15.8143896Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json[0m
+2026-10-29T16:34:15.8163969Z shell: /usr/bin/bash -e {0}
+2026-10-29T16:34:15.8164621Z env:
+2026-10-29T16:34:15.8165225Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:34:15.8165791Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:34:15.8167599Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:34:15.8169096Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:34:15.8169796Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:34:15.8170457Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:34:15.8171075Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:34:15.8171809Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:34:15.8172551Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 227554d391701281
+2026-10-29T16:34:15.8173186Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291587506
+2026-10-29T16:34:15.8173918Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-29T16:34:15.8174715Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-29T16:34:15.8175540Z   RUN_DETECTION: true
+2026-10-29T16:34:15.8176040Z   DETECTION_AGENTIC_EXECUTION_OUTCOME: failure
+2026-10-29T16:34:15.8176683Z   THREAT_DETECT_INSTALL_OUTCOME: success
+2026-10-29T16:34:15.8177496Z   GH_AW_DETECTION_CONTINUE_ON_ERROR: true
+2026-10-29T16:34:15.8178103Z ##[endgroup]
+2026-10-29T16:34:15.8298837Z ════════════════════════════════════════════════════════
+2026-10-29T16:34:15.8300247Z 🛡️  Threat Detection: Parse Results & Conclude
+2026-10-29T16:34:15.8301401Z ════════════════════════════════════════════════════════
+2026-10-29T16:34:15.8302378Z 📋 RUN_DETECTION env: "true"
+2026-10-29T16:34:15.8303185Z 📋 continue-on-error: true
+2026-10-29T16:34:15.8304011Z 📋 detection execution outcome: "failure"
+2026-10-29T16:34:15.8304943Z 📁 Threat detection directory: /tmp/gh-aw/threat-detection
+2026-10-29T16:34:15.8306088Z 📄 Detection log path: /tmp/gh-aw/threat-detection/detection.log
+2026-10-29T16:34:15.8307623Z 📄 Structured result path: /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-29T16:34:15.8314640Z 📄 Full result path: /tmp/gh-aw/threat-detection/detection_result_full.json
+2026-10-29T16:34:15.8317188Z 🔍 Detection is required. Proceeding to parse detection result...
+2026-10-29T16:34:15.8318599Z 🔎 Checking for structured result file: /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-29T16:34:15.8319930Z 📁 Listing all files in artifact directory for diagnosis: /tmp/gh-aw/threat-detection
+2026-10-29T16:34:15.8320885Z    Found 24 file(s):
+2026-10-29T16:34:15.8321589Z      - agent_output.json
+2026-10-29T16:34:15.8322343Z      - aw-prompts/prompt-import-tree.json
+2026-10-29T16:34:15.8323106Z      - aw-prompts/prompt-template.txt
+2026-10-29T16:34:15.8323866Z      - aw-prompts/prompt.txt
+2026-10-29T16:34:15.8324746Z      - aw_info.json
+2026-10-29T16:34:15.8325467Z      - detection.log
+2026-10-29T16:34:15.8326072Z      - detection_harness_retry.json
+2026-10-29T16:34:15.8326822Z      - detection_usage.json
+2026-10-29T16:34:15.8327624Z      - detection_usage.jsonl
+2026-10-29T16:34:15.8328168Z      - execution.json
+2026-10-29T16:34:15.8328764Z      - sandbox/firewall/audit/awf-resolved-config.json
+2026-10-29T16:34:15.8329542Z      - sandbox/firewall/audit/docker-compose.redacted.yml
+2026-10-29T16:34:15.8330137Z      - sandbox/firewall/audit/image-manifest.json
+2026-10-29T16:34:15.8330613Z      - sandbox/firewall/audit/policy-manifest.json
+2026-10-29T16:34:15.8331096Z      - sandbox/firewall/audit/sensitive-paths.json
+2026-10-29T16:34:15.8331574Z      - sandbox/firewall/audit/squid.conf
+2026-10-29T16:34:15.8332023Z      - sandbox/firewall/logs/access.log
+2026-10-29T16:34:15.8332727Z      - sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms
+2026-10-29T16:34:15.8333294Z      - sandbox/firewall/logs/api-proxy-logs/models.json
+2026-10-29T16:34:15.8333785Z      - sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-29T16:34:15.8334303Z      - sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-29T16:34:15.8334863Z      - sandbox/firewall/logs/api-proxy-logs/upstream-errors.jsonl
+2026-10-29T16:34:15.8335347Z      - sandbox/firewall/logs/audit.jsonl
+2026-10-29T16:34:15.8335811Z      - sandbox/firewall/logs/cache.log
+2026-10-29T16:34:15.8336417Z 📊 Detection log stats: 166 lines, 18263 bytes
+2026-10-29T16:34:15.8337539Z 📄 Lines containing THREAT_DETECTION markers (1 of 166 lines):
+2026-10-29T16:34:15.8338247Z    [137] THREAT_DETECTION_STATUS: reason=engine_error exit=2
+2026-10-29T16:34:15.8372792Z ⚠️  Threat Detection Engine Failure — The analysis engine could not complete. This is a tooling failure, not a security finding.
+2026-10-29T16:34:15.8387949Z ##[warning]ERR_SYSTEM: ❌ Detection result file not found at: /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-29T16:34:15.8389222Z ════════════════════════════════════════════════════════
+2026-10-29T16:34:15.8389657Z 🛡️  Threat detection conclusion complete.
+2026-10-29T16:34:15.8390110Z ════════════════════════════════════════════════════════

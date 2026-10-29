@@ -1,0 +1,24 @@
+﻿2026-10-29T16:33:28.3126041Z ##[group]Run if [[ -n "$OUTPUT_TYPES" || "$HAS_PATCH" == "true" ]]; then
+2026-10-29T16:33:28.3126535Z [36;1mif [[ -n "$OUTPUT_TYPES" || "$HAS_PATCH" == "true" ]]; then[0m
+2026-10-29T16:33:28.3126914Z [36;1m  echo "run_detection=true" >> "$GITHUB_OUTPUT"[0m
+2026-10-29T16:33:28.3127971Z [36;1m  echo "Detection will run: output_types=$OUTPUT_TYPES, has_patch=$HAS_PATCH"[0m
+2026-10-29T16:33:28.3128372Z [36;1melse[0m
+2026-10-29T16:33:28.3128650Z [36;1m  echo "run_detection=false" >> "$GITHUB_OUTPUT"[0m
+2026-10-29T16:33:28.3129070Z [36;1m  echo "Detection skipped: no agent outputs or patches to analyze"[0m
+2026-10-29T16:33:28.3129570Z [36;1mfi[0m
+2026-10-29T16:33:28.3142418Z shell: /usr/bin/bash -e {0}
+2026-10-29T16:33:28.3142688Z env:
+2026-10-29T16:33:28.3142915Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-29T16:33:28.3143209Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-29T16:33:28.3144012Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=40911954325,github.run_id=40911954325,gh-aw.engine.id=copilot
+2026-10-29T16:33:28.3144834Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-29T16:33:28.3145127Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-29T16:33:28.3145428Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-29T16:33:28.3145678Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-29T16:33:28.3145971Z   GITHUB_AW_OTEL_TRACE_ID: 51f461ec56a45b5e78e802891c8239fd
+2026-10-29T16:33:28.3146314Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 227554d391701281
+2026-10-29T16:33:28.3146629Z   GITHUB_AW_OTEL_JOB_START_MS: 1793291587506
+2026-10-29T16:33:28.3146918Z   OUTPUT_TYPES: report_incomplete
+2026-10-29T16:33:28.3147385Z   HAS_PATCH: false
+2026-10-29T16:33:28.3147607Z ##[endgroup]
+2026-10-29T16:33:28.3177536Z Detection will run: output_types=report_incomplete, has_patch=false
