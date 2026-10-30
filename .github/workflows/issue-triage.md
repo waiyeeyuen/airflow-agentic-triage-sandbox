@@ -111,7 +111,10 @@ safe-outputs:
         with:
           persist-credentials: false
       - name: Deterministically validate proposed labels and comment
-        run: python3 scripts/validate_safe_outputs.py --input /tmp/gh-aw/threat-detection/agent_output.json
+        run: >-
+          python3 scripts/validate_safe_outputs.py
+          --input /tmp/gh-aw/threat-detection/agent_output.json
+          --detection-result /tmp/gh-aw/threat-detection/detection_result.json
   mentions: false
   allowed-domains: []
   allowed-github-references: []

@@ -100,6 +100,10 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("needs.detection.result == 'success'", lock)
         step = lock.split("- name: Deterministically validate proposed labels and comment", 1)[1].split("- name:", 1)[0]
         self.assertNotIn("continue-on-error: true", step)
+        self.assertIn(
+            "--detection-result /tmp/gh-aw/threat-detection/detection_result.json",
+            step,
+        )
 
     def test_detection_checkout_is_pinned_credentialless_and_precedes_validator(self):
         checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"

@@ -132,6 +132,43 @@ class CliTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 check({"items": [{"type": "add_comment", "arguments": {"body": body}}]})
 
+    def test_noop_writes_safe_detection_verdict(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            temporary = Path(temporary)
+            agent_output = temporary / "agent_output.json"
+            detection_result = temporary / "detection_result.json"
+            agent_output.write_text(json.dumps({
+                "items": [{"type": "noop", "message": "No action needed."}],
+                "errors": [],
+            }), encoding="utf-8")
+            result = run_without_stdin(
+                "validate_safe_outputs.py", "--input", agent_output,
+                "--detection-result", detection_result,
+            )
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual(
+                {
+                    "prompt_injection": False,
+                    "secret_leak": False,
+                    "malicious_patch": False,
+                    "reasons": [],
+                    "warnings": [],
+                },
+                json.loads(detection_result.read_text(encoding="utf-8")),
+            )
+
+    def test_invalid_output_never_writes_safe_detection_verdict(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            temporary = Path(temporary)
+            detection_result = temporary / "detection_result.json"
+            result = run_without_stdin(
+                "validate_safe_outputs.py", "--input",
+                SCRIPTS / "tests/fixtures/invalid_agent_output.json",
+                "--detection-result", detection_result,
+            )
+            self.assertNotEqual(0, result.returncode)
+            self.assertFalse(detection_result.exists())
+
     def test_negative_safe_output_gate_applies_nothing(self):
         invalid = json.loads((SCRIPTS / "tests/fixtures/invalid_agent_output.json").read_text(encoding="utf-8"))
         with self.assertRaises(ValueError):
