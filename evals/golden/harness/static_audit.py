@@ -27,15 +27,28 @@ def main() -> None:
     lock = (ROOT / ".github" / "workflows" / "issue-triage.lock.yml").read_text(encoding="utf-8")
     manifest, metadata = manifest_and_metadata(lock)
     mcp = {server["name"]: set(server["tools"]) for server in manifest["mcp_servers"]}
+    frontmatter = source.split("---", 2)[1]
+    bash = frontmatter.split("  bash:\n", 1)[1].split("timeout-minutes:", 1)[0]
+    allowed_commands = [
+        line.strip().removeprefix("- ") for line in bash.splitlines() if line.strip()
+    ]
+    wrapper_commands = sorted(
+        f"scripts/wrappers/{path.name}"
+        for path in (ROOT / "scripts" / "wrappers").glob("triage-*")
+    )
+    detection = frontmatter.split("threat-detection:", 1)[1].split("mentions:", 1)[0]
+    checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
     checks = {
         "expected_commit_precedes_builder": subprocess.run(
             ["git", "merge-base", "--is-ancestor", EXPECTED_COMMIT, BUILDER_COMMIT]
         ).returncode == 0,
         "compiled_strict_v1_0_1": metadata.get("compiler_version") == "v1.0.1" and metadata.get("strict") is True,
-        "exact_gpt_4_1_main_and_detection": (
-            metadata.get("agent_model") == "gpt-4.1"
-            and metadata.get("detection_agent_model") == "gpt-4.1"
-            and source.count("model: gpt-4.1") == 2
+        "exact_gpt_4_1_main_model": metadata.get("agent_model") == "gpt-4.1"
+        and source.count("model: gpt-4.1") == 1,
+        "deterministic_detection_has_no_model": (
+            "engine: false" in detection
+            and metadata.get("detection_agent_model") is None
+            and "scripts/validate_safe_outputs.py" in detection
         ),
         "issue_opened_and_dispatch_triggers": "types: [opened]" in source and "workflow_dispatch:" in source,
         "kill_switch_in_source_and_lock": "vars.TRIAGE_AGENT_ENABLED == 'true'" in source and "vars.TRIAGE_AGENT_ENABLED == 'true'" in lock,
@@ -43,11 +56,27 @@ def main() -> None:
         "network_defaults_firewall": "network: defaults" in source and manifest.get("threat_detection", {}).get("mode") == "enabled",
         "per_issue_concurrency": "github.event.issue.number || github.run_id" in source and "cancel-in-progress: false" in source,
         "budget_caps": all(value in source for value in ("timeout-minutes: 10", "max-ai-credits: 25", "max-daily-ai-credits: 5000")),
-        "github_mcp_is_read_only": mcp.get("github") == {"issue_read", "list_issue_types", "list_issues", "search_issues"},
+        "generic_github_mcp_is_disabled": "github" not in mcp and "github: false" in source,
         "safe_output_tools_only": mcp.get("safeoutputs") == {"add_comment", "add_labels", "noop", "report_incomplete", "report_missing_data", "report_missing_tool"},
-        "three_script_bash_allowlist": all(
-            f'- "python scripts/{name}.py"' in source
-            for name in ("search_duplicates", "validate_labels", "render_comment")
+        "safe_output_admission_default_false": (
+            manifest.get("admission") is False
+            and "needs.detection.result == 'success'" in lock
+        ),
+        "exact_no_argument_wrapper_allowlist": (
+            sorted(allowed_commands) == wrapper_commands
+            and all(" " not in command for command in allowed_commands)
+            and "python" not in bash
+            and "python3" not in bash
+            and all(f"--allow-tool '\\''shell({command})'\\''" in lock for command in allowed_commands)
+            and "--allow-tool '\\''shell(python" not in lock
+            and "--allow-tool '\\''shell(python3" not in lock
+        ),
+        "pinned_credentialless_detection_checkout_precedes_validator": (
+            checkout in detection
+            and "persist-credentials: false" in detection
+            and detection.index(checkout) < detection.index("validate_safe_outputs.py")
+            and lock.index("- name: Check out validator source without credentials")
+            < lock.index("- name: Deterministically validate proposed labels and comment")
         ),
         "label_and_comment_limits": all(value in source for value in ("max-labels: 3", "add-comment:", "max: 1", "target: triggering")),
         "mentions_domains_references_blocked": all(value in source for value in ("mentions: false", "allowed-domains: []", "allowed-github-references: []")),
@@ -89,7 +118,7 @@ def main() -> None:
         "no_skill_variant_exists": no_skill_variant,
         "live_execution_ready": False,
         "live_blockers": [
-            "A fresh direct approval for the Round 3 airflow-69284 retry, pinned to Builder 2a5e692, is required.",
+            "This no-credit repair round authorizes no workflow dispatch or issue replay; no model run may be triggered.",
             "GitHub CLI authentication must be valid before remote preflight.",
             "COPILOT_GITHUB_TOKEN secret presence and validity must be confirmed.",
             "TRIAGE_AGENT_ENABLED must remain false until that approval, then be set true only for the single approved run.",

@@ -28,8 +28,8 @@ python evals/golden/verify_cases.py
 ## After direct approval
 
 Use `approval.example.json` only as a template and keep the real approval file outside the
-repository. The fresh Round 3 approval must name Builder commit
-`2a5e692b9066cb0cf54d98d5d9ead75525afeeb3`, case `airflow-69284`, and exactly 25 AIC. Replay one
+repository. Any future fresh approval must name the current Builder commit
+`b9d722a44b3763f441709893f178c49a2499ff0f`, case `airflow-69284`, and exactly 25 AIC. Replay one
 case, wait for completion, then capture and score:
 
 ```powershell
