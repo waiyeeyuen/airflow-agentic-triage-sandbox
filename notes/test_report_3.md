@@ -4,7 +4,10 @@
 
 - Case: `airflow-69284`; run: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41021983690
 - Configuration SHA: `964c36fc5f83e072b63f9c4ba64263b716517474`; model: `gpt-4.1`.
-- Main-agent usage from `gh aw audit`: 1.60615 AIC ($0.0160615); deterministic detection: 0 AIC.
+- Main-agent usage from `gh aw audit`: 18,259 input, 170 output and 52,736 cache-read tokens;
+  6.4246 AIC ($0.064246). Deterministic detection used 0 AIC. The 1.60615-AIC figure in the
+  activity summary is only the statistically attributed cost of the failed tool invocation, not
+  total run usage.
 - The kill switch was set true for dispatch and restored to false immediately afterwards.
 - Expected: `kind:bug`, `area:core`, `priority:normal`; no comment. Actual: no labels and no
   comment. No actor applied output because `safe_outputs` was skipped.
