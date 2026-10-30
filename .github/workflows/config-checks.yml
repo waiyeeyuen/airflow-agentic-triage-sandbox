@@ -23,6 +23,14 @@ jobs:
           python-version: '3.12'
       - run: python -m unittest discover -s scripts/tests -v
       - run: python evals/golden/verify_cases.py
+      - name: Dry-test exact airflow-69284 command contract
+        shell: bash
+        run: |
+          python3 scripts/prepare_issue_input.py --case evals/golden/cases/69284/input.json --output /tmp/gh-aw/agent/case.json
+          python3 scripts/search_duplicates.py --case /tmp/gh-aw/agent/case.json --corpus-root evals/golden/cases --output /tmp/gh-aw/agent/duplicates.json
+          python3 scripts/validate_labels.py --case /tmp/gh-aw/agent/case.json --output /tmp/gh-aw/agent/validated.json --proposed-label kind:bug --proposed-label area:providers --proposed-label provider:openlineage
+          python3 scripts/render_comment.py --case /tmp/gh-aw/agent/case.json --output /tmp/gh-aw/agent/comment.json --type none
+          python3 scripts/validate_safe_outputs.py --input scripts/tests/fixtures/valid_agent_output.json
       - name: Enforce DESIGN line limit
         shell: bash
         run: test "$(wc -l < DESIGN.md)" -le 150

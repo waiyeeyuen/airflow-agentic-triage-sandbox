@@ -24,9 +24,9 @@ both. The observed-subset summary omits censoring; the leading KM estimate does 
 ## Configuration and risk controls
 
 Untrusted inputs are issue titles, bodies, comments, attachments, linked pages, repository files,
-and GitHub/tool outputs that echo them. The agent can read repository and issue context, execute only
-three named scripts, and request only labels or one comment
-([workflow lines 14–74](.github/workflows/issue-triage.md#L14-L74)).
+and tool outputs that echo them. A pre-agent step prepares immutable issue JSON; the model can run
+only the three exact script forms and request labels or one comment
+([workflow](.github/workflows/issue-triage.md)).
 
 - **Identity — implemented:** the separate safe-output job uses the Actions bot, not Jasmine's
   token; Part B must capture the posting identity.
@@ -38,8 +38,9 @@ three named scripts, and request only labels or one comment
 - **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files,
   but branch protection still needs enabling ([CODEOWNERS](.github/CODEOWNERS)). Runtime labels and
   fixed comments are reversible; closure and conversion stay human-only.
-- **Budgets — implemented:** 10 minutes, 100 AIC/run, 5,000 AIC/day, one label call and one comment
-  ([lines 28–30](.github/workflows/issue-triage.md#L28-L30)). Part B must test an enforced limit.
+- **Budgets — implemented + tested:** 10 minutes, 20 turns, 25 main-agent AIC/run and 5,000
+  AIC/day. Run 40993175316 ended at the 10-minute limit, containing its failed tool loop
+  ([Tester report](notes/test_report_2.md)).
 - **Audit trail — implemented:** Actions retains trigger/config SHA; `gh aw audit` supplies model,
   calls, tokens and AIC. The first approved run's evidence is committed under
   `evals/golden/actual/round_1/`.
@@ -54,10 +55,18 @@ three named scripts, and request only labels or one comment
 
 ## Procedure and hard boundary
 
-The skill classifies, searches the strictly prior corpus, validates labels, then renders a fixed
-comment ([SKILL lines 12–29](.claude/skills/airflow-issue-triage/SKILL.md#L12-L29)). Scripts reject
-unknown/invalid combinations, rank TF-IDF candidates, and attach a version marker
-([tests](scripts/tests/test_triage_scripts.py)). Audit calls plus the marker will test skill use.
+The workflow, not the model, writes fixed-path issue JSON. The skill then runs exact Python 3.12
+commands to search the prior corpus, validate labels, and render a fixed comment; any denied command
+means stop with no output ([skill](.claude/skills/airflow-issue-triage/SKILL.md)). Scripts reject
+unknown combinations and never read stdin ([tests](scripts/tests/test_triage_scripts.py)). gh-aw
+v1.0.1 injects generic read-shell approvals for Copilot, so the engine arguments explicitly deny
+each one (including its shell safe-output shim); native safe-output MCP calls remain available.
+
+AI threat detection was removed after it consumed 60.137/70.303 AIC in a 34-request file-reading
+loop. Detection now runs with `engine: false`: a deterministic fail-closed step accepts only policy-
+valid labels and exact templates and rejects mentions, links, unknown output types and excess calls
+([validator](scripts/validate_safe_outputs.py)). This is narrower and auditable for two reversible
+output types; the built-in safe-output allowlists remain an independent enforcement layer.
 
 The output language deliberately omits close, delete, lock, transfer, Discussion conversion,
 milestones, assignment, mentions, PR creation/review/merge and every push. Airflow permits human
@@ -80,9 +89,12 @@ agent to unsupported `claude-sonnet-5.5` and detection to unsupported `claude-ha
 **0 AIC ($0)**, made no task tool or script calls, emitted no requested labels/comments, and scored
 0/1 ([Tester report](notes/test_report_1.md)). Both roles now pin exact `gpt-4.1`, which appears in
 the configured Copilot endpoint's `models` array in the saved `awf-reflect.json`; `gpt-5-mini` does
-not. Compilation passes, but no live rerun has tested the fix. Decision accuracy, mutation identity,
-skill marker, cancellation, limits, burst behaviour and control-without-skill remain unresolved.
-Threat detection uses the same model as the main agent, so the two share blind spots.
+not. A second replay resolved `gpt-4.1` but failed: the skill required model-created JSON, conflicting
+with the shell guard. The guard correctly denied `echo` redirection and a heredoc; the 10-minute
+timeout contained the failure. No labels/comment were emitted; score 0/1
+([forensics](evals/golden/actual/round_2/forensic_analysis.json)). The fixed-path repair is dry-
+tested but not live-tested. Decision accuracy, bot mutation identity, cancellation, burst behaviour
+and control-without-skill remain unresolved.
 Historical replay changes the author.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
@@ -92,12 +104,11 @@ compiler-generated residual boundary rather than treating compilation as behavio
 
 ## Agent bill of materials
 
-- **Engine/model:** GitHub Copilot with exact `gpt-4.1` pinned for both the main agent and threat
-  detection. The saved reflect evidence lists it for the configured Copilot endpoint. Every
-  golden-set run must use this same pin; provider implementation behind the ID can still drift.
+- **Engine/model:** GitHub Copilot with exact `gpt-4.1` for the main agent. Threat detection is
+  deterministic (`engine: false`). The provider implementation behind the pinned ID can still drift.
 - **Instructions:** [workflow](.github/workflows/issue-triage.md), [AGENTS.md](AGENTS.md), and
   [skill](.claude/skills/airflow-issue-triage/SKILL.md), all versioned at the submission SHA.
-- **Tools/MCP:** GitHub issue-read toolset and three allowlisted Python scripts; no custom MCP.
+- **Tools/MCP:** three exact Python 3.12 command forms; no GitHub-read or custom MCP tool.
 - **Permissions/actions:** read-only agent; separate safe outputs can add allowlisted labels and one
   triggering-issue comment. All other state changes are inexpressible.
 - **Data:** sanitized trigger, repository facts, dated prior snapshots and frozen golden inputs.
@@ -109,13 +120,13 @@ compiler-generated residual boundary rather than treating compilation as behavio
 1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
    ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). The frozen adversarial
    expectation is no action; execution is pending Part B, so this is not yet a passed test.
-2. **Model update:** both roles and every golden-set run pin exact `gpt-4.1`, but behaviour behind
+2. **Model update:** the main role and every golden-set run pin exact `gpt-4.1`, but behaviour behind
    that ID can change. Re-run the complete set with that same pin on every workflow, AGENTS or skill
    change and weekly; Jasmine reviews per-case diffs, not only an average. CI integrity is
    implemented; scheduled credit-spending runs remain proposed.
 3. **300 issues/week:** per-issue concurrency keys prevent one issue cancelling another. At the
-   100-AIC maximum, 300 runs could consume 30,000 AIC; the 5,000/day admission cap bounds worst-case
-   daily spend to 50 full-cap runs. Excess issues receive no agent output and remain for humans;
+   25-AIC maximum, 300 runs could consume 7,500 AIC; the 5,000/day admission cap bounds worst-case
+   daily spend to 200 full-cap runs. Excess issues receive no agent output and remain for humans;
    a safe backlog sweep is proposed rather than silently widening permissions.
 4. **Malicious tool/MCP output:** there is no custom MCP. Tool output is untrusted; even total
    instruction failure can express only three allowlisted labels and one sanitized comment.
@@ -126,7 +137,7 @@ compiler-generated residual boundary rather than treating compilation as behavio
 ## AI-use statement
 
 AI agents produced the configuration, scripts, evaluation scaffolding and this draft under
-Jasmine's direction. Deterministic tests and compiler checks are recorded; the only model attempt
-failed before task execution and the pin fix is not live-tested. Jasmine must complete:
+Jasmine's direction. Deterministic tests and compiler checks are recorded; both approved model
+attempts failed before producing outputs and the fixed-path repair is not live-tested. Jasmine must complete:
 **[state what you wrote]**, **[state what you reviewed]**, and
 **[state what evidence and claims you personally verified]** before signing and submitting.

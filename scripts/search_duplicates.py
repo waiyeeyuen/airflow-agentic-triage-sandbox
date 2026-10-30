@@ -42,15 +42,35 @@ def rank(query, prior, limit=5):
     return sorted(ranked, key=lambda item: (-item["score"], item["number"]))[:limit]
 
 
+def resolve_corpus(case, corpus_root):
+    """Resolve one frozen corpus by exact case title without model-chosen paths."""
+    root = Path(corpus_root)
+    matches = []
+    for input_path in sorted(root.glob("*/input.json")):
+        candidate = json.loads(input_path.read_text(encoding="utf-8"))
+        if candidate.get("title") == case.get("title"):
+            matches.append((input_path, candidate))
+    if len(matches) != 1:
+        raise ValueError(f"expected one frozen case title match, found {len(matches)}")
+    input_path, candidate = matches[0]
+    snapshot_name = candidate.get("duplicate_snapshot")
+    if not isinstance(snapshot_name, str) or Path(snapshot_name).name != snapshot_name:
+        raise ValueError("invalid duplicate snapshot name")
+    return input_path.parent / snapshot_name
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True, help="Case input.json")
-    parser.add_argument("--corpus", required=True, help="Strictly prior issue snapshot")
+    parser.add_argument("--case", required=True, help="Prepared case JSON")
+    corpus = parser.add_mutually_exclusive_group(required=True)
+    corpus.add_argument("--corpus", help="Strictly prior issue snapshot")
+    corpus.add_argument("--corpus-root", help="Frozen case directories; exact title selects one")
     parser.add_argument("--output", required=True)
     parser.add_argument("--limit", type=int, default=5)
     args = parser.parse_args()
-    case = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    prior = json.loads(Path(args.corpus).read_text(encoding="utf-8"))
+    case = json.loads(Path(args.case).read_text(encoding="utf-8"))
+    corpus_path = Path(args.corpus) if args.corpus else resolve_corpus(case, args.corpus_root)
+    prior = json.loads(corpus_path.read_text(encoding="utf-8"))
     # Weight the concise title above template boilerplate and long reproduction text.
     query = f"{(case.get('title', '') + ' ') * 5}{case.get('body', '')}"
     result = {"method": "tf-idf-cosine-v1", "candidates": rank(query, prior, args.limit)}

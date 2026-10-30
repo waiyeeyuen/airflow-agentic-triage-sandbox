@@ -1,11 +1,31 @@
 import unittest
 from pathlib import Path
+import json
+import subprocess
 import sys
+import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from prepare_issue_input import from_case, from_event
 from render_comment import MARKER, render
-from search_duplicates import rank
+from search_duplicates import rank, resolve_corpus
+from validate_safe_outputs import check
 from validate_labels import validate
+
+SCRIPTS = Path(__file__).resolve().parents[1]
+ROOT = SCRIPTS.parent
+
+
+def run_without_stdin(script, *arguments):
+    return subprocess.run(
+        [sys.executable, str(SCRIPTS / script), *map(str, arguments)],
+        cwd=ROOT,
+        stdin=subprocess.DEVNULL,
+        capture_output=True,
+        text=True,
+        timeout=5,
+        check=False,
+    )
 
 
 class LabelTests(unittest.TestCase):
@@ -36,6 +56,22 @@ class DuplicateTests(unittest.TestCase):
         prior = [{"number": 7, "title_as_of_cutoff": "Global scheduler pause override"}]
         self.assertEqual(7, rank("global scheduler pause", prior)[0]["number"])
 
+    def test_exact_title_resolves_frozen_corpus(self):
+        case = json.loads((ROOT / "evals/golden/cases/69284/input.json").read_text(encoding="utf-8"))
+        resolved = resolve_corpus(case, ROOT / "evals/golden/cases")
+        self.assertEqual(ROOT / "evals/golden/cases/69284/prior_issues.json", resolved)
+
+    def test_cli_is_noninteractive_with_absent_stdin(self):
+        case_path = ROOT / "evals/golden/cases/69284/input.json"
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            output = Path(temporary) / "duplicates.json"
+            result = run_without_stdin(
+                "search_duplicates.py", "--case", case_path, "--corpus-root",
+                ROOT / "evals/golden/cases", "--output", output,
+            )
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertTrue(json.loads(output.read_text(encoding="utf-8"))["candidates"])
+
 
 class CommentTests(unittest.TestCase):
     def test_security_template_has_marker_and_no_url(self):
@@ -49,6 +85,51 @@ class CommentTests(unittest.TestCase):
 
     def test_none_is_empty(self):
         self.assertEqual("", render("none"))
+
+
+class CliTests(unittest.TestCase):
+    def test_validation_flags_are_noninteractive_with_absent_stdin(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            output = Path(temporary) / "validated.json"
+            result = run_without_stdin(
+                "validate_labels.py", "--case", ROOT / "evals/golden/cases/69284/input.json",
+                "--output", output, "--proposed-label", "kind:bug",
+                "--proposed-label", "area:providers", "--proposed-label", "provider:openlineage",
+            )
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertTrue(json.loads(output.read_text(encoding="utf-8"))["valid"])
+
+    def test_renderer_is_noninteractive_with_absent_stdin(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            output = Path(temporary) / "comment.json"
+            result = run_without_stdin(
+                "render_comment.py", "--case", ROOT / "evals/golden/cases/69284/input.json",
+                "--output", output, "--type", "none",
+            )
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual("none", json.loads(output.read_text(encoding="utf-8"))["comment_type"])
+
+    def test_prepare_case_and_event(self):
+        frozen = from_case("evals/golden/cases/69284/input.json")
+        self.assertIn("OpenLineage", frozen["title"])
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            event = Path(temporary) / "event.json"
+            event.write_text(json.dumps({"issue": {"number": 5, "title": "T", "body": "B",
+                                                       "labels": [{"name": "kind:bug"}]}}),
+                             encoding="utf-8")
+            prepared = from_event(event)
+            self.assertEqual(["kind:bug"], prepared["current_labels"])
+
+    def test_safe_output_validator_accepts_templates_and_rejects_mentions_links(self):
+        accepted = {"items": [
+            {"type": "add_labels", "arguments": {"labels": ["kind:bug", "area:providers",
+                                                                  "provider:openlineage"]}},
+            {"type": "add_comment", "arguments": {"body": render("security_route")}},
+        ]}
+        self.assertTrue(check(accepted)["valid"])
+        for body in ("Hello @maintainer", "See https://example.invalid"):
+            with self.assertRaises(ValueError):
+                check({"items": [{"type": "add_comment", "arguments": {"body": body}}]})
 
 
 if __name__ == "__main__":

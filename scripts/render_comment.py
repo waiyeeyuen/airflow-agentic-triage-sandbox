@@ -32,11 +32,15 @@ def render(kind, duplicate_number=None, question=None):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--case", required=True, help="Prepared case JSON")
     parser.add_argument("--type", required=True, choices=("none", "security_route", "duplicate_notice", "clarification"))
     parser.add_argument("--duplicate-number", type=int)
     parser.add_argument("--question")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
+    case = json.loads(Path(args.case).read_text(encoding="utf-8"))
+    if not isinstance(case.get("title"), str):
+        parser.error("prepared case must contain a title")
     body = render(args.type, args.duplicate_number, args.question)
     Path(args.output).write_text(json.dumps({"comment_type": args.type, "body": body}, indent=2) + "\n", encoding="utf-8")
 

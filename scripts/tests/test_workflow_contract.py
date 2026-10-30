@@ -6,12 +6,14 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / ".github" / "workflows" / "issue-triage.md"
 LOCK = ROOT / ".github" / "workflows" / "issue-triage.lock.yml"
+SKILL = ROOT / ".claude" / "skills" / "airflow-issue-triage" / "SKILL.md"
 
 
 class WorkflowContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.source = SOURCE.read_text(encoding="utf-8")
+        cls.skill = SKILL.read_text(encoding="utf-8")
         cls.frontmatter = cls.source.split("---", 2)[1]
         cls.lock_lines = LOCK.read_text(encoding="utf-8").splitlines()
         manifest_line = next(
@@ -26,7 +28,8 @@ class WorkflowContractTests(unittest.TestCase):
             "contents: read",
             "issues: read",
             "timeout-minutes: 10",
-            "max-ai-credits: 100",
+            "max-turns: 20",
+            "max-ai-credits: 25",
             "max-daily-ai-credits: 5000",
             "cancel-in-progress: false",
         )
@@ -53,6 +56,42 @@ class WorkflowContractTests(unittest.TestCase):
             "lock-issue:",
         ):
             self.assertNotIn(forbidden, self.frontmatter)
+
+    def test_skill_commands_match_source_allowlist_and_ubuntu_python(self):
+        commands = (
+            "python3 scripts/search_duplicates.py --case /tmp/gh-aw/agent/case.json --corpus-root evals/golden/cases --output /tmp/gh-aw/agent/duplicates.json",
+            "python3 scripts/validate_labels.py --case /tmp/gh-aw/agent/case.json --output /tmp/gh-aw/agent/validated.json",
+            "python3 scripts/render_comment.py --case /tmp/gh-aw/agent/case.json --output /tmp/gh-aw/agent/comment.json --type none",
+        )
+        for command in commands:
+            self.assertIn(f'"{command}"', self.frontmatter)
+            self.assertIn(command, self.skill)
+        self.assertNotIn('"python scripts/', self.frontmatter)
+        self.assertIn("pre-agent-steps:", self.frontmatter)
+        self.assertIn("scripts/prepare_issue_input.py", self.frontmatter)
+        self.assertIn("Never\n   create or edit a file", self.skill)
+        self.assertIn("If any command is denied, stop immediately and propose no outputs.", self.skill)
+
+    def test_threat_detection_is_deterministic_and_fails_closed(self):
+        required = (
+            "continue-on-error: false",
+            "engine: false",
+            "scripts/validate_safe_outputs.py",
+        )
+        for value in required:
+            self.assertIn(value, self.frontmatter)
+        self.assertNotIn("model: gpt-4.1\n      max-turns", self.frontmatter)
+
+    def test_model_has_no_generic_github_or_file_write_tool(self):
+        self.assertIn("edit: false", self.frontmatter)
+        self.assertIn("github: false", self.frontmatter)
+        self.assertIn("cli-proxy: false", self.frontmatter)
+
+    def test_compiled_copilot_denies_injected_generic_shell_commands(self):
+        lock = "\n".join(self.lock_lines)
+        for command in ("cat", "date", "echo", "grep", "head", "ls", "printf", "pwd",
+                        "sort", "tail", "uniq", "wc", "yq", "safeoutputs:*"):
+            self.assertIn(f"--deny-tool '\\''shell({command})'\\''", lock)
 
     def test_compiled_safeoutput_tools_have_no_pr_or_destructive_action(self):
         safe = next(server for server in self.manifest["mcp_servers"] if server["name"] == "safeoutputs")

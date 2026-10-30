@@ -4,7 +4,7 @@ Completed 1/21; passed 0; failed 1.
 
 | Case | Status | Classification | Cause | Failed checks | Run |
 |---|---|---|---|---|---|
-| airflow-69284 | fail | agent error | agentic_engine_timeout | labels_exact, bot_or_app_identity, all_three_skill_scripts_audited | https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316 |
+| airflow-69284 | fail | agent error | skill_shell_guard_contract_conflict_contained_by_timeout | labels_exact, bot_or_app_identity, all_three_skill_scripts_audited | https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316 |
 | airflow-69638 | not_run | — | — | — | — |
 | airflow-69858 | not_run | — | — | — | — |
 | airflow-70548 | not_run | — | — | — | — |

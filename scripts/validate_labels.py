@@ -33,10 +33,16 @@ def validate(proposed, current=()):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True, help="JSON with proposed_labels/current_labels")
+    parser.add_argument("--case", required=True, help="Prepared case JSON with current_labels")
+    parser.add_argument("--proposed-label", action="append", default=[])
+    parser.add_argument("--current-label", action="append", default=[])
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    case = json.loads(Path(args.case).read_text(encoding="utf-8"))
+    if args.current_label:
+        parser.error("current labels must come from --case")
+    data = {"proposed_labels": args.proposed_label,
+            "current_labels": case.get("current_labels", case.get("labels_at_creation", []))}
     result = validate(data.get("proposed_labels", []), data.get("current_labels", []))
     Path(args.output).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     if not result["valid"]:
