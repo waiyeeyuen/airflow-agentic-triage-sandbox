@@ -38,11 +38,11 @@ only the three exact script forms and request labels or one comment
 - **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files,
   but branch protection still needs enabling ([CODEOWNERS](.github/CODEOWNERS)). Runtime labels and
   fixed comments are reversible; closure and conversion stay human-only.
-- **Budgets — implemented; timeout tested:** 10 minutes, 20 turns and 25 main-agent AIC/run are
-  enforced by the workflow/inference proxy. The compiled activation job scans prior workflow AIC
-  against 5,000 AIC/day, exports `daily_ai_credits_exceeded`, and the agent job runs only when it is
-  not true. Run 40993175316 tested the timeout; the per-run and daily thresholds have not been
-  deliberately exhausted ([Tester report](notes/test_report_2.md)).
+- **Budgets — timeout tested; per-run cap implemented; hard daily cap proposed:** 10 minutes, 20
+  turns and 25 main-agent AIC/run are enforced. The compiled activation job scans prior workflow
+  AIC against 5,000/day and blocks when already exceeded, but concurrent activations can race, so
+  it is an admission guard rather than a hard aggregate cap. Run 40993175316 tested the timeout;
+  the per-run threshold and admission guard have not been deliberately exhausted.
 - **Audit trail — implemented:** Actions retains trigger/config SHA; `gh aw audit` supplies model,
   calls, tokens and AIC. The first approved run's evidence is committed under
   `evals/golden/actual/round_1/`.
@@ -129,10 +129,9 @@ compiler-generated residual boundary rather than treating compilation as behavio
    change and weekly; Jasmine reviews per-case diffs, not only an average. CI integrity is
    implemented; scheduled credit-spending runs remain proposed.
 3. **300 issues/week:** per-issue concurrency keys prevent one issue cancelling another. At the
-   25-AIC maximum, 300 runs could consume 7,500 AIC; the 5,000/day admission cap bounds worst-case
-   daily admission to at most 200 additional full-cap runs when starting from zero recorded daily
-   usage. The activation scan blocks the agent when the threshold is exceeded. Excess issues
-   receive no agent output and remain for humans;
+   25-AIC maximum, 300 runs could consume 7,500 AIC. The 5,000/day scan blocks later sequential
+   admissions after recorded use reaches the threshold, but concurrent activations can overshoot;
+   a true account-side daily cap is proposed. Blocked issues receive no agent output and remain for humans;
    a safe backlog sweep is proposed rather than silently widening permissions.
 4. **Malicious tool/MCP output:** there is no custom MCP. Tool output is untrusted; even total
    instruction failure can express only three allowlisted labels and one sanitized comment.

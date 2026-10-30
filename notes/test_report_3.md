@@ -36,13 +36,14 @@ or the safe-output admission condition.
 
 ## Daily cap
 
-The 5,000-AIC/day limit is implemented, not merely planned. The compiled workflow sets
+The 5,000-AIC/day admission guard is implemented, but it is not a hard aggregate cap. The compiled workflow sets
 `GH_AW_MAX_DAILY_AI_CREDITS: "5000"` (lines 98 and 203), invokes
 `check_daily_aic_workflow_guardrail.cjs` (line 212), exposes `daily_ai_credits_exceeded`, and gates
 the agent job on that output not being true (line 418). Run 41021983690 executed the guard step
 successfully. The threshold itself has not been deliberately exhausted. At the 25-AIC per-run
-maximum, 300 issues have a 7,500-AIC theoretical maximum; starting from zero recorded daily usage,
-the admission guard allows at most 200 further full-cap runs before blocking later agent jobs.
+maximum, 300 issues have a 7,500-AIC theoretical maximum. Sequential admissions are blocked once
+recorded usage reaches 5,000, but concurrent activations can race and overshoot; a hard daily cap
+is therefore still proposed.
 
 ## Result
 
