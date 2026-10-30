@@ -25,7 +25,7 @@ both. The observed-subset summary omits censoring; the leading KM estimate does 
 
 Untrusted inputs are issue titles, bodies, comments, attachments, linked pages, repository files,
 and tool outputs that echo them. A pre-agent step prepares immutable issue JSON; the model can run
-only the three exact script forms and request labels or one comment
+only individually allowed, no-argument wrapper executables and request labels or one comment
 ([workflow](.github/workflows/issue-triage.md)).
 
 - **Identity — implemented:** the separate safe-output job uses the Actions bot, not Jasmine's
@@ -57,8 +57,8 @@ only the three exact script forms and request labels or one comment
 
 ## Procedure and hard boundary
 
-The workflow, not the model, writes fixed-path issue JSON. The skill then runs exact Python 3.12
-commands to search the prior corpus, validate labels, and render a fixed comment; any denied command
+The workflow, not the model, writes fixed-path issue JSON. The skill then runs exact no-argument
+wrappers to search the prior corpus, validate labels, and render a fixed comment; any denied command
 means stop with no output ([skill](.claude/skills/airflow-issue-triage/SKILL.md)). Scripts reject
 unknown combinations and never read stdin ([tests](scripts/tests/test_triage_scripts.py)). gh-aw
 v1.0.1 injects generic read-shell approvals for Copilot, so the engine arguments explicitly deny
@@ -95,10 +95,11 @@ not. A second replay resolved `gpt-4.1` but failed: the skill required model-cre
 with the shell guard. The guard correctly denied `echo` redirection and a heredoc; the 10-minute
 timeout contained the failure. No labels/comment were emitted; score 0/1
 ([forensics](evals/golden/actual/round_2/forensic_analysis.json)). The fixed-path repair is dry-
-tested locally. A third replay loaded the skill but Copilot denied its exact multiword shell command;
-the agent stopped as required. Detection then failed because its job had no checkout containing the
-validator, so safe outputs were skipped. Decision accuracy, bot mutation identity, cancellation,
-burst behaviour and control-without-skill remain unresolved.
+tested locally. Round 2 used 70.303 AIC total (10.166 main plus 60.137 detection), not its 5.083
+failed-tool attribution; Round 3 used 6.4246 total, not its 1.60615 attribution. Runs 40911954325,
+40993175316 and 41021983690 were approved (caps 100, 100 and 25). Pre-approval invocation
+40905907762 skipped every job and used no model/AIC; no unapproved model run occurred. Decision
+accuracy, bot mutation identity, cancellation, burst behaviour and control-without-skill remain unresolved.
 Historical replay changes the author.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
@@ -112,7 +113,8 @@ compiler-generated residual boundary rather than treating compilation as behavio
   deterministic (`engine: false`). The provider implementation behind the pinned ID can still drift.
 - **Instructions:** [workflow](.github/workflows/issue-triage.md), [AGENTS.md](AGENTS.md), and
   [skill](.claude/skills/airflow-issue-triage/SKILL.md), all versioned at the submission SHA.
-- **Tools/MCP:** three exact Python 3.12 command forms; no GitHub-read or custom MCP tool.
+- **Tools/MCP:** finite exact no-argument wrapper commands; no broad Python, shell-prefix,
+  GitHub-read or custom MCP tool.
 - **Permissions/actions:** read-only agent; separate safe outputs can add allowlisted labels and one
   triggering-issue comment. All other state changes are inexpressible.
 - **Data:** sanitized trigger, repository facts, dated prior snapshots and frozen golden inputs.

@@ -57,20 +57,34 @@ class WorkflowContractTests(unittest.TestCase):
         ):
             self.assertNotIn(forbidden, self.frontmatter)
 
-    def test_skill_commands_match_source_allowlist_and_ubuntu_python(self):
-        commands = (
-            "python3 scripts/search_duplicates.py --case /tmp/gh-aw/agent/case.json --corpus-root evals/golden/cases --output /tmp/gh-aw/agent/duplicates.json",
-            "python3 scripts/validate_labels.py --case /tmp/gh-aw/agent/case.json --output /tmp/gh-aw/agent/validated.json",
-            "python3 scripts/render_comment.py --case /tmp/gh-aw/agent/case.json --output /tmp/gh-aw/agent/comment.json --type none",
-        )
+    def test_only_exact_no_argument_wrappers_are_allowed(self):
+        bash = self.frontmatter.split("  bash:\n", 1)[1].split("timeout-minutes:", 1)[0]
+        commands = [line.strip().removeprefix("- ") for line in bash.splitlines() if line.strip()]
+        wrappers = sorted(path.name for path in (ROOT / "scripts/wrappers").glob("triage-*"))
+        self.assertEqual(sorted(f"scripts/wrappers/{name}" for name in wrappers), sorted(commands))
+        self.assertTrue(all(" " not in command for command in commands))
+        self.assertNotIn("python", bash)
+        self.assertNotIn("python3", bash)
         for command in commands:
-            self.assertIn(f'"{command}"', self.frontmatter)
-            self.assertIn(command, self.skill)
-        self.assertNotIn('"python scripts/', self.frontmatter)
+            self.assertIn(f"`{command}`", self.skill)
+        lock = "\n".join(self.lock_lines)
+        self.assertNotIn("--allow-tool '\\''shell(python3", lock)
+        for command in commands:
+            self.assertIn(f"--allow-tool '\\''shell({command})'\\''", lock)
         self.assertIn("pre-agent-steps:", self.frontmatter)
         self.assertIn("scripts/prepare_issue_input.py", self.frontmatter)
         self.assertIn("Never\n   create or edit a file", self.skill)
         self.assertIn("If any command is denied, stop immediately and propose no outputs.", self.skill)
+
+    def test_wrapper_entries_are_linux_executables(self):
+        import subprocess
+        result = subprocess.run(
+            ["git", "ls-files", "--stage", "scripts/wrappers/triage-*"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        )
+        modes = [line.split()[0] for line in result.stdout.splitlines()]
+        self.assertTrue(modes)
+        self.assertEqual({"100755"}, set(modes))
 
     def test_threat_detection_is_deterministic_and_fails_closed(self):
         required = (
@@ -86,6 +100,19 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("needs.detection.result == 'success'", lock)
         step = lock.split("- name: Deterministically validate proposed labels and comment", 1)[1].split("- name:", 1)[0]
         self.assertNotIn("continue-on-error: true", step)
+
+    def test_detection_checkout_is_pinned_credentialless_and_precedes_validator(self):
+        checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+        source_detection = self.frontmatter.split("threat-detection:", 1)[1].split("mentions:", 1)[0]
+        self.assertIn(checkout, source_detection)
+        self.assertIn("persist-credentials: false", source_detection)
+        self.assertLess(source_detection.index(checkout), source_detection.index("validate_safe_outputs.py"))
+        lock = "\n".join(self.lock_lines)
+        checkout_step = "\n      - name: Check out validator source without credentials"
+        validator_step = "\n      - name: Deterministically validate proposed labels and comment"
+        self.assertIn(checkout_step, lock)
+        self.assertIn(validator_step, lock)
+        self.assertLess(lock.index(checkout_step), lock.index(validator_step))
 
     def test_daily_credit_guard_is_an_admission_control(self):
         lock = "\n".join(self.lock_lines)

@@ -9,7 +9,7 @@
   activity summary is only the statistically attributed cost of the failed tool invocation, not
   total run usage.
 - The kill switch was set true for dispatch and restored to false immediately afterwards.
-- Expected: `kind:bug`, `area:core`, `priority:normal`; no comment. Actual: no labels and no
+- Expected: `kind:bug`, `area:providers`, `provider:openlineage`; no comment. Actual: no labels and no
   comment. No actor applied output because `safe_outputs` was skipped.
 - Classification: configuration error. Copilot loaded the skill, then denied its first exact
   multiword shell command. The agent obeyed the skill and stopped. Detection subsequently failed

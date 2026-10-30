@@ -11,6 +11,7 @@ from render_comment import MARKER, render
 from search_duplicates import rank, resolve_corpus
 from validate_safe_outputs import check
 from validate_labels import validate
+from wrappers import wrapper_runtime
 
 SCRIPTS = Path(__file__).resolve().parents[1]
 ROOT = SCRIPTS.parent
@@ -145,6 +146,62 @@ class CliTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 check(attack)
         self.assertEqual([], applied, "failed detection must leave the applied-output set empty")
+
+
+class WrapperTests(unittest.TestCase):
+    def test_fixed_wrapper_sequence_preserves_duplicate_labels_and_comment(self):
+        case = ROOT / "evals/golden/cases/69284/input.json"
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            temporary = Path(temporary)
+            duplicates = temporary / "duplicates.json"
+            validated = temporary / "validated.json"
+            comment = temporary / "comment.json"
+            common = {"case": case, "duplicates": duplicates, "validated": validated,
+                      "comment": comment, "corpus_root": ROOT / "evals/golden/cases"}
+            wrapper_runtime.run("triage-search-duplicates", **common)
+            wrapper_runtime.run("triage-label-none", **common)
+            wrapper_runtime.run("triage-label-kind-bug", **common)
+            wrapper_runtime.run("triage-label-area-providers", **common)
+            wrapper_runtime.run("triage-label-provider-openlineage", **common)
+            wrapper_runtime.run("triage-comment-none", **common)
+            self.assertEqual(69275, json.loads(duplicates.read_text(encoding="utf-8"))["candidates"][0]["number"])
+            self.assertEqual(["kind:bug", "area:providers", "provider:openlineage"],
+                             json.loads(validated.read_text(encoding="utf-8"))["labels"])
+            self.assertEqual({"comment_type": "none", "body": ""},
+                             json.loads(comment.read_text(encoding="utf-8")))
+
+    def test_wrappers_reject_arguments_before_reading_fixed_files(self):
+        wrapper = SCRIPTS / "wrappers/triage-search-duplicates"
+        result = subprocess.run(
+            [sys.executable, str(wrapper), "unexpected"],
+            cwd=ROOT,
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            text=True,
+            timeout=5,
+            check=False,
+        )
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("accept no arguments", result.stderr)
+
+    def test_wrapper_runtime_never_reads_stdin(self):
+        class ForbiddenStdin:
+            def read(self, *_args, **_kwargs):
+                raise AssertionError("wrapper attempted to read stdin")
+
+        original = sys.stdin
+        sys.stdin = ForbiddenStdin()
+        try:
+            with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+                output = Path(temporary) / "validated.json"
+                wrapper_runtime.run(
+                    "triage-label-none",
+                    case=ROOT / "evals/golden/cases/69284/input.json",
+                    validated=output,
+                )
+                self.assertTrue(json.loads(output.read_text(encoding="utf-8"))["valid"])
+        finally:
+            sys.stdin = original
 
 
 if __name__ == "__main__":
