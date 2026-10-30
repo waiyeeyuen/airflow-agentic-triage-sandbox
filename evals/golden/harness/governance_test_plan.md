@@ -1,7 +1,9 @@
 # Governance test plan (not yet executed)
 
-No step in this file is evidence of a tested control. Every live step waits for direct user
-approval and is recorded under `evals/golden/actual/round_1/`.
+No step in this file is evidence of a tested control. Every new live step waits for direct user
+approval. Round 1 under `evals/golden/actual/round_1/` is immutable historical evidence. A new retry is recorded under
+`evals/golden/actual/round_2/` and requires an approval pinned to Builder
+`ac75039cce1ff9983cc62619cfefb42c4e2f1d38`.
 
 ## Prerequisites and user actions
 
@@ -32,7 +34,8 @@ cap but requiring explicit approval for each scope.
 
    ```powershell
    python evals/golden/harness/replay.py --case-id airflow-69284 --execute `
-     --approval-file <absolute-uncommitted-approval.json>
+     --round-dir evals/golden/actual/round_2 `
+     --approval-file <absolute-uncommitted-round2-approval.json>
    ```
 
    Capture only after completion with `capture.py`, then run `score.py`. Review identity, all three

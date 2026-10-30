@@ -32,6 +32,11 @@ def main() -> None:
             ["git", "merge-base", "--is-ancestor", EXPECTED_COMMIT, BUILDER_COMMIT]
         ).returncode == 0,
         "compiled_strict_v1_0_1": metadata.get("compiler_version") == "v1.0.1" and metadata.get("strict") is True,
+        "exact_gpt_4_1_main_and_detection": (
+            metadata.get("agent_model") == "gpt-4.1"
+            and metadata.get("detection_agent_model") == "gpt-4.1"
+            and source.count("model: gpt-4.1") == 2
+        ),
         "issue_opened_and_dispatch_triggers": "types: [opened]" in source and "workflow_dispatch:" in source,
         "kill_switch_in_source_and_lock": "vars.TRIAGE_AGENT_ENABLED == 'true'" in source and "vars.TRIAGE_AGENT_ENABLED == 'true'" in lock,
         "explicit_agent_read_permissions": "contents: read" in source and "issues: read" in source,
@@ -84,10 +89,10 @@ def main() -> None:
         "no_skill_variant_exists": no_skill_variant,
         "live_execution_ready": False,
         "live_blockers": [
-            "Jasmine has not approved the first credit-spending run.",
+            "A fresh direct approval for the Round 2 airflow-69284 retry, pinned to Builder ac75039, is required.",
             "GitHub CLI authentication must be valid before remote preflight.",
             "COPILOT_GITHUB_TOKEN secret presence and validity must be confirmed.",
-            "TRIAGE_AGENT_ENABLED must remain false/unset until approval, then be set true for an approved run.",
+            "TRIAGE_AGENT_ENABLED must remain false until that approval, then be set true only for the single approved run.",
             "A Builder-owned no-skill control variant does not exist." if not no_skill_variant else "No-skill variant exists but is untested.",
         ],
     }

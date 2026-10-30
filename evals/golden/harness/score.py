@@ -7,12 +7,12 @@ import argparse
 import json
 from pathlib import Path
 
-from common import GOLDEN, HARNESS, read_json, write_json
+from common import DEFAULT_ROUND_DIR, GOLDEN, HARNESS, read_json, write_json
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--round-dir", default="evals/golden/actual/round_1")
+    parser.add_argument("--round-dir", default=str(DEFAULT_ROUND_DIR))
     parser.add_argument("--write-empty", action="store_true", help="Write a 0/21 readiness score before any run")
     args = parser.parse_args()
     round_dir = Path(args.round_dir)

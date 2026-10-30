@@ -13,10 +13,12 @@ from pathlib import Path
 from common import (
     BUILDER_COMMIT,
     DEFAULT_GH,
+    DEFAULT_ROUND_DIR,
     EXPECTED_COMMIT,
     GOLDEN,
     HARNESS,
     REPO,
+    ROUND_ONE_DIR,
     ROOT,
     gh_json,
     read_json,
@@ -49,6 +51,20 @@ def validate_approval(path: Path, case_id: str) -> dict:
     return approval
 
 
+def validate_round_directory(path: Path) -> Path:
+    """Reject historical/stale output before any remote preflight or issue write."""
+    resolved = path.resolve()
+    round_one = ROUND_ONE_DIR.resolve()
+    if resolved == round_one or round_one in resolved.parents:
+        raise ValueError("Round 2 cannot write to or reuse the Round 1 evidence directory")
+    manifest_path = resolved / "replay_manifest.json"
+    if manifest_path.exists():
+        manifest = read_json(manifest_path)
+        if manifest.get("builder_commit") != BUILDER_COMMIT:
+            raise ValueError("Replay manifest is not pinned to the approved Round 2 Builder commit")
+    return resolved
+
+
 def recent_runs(gh: str) -> list[dict]:
     return gh_json(
         gh,
@@ -65,7 +81,7 @@ def main() -> None:
     parser.add_argument("--case-id", required=True)
     parser.add_argument("--gh", default=str(DEFAULT_GH))
     parser.add_argument("--repo", default=REPO)
-    parser.add_argument("--round-dir", default="evals/golden/actual/round_1")
+    parser.add_argument("--round-dir", default=str(DEFAULT_ROUND_DIR))
     parser.add_argument("--approval-file")
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
@@ -92,6 +108,10 @@ def main() -> None:
     if not args.approval_file:
         raise SystemExit("--execute requires --approval-file created only after Jasmine's direct approval")
     approval = validate_approval(Path(args.approval_file), args.case_id)
+    try:
+        round_dir = validate_round_directory(Path(args.round_dir))
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
     if sha256_file(GOLDEN / "expected.json") != plan["expected_sha256"]:
         raise SystemExit("Frozen expected.json hash changed")
     run(["git", "merge-base", "--is-ancestor", BUILDER_COMMIT, "HEAD"])
@@ -109,9 +129,13 @@ def main() -> None:
     missing = set(data.get("labels_at_creation", [])) - {item["name"] for item in labels}
     if missing:
         raise SystemExit(f"Sandbox labels missing: {sorted(missing)}")
-    round_dir = Path(args.round_dir)
     manifest_path = round_dir / "replay_manifest.json"
-    manifest = read_json(manifest_path) if manifest_path.exists() else {"schema_version": 1, "cases": []}
+    manifest = read_json(manifest_path) if manifest_path.exists() else {
+        "schema_version": 1,
+        "builder_commit": BUILDER_COMMIT,
+        "expected_commit": EXPECTED_COMMIT,
+        "cases": [],
+    }
     existing_ids = {item["case_id"] for item in manifest["cases"]}
     if args.case_id in existing_ids:
         raise SystemExit("Case already replayed in this round")

@@ -9,7 +9,7 @@ import re
 import sys
 from pathlib import Path
 
-from common import DEFAULT_GH, GOLDEN, REPO, gh_json, read_json, run, write_json
+from common import DEFAULT_GH, DEFAULT_ROUND_DIR, GOLDEN, REPO, gh_json, read_json, run, write_json
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
 from render_comment import MARKER, render  # noqa: E402
@@ -77,7 +77,7 @@ def main() -> None:
     parser.add_argument("--case-id", required=True)
     parser.add_argument("--gh", default=str(DEFAULT_GH))
     parser.add_argument("--repo", default=REPO)
-    parser.add_argument("--round-dir", default="evals/golden/actual/round_1")
+    parser.add_argument("--round-dir", default=str(DEFAULT_ROUND_DIR))
     args = parser.parse_args()
     if args.repo != REPO:
         raise SystemExit(f"Refusing repository other than {REPO}")

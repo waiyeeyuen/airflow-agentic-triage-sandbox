@@ -6,6 +6,7 @@ Static contract: PASS. Live execution: **NOT READY / NOT AUTHORIZED**.
 |---|---|
 | expected_commit_precedes_builder | pass |
 | compiled_strict_v1_0_1 | pass |
+| exact_gpt_4_1_main_and_detection | pass |
 | issue_opened_and_dispatch_triggers | pass |
 | kill_switch_in_source_and_lock | pass |
 | explicit_agent_read_permissions | pass |
@@ -26,8 +27,8 @@ The duplicate target is present but ranks fourth in the deterministic top five; 
 
 ## Live blockers
 
-- Jasmine has not approved the first credit-spending run.
+- A fresh direct approval for the Round 2 airflow-69284 retry, pinned to Builder ac75039, is required.
 - GitHub CLI authentication must be valid before remote preflight.
 - COPILOT_GITHUB_TOKEN secret presence and validity must be confirmed.
-- TRIAGE_AGENT_ENABLED must remain false/unset until approval, then be set true for an approved run.
+- TRIAGE_AGENT_ENABLED must remain false until that approval, then be set true only for the single approved run.
 - A Builder-owned no-skill control variant does not exist.

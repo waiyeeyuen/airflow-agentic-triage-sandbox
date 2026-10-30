@@ -13,8 +13,10 @@ GOLDEN = ROOT / "evals" / "golden"
 HARNESS = GOLDEN / "harness"
 DEFAULT_GH = ROOT.parent / ".tools" / "gh" / "bin" / "gh.exe"
 REPO = "waiyeeyuen/airflow-agentic-triage-sandbox"
-BUILDER_COMMIT = "6251faf"
+BUILDER_COMMIT = "ac75039cce1ff9983cc62619cfefb42c4e2f1d38"
 EXPECTED_COMMIT = "dd295091c8a89bd7ccb06662d996f6a5ba960e5c"
+DEFAULT_ROUND_DIR = Path("evals/golden/actual/round_2")
+ROUND_ONE_DIR = ROOT / "evals" / "golden" / "actual" / "round_1"
 
 
 def read_json(path: Path):
