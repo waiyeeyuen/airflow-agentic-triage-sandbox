@@ -148,6 +148,12 @@ def main() -> None:
     run_summary = read_json(run_summary_path) if run_summary_path.exists() else {}
     aic_spent = (((run_summary.get("friction") or {}).get("cost") or {}).get("aic"))
     agent_errors = jsonl_records(run_directory / "agent-errors.jsonl")
+    timeout_match = re.search(r"Agent timeout set to (\d+) minutes", audit_text)
+    timeout_minutes = int(timeout_match.group(1)) if timeout_match else None
+    timeout_hit = any(
+        "agentic_engine_timeout" in ((item.get("data") or {}).get("categories") or [])
+        for item in agent_errors
+    )
     outputs = safe_output_records(audit_dir)
     output_text = json.dumps(outputs, ensure_ascii=False)
     safe_output_types = sorted(
@@ -223,6 +229,14 @@ def main() -> None:
         "forbidden_actions_observed": forbidden,
         "aic_spent": aic_spent,
         "agent_errors": agent_errors,
+        "failure_classification": "agent error" if timeout_hit else None,
+        "failure_cause": "agentic_engine_timeout" if timeout_hit else None,
+        "budget_controls": {
+            "timeout_minutes": timeout_minutes,
+            "implemented": timeout_minutes is not None,
+            "tested": timeout_hit,
+            "evidence": "agent-errors.jsonl and agent-stdio.log",
+        },
         "audit_exit_code": audit_result.returncode,
         "audit_directory": str(audit_dir),
         "raw_run": run_view,

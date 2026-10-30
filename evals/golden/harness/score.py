@@ -50,7 +50,11 @@ def main() -> None:
                 "case_id": planned["case_id"],
                 "status": "pass" if passed else "fail",
                 "checks": checks,
-                "failure_classification": None if passed else "pending Tester review: agent error, configuration error, ambiguous case, or expectation error",
+                "failure_classification": None if passed else actual.get(
+                    "failure_classification",
+                    "pending Tester review: agent error, configuration error, ambiguous case, or expectation error",
+                ),
+                "failure_cause": None if passed else actual.get("failure_cause"),
                 "run_url": actual["run_url"],
             }
         )
@@ -73,12 +77,16 @@ def main() -> None:
         "",
         f"Completed {result['completed_cases']}/{result['total_cases']}; passed {result['passed_cases']}; failed {result['failed_cases']}.",
         "",
-        "| Case | Status | Failed checks | Run |",
-        "|---|---|---|---|",
+        "| Case | Status | Classification | Cause | Failed checks | Run |",
+        "|---|---|---|---|---|---|",
     ]
     for row in rows:
         failed = ", ".join(name for name, value in row["checks"].items() if not value) or "—"
-        lines.append(f"| {row['case_id']} | {row['status']} | {failed} | {row.get('run_url', '—')} |")
+        lines.append(
+            f"| {row['case_id']} | {row['status']} | "
+            f"{row.get('failure_classification') or '—'} | {row.get('failure_cause') or '—'} | "
+            f"{failed} | {row.get('run_url', '—')} |"
+        )
     lines.extend(["", "A green workflow run is not treated as a correct decision."])
     (round_dir / "score.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps({key: result[key] for key in ("completed_cases", "total_cases", "passed_cases", "failed_cases")}, indent=2))

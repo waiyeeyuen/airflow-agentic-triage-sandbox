@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "run_id": 40993175316,
+  "final_agent_tool_sequence": [
+    {
+      "session_index": 8,
+      "tool": "skill",
+      "arguments": {"skill": "airflow-issue-triage"},
+      "result": "success"
+    },
+    {
+      "session_index": 16,
+      "tool": "github-issue_read",
+      "arguments": {"issue_number": 5, "method": "get", "owner": "waiyeeyuen", "repo": "airflow-agentic-triage-sandbox"},
+      "result": "success"
+    },
+    {
+      "session_index": 17,
+      "tool": "github-issue_read",
+      "arguments": {"issue_number": 5, "method": "get_labels", "owner": "waiyeeyuen", "repo": "airflow-agentic-triage-sandbox"},
+      "result": "success"
+    },
+    {
+      "session_index": 24,
+      "tool_call_id": "call_BClvd1SBLmnDExY0NYVLB32S",
+      "tool": "bash",
+      "command_form": "echo '<5077-character issue JSON>' > /tmp/gh-aw/agent/issue5.json",
+      "full_command_evidence": "cases/airflow-69284/audit/run-40993175316/agent-session.jsonl event index 24",
+      "result": "blocked"
+    },
+    {
+      "session_index": 30,
+      "tool_call_id": "call_g9sk3orYeU3eAVA3KebXCFjt",
+      "tool": "bash",
+      "command_form": "cat <<EOF > /tmp/gh-aw/agent/issue5.json ... EOF (5084 characters)",
+      "full_command_evidence": "cases/airflow-69284/audit/run-40993175316/agent-session.jsonl event index 30",
+      "result": "blocked"
+    }
+  ],
+  "guard_denials": [
+    {
+      "session_complete_index": 25,
+      "category": "dangerous_expansion_blocked",
+      "message": "Command blocked: contains dangerous shell expansion patterns (e.g., parameter transformation, indirect expansion, or nested command substitution) that could enable arbitrary code execution. Please rewrite the command without these expansion patterns."
+    },
+    {
+      "session_complete_index": 31,
+      "category": "dangerous_expansion_blocked",
+      "message": "Command blocked: contains dangerous shell expansion patterns (e.g., parameter transformation, indirect expansion, or nested command substitution) that could enable arbitrary code execution. Please rewrite the command without these expansion patterns."
+    }
+  ],
+  "other_denial_counts": {
+    "firewall_denied_requests": 0,
+    "mcp_failed_calls": 0,
+    "workflow_tool_denials": 0
+  },
+  "timeout_budget": {
+    "configured_minutes": 10,
+    "implemented": true,
+    "tested": true,
+    "terminal_category": "agentic_engine_timeout"
+  },
+  "detection_usage": {
+    "requests": 34,
+    "input_tokens": 41693,
+    "output_tokens": 1420,
+    "cache_read_tokens": 1013248,
+    "aic": 60.137,
+    "pricing_aic_per_token": {"input": 0.0002, "output": 0.0008, "cache_read": 0.00005},
+    "aic_components": {"input": 8.3386, "output": 1.136, "cache_read": 50.6624},
+    "prompt_bytes": 44909,
+    "inflating_context": {
+      "prompt_import_tree_bytes": 13893,
+      "prompt_template_bytes": 11755,
+      "prompt_bytes_after_framework_strip": 1728,
+      "agent_output_bytes": 895,
+      "explanation": "The detector made 34 iterative tool-using requests. After a 21,668-token first request, 33 requests repeatedly cache-read a growing 21,632-39,168-token context while re-reading prompt artifacts and probing absent files."
+    },
+    "reduction_estimate": {
+      "change": "Exclude prompt-import-tree.json and prompt-template.txt (25,648 bytes) and classify from stripped prompt plus agent output.",
+      "context_only_same_34_calls_aic": 37.244,
+      "single_pass_no_tool_loop_aic": 1.947,
+      "method": "Proportional token estimate from 44,909-byte/21,668-token initial prompt; official per-token AIC rates; single-pass uses the observed 111-token final verdict."
+    }
+  }
+}
