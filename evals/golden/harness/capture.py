@@ -139,14 +139,19 @@ def main() -> None:
     tool_records = observed_tool_records(run_directory)
     tool_text = json.dumps(tool_records, ensure_ascii=False)
     scripts = {
-        name: name in tool_text
-        for name in ("scripts/search_duplicates.py", "scripts/validate_labels.py", "scripts/render_comment.py")
+        "duplicate_search_wrapper": "scripts/wrappers/triage-search-duplicates" in tool_text,
+        "label_validation_wrapper": "scripts/wrappers/triage-label-" in tool_text,
+        "comment_render_wrapper": "scripts/wrappers/triage-comment-" in tool_text,
     }
     skill_inventory_path = run_directory / "skill_inventory.json"
     skill_inventory = read_json(skill_inventory_path) if skill_inventory_path.exists() else {"skills": []}
     run_summary_path = run_directory / "run_summary.json"
     run_summary = read_json(run_summary_path) if run_summary_path.exists() else {}
-    aic_spent = (((run_summary.get("friction") or {}).get("cost") or {}).get("aic"))
+    usage_paths = (run_directory / "agent_usage.json", run_directory / "detection" / "detection_usage.json")
+    usage_credits = [read_json(path).get("ai_credits") for path in usage_paths if path.exists()]
+    aic_spent = sum(value for value in usage_credits if isinstance(value, (int, float)))
+    if not usage_credits:
+        aic_spent = (((run_summary.get("friction") or {}).get("cost") or {}).get("aic"))
     agent_errors = jsonl_records(run_directory / "agent-errors.jsonl")
     timeout_match = re.search(r"Agent timeout set to (\d+) minutes", audit_text)
     timeout_minutes = int(timeout_match.group(1)) if timeout_match else None

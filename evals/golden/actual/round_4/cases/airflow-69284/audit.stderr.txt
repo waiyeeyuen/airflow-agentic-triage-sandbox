@@ -1,0 +1,48 @@
+✓ Downloaded artifacts for run 41057404169
+
+i MCP Gateway Metrics
+
+Total Requests: 2
+Total Tool Calls: 2
+Total Errors: 0
+Servers: 1
+Time Range: 1m5s
+
+Server Usage
+╭───────────┬────────┬──────────┬────────┬──────╮
+│Server     │Requests│Tool Calls│Avg Time│Errors│
+├───────────┼────────┼──────────┼────────┼──────┤
+│safeoutputs│2       │2         │0ms     │0     │
+╰───────────┴────────┴──────────┴────────┴──────╯
+
+i Unified MCP + Firewall + Agent Event Timeline
+
+Total Events  : 19
+  Gateway     : 3  (tool_calls=3, difc_filtered=0, guard_blocked=0)
+  Agent       : 16  (turns=1, tool_start=5, tool_done=5, messages=5, reasoning=0)
+
+Event Timeline
+╭────────────┬───┬───────────────────┬────────────────────────────────────────────────┬─────────╮
+│Time        │Src│Kind               │Detail                                          │Status   │
+├────────────┼───┼───────────────────┼────────────────────────────────────────────────┼─────────┤
+│12:46:38.748│GW │⚙ tool_call        │safeoutputs/tools/list                          │initiated│
+│12:47:23.101│AG │○ agent_turn       │turn 1                                          │         │
+│12:47:26.324│AG │● assistant_message│                                                │         │
+│12:47:26.326│AG │▶ tool_start       │skill                                           │         │
+│12:47:26.331│AG │■ tool_done        │                                                │success  │
+│12:47:34.488│AG │● assistant_message│                                                │         │
+│12:47:34.490│AG │▶ tool_start       │bash                                            │         │
+│12:47:34.647│AG │■ tool_done        │                                                │success  │
+│12:47:38.769│AG │● assistant_message│                                                │         │
+│12:47:38.770│AG │▶ tool_start       │bash                                            │         │
+│12:47:38.880│AG │■ tool_done        │                                                │success  │
+│12:47:43.180│AG │● assistant_message│                                                │         │
+│12:47:43.182│AG │▶ tool_start       │safeoutputs/safeoutputs-add_labels              │         │
+│12:47:43.183│AG │▶ tool_start       │safeoutputs/safeoutputs-add_comment             │         │
+│12:47:43.836│GW │⚙ tool_call        │safeoutputs/add_labels                          │initiated│
+│12:47:43.836│GW │⚙ tool_call        │safeoutputs/add_comment                         │initiated│
+│12:47:43.846│AG │■ tool_done        │                                                │success  │
+│12:47:43.848│AG │■ tool_done        │                                                │success  │
+│12:47:45.699│AG │● assistant_message│Triage complete: Added labels kind:bug and ar...│         │
+╰────────────┴───┴───────────────────┴────────────────────────────────────────────────┴─────────╯
+✓ Parsed log for run 41057404169 → C:\Users\yuenw\Documents\y3 sem 1\open source\assignment3\airflow-agentic-triage-sandbox\evals\golden\actual\round_4\cases\airflow-69284\audit\run-41057404169\log.md

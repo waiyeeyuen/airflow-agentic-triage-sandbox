@@ -1,0 +1,25 @@
+﻿2026-10-30T12:48:50.1971077Z ##[group]Run python3 scripts/validate_safe_outputs.py --input /tmp/gh-aw/threat-detection/agent_output.json
+2026-10-30T12:48:50.1971715Z [36;1mpython3 scripts/validate_safe_outputs.py --input /tmp/gh-aw/threat-detection/agent_output.json[0m
+2026-10-30T12:48:50.1984507Z shell: /usr/bin/bash -e {0}
+2026-10-30T12:48:50.1984758Z env:
+2026-10-30T12:48:50.1984981Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-30T12:48:50.1985245Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-30T12:48:50.1985986Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41057404169,github.run_id=41057404169,gh-aw.engine.id=copilot
+2026-10-30T12:48:50.1986885Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-30T12:48:50.1987161Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-30T12:48:50.1987456Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-30T12:48:50.1987696Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-30T12:48:50.1987985Z   GITHUB_AW_OTEL_TRACE_ID: fb914f5c9b03b0ce983d959f7d808cef
+2026-10-30T12:48:50.1988359Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 8a995071fd3da97f
+2026-10-30T12:48:50.1988658Z   GITHUB_AW_OTEL_JOB_START_MS: 1793364507396
+2026-10-30T12:48:50.1988917Z ##[endgroup]
+2026-10-30T12:48:50.2873329Z Traceback (most recent call last):
+2026-10-30T12:48:50.2874612Z   File "/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/validate_safe_outputs.py", line 95, in <module>
+2026-10-30T12:48:50.2876161Z     main()
+2026-10-30T12:48:50.2877637Z   File "/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/validate_safe_outputs.py", line 90, in main
+2026-10-30T12:48:50.2879281Z     result = check(json.loads(Path(args.input).read_text(encoding="utf-8")))
+2026-10-30T12:48:50.2880231Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-30T12:48:50.2881293Z   File "/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/validate_safe_outputs.py", line 77, in check
+2026-10-30T12:48:50.2882383Z     raise ValueError("comment is not an exact fixed template or contains a mention/link")
+2026-10-30T12:48:50.2883165Z ValueError: comment is not an exact fixed template or contains a mention/link
+2026-10-30T12:48:50.3024941Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,222 @@
+﻿2026-10-30T12:47:50.6175445Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-30T12:47:50.6176219Z with:
+2026-10-30T12:47:50.6177749Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_copilot_log.cjs'));
+await main();
+
+2026-10-30T12:47:50.6192523Z   github-token: ***
+2026-10-30T12:47:50.6192872Z   debug: false
+2026-10-30T12:47:50.6193161Z   user-agent: actions/github-script
+2026-10-30T12:47:50.6193467Z   result-encoding: json
+2026-10-30T12:47:50.6193765Z   retries: 0
+2026-10-30T12:47:50.6194089Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-30T12:47:50.6194505Z env:
+2026-10-30T12:47:50.6194790Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-30T12:47:50.6195172Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-30T12:47:50.6206739Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41057404169,github.run_id=41057404169,gh-aw.engine.id=copilot
+2026-10-30T12:47:50.6208096Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-30T12:47:50.6208479Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-30T12:47:50.6208896Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-30T12:47:50.6209235Z   DEFAULT_BRANCH: main
+2026-10-30T12:47:50.6209543Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-30T12:47:50.6209879Z   GH_AW_ASSETS_BRANCH: 
+2026-10-30T12:47:50.6210184Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-30T12:47:50.6210557Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-30T12:47:50.6210960Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-30T12:47:50.6211286Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-30T12:47:50.6211633Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-30T12:47:50.6211932Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-30T12:47:50.6212249Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-30T12:47:50.6212561Z   GH_AW_PR_HEAD_REPO: 
+2026-10-30T12:47:50.6212868Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-30T12:47:50.6213179Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-30T12:47:50.6213524Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-30T12:47:50.6213972Z   GITHUB_AW_OTEL_TRACE_ID: fb914f5c9b03b0ce983d959f7d808cef
+2026-10-30T12:47:50.6214464Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a1d3898d903b04c8
+2026-10-30T12:47:50.6214907Z   GITHUB_AW_OTEL_JOB_START_MS: 1793364349115
+2026-10-30T12:47:50.6215525Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: 8035d21716a9af4947b6622286f726e93140eb92e959d6911ce0a05c2129b103
+2026-10-30T12:47:50.6216819Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-30T12:47:50.6217414Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/sandbox/agent/logs/
+2026-10-30T12:47:50.6218010Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-30T12:47:50.6218532Z ##[endgroup]
+2026-10-30T12:47:50.8394104Z Using Copilot session log from: copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8451177Z [log-parser] Wrote Copilot result entry to agent-stdio.log: num_turns=5
+2026-10-30T12:47:50.8570642Z [log-parser] Persisted 41 canonical session events
+2026-10-30T12:47:50.8802196Z === Unified session ===
+2026-10-30T12:47:50.8803017Z Records: 40 (agent=40)
+2026-10-30T12:47:50.8803501Z 
+2026-10-30T12:47:50.8804104Z Agent source: agent/copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8805000Z Model: gpt-4.1
+2026-10-30T12:47:50.8805436Z Initialization:
+2026-10-30T12:47:50.8806051Z   Engine: copilot
+2026-10-30T12:47:50.8806514Z   Session ID: 804d0584-9cb5-4dee-af86-a928311ac6db
+2026-10-30T12:47:50.8808302Z   Working Directory: /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-30T12:47:50.8809060Z 
+2026-10-30T12:47:50.8809342Z Statistics:
+2026-10-30T12:47:50.8809763Z   Turns: 5
+2026-10-30T12:47:50.8810183Z   Duration: 23s
+2026-10-30T12:47:50.8810623Z   Tools: 5/5 succeeded
+2026-10-30T12:47:50.8811694Z   Tokens: 90,450 total (90,162 in / 288 out)
+2026-10-30T12:47:50.8812250Z   Cache Read Tokens: 53,248
+2026-10-30T12:47:50.8812728Z   Cache Creation Tokens: 0
+2026-10-30T12:47:50.8813084Z 
+2026-10-30T12:47:50.8813518Z Chronological trace (user prompts omitted; untimed observations follow):
+2026-10-30T12:47:50.8814077Z 
+2026-10-30T12:47:50.8815062Z [1] agent/agent session.start model=gpt-4.1 sessionId=804d0584-9cb5-4dee-af86-a928311ac6db cwd=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox [untimed]
+2026-10-30T12:47:50.8816861Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl sessionId=804d0584-9cb5-4dee-af86-a928311ac6db
+2026-10-30T12:47:50.8817681Z 
+2026-10-30T12:47:50.8818725Z [2] agent/agent session.init sourceEngine=copilot model=gpt-4.1 sessionId=804d0584-9cb5-4dee-af86-a928311ac6db cwd=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox [untimed]
+2026-10-30T12:47:50.8820431Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl sessionId=804d0584-9cb5-4dee-af86-a928311ac6db
+2026-10-30T12:47:50.8821265Z 
+2026-10-30T12:47:50.8821886Z [3] agent/agent session.info message=Integration ID overridden via environment variable: agentic-workflows [untimed]
+2026-10-30T12:47:50.8822927Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8823518Z 
+2026-10-30T12:47:50.8823918Z [5] agent/agent system.message [system instructions omitted] [untimed]
+2026-10-30T12:47:50.8824760Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8825328Z 
+2026-10-30T12:47:50.8826018Z [6] agent/agent assistant.turn_start turnId=0 interactionId=9373357a-6719-4830-bbc0-0b2aba8dc9f2 [untimed]
+2026-10-30T12:47:50.8827019Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8827593Z 
+2026-10-30T12:47:50.8828020Z [7] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-30T12:47:50.8828869Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8829434Z 
+2026-10-30T12:47:50.8829745Z [8] agent/agent assistant.message [untimed]
+2026-10-30T12:47:50.8830443Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8831015Z 
+2026-10-30T12:47:50.8831617Z [9] agent/agent tool.execution_start toolName=skill toolCallId=call_0xU4dnE4waJ1GXX27AY6QtVo [started] [untimed]
+2026-10-30T12:47:50.8832890Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8833631Z ? skill(skill: airflow-issue-triage) [pending]
+2026-10-30T12:47:50.8834077Z 
+2026-10-30T12:47:50.8834231Z 
+2026-10-30T12:47:50.8834851Z [10] agent/agent tool.execution_complete toolName=skill toolCallId=call_0xU4dnE4waJ1GXX27AY6QtVo [succeeded] [untimed]
+2026-10-30T12:47:50.8836007Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8837035Z ✓ skill(skill: airflow-issue-triage)
+2026-10-30T12:47:50.8837902Z    └ Skill "airflow-issue-triage" loaded successfully. Follow the instructions in the...
+2026-10-30T12:47:50.8838541Z 
+2026-10-30T12:47:50.8838695Z 
+2026-10-30T12:47:50.8840051Z [11] agent/agent skill.invoked name=airflow-issue-triage path=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.claude/skills/airflow-issue-triage/SKILL.md source=project trigger=agent-invoked model=gpt-4.1 invokedAtTurn=3 [untimed]
+2026-10-30T12:47:50.8841896Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8842475Z 
+2026-10-30T12:47:50.8843798Z [12] agent/agent skill.context_delivered_ref interactionId=9373357a-6719-4830-bbc0-0b2aba8dc9f2 source=skill-airflow-issue-triage contentId=sha256:52ad04c57b6873e11f0e5b625a7d470e44f0ab6aaa3e1c649bb1cf320f599d9b [skill instructions omitted] [untimed]
+2026-10-30T12:47:50.8845523Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8846496Z 
+2026-10-30T12:47:50.8846794Z [13] agent/agent assistant.turn_end turnId=0 [untimed]
+2026-10-30T12:47:50.8847462Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8848014Z 
+2026-10-30T12:47:50.8848502Z [14] agent/agent assistant.turn_start turnId=1 interactionId=9373357a-6719-4830-bbc0-0b2aba8dc9f2 [untimed]
+2026-10-30T12:47:50.8849407Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8849951Z 
+2026-10-30T12:47:50.8850360Z [15] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-30T12:47:50.8854859Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8856101Z 
+2026-10-30T12:47:50.8856499Z [16] agent/agent assistant.message [untimed]
+2026-10-30T12:47:50.8857196Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8857767Z 
+2026-10-30T12:47:50.8858398Z [17] agent/agent tool.execution_start toolName=bash toolCallId=call_3WepVwwxCivMSDtLvQQuVea1 [started] [untimed]
+2026-10-30T12:47:50.8859444Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8860526Z ? $ scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none [pending]
+2026-10-30T12:47:50.8861742Z    Arguments: command: scripts/wrappers/triage-search-duplicate..., description: Run duplicate search and initialize labe...
+2026-10-30T12:47:50.8862566Z 
+2026-10-30T12:47:50.8862714Z 
+2026-10-30T12:47:50.8863347Z [18] agent/agent tool.execution_complete toolName=bash toolCallId=call_3WepVwwxCivMSDtLvQQuVea1 [succeeded] [untimed]
+2026-10-30T12:47:50.8864397Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8865550Z ✓ $ scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none
+2026-10-30T12:47:50.8866846Z    Arguments: command: scripts/wrappers/triage-search-duplicate..., description: Run duplicate search and initialize labe...
+2026-10-30T12:47:50.8867945Z    └ <shellId: 0 completed with exit code 0>
+2026-10-30T12:47:50.8868383Z 
+2026-10-30T12:47:50.8868543Z 
+2026-10-30T12:47:50.8868879Z [19] agent/agent assistant.turn_end turnId=1 [untimed]
+2026-10-30T12:47:50.8869641Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8870217Z 
+2026-10-30T12:47:50.8870767Z [20] agent/agent assistant.turn_start turnId=2 interactionId=9373357a-6719-4830-bbc0-0b2aba8dc9f2 [untimed]
+2026-10-30T12:47:50.8872147Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8872736Z 
+2026-10-30T12:47:50.8873153Z [21] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-30T12:47:50.8874019Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8874597Z 
+2026-10-30T12:47:50.8874885Z [22] agent/agent assistant.message [untimed]
+2026-10-30T12:47:50.8875569Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8876310Z 
+2026-10-30T12:47:50.8876902Z [23] agent/agent tool.execution_start toolName=bash toolCallId=call_AKHx2vUf26YF7mlzlncNgPAM [started] [untimed]
+2026-10-30T12:47:50.8877861Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8879012Z ? $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-core && scripts/wrappers/triage-comment-none [pending]
+2026-10-30T12:47:50.8880408Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Validate 'kind:bug' and 'area:core' labe...
+2026-10-30T12:47:50.8881196Z 
+2026-10-30T12:47:50.8881351Z 
+2026-10-30T12:47:50.8882056Z [24] agent/agent tool.execution_complete toolName=bash toolCallId=call_AKHx2vUf26YF7mlzlncNgPAM [succeeded] [untimed]
+2026-10-30T12:47:50.8883066Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8884702Z ✓ $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-core && scripts/wrappers/triage-comment-none
+2026-10-30T12:47:50.8886177Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Validate 'kind:bug' and 'area:core' labe...
+2026-10-30T12:47:50.8887217Z    └ <shellId: 1 completed with exit code 0>
+2026-10-30T12:47:50.8887657Z 
+2026-10-30T12:47:50.8887811Z 
+2026-10-30T12:47:50.8888159Z [25] agent/agent assistant.turn_end turnId=2 [untimed]
+2026-10-30T12:47:50.8888894Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8889483Z 
+2026-10-30T12:47:50.8890006Z [26] agent/agent assistant.turn_start turnId=3 interactionId=9373357a-6719-4830-bbc0-0b2aba8dc9f2 [untimed]
+2026-10-30T12:47:50.8891022Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8891625Z 
+2026-10-30T12:47:50.8892059Z [27] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-30T12:47:50.8892935Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8893527Z 
+2026-10-30T12:47:50.8893830Z [28] agent/agent assistant.message [untimed]
+2026-10-30T12:47:50.8894562Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8895136Z 
+2026-10-30T12:47:50.8896069Z [29] agent/agent tool.execution_start toolName=safeoutputs-add_labels mcpServerName=safeoutputs toolCallId=call_jeMARh0kHNYHX6hZZEb1faXh [started] [untimed]
+2026-10-30T12:47:50.8899036Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8900040Z ? safeoutputs-safeoutputs-add_labels(labels: [{"name":"kind:bug","rationale":"The rep...) [pending]
+2026-10-30T12:47:50.8900730Z 
+2026-10-30T12:47:50.8900876Z 
+2026-10-30T12:47:50.8901730Z [30] agent/agent tool.execution_start toolName=safeoutputs-add_comment mcpServerName=safeoutputs toolCallId=call_tjqA66qdfqTxP46fJco3uuz9 [started] [untimed]
+2026-10-30T12:47:50.8903022Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8904001Z ? safeoutputs-safeoutputs-add_comment(body: No further action is required at this ti...) [pending]
+2026-10-30T12:47:50.8906594Z 
+2026-10-30T12:47:50.8906771Z 
+2026-10-30T12:47:50.8907697Z [31] agent/agent tool.execution_complete toolName=safeoutputs-add_comment mcpServerName=safeoutputs toolCallId=call_tjqA66qdfqTxP46fJco3uuz9 [succeeded] [untimed]
+2026-10-30T12:47:50.8909589Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8910800Z ✓ safeoutputs-safeoutputs-add_comment(body: No further action is required at this ti...)
+2026-10-30T12:47:50.8911886Z    └ {"result":"success","temporary_id":"aw_1TaAs1ON","comment":"#aw_1TaAs1ON"}
+2026-10-30T12:47:50.8912442Z 
+2026-10-30T12:47:50.8912609Z 
+2026-10-30T12:47:50.8913477Z [32] agent/agent tool.execution_complete toolName=safeoutputs-add_labels mcpServerName=safeoutputs toolCallId=call_jeMARh0kHNYHX6hZZEb1faXh [succeeded] [untimed]
+2026-10-30T12:47:50.8914922Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8916103Z ✓ safeoutputs-safeoutputs-add_labels(labels: [{"name":"kind:bug","rationale":"The rep...)
+2026-10-30T12:47:50.8916932Z    └ {"result":"success"}
+2026-10-30T12:47:50.8917283Z 
+2026-10-30T12:47:50.8917439Z 
+2026-10-30T12:47:50.8917782Z [33] agent/agent assistant.turn_end turnId=3 [untimed]
+2026-10-30T12:47:50.8918562Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8919144Z 
+2026-10-30T12:47:50.8919713Z [34] agent/agent assistant.turn_start turnId=4 interactionId=9373357a-6719-4830-bbc0-0b2aba8dc9f2 [untimed]
+2026-10-30T12:47:50.8920714Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8921288Z 
+2026-10-30T12:47:50.8921723Z [35] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-30T12:47:50.8922825Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8923416Z 
+2026-10-30T12:47:50.8923734Z [36] agent/agent assistant.message [untimed]
+2026-10-30T12:47:50.8924455Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8925914Z ◆ Triage complete: Added labels kind:bug and area:core, and posted a no-action-needed comment per the triage policy. No further action is required at this time.
+2026-10-30T12:47:50.8926784Z 
+2026-10-30T12:47:50.8926932Z 
+2026-10-30T12:47:50.8927251Z [37] agent/agent assistant.turn_end turnId=4 [untimed]
+2026-10-30T12:47:50.8928018Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8928616Z 
+2026-10-30T12:47:50.8929371Z [38] agent/agent session.shutdown shutdownType=routine currentModel=gpt-4.1 premiumRequests=0 totalApiDurationMs=21432 totalNanoAiu=0 [untimed]
+2026-10-30T12:47:50.8930536Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl
+2026-10-30T12:47:50.8931129Z 
+2026-10-30T12:47:50.8931452Z [39] agent/agent session.result durationMs=22910 [untimed]
+2026-10-30T12:47:50.8932462Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl sessionId=804d0584-9cb5-4dee-af86-a928311ac6db
+2026-10-30T12:47:50.8933278Z 
+2026-10-30T12:47:50.8933600Z [40] agent/agent session.result numTurns=5 [untimed]
+2026-10-30T12:47:50.8934602Z   path=copilot-session-state/804d0584-9cb5-4dee-af86-a928311ac6db/events.jsonl sessionId=804d0584-9cb5-4dee-af86-a928311ac6db
+2026-10-30T12:47:50.8935437Z 
+2026-10-30T12:47:50.8935847Z Safe Outputs Preview:
+2026-10-30T12:47:50.8936315Z   Total: 2 entries
+2026-10-30T12:47:50.8936639Z 
+2026-10-30T12:47:50.8936911Z   [1] add_comment
+2026-10-30T12:47:50.8937563Z       Body: No further action is required at this time. Thank you for your report!  <!-- air...
+2026-10-30T12:47:50.8938176Z 
+2026-10-30T12:47:50.8938441Z   [2] add_labels
