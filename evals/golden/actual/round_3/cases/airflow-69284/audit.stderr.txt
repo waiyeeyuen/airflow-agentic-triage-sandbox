@@ -1,0 +1,42 @@
+✓ Downloaded artifacts for run 41021983690
+
+i MCP Gateway Metrics
+
+Total Requests: 1
+Total Tool Calls: 1
+Total Errors: 0
+Servers: 1
+Time Range: 38s
+
+Server Usage
+╭───────────┬────────┬──────────┬────────┬──────╮
+│Server     │Requests│Tool Calls│Avg Time│Errors│
+├───────────┼────────┼──────────┼────────┼──────┤
+│safeoutputs│1       │1         │0ms     │0     │
+╰───────────┴────────┴──────────┴────────┴──────╯
+
+i Unified MCP + Firewall + Agent Event Timeline
+
+Total Events  : 13
+  Gateway     : 2  (tool_calls=2, difc_filtered=0, guard_blocked=0)
+  Agent       : 11  (turns=1, tool_start=3, tool_done=3, messages=4, reasoning=0)
+
+Event Timeline
+╭────────────┬───┬───────────────────┬────────────────────────────────────────────────┬─────────╮
+│Time        │Src│Kind               │Detail                                          │Status   │
+├────────────┼───┼───────────────────┼────────────────────────────────────────────────┼─────────┤
+│07:48:19.219│GW │⚙ tool_call        │safeoutputs/tools/list                          │initiated│
+│07:48:50.642│AG │○ agent_turn       │turn 1                                          │         │
+│07:48:53.023│AG │● assistant_message│                                                │         │
+│07:48:53.024│AG │▶ tool_start       │skill                                           │         │
+│07:48:53.027│AG │■ tool_done        │                                                │success  │
+│07:48:55.223│AG │● assistant_message│                                                │         │
+│07:48:55.225│AG │▶ tool_start       │bash                                            │         │
+│07:48:55.267│AG │■ tool_done        │                                                │error    │
+│07:48:57.189│AG │● assistant_message│                                                │         │
+│07:48:57.191│AG │▶ tool_start       │safeoutputs/safeoutputs-noop                    │         │
+│07:48:57.512│GW │⚙ tool_call        │safeoutputs/noop                                │initiated│
+│07:48:57.520│AG │■ tool_done        │                                                │success  │
+│07:48:58.384│AG │● assistant_message│Triage could not be completed because the req...│         │
+╰────────────┴───┴───────────────────┴────────────────────────────────────────────────┴─────────╯
+✓ Parsed log for run 41021983690 → C:\Users\yuenw\Documents\y3 sem 1\open source\assignment3\airflow-agentic-triage-sandbox\evals\golden\actual\round_3\cases\airflow-69284\audit\run-41021983690\log.md

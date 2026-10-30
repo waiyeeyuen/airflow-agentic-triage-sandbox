@@ -1,0 +1,44 @@
+﻿2026-10-30T07:48:15.0857210Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-30T07:48:15.0857662Z with:
+2026-10-30T07:48:15.0858871Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'create_files.cjs'));
+await main();
+
+2026-10-30T07:48:15.0862650Z   github-token: ***
+2026-10-30T07:48:15.0862895Z   debug: false
+2026-10-30T07:48:15.0863142Z   user-agent: actions/github-script
+2026-10-30T07:48:15.0863435Z   result-encoding: json
+2026-10-30T07:48:15.0863673Z   retries: 0
+2026-10-30T07:48:15.0863933Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-30T07:48:15.0864249Z env:
+2026-10-30T07:48:15.0864843Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-30T07:48:15.0865159Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-30T07:48:15.0866133Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41021983690,github.run_id=41021983690,gh-aw.engine.id=copilot
+2026-10-30T07:48:15.0867136Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-30T07:48:15.0867435Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-30T07:48:15.0867765Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-30T07:48:15.0868032Z   DEFAULT_BRANCH: main
+2026-10-30T07:48:15.0868280Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-30T07:48:15.0868544Z   GH_AW_ASSETS_BRANCH: 
+2026-10-30T07:48:15.0868785Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-30T07:48:15.0869087Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-30T07:48:15.0869426Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-30T07:48:15.0869686Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-30T07:48:15.0869954Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-30T07:48:15.0870206Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-30T07:48:15.0870468Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-30T07:48:15.0870712Z   GH_AW_PR_HEAD_REPO: 
+2026-10-30T07:48:15.0870952Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-30T07:48:15.0871201Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-30T07:48:15.0871463Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-30T07:48:15.0871827Z   GITHUB_AW_OTEL_TRACE_ID: 819dede03b1257483417a2f230017c04
+2026-10-30T07:48:15.0872209Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 1003d738613f2445
+2026-10-30T07:48:15.0872540Z   GITHUB_AW_OTEL_JOB_START_MS: 1793346469521
+2026-10-30T07:48:15.0872877Z   GH_AW_FILE_ROOT: /home/runner/work/_temp/gh-aw
+2026-10-30T07:48:15.0873416Z   GH_AW_FILE_CONFIG: {"files":[{"path":"safeoutputs/config.json","content_env":"GH_AW_SAFE_OUTPUTS_CONFIG"}]}
+2026-10-30T07:48:15.0876201Z   GH_AW_SAFE_OUTPUTS_CONFIG: {"add_comment":{"discussions":false,"max":1,"max_links":1,"target":"triggering"},"add_labels":{"allowed":["security","kind:bug","kind:feature","kind:task","kind:documentation","kind:meta","area:core","area:providers","area:API","area:UI","area:kubernetes","area:scheduler","area:dev-env","area:airflow-ctl","provider:amazon","provider:fab","provider:google","provider:openlineage","provider:standard"],"max":1,"max_labels":3,"target":"triggering"},"create_report_incomplete_issue":{},"mentions":{"enabled":false},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-30T07:48:15.0878734Z ##[endgroup]
+2026-10-30T07:48:15.2045234Z Created 1 generated file(s) under /home/runner/work/_temp/gh-aw

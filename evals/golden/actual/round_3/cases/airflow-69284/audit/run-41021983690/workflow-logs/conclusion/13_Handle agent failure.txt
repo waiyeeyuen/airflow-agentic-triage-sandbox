@@ -1,0 +1,124 @@
+﻿2026-10-30T07:50:28.7157917Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-30T07:50:28.7158505Z with:
+2026-10-30T07:50:28.7161818Z   github-token: ***
+2026-10-30T07:50:28.7163232Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'handle_agent_failure.cjs'));
+await main();
+
+2026-10-30T07:50:28.7164635Z   debug: false
+2026-10-30T07:50:28.7164942Z   user-agent: actions/github-script
+2026-10-30T07:50:28.7165306Z   result-encoding: json
+2026-10-30T07:50:28.7165609Z   retries: 0
+2026-10-30T07:50:28.7165939Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-30T07:50:28.7166311Z env:
+2026-10-30T07:50:28.7166596Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-30T07:50:28.7166954Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-30T07:50:28.7167949Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41021983690,github.run_id=41021983690,gh-aw.engine.id=copilot
+2026-10-30T07:50:28.7168977Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-30T07:50:28.7169357Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-30T07:50:28.7170412Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-30T07:50:28.7171738Z   GH_AW_JOB_DISPLAY_NAMES: {"activation":"activation","agent":"agent","conclusion":"conclusion","detection":"detection","pre_activation":"pre_activation","safe_outputs":"safe_outputs"}
+2026-10-30T07:50:28.7172892Z   GH_AW_JOB_RESULTS: {"activation":{"result":"success"},"agent":{"result":"success"},"detection":{"result":"failure"},"safe_outputs":{"result":"skipped"}}
+2026-10-30T07:50:28.7173886Z   GH_AW_JOB_TIMING_ELIGIBLE: {"activation":true,"agent":true,"conclusion":true,"detection":true,"pre_activation":true,"safe_outputs":true}
+2026-10-30T07:50:28.7174564Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-30T07:50:28.7174956Z   GITHUB_AW_OTEL_TRACE_ID: 819dede03b1257483417a2f230017c04
+2026-10-30T07:50:28.7175411Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: e5dc5104bdc942a8
+2026-10-30T07:50:28.7175814Z   GITHUB_AW_OTEL_JOB_START_MS: 1793346624854
+2026-10-30T07:50:28.7176227Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-30T07:50:28.7176664Z   GH_AW_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-30T07:50:28.7177417Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/blob/main/.github/workflows/issue-triage.md
+2026-10-30T07:50:28.7178332Z   GH_AW_RUN_URL: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41021983690
+2026-10-30T07:50:28.7178937Z   GH_AW_AGENT_CONCLUSION: success
+2026-10-30T07:50:28.7179293Z   GH_AW_WORKFLOW_ID: issue-triage
+2026-10-30T07:50:28.7179663Z   GH_AW_ACTION_FAILURE_ISSUE_EXPIRES_HOURS: 0
+2026-10-30T07:50:28.7180039Z   GH_AW_ENGINE_ID: copilot
+2026-10-30T07:50:28.7180379Z   GH_AW_SECRET_VERIFICATION_RESULT: success
+2026-10-30T07:50:28.7182339Z   GH_AW_ENGINE_SECRET_FAILURE_MESSAGE: **Alternative**: If your organization has a Copilot subscription, you can avoid the need for a personal access token by adding a top-level `permissions` block to your workflow file. This enables Copilot inference through the org using the built-in GitHub Actions token.
+
+```yaml
+permissions:
+  copilot-requests: write
+```
+
+See: https://github.github.com/gh-aw/reference/engines/#github-copilot-default
+2026-10-30T07:50:28.7184103Z   GH_AW_CHECKOUT_PR_SUCCESS: true
+2026-10-30T07:50:28.7184469Z   GH_AW_CHECKOUT_PR_INVALIDATED: false
+2026-10-30T07:50:28.7184839Z   GH_AW_AI_CREDITS_RATE_LIMIT_ERROR: false
+2026-10-30T07:50:28.7185300Z   GH_AW_UNKNOWN_MODEL_AI_CREDITS: false
+2026-10-30T07:50:28.7185646Z   GH_AW_AIC: 6.4246
+2026-10-30T07:50:28.7185944Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-10-30T07:50:28.7186293Z   GH_AW_DETECTION_JOB_RESULT: failure
+2026-10-30T07:50:28.7186643Z   GH_AW_MAX_AI_CREDITS: 25
+2026-10-30T07:50:28.7186991Z   GH_AW_DEFAULT_CHECKOUT_USES_TRIGGER_REF: true
+2026-10-30T07:50:28.7187564Z   GH_AW_INFERENCE_ACCESS_ERROR: false
+2026-10-30T07:50:28.7187923Z   GH_AW_MCP_POLICY_ERROR: false
+2026-10-30T07:50:28.7188257Z   GH_AW_AGENTIC_ENGINE_TIMEOUT: false
+2026-10-30T07:50:28.7188618Z   GH_AW_MODEL_NOT_SUPPORTED_ERROR: false
+2026-10-30T07:50:28.7189006Z   GH_AW_MODEL_ENDPOINT_MISMATCH_ERROR: false
+2026-10-30T07:50:28.7189406Z   GH_AW_HTTP_400_RESPONSE_ERROR: false
+2026-10-30T07:50:28.7189765Z   GH_AW_MAX_CACHE_MISSES_EXCEEDED: false
+2026-10-30T07:50:28.7190136Z   GH_AW_MISSING_MODEL_PRICING_ERROR: false
+2026-10-30T07:50:28.7190679Z   GH_AW_MISSING_MODEL_PRICING_MODEL_NAME: 
+2026-10-30T07:50:28.7191078Z   GH_AW_SHELL_EXPANSION_GUARD_REJECTED: false
+2026-10-30T07:50:28.7191938Z   GH_AW_ENGINE_API_HOSTS: api.enterprise.githubcopilot.com,api.githubcopilot.com,api.business.githubcopilot.com,api.individual.githubcopilot.com
+2026-10-30T07:50:28.7192783Z   GH_AW_LOCKDOWN_CHECK_FAILED: false
+2026-10-30T07:50:28.7193146Z   GH_AW_OAUTH_TOKEN_CHECK_FAILED: false
+2026-10-30T07:50:28.7193513Z   GH_AW_STALE_LOCK_FILE_FAILED: false
+2026-10-30T07:50:28.7193872Z   GH_AW_DAILY_AI_CREDITS_EXCEEDED: false
+2026-10-30T07:50:28.7194268Z   GH_AW_DAILY_AI_CREDITS_GUARDRAIL_STATUS: under_budget
+2026-10-30T07:50:28.7194691Z   GH_AW_DAILY_AI_CREDITS_GUARDRAIL_ERROR: 
+2026-10-30T07:50:28.7195072Z   GH_AW_DAILY_AI_CREDITS_TOTAL: 70.30300000000001
+2026-10-30T07:50:28.7195582Z   GH_AW_DAILY_AI_CREDITS_ESTIMATED: 0
+2026-10-30T07:50:28.7195944Z   GH_AW_DAILY_AI_CREDITS_THRESHOLD: 5000
+2026-10-30T07:50:28.7196335Z   GH_AW_DAILY_AI_CREDITS_CONTINUE_ON_ERROR: false
+2026-10-30T07:50:28.7196718Z   GH_AW_GROUP_REPORTS: false
+2026-10-30T07:50:28.7197062Z   GH_AW_FAILURE_REPORT_AS_ISSUE: true
+2026-10-30T07:50:28.7197430Z   GH_AW_MISSING_TOOL_REPORT_AS_FAILURE: true
+2026-10-30T07:50:28.7197821Z   GH_AW_MISSING_DATA_REPORT_AS_FAILURE: true
+2026-10-30T07:50:28.7198185Z   GH_AW_TIMEOUT_MINUTES: 10
+2026-10-30T07:50:28.7198506Z ##[endgroup]
+2026-10-30T07:50:28.9471807Z [ai-credits] aiCredits source=token_usage value=6.4246
+2026-10-30T07:50:28.9477535Z [ai-credits] maxAICredits source=awf_config value=25
+2026-10-30T07:50:28.9481165Z [ai-credits] rateLimitSignal source=none
+2026-10-30T07:50:28.9498453Z Agent conclusion: success
+2026-10-30T07:50:28.9501836Z Workflow name: Bounded Airflow issue triage
+2026-10-30T07:50:28.9504567Z Workflow ID: issue-triage
+2026-10-30T07:50:28.9507154Z Secret verification result: success
+2026-10-30T07:50:28.9509678Z Engine secret failure message: (set)
+2026-10-30T07:50:28.9512871Z Assignment error count: 0
+2026-10-30T07:50:28.9517263Z Assign copilot failure count: 0
+2026-10-30T07:50:28.9520010Z Skill install failure count: 0
+2026-10-30T07:50:28.9522948Z Create discussion error count: 0
+2026-10-30T07:50:28.9525902Z Code push failure count: 0
+2026-10-30T07:50:28.9528623Z Checkout PR success: true
+2026-10-30T07:50:28.9531666Z AI credits: 6.4246
+2026-10-30T07:50:28.9534334Z Configured max AI credits: 25
+2026-10-30T07:50:28.9536986Z AI credits rate-limit error: false
+2026-10-30T07:50:28.9539779Z Max AI credits exceeded (harness budget abort): false
+2026-10-30T07:50:28.9542998Z Daily workflow AIC guardrail exceeded: false
+2026-10-30T07:50:28.9545844Z Daily workflow AIC guardrail status: under_budget; error detail: (none)
+2026-10-30T07:50:28.9564887Z Daily workflow AIC guardrail continue-on-error (warning mode): false
+2026-10-30T07:50:28.9570312Z Inference access error: false
+2026-10-30T07:50:28.9574446Z MCP policy error: false
+2026-10-30T07:50:28.9575458Z Agentic engine timeout: false
+2026-10-30T07:50:28.9576684Z Model not supported error: false
+2026-10-30T07:50:28.9577585Z HTTP 400 response error: false
+2026-10-30T07:50:28.9578701Z Unknown model AI credits error: false
+2026-10-30T07:50:28.9579726Z Unknown model AI credits sources (audit/output): false/false
+2026-10-30T07:50:28.9581274Z Missing model pricing error: false (model: (unknown))
+2026-10-30T07:50:28.9582413Z Shell expansion guard rejected: false
+2026-10-30T07:50:28.9583483Z Push repo-memory result: 
+2026-10-30T07:50:28.9585045Z App token minting failed (safe_outputs/conclusion/activation): false/false/false
+2026-10-30T07:50:28.9586100Z Lockdown check failed: false
+2026-10-30T07:50:28.9601963Z OAuth token check failed: false
+2026-10-30T07:50:28.9602404Z Stale lock file check failed: false
+2026-10-30T07:50:28.9602799Z Cache memory enabled: false
+2026-10-30T07:50:28.9603194Z Cache memory restored (from restore outputs): false
+2026-10-30T07:50:28.9603666Z Missing tool report-as-failure: true
+2026-10-30T07:50:28.9604053Z Missing data report-as-failure: true
+2026-10-30T07:50:28.9604437Z Agent output content length: 210
+2026-10-30T07:50:28.9604889Z Agent succeeded with only noop outputs - this is not a failure
+2026-10-30T07:50:28.9618803Z Agent job did not fail and no assignment/discussion/code-push/push-repo-memory/app-token/lockdown/oauth-token-check/stale-lock-file/daily-workflow-aic/daily-workflow-aic-accounting/ai-credits/max-ai-credits-exceeded/report-incomplete/cache-miss/missing-tool/missing-data/tool-denials-exceeded/secret-verification errors and has safe outputs (conclusion: success), skipping failure handling

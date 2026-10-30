@@ -1,0 +1,32 @@
+﻿2026-10-30T07:46:03.8041500Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-30T07:46:03.8042010Z with:
+2026-10-30T07:46:03.8044597Z   github-token: ***
+2026-10-30T07:46:03.8045798Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_membership.cjs'));
+await main();
+
+2026-10-30T07:46:03.8047437Z   debug: false
+2026-10-30T07:46:03.8047736Z   user-agent: actions/github-script
+2026-10-30T07:46:03.8048064Z   result-encoding: json
+2026-10-30T07:46:03.8048358Z   retries: 0
+2026-10-30T07:46:03.8048654Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-30T07:46:03.8049001Z env:
+2026-10-30T07:46:03.8049266Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-30T07:46:03.8049690Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-30T07:46:03.8051873Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41021983690,github.run_id=41021983690,gh-aw.engine.id=copilot
+2026-10-30T07:46:03.8052905Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-30T07:46:03.8053251Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-30T07:46:03.8053608Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-30T07:46:03.8053921Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-30T07:46:03.8054268Z   GITHUB_AW_OTEL_TRACE_ID: 819dede03b1257483417a2f230017c04
+2026-10-30T07:46:03.8054681Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: d2c1f1fd2f1df1ad
+2026-10-30T07:46:03.8055055Z   GITHUB_AW_OTEL_JOB_START_MS: 1793346363764
+2026-10-30T07:46:03.8055422Z   GH_AW_REQUIRED_ROLES: admin,maintainer,write
+2026-10-30T07:46:03.8055758Z ##[endgroup]
+2026-10-30T07:46:03.9327115Z Checking if user 'waiyeeyuen' has required permissions for waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-30T07:46:03.9332472Z Required permissions: admin, maintainer, write
+2026-10-30T07:46:04.2708530Z Repository permission level: admin
+2026-10-30T07:46:04.2773189Z ✅ User has admin access to repository

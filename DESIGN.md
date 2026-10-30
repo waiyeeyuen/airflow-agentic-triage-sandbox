@@ -95,8 +95,10 @@ not. A second replay resolved `gpt-4.1` but failed: the skill required model-cre
 with the shell guard. The guard correctly denied `echo` redirection and a heredoc; the 10-minute
 timeout contained the failure. No labels/comment were emitted; score 0/1
 ([forensics](evals/golden/actual/round_2/forensic_analysis.json)). The fixed-path repair is dry-
-tested but not live-tested. Decision accuracy, bot mutation identity, cancellation, burst behaviour
-and control-without-skill remain unresolved.
+tested locally. A third replay loaded the skill but Copilot denied its exact multiword shell command;
+the agent stopped as required. Detection then failed because its job had no checkout containing the
+validator, so safe outputs were skipped. Decision accuracy, bot mutation identity, cancellation,
+burst behaviour and control-without-skill remain unresolved.
 Historical replay changes the author.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
@@ -141,7 +143,7 @@ compiler-generated residual boundary rather than treating compilation as behavio
 ## AI-use statement
 
 AI agents produced the configuration, scripts, evaluation scaffolding and this draft under
-Jasmine's direction. Deterministic tests and compiler checks are recorded; both approved model
-attempts failed before producing outputs and the fixed-path repair is not live-tested. Jasmine must complete:
+Jasmine's direction. Deterministic tests and compiler checks are recorded; all three approved model
+attempts failed before producing outputs. Jasmine must complete:
 **[state what you wrote]**, **[state what you reviewed]**, and
 **[state what evidence and claims you personally verified]** before signing and submitting.
