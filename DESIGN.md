@@ -78,10 +78,11 @@ commit; 18/18 fresh source hashes and all temporal boundaries passed
 The first approved replay, `airflow-69284`, failed before task execution: `auto` resolved the main
 agent to unsupported `claude-sonnet-5.5` and detection to unsupported `claude-haiku-5.5`. It used
 **0 AIC ($0)**, made no task tool or script calls, emitted no requested labels/comments, and scored
-0/1 ([Tester report](notes/test_report_1.md)). This round pins both roles to the concrete
-`gpt-5-mini` present in that run's captured GitHub Copilot catalog; compilation passes, but no live
-rerun has tested the fix. Decision accuracy, mutation identity, skill marker, cancellation, limits,
-burst behaviour and control-without-skill remain unresolved. Historical replay changes the author.
+0/1 ([Tester report](notes/test_report_1.md)). Both roles now pin exact `gpt-4.1`, which appears in
+the configured Copilot endpoint's `models` array in the saved `awf-reflect.json`; `gpt-5-mini` does
+not. Compilation passes, but no live rerun has tested the fix. Decision accuracy, mutation identity,
+skill marker, cancellation, limits, burst behaviour and control-without-skill remain unresolved.
+Historical replay changes the author.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
 generates `pull-requests: write` in the isolated safe-output job. No PR mutation tool or PR target
@@ -90,9 +91,9 @@ compiler-generated residual boundary rather than treating compilation as behavio
 
 ## Agent bill of materials
 
-- **Engine/model:** GitHub Copilot with `gpt-5-mini` pinned separately for the main agent and threat
-  detection. The ID was present in the captured active Copilot catalog; provider implementation
-  behind the same ID can still drift.
+- **Engine/model:** GitHub Copilot with exact `gpt-4.1` pinned for both the main agent and threat
+  detection. The saved reflect evidence lists it for the configured Copilot endpoint. Every
+  golden-set run must use this same pin; provider implementation behind the ID can still drift.
 - **Instructions:** [workflow](.github/workflows/issue-triage.md), [AGENTS.md](AGENTS.md), and
   [skill](.claude/skills/airflow-issue-triage/SKILL.md), all versioned at the submission SHA.
 - **Tools/MCP:** GitHub issue-read toolset and three allowlisted Python scripts; no custom MCP.
@@ -107,10 +108,10 @@ compiler-generated residual boundary rather than treating compilation as behavio
 1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
    ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). The frozen adversarial
    expectation is no action; execution is pending Part B, so this is not yet a passed test.
-2. **Model update:** both roles pin `gpt-5-mini`, but behaviour behind that ID can change. Re-run the
-   golden set on every model, workflow, AGENTS or skill change and weekly; Jasmine reviews per-case
-   diffs, not only an average. CI integrity is implemented; scheduled credit-spending runs remain
-   proposed.
+2. **Model update:** both roles and every golden-set run pin exact `gpt-4.1`, but behaviour behind
+   that ID can change. Re-run the complete set with that same pin on every workflow, AGENTS or skill
+   change and weekly; Jasmine reviews per-case diffs, not only an average. CI integrity is
+   implemented; scheduled credit-spending runs remain proposed.
 3. **300 issues/week:** per-issue concurrency keys prevent one issue cancelling another. At the
    100-AIC maximum, 300 runs could consume 30,000 AIC; the 5,000/day admission cap bounds worst-case
    daily spend to 50 full-cap runs. Excess issues receive no agent output and remain for humans;

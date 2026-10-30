@@ -16,7 +16,7 @@ permissions:
   copilot-requests: none
 engine:
   id: copilot
-  model: gpt-5-mini
+  model: gpt-4.1
 network: defaults
 tools:
   github:
@@ -37,7 +37,7 @@ safe-outputs:
   threat-detection:
     engine:
       id: copilot
-      model: gpt-5-mini
+      model: gpt-4.1
   mentions: false
   allowed-domains: []
   allowed-github-references: []
