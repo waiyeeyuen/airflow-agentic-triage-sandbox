@@ -36,14 +36,14 @@ class PlanTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "outside the repository"):
             validate_approval(HARNESS / "approval.example.json", "airflow-69284")
 
-    def test_round_two_approval_requires_exact_builder_commit(self):
+    def test_round_three_approval_requires_exact_builder_commit(self):
         approval = {
             "approved_by": "Jasmine",
             "approved_at_utc": "2026-10-30T00:00:00Z",
             "scope": ["airflow-69284"],
             "builder_commit": BUILDER_COMMIT,
             "expected_commit": EXPECTED_COMMIT,
-            "maximum_ai_credits_approved": 100,
+            "maximum_ai_credits_approved": 25,
         }
         with tempfile.TemporaryDirectory(dir=ROOT.parent) as directory:
             path = Path(directory) / "approval.json"
@@ -54,7 +54,7 @@ class PlanTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "tested Builder/oracle commits"):
                 validate_approval(path, "airflow-69284")
 
-    def test_round_two_cannot_reuse_round_one_directory(self):
+    def test_round_three_cannot_reuse_round_one_directory(self):
         with self.assertRaisesRegex(ValueError, "Round 1 evidence"):
             validate_round_directory(GOLDEN / "actual" / "round_1")
 

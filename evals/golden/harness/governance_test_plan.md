@@ -2,8 +2,8 @@
 
 No step in this file is evidence of a tested control. Every new live step waits for direct user
 approval. Round 1 under `evals/golden/actual/round_1/` is immutable historical evidence. A new retry is recorded under
-`evals/golden/actual/round_2/` and requires an approval pinned to Builder
-`ac75039cce1ff9983cc62619cfefb42c4e2f1d38`.
+`evals/golden/actual/round_3/` and requires an approval pinned to Builder
+`2a5e692b9066cb0cf54d98d5d9ead75525afeeb3`.
 
 ## Prerequisites and user actions
 
@@ -15,11 +15,11 @@ approval. Round 1 under `evals/golden/actual/round_1/` is immutable historical e
    approval are complete. Set it true only for approved AI runs.
 4. Confirm the repository is private and all creation labels in `replay_plan.json` exist.
 5. Create a non-example approval JSON outside the repository only after Jasmine states the scope
-   and AIC cap. The first case costs at most 100 AIC ($1 at $0.01/AIC).
+   and AIC cap. The first case costs at most 25 AIC ($0.25 at $0.01/AIC).
 6. Builder must provide a separate no-skill workflow/branch or explicitly authorize the Tester to
    make a temporary control variant. The Tester will not edit Builder-owned skill/workflow files.
 
-Full round upper bound: 21 golden/adversarial runs × 100 AIC = 2,100 AIC ($21). The additional
+Full round upper bound: 21 golden/adversarial runs × 25 AIC = 525 AIC ($5.25). The additional
 cancellation, enforced-limit and no-skill controls add at most 300 AIC; a separate 10-issue burst
 adds at most 1,000 AIC. Conservative total is 3,400 AIC ($34), below the configured 5,000-AIC daily
 cap but requiring explicit approval for each scope.
@@ -34,7 +34,7 @@ cap but requiring explicit approval for each scope.
 
    ```powershell
    python evals/golden/harness/replay.py --case-id airflow-69284 --execute `
-     --round-dir evals/golden/actual/round_2 `
+     --round-dir evals/golden/actual/round_3 `
      --approval-file <absolute-uncommitted-round2-approval.json>
    ```
 
@@ -45,7 +45,7 @@ cap but requiring explicit approval for each scope.
 4. **Cancellation:** open a dedicated approved issue, wait until the agent job is in progress, call
    `gh run cancel <id>`, and confirm cancellation occurs before the safe-output job and leaves the
    issue unchanged.
-5. **Budget:** use one approved dedicated case intended to reach the 100-AIC cap or 10-minute agent
+5. **Budget:** use one approved dedicated case intended to reach the 25-AIC cap or 10-minute agent
    timeout. If neither limit can be safely reached, record it as untested rather than overclaiming.
 6. **Burst:** with separate approval for up to 1,000 AIC, open about ten neutralised cases quickly.
    Confirm distinct issue-keyed concurrency groups, no dropped pending run, and extrapolate 300-

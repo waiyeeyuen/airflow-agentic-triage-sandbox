@@ -13,9 +13,9 @@ GOLDEN = ROOT / "evals" / "golden"
 HARNESS = GOLDEN / "harness"
 DEFAULT_GH = ROOT.parent / ".tools" / "gh" / "bin" / "gh.exe"
 REPO = "waiyeeyuen/airflow-agentic-triage-sandbox"
-BUILDER_COMMIT = "ac75039cce1ff9983cc62619cfefb42c4e2f1d38"
+BUILDER_COMMIT = "2a5e692b9066cb0cf54d98d5d9ead75525afeeb3"
 EXPECTED_COMMIT = "dd295091c8a89bd7ccb06662d996f6a5ba960e5c"
-DEFAULT_ROUND_DIR = Path("evals/golden/actual/round_2")
+DEFAULT_ROUND_DIR = Path("evals/golden/actual/round_3")
 ROUND_ONE_DIR = ROOT / "evals" / "golden" / "actual" / "round_1"
 
 

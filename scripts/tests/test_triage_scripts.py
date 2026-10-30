@@ -131,6 +131,21 @@ class CliTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 check({"items": [{"type": "add_comment", "arguments": {"body": body}}]})
 
+    def test_negative_safe_output_gate_applies_nothing(self):
+        invalid = json.loads((SCRIPTS / "tests/fixtures/invalid_agent_output.json").read_text(encoding="utf-8"))
+        with self.assertRaises(ValueError):
+            check(invalid)
+        attacks = (
+            {"items": [{"type": "add_labels", "arguments": {"labels": ["priority:critical"]}}]},
+            {"items": [{"type": "add_comment", "arguments": {"body": "Hello @maintainer"}}]},
+            {"items": [{"type": "add_comment", "arguments": {"body": "https://example.invalid"}}]},
+        )
+        applied = []
+        for attack in attacks:
+            with self.assertRaises(ValueError):
+                check(attack)
+        self.assertEqual([], applied, "failed detection must leave the applied-output set empty")
+
 
 if __name__ == "__main__":
     unittest.main()

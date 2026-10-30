@@ -81,6 +81,17 @@ class WorkflowContractTests(unittest.TestCase):
         for value in required:
             self.assertIn(value, self.frontmatter)
         self.assertNotIn("model: gpt-4.1\n      max-turns", self.frontmatter)
+        lock = "\n".join(self.lock_lines)
+        self.assertIn("GH_AW_DETECTION_CONTINUE_ON_ERROR: \"false\"", lock)
+        self.assertIn("needs.detection.result == 'success'", lock)
+        step = lock.split("- name: Deterministically validate proposed labels and comment", 1)[1].split("- name:", 1)[0]
+        self.assertNotIn("continue-on-error: true", step)
+
+    def test_daily_credit_guard_is_an_admission_control(self):
+        lock = "\n".join(self.lock_lines)
+        self.assertIn('GH_AW_MAX_DAILY_AI_CREDITS: "5000"', lock)
+        self.assertIn("check_daily_aic_workflow_guardrail.cjs", lock)
+        self.assertIn("if: needs.activation.outputs.daily_ai_credits_exceeded != 'true'", lock)
 
     def test_model_has_no_generic_github_or_file_write_tool(self):
         self.assertIn("edit: false", self.frontmatter)

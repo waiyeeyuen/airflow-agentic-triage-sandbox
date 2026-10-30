@@ -46,8 +46,8 @@ def validate_approval(path: Path, case_id: str) -> dict:
         raise ValueError(f"Approval scope does not include {case_id}")
     if approval.get("builder_commit") != BUILDER_COMMIT or approval.get("expected_commit") != EXPECTED_COMMIT:
         raise ValueError("Approval is not pinned to the tested Builder/oracle commits")
-    if int(approval.get("maximum_ai_credits_approved", 0)) != 100:
-        raise ValueError("Approval must be scoped to exactly the configured 100-AIC per-run cap")
+    if int(approval.get("maximum_ai_credits_approved", 0)) != 25:
+        raise ValueError("Approval must be scoped to exactly the configured 25-AIC per-run cap")
     return approval
 
 
@@ -100,7 +100,7 @@ def main() -> None:
         "repository": args.repo,
         "title": data["title"],
         "labels_at_creation": data.get("labels_at_creation", []),
-        "maximum_ai_credits": 100,
+        "maximum_ai_credits": 25,
     }
     if not args.execute:
         print(json.dumps(preview, indent=2))

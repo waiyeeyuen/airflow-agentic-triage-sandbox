@@ -42,7 +42,7 @@ def main() -> None:
         "explicit_agent_read_permissions": "contents: read" in source and "issues: read" in source,
         "network_defaults_firewall": "network: defaults" in source and manifest.get("threat_detection", {}).get("mode") == "enabled",
         "per_issue_concurrency": "github.event.issue.number || github.run_id" in source and "cancel-in-progress: false" in source,
-        "budget_caps": all(value in source for value in ("timeout-minutes: 10", "max-ai-credits: 100", "max-daily-ai-credits: 5000")),
+        "budget_caps": all(value in source for value in ("timeout-minutes: 10", "max-ai-credits: 25", "max-daily-ai-credits: 5000")),
         "github_mcp_is_read_only": mcp.get("github") == {"issue_read", "list_issue_types", "list_issues", "search_issues"},
         "safe_output_tools_only": mcp.get("safeoutputs") == {"add_comment", "add_labels", "noop", "report_incomplete", "report_missing_data", "report_missing_tool"},
         "three_script_bash_allowlist": all(
@@ -89,7 +89,7 @@ def main() -> None:
         "no_skill_variant_exists": no_skill_variant,
         "live_execution_ready": False,
         "live_blockers": [
-            "A fresh direct approval for the Round 2 airflow-69284 retry, pinned to Builder ac75039, is required.",
+            "A fresh direct approval for the Round 3 airflow-69284 retry, pinned to Builder 2a5e692, is required.",
             "GitHub CLI authentication must be valid before remote preflight.",
             "COPILOT_GITHUB_TOKEN secret presence and validity must be confirmed.",
             "TRIAGE_AGENT_ENABLED must remain false until that approval, then be set true only for the single approved run.",
