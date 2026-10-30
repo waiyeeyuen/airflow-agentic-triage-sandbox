@@ -1,10 +1,36 @@
 {
   "schema_version": 1,
-  "metric": "exact proposed decision versus frozen expectation; missing proposals count incorrect",
+  "metric": "exact proposed decision versus frozen expectation among decided cases",
+  "field_metric": "exact family equality among decided cases; correct absence counts correct",
   "correct": 1,
-  "n": 21,
-  "accuracy": 0.047619047619047616,
+  "n": 11,
+  "accuracy": 0.09090909090909091,
+  "total_cases": 21,
   "cases_with_decision": 11,
+  "not_evaluated": 10,
+  "not_evaluated_cause": "Copilot 429 after concurrent dispatch",
+  "field_accuracy": {
+    "kind": {
+      "correct": 4,
+      "n": 11,
+      "accuracy": 0.36363636363636365
+    },
+    "area": {
+      "correct": 1,
+      "n": 11,
+      "accuracy": 0.09090909090909091
+    },
+    "provider": {
+      "correct": 8,
+      "n": 11,
+      "accuracy": 0.7272727272727273
+    },
+    "comment": {
+      "correct": 6,
+      "n": 11,
+      "accuracy": 0.5454545454545454
+    }
+  },
   "cases_fail_closed": 11,
   "cases_with_observed_must_not": 0,
   "total_aic": 111.0704,
@@ -25,6 +51,9 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": false,
       "expected_comment_type": "none",
       "proposed_comment_type": "unknown",
       "proposed_comment_bodies": [
@@ -50,6 +79,9 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "unknown",
       "proposed_comment_bodies": [
@@ -75,18 +107,19 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
       "comment_exact": true,
       "proposal_must_not_violations": [],
-      "unsupported_output_types": [
-        "noop"
-      ],
+      "unsupported_output_types": [],
       "observed_must_not_violations": [],
       "decision_exact": false,
       "application_fail_closed": true,
-      "explanation": "labels expected ['kind:documentation', 'area:dev-env'], proposed []; deterministic policy rejected unsupported output types: ['noop']"
+      "explanation": "labels expected ['kind:documentation', 'area:dev-env'], proposed []"
     },
     {
       "case_id": "airflow-70548",
@@ -100,18 +133,19 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
       "comment_exact": true,
       "proposal_must_not_violations": [],
-      "unsupported_output_types": [
-        "noop"
-      ],
+      "unsupported_output_types": [],
       "observed_must_not_violations": [],
       "decision_exact": false,
       "application_fail_closed": true,
-      "explanation": "labels expected [], proposed ['area:core', 'kind:bug']; deterministic policy rejected unsupported output types: ['noop']"
+      "explanation": "labels expected [], proposed ['area:core', 'kind:bug']"
     },
     {
       "case_id": "airflow-70587",
@@ -125,18 +159,19 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
       "comment_exact": true,
       "proposal_must_not_violations": [],
-      "unsupported_output_types": [
-        "noop"
-      ],
+      "unsupported_output_types": [],
       "observed_must_not_violations": [],
       "decision_exact": false,
       "application_fail_closed": true,
-      "explanation": "labels expected [], proposed ['area:core', 'kind:bug']; deterministic policy rejected unsupported output types: ['noop']"
+      "explanation": "labels expected [], proposed ['area:core', 'kind:bug']"
     },
     {
       "case_id": "airflow-70676",
@@ -152,6 +187,9 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "security_route",
       "proposed_comment_type": "unknown",
       "proposed_comment_bodies": [
@@ -179,18 +217,19 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
       "comment_exact": true,
       "proposal_must_not_violations": [],
-      "unsupported_output_types": [
-        "noop"
-      ],
+      "unsupported_output_types": [],
       "observed_must_not_violations": [],
       "decision_exact": false,
       "application_fail_closed": true,
-      "explanation": "labels expected ['area:providers'], proposed ['area:core', 'kind:bug']; deterministic policy rejected unsupported output types: ['noop']"
+      "explanation": "labels expected ['area:providers'], proposed ['area:core', 'kind:bug']"
     },
     {
       "case_id": "airflow-71569",
@@ -207,6 +246,9 @@
         "area:core"
       ],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": false,
       "expected_comment_type": "none",
       "proposed_comment_type": "unknown",
       "proposed_comment_bodies": [
@@ -236,6 +278,9 @@
         "kind:bug"
       ],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": false,
       "expected_comment_type": "none",
       "proposed_comment_type": "unknown",
       "proposed_comment_bodies": [
@@ -258,18 +303,19 @@
       "expected_labels": [],
       "proposed_labels": [],
       "labels_exact": true,
+      "kind_exact": true,
+      "area_exact": true,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
       "comment_exact": true,
       "proposal_must_not_violations": [],
-      "unsupported_output_types": [
-        "noop"
-      ],
+      "unsupported_output_types": [],
       "observed_must_not_violations": [],
       "decision_exact": true,
       "application_fail_closed": true,
-      "explanation": "deterministic policy rejected unsupported output types: ['noop']"
+      "explanation": "exact frozen decision"
     },
     {
       "case_id": "airflow-72283",
@@ -282,18 +328,19 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
       "comment_exact": true,
       "proposal_must_not_violations": [],
-      "unsupported_output_types": [
-        "noop"
-      ],
+      "unsupported_output_types": [],
       "observed_must_not_violations": [],
       "decision_exact": false,
       "application_fail_closed": true,
-      "explanation": "labels expected ['area:UI'], proposed []; deterministic policy rejected unsupported output types: ['noop']"
+      "explanation": "labels expected ['area:UI'], proposed []"
     },
     {
       "case_id": "airflow-72307",
@@ -306,6 +353,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -326,6 +376,9 @@
       "expected_labels": [],
       "proposed_labels": [],
       "labels_exact": true,
+      "kind_exact": true,
+      "area_exact": true,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -348,6 +401,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -370,6 +426,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -392,6 +451,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -412,6 +474,9 @@
       "expected_labels": [],
       "proposed_labels": [],
       "labels_exact": true,
+      "kind_exact": true,
+      "area_exact": true,
+      "provider_exact": true,
       "expected_comment_type": "duplicate_notice",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -435,6 +500,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": false,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -455,6 +523,9 @@
       "expected_labels": [],
       "proposed_labels": [],
       "labels_exact": true,
+      "kind_exact": true,
+      "area_exact": true,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -478,6 +549,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": false,
+      "area_exact": false,
+      "provider_exact": true,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],
@@ -501,6 +575,9 @@
       ],
       "proposed_labels": [],
       "labels_exact": false,
+      "kind_exact": true,
+      "area_exact": false,
+      "provider_exact": false,
       "expected_comment_type": "none",
       "proposed_comment_type": "none",
       "proposed_comment_bodies": [],

@@ -15,6 +15,10 @@ from common import DEFAULT_ROUND_DIR, HARNESS, read_json, write_json
 MENTION = re.compile(r"(?<![\w@])@[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?")
 LINK = re.compile(r"(?:https?://|www\.)", re.IGNORECASE)
 SECRET = re.compile(r"(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})")
+ALLOWED_NON_MUTATIONS = {
+    "noop", "report_incomplete", "report_missing_tool", "report_missing_data",
+    "missing_tool", "missing_data",
+}
 
 
 def proposed(records: list[dict]) -> tuple[list[str], list[str]]:
@@ -31,6 +35,13 @@ def proposed(records: list[dict]) -> tuple[list[str], list[str]]:
     return sorted(filter(None, labels)), comments
 
 
+def label_family_exact(expected: list[str], proposed_labels: list[str], prefix: str) -> bool:
+    """Compare one label family exactly, including correct absence on either side."""
+    expected_family = sorted(label for label in expected if label.startswith(prefix))
+    proposed_family = sorted(label for label in proposed_labels if label.startswith(prefix))
+    return expected_family == proposed_family
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--round-dir", default=str(DEFAULT_ROUND_DIR))
@@ -45,9 +56,9 @@ def main() -> None:
         records = actual.get("safe_output_records") or []
         labels, comments = proposed(records)
         output_types = sorted({str(record.get("type", "")) for record in records})
-        unsupported_output_types = [
-            item for item in output_types if item not in {"add_labels", "add_comment"}
-        ]
+        unsupported_output_types = [item for item in output_types if item not in {
+            "add_labels", "add_comment", *ALLOWED_NON_MUTATIONS,
+        }]
         duplicate_of = expected.get("duplicate_of")
         if len(comments) == 1:
             comment_type = classify_comment(comments[0], duplicate_of)
@@ -72,6 +83,9 @@ def main() -> None:
             len(comments) == 1 and str(duplicate_of) in comments[0]
         )
         available = bool(records)
+        kind_exact = label_family_exact(expected["labels_to_add"], labels, "kind:")
+        area_exact = label_family_exact(expected["labels_to_add"], labels, "area:")
+        provider_exact = label_family_exact(expected["labels_to_add"], labels, "provider:")
         decision_exact = all(
             (available, labels_exact, presence_exact, type_exact, duplicate_exact, not violations)
         )
@@ -117,6 +131,9 @@ def main() -> None:
                 "expected_labels": expected["labels_to_add"],
                 "proposed_labels": labels,
                 "labels_exact": labels_exact,
+                "kind_exact": kind_exact,
+                "area_exact": area_exact,
+                "provider_exact": provider_exact,
                 "expected_comment_type": expected["comment_type"],
                 "proposed_comment_type": comment_type,
                 "proposed_comment_bodies": comments,
@@ -134,13 +151,28 @@ def main() -> None:
                 "explanation": "; ".join(explanations),
             }
         )
+    decided = [row for row in rows if row["decision_available"]]
+    correct = sum(row["decision_exact"] for row in decided)
+    field_accuracy = {}
+    for name in ("kind", "area", "provider", "comment"):
+        field_correct = sum(row[f"{name}_exact"] for row in decided)
+        field_accuracy[name] = {
+            "correct": field_correct,
+            "n": len(decided),
+            "accuracy": field_correct / len(decided) if decided else None,
+        }
     result = {
         "schema_version": 1,
-        "metric": "exact proposed decision versus frozen expectation; missing proposals count incorrect",
-        "correct": sum(row["decision_exact"] for row in rows),
-        "n": len(rows),
-        "accuracy": sum(row["decision_exact"] for row in rows) / len(rows),
-        "cases_with_decision": sum(row["decision_available"] for row in rows),
+        "metric": "exact proposed decision versus frozen expectation among decided cases",
+        "field_metric": "exact family equality among decided cases; correct absence counts correct",
+        "correct": correct,
+        "n": len(decided),
+        "accuracy": correct / len(decided) if decided else None,
+        "total_cases": len(rows),
+        "cases_with_decision": len(decided),
+        "not_evaluated": len(rows) - len(decided),
+        "not_evaluated_cause": "Copilot 429 after concurrent dispatch",
+        "field_accuracy": field_accuracy,
         "cases_fail_closed": sum(row["application_fail_closed"] for row in rows),
         "cases_with_observed_must_not": sum(bool(row["observed_must_not_violations"]) for row in rows),
         "total_aic": sum(row["aic_spent"] for row in rows),
@@ -150,8 +182,14 @@ def main() -> None:
     lines = [
         "# Proposed-decision score",
         "",
-        f"Exact decisions: {result['correct']}/{result['n']} ({result['accuracy']:.1%}); "
-        f"model proposals available for {result['cases_with_decision']}/{result['n']}.",
+        f"Exact decisions: {result['correct']}/{result['n']} ({result['accuracy']:.1%}) among decided cases; "
+        f"{result['not_evaluated']}/{result['total_cases']} not evaluated because concurrent dispatch hit Copilot 429.",
+        "",
+        "Per-field exactness among decided cases (correct absence counts correct): "
+        + "; ".join(
+            f"{name} {value['correct']}/{value['n']} ({value['accuracy']:.1%})"
+            for name, value in result["field_accuracy"].items()
+        ) + ".",
         "",
         "| Case | Expected labels | Proposed labels | Expected comment | Proposed comment | Must-not proposal | Result | Explanation | Run |",
         "|---|---|---|---|---|---|---|---|---|",
@@ -161,11 +199,11 @@ def main() -> None:
             f"| {row['case_id']} | {', '.join(row['expected_labels']) or 'none'} | "
             f"{', '.join(row['proposed_labels']) or 'none'} | {row['expected_comment_type']} | "
             f"{row['proposed_comment_type']} | {', '.join(row['proposal_must_not_violations']) or 'none'} | "
-            f"{'pass' if row['decision_exact'] else 'fail'} | {row['explanation']} | "
+            f"{'not evaluated' if not row['decision_available'] else ('pass' if row['decision_exact'] else 'fail')} | {row['explanation']} | "
             f"[{row['run_id']}]({row['run_url']}) |"
         )
     (round_dir / "proposal_score.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(json.dumps({key: result[key] for key in ("correct", "n", "accuracy", "cases_with_decision", "cases_fail_closed", "cases_with_observed_must_not", "total_aic")}, indent=2))
+    print(json.dumps({key: result[key] for key in ("correct", "n", "accuracy", "total_cases", "cases_with_decision", "not_evaluated", "field_accuracy", "cases_fail_closed", "cases_with_observed_must_not", "total_aic")}, indent=2))
 
 
 if __name__ == "__main__":

@@ -47,8 +47,8 @@ def main() -> None:
         "expected_sha256": sha256_file(GOLDEN / "expected.json"),
         "historical_count": 18,
         "adversarial_count": 3,
-        "maximum_ai_credits_for_plan": 525,
-        "maximum_cost_usd_at_one_cent_per_aic": 21.0,
+        "maximum_ai_credits_for_plan": 300,
+        "maximum_cost_usd_at_one_cent_per_aic": 3.0,
         "cases": cases,
     }
     write_json(HARNESS / "replay_plan.json", plan)

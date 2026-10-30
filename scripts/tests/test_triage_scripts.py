@@ -128,7 +128,7 @@ class CliTests(unittest.TestCase):
             {"type": "add_comment", "arguments": {"body": render("security_route")}},
         ]}
         self.assertTrue(check(accepted)["valid"])
-        for body in ("Hello @maintainer", "See https://example.invalid"):
+        for body in ("Hello @maintainer", "See https://example.invalid", "Thanks for the report."):
             with self.assertRaises(ValueError):
                 check({"items": [{"type": "add_comment", "arguments": {"body": body}}]})
 

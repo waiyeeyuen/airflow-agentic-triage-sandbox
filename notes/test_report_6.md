@@ -37,10 +37,14 @@ behaviour, not an enforced daily budget.
 The authoritative metric scores the model's proposed labels/comment against the frozen oracle;
 it does not incorrectly credit mutations that were absent because detection failed closed.
 
-- Exact proposed decisions: **1/21 (4.8%, n=21)**.
-- A model proposal was available for 11/21; ten cases had no proposal because of error 429.
+- Exact proposed decisions: **1/11 (9.1%, n=11 decided)**; ten cases were not evaluated because
+  concurrent dispatch hit Copilot 429.
+- Per-field exactness on the 11 decided cases, counting correct absence as correct: kind **4/11
+  (36.4%)**, area **1/11 (9.1%)**, provider **8/11 (72.7%)**, comment **6/11 (54.5%)**.
 - The main weakness was wrong area/provider selection, commonly a fallback to `area:core`.
-- Several cases invented a non-template comment; several others emitted unsupported `noop`.
+- Several cases invented a non-template comment. `noop` was valid, but the integration failed to
+  write gh-aw's required detection-result file; that separate validator integration bug is fixed
+  after this frozen baseline.
 - Detection failed and `safe_outputs` skipped for all 11 available proposals. No forbidden action
   reached an issue, every issue remained open, and the output actor would have been
   `github-actions[bot]` only if validation had passed.

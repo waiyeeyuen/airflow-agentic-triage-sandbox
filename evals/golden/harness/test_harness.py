@@ -10,6 +10,7 @@ sys.path.insert(0, str(HERE))
 from capture import classify_comment
 from common import BUILDER_COMMIT, EXPECTED_COMMIT, GOLDEN, HARNESS, ROOT, read_json, sha256_file, validate_replay_text
 from replay import validate_approval, validate_round_directory
+from score_proposals import label_family_exact
 
 
 class PlanTests(unittest.TestCase):
@@ -27,6 +28,19 @@ class PlanTests(unittest.TestCase):
         root = GOLDEN.parent.parent
         for item in plan["cases"]:
             validate_replay_text(read_json(root / item["input_path"]))
+
+    def test_field_accuracy_counts_correct_absence_and_exact_family(self):
+        self.assertTrue(label_family_exact([], [], "provider:"))
+        self.assertTrue(label_family_exact(
+            ["kind:bug", "area:providers", "provider:google"],
+            ["provider:google", "area:core", "kind:feature"],
+            "provider:",
+        ))
+        self.assertFalse(label_family_exact(
+            ["area:providers", "provider:google"],
+            ["area:providers"],
+            "provider:",
+        ))
 
     def test_example_is_not_accepted_as_approval(self):
         with self.assertRaises(ValueError):
