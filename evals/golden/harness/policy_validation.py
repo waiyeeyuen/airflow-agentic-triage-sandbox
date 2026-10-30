@@ -17,7 +17,10 @@ from validate_safe_outputs import check  # noqa: E402
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", default="evals/golden/actual/dry_run_fallback")
+    parser.add_argument(
+        "--output-dir",
+        default="evals/golden/actual/policy_validation_expected_outputs",
+    )
     args = parser.parse_args()
     output_dir = Path(args.output_dir)
 
@@ -52,22 +55,22 @@ def main() -> None:
             "comment_type": comment_type,
             "label_policy_valid": label_result["valid"],
             "safe_output_policy_valid": safe_result["valid"],
-            "status": "dry_run_valid" if passed else "dry_run_invalid",
+            "status": "policy_valid" if passed else "policy_invalid",
             "model_output": "not_run",
         })
 
     result = {
         "schema_version": 1,
         "mode": "deterministic_oracle_validation",
-        "warning": "This validates frozen expectations and boundaries; it is not model decision-accuracy evidence.",
+        "warning": "This validates frozen expected outputs against deterministic policy; it is not a model dry run or decision-accuracy evidence.",
         "total_cases": len(rows),
-        "valid_cases": sum(row["status"] == "dry_run_valid" for row in rows),
-        "invalid_cases": sum(row["status"] != "dry_run_valid" for row in rows),
+        "valid_cases": sum(row["status"] == "policy_valid" for row in rows),
+        "invalid_cases": sum(row["status"] != "policy_valid" for row in rows),
         "rows": rows,
     }
     write_json(output_dir / "results.json", result)
     lines = [
-        "# Golden-set deterministic dry-run fallback",
+        "# Policy validation of expected outputs",
         "",
         result["warning"],
         "",

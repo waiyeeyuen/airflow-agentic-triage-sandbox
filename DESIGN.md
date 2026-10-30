@@ -83,29 +83,28 @@ step rather than the agent's sole workflow ([selection rationale](notes/ideation
 
 ## Evaluation status and unresolved work
 
-Tester Part A froze 18 real cases (three no-action) plus three adversarial cases before this config
-commit; 18/18 fresh source hashes and all temporal boundaries passed
-([verification](evals/golden/verification.md), [commit order](evals/golden/commit_order.md)).
-The first approved replay, `airflow-69284`, failed before task execution: `auto` resolved the main
-agent to unsupported `claude-sonnet-5.5` and detection to unsupported `claude-haiku-5.5`. It used
-**0 AIC ($0)**, made no task tool or script calls, emitted no requested labels/comments, and scored
-0/1 ([Tester report](notes/test_report_1.md)). Both roles now pin exact `gpt-4.1`, which appears in
-the configured Copilot endpoint's `models` array in the saved `awf-reflect.json`; `gpt-5-mini` does
-not. A second replay resolved `gpt-4.1` but failed: the skill required model-created JSON, conflicting
-with the shell guard. The guard correctly denied `echo` redirection and a heredoc; the 10-minute
-timeout contained the failure. No labels/comment were emitted; score 0/1
-([forensics](evals/golden/actual/round_2/forensic_analysis.json)). The fixed-path repair is dry-
-tested locally. Round 2 used 70.303 AIC total (10.166 main plus 60.137 detection), not its 5.083
-failed-tool attribution; Round 3 used 6.4246 total, not its 1.60615 attribution. Runs 40911954325,
-40993175316 and 41021983690 were approved (caps 100, 100 and 25). Pre-approval invocation
-40905907762 skipped every job and used no model/AIC; no unapproved model run occurred. Decision
-accuracy, bot mutation identity, cancellation, burst behaviour and control-without-skill remain unresolved.
-Historical replay changes the author.
+Tester Part A froze 18 real cases (three no-action) plus three adversarial cases before configuration;
+18/18 source hashes and every temporal boundary passed ([verification](evals/golden/verification.md)).
+Early approved runs exposed an unsupported `auto` model, a skill/shell-guard conflict, and an AI-
+detection file-reading loop. The guard denied redirection, the 10-minute timeout contained the loop,
+and exact `gpt-4.1`, fixed-path input and deterministic detection repaired those setup failures.
+
+The first end-to-end run and the 20-case batch used 111.0704 AIC total. Exact proposed-decision
+accuracy was **1/21 (4.8%, n=21)**; only 11 cases produced a proposal, while ten ended with Copilot
+429 errors. The main decision weakness was systematic area/provider confusion, often defaulting to
+`area:core`, plus invented non-template comments. The deterministic validator live-blocked every
+proposal that reached it: 11/11 failed closed, no forbidden action reached an issue, and all issues
+remained open. This is tested safety-output evidence, not decision correctness
+([batch score](evals/golden/actual/round_5_batch/proposal_score.md)). The three adversarial live runs
+hit 429 before a proposal, so adversarial decision behaviour remains unresolved. Historical replay
+changes the author; cancellation, no-skill control and a phone stop remain unresolved.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
 generates `pull-requests: write` in the isolated safe-output job. No PR mutation tool or PR target
 is exposed, references are escaped, and fixed templates contain no URL; Part B must still test this
 compiler-generated residual boundary rather than treating compilation as behavioural evidence.
+Budgets: timeout tested; per-run cap implemented; daily cap proposed. The four five-case dispatch
+groups stayed below the 300-AIC target, but the batch exposed provider-side 429 capacity limits.
 
 ## Agent bill of materials
 
@@ -124,17 +123,16 @@ compiler-generated residual boundary rather than treating compilation as behavio
 ## Five scenarios
 
 1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
-   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). The frozen adversarial
-   expectation is no action; execution is pending Part B, so this is not yet a passed test.
+   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). Its live run hit 429 before a
+   proposal; expected-output policy validation passes, but that is not decision-accuracy evidence.
 2. **Model update:** the main role and every golden-set run pin exact `gpt-4.1`, but behaviour behind
    that ID can change. Re-run the complete set with that same pin on every workflow, AGENTS or skill
    change and weekly; Jasmine reviews per-case diffs, not only an average. CI integrity is
    implemented; scheduled credit-spending runs remain proposed.
-3. **300 issues/week:** per-issue concurrency keys prevent one issue cancelling another. At the
-   25-AIC maximum, 300 runs could consume 7,500 AIC. The 5,000/day scan blocks later sequential
-   admissions after recorded use reaches the threshold, but concurrent activations can overshoot;
-   a true account-side daily cap is proposed. Blocked issues receive no agent output and remain for humans;
-   a safe backlog sweep is proposed rather than silently widening permissions.
+3. **300 issues/week:** per-issue concurrency prevents one issue cancelling another. At the 25-AIC
+   maximum, 300 runs could consume 7,500 AIC; no enforced 5,000-AIC daily cap exists. An atomic
+   account-side daily admission cap is proposed. The batch's 429s show that provider capacity can
+   stop decisions earlier; blocked issues remain for humans and a safe backlog sweep is proposed.
 4. **Malicious tool/MCP output:** there is no custom MCP. Tool output is untrusted; even total
    instruction failure can express only three allowlisted labels and one sanitized comment.
 5. **Phone stop:** in GitHub mobile/browser, open repository Settings, Actions variables, set
@@ -144,7 +142,7 @@ compiler-generated residual boundary rather than treating compilation as behavio
 ## AI-use statement
 
 AI agents produced the configuration, scripts, evaluation scaffolding and this draft under
-Jasmine's direction. Deterministic tests and compiler checks are recorded; all three approved model
-attempts failed before producing outputs. Jasmine must complete:
+Jasmine's direction. Deterministic tests, compiler checks and approved live proposals are recorded;
+failed-closed output must not be confused with correct decisions. Jasmine must complete:
 **[state what you wrote]**, **[state what you reviewed]**, and
 **[state what evidence and claims you personally verified]** before signing and submitting.

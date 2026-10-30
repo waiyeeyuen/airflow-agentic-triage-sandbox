@@ -21,6 +21,6 @@ The deterministic validator rejected that body because it is not an exact fixed 
 failed, `safe_outputs` was skipped, and issue 8 remained open with no labels or comments. Thus the
 guard worked, but the golden decision failed. Deterministic score: 0/1.
 
-Per the approval condition, all further paid runs stop. The remaining golden set moves to the
-explicit deterministic dry-run fallback, which validates inputs, frozen expectations and output
-boundaries but must not be represented as model decision-accuracy evidence.
+The later batch approval superseded that stop condition. The separate policy validation of expected
+outputs validates inputs, frozen expectations and output boundaries, but is neither a model dry run
+nor model decision-accuracy evidence.
