@@ -1,0 +1,59 @@
+✓ Downloaded artifacts for run 40993175316
+
+i MCP Gateway Metrics
+
+Total Requests: 11
+Total Tool Calls: 11
+Total Errors: 0
+Servers: 1
+Time Range: 47s
+
+Server Usage
+╭──────┬────────┬──────────┬────────┬──────╮
+│Server│Requests│Tool Calls│Avg Time│Errors│
+├──────┼────────┼──────────┼────────┼──────┤
+│github│11      │11        │0ms     │0     │
+╰──────┴────────┴──────────┴────────┴──────╯
+
+i Unified MCP + Firewall + Agent Event Timeline
+
+Total Events  : 29
+  Gateway     : 14  (tool_calls=14, difc_filtered=0, guard_blocked=0)
+  Agent       : 15  (turns=1, tool_start=5, tool_done=5, messages=4, reasoning=0)
+
+Event Timeline
+╭────────────┬───┬───────────────────┬──────────────────────────┬─────────╮
+│Time        │Src│Kind               │Detail                    │Status   │
+├────────────┼───┼───────────────────┼──────────────────────────┼─────────┤
+│02:45:43.526│GW │⚙ tool_call        │safeoutputs/tools/list    │initiated│
+│02:45:45.175│GW │⚙ tool_call        │github/tools/list         │initiated│
+│02:45:45.196│GW │⚙ tool_call        │github/prompts/list       │initiated│
+│02:46:15.414│AG │○ agent_turn       │turn 1                    │         │
+│02:46:19.578│AG │● assistant_message│                          │         │
+│02:46:19.580│AG │▶ tool_start       │skill                     │         │
+│02:46:19.582│AG │■ tool_done        │                          │success  │
+│02:46:28.273│AG │● assistant_message│                          │         │
+│02:46:28.274│AG │▶ tool_start       │github/github-issue_read  │         │
+│02:46:28.275│AG │▶ tool_start       │github/github-issue_read  │         │
+│02:46:28.853│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:28.858│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:28.863│GW │⚙ tool_call        │github/issue_read         │initiated│
+│02:46:28.864│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:28.888│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:28.904│GW │⚙ tool_call        │github/issue_read         │initiated│
+│02:46:29.701│GW │⚙ tool_call        │github/issue_read         │initiated│
+│02:46:29.703│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:29.710│AG │■ tool_done        │                          │success  │
+│02:46:30.226│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:30.229│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:30.232│GW │⚙ tool_call        │github/search_repositories│initiated│
+│02:46:30.240│AG │■ tool_done        │                          │success  │
+│02:50:36.213│AG │● assistant_message│                          │         │
+│02:50:36.217│AG │▶ tool_start       │bash                      │         │
+│02:50:36.237│AG │■ tool_done        │                          │error    │
+│02:53:47.785│AG │● assistant_message│                          │         │
+│02:53:47.786│AG │▶ tool_start       │bash                      │         │
+│02:53:47.790│AG │■ tool_done        │                          │error    │
+╰────────────┴───┴───────────────────┴──────────────────────────┴─────────╯
+Unified session: invalid_harness_retry in agent\harness_retry.json
+✓ Parsed log for run 40993175316 → C:\Users\yuenw\Documents\y3 sem 1\open source\assignment3\airflow-agentic-triage-sandbox\evals\golden\actual\round_2\cases\airflow-69284\audit\run-40993175316\log.md

@@ -82,6 +82,7 @@ agent to unsupported `claude-sonnet-5.5` and detection to unsupported `claude-ha
 the configured Copilot endpoint's `models` array in the saved `awf-reflect.json`; `gpt-5-mini` does
 not. Compilation passes, but no live rerun has tested the fix. Decision accuracy, mutation identity,
 skill marker, cancellation, limits, burst behaviour and control-without-skill remain unresolved.
+Threat detection uses the same model as the main agent, so the two share blind spots.
 Historical replay changes the author.
 
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler

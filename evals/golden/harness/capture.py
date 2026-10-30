@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -97,8 +98,12 @@ def main() -> None:
     case_dir = round_dir / "cases" / args.case_id
     audit_dir = case_dir / "audit"
     audit_dir.mkdir(parents=True, exist_ok=True)
+    audit_target = replay["run"].get("url") or str(run_id)
+    # gh-aw shells out to `gh`; ensure it inherits the same authenticated portable CLI.
+    gh_directory = str(Path(args.gh).resolve().parent)
+    os.environ["PATH"] = gh_directory + os.pathsep + os.environ.get("PATH", "")
     audit_command = [
-        args.gh, "aw", "audit", str(run_id), "--repo", args.repo, "--json", "--parse",
+        args.gh, "aw", "audit", audit_target, "--repo", args.repo, "--json", "--parse",
         "--no-baseline", "--output", str(audit_dir),
     ]
     audit_result = run(audit_command, check=False)

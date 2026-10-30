@@ -1,0 +1,28 @@
+name: Configuration checks
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - '.claude/**'
+      - 'AGENTS.md'
+      - 'scripts/**'
+      - 'evals/golden/**'
+      - 'DESIGN.md'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  deterministic-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s scripts/tests -v
+      - run: python evals/golden/verify_cases.py
+      - name: Enforce DESIGN line limit
+        shell: bash
+        run: test "$(wc -l < DESIGN.md)" -le 150

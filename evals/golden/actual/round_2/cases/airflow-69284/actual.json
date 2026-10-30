@@ -1,0 +1,1719 @@
+{
+  "schema_version": 1,
+  "case_id": "airflow-69284",
+  "issue_number": 5,
+  "issue_url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/issues/5",
+  "run_id": 40993175316,
+  "run_url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316",
+  "run_status": "completed",
+  "run_conclusion": "failure",
+  "workflow_name": "Bounded Airflow issue triage",
+  "config_head_sha": "6f55438e6016cc226005d4bad859cb0443c77297",
+  "issue_state": "OPEN",
+  "labels_at_creation": [],
+  "labels_after": [],
+  "labels_added": [],
+  "comments": [],
+  "comment_count": 0,
+  "comment_type": "none",
+  "comment_authors": [],
+  "output_actors": [],
+  "identity_is_bot_or_app": null,
+  "skill_marker_present": false,
+  "skill_scripts_seen_in_audit": {
+    "scripts/search_duplicates.py": false,
+    "scripts/validate_labels.py": false,
+    "scripts/render_comment.py": false
+  },
+  "all_skill_scripts_seen": false,
+  "skill_inventory": {
+    "skills": [],
+    "conflicts": []
+  },
+  "observed_tool_records": [
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_Aq7gx3j8Fs1sXWVa3tgNA3GK",
+        "toolName": "skill",
+        "arguments": {
+          "skill": "airflow-issue-triage"
+        },
+        "turnId": "0",
+        "model": "gpt-4.1",
+        "input": {
+          "skill": "airflow-issue-triage"
+        }
+      },
+      "id": "038cc08b-b157-4c70-8803-afc51d1e1603",
+      "timestamp": "2026-10-30T02:46:19.580Z",
+      "parentId": "cc38637d-7827-43fe-b248-94fa803257de",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 8
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_Aq7gx3j8Fs1sXWVa3tgNA3GK",
+        "model": "gpt-4.1",
+        "interactionId": "b76e59bb-47e0-426c-83b3-9c9f9d840769",
+        "turnId": "0",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "Skill \"airflow-issue-triage\" loaded successfully. Follow the instructions in the skill context."
+        },
+        "toolTelemetry": {
+          "properties": {
+            "skillNameHash": "570e6476bec59b6955c91ac0b06583156da7143d6773299632ed3f7dc8d0ed6c",
+            "skillSource": "project",
+            "found": "true"
+          },
+          "restrictedProperties": {
+            "skillName": "airflow-issue-triage"
+          },
+          "metrics": {
+            "skillContentLength": 1729,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20799,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 21
+          }
+        },
+        "toolName": "skill"
+      },
+      "id": "e7ff69a2-e777-410b-9eae-668ee2b2cb72",
+      "timestamp": "2026-10-30T02:46:19.582Z",
+      "parentId": "038cc08b-b157-4c70-8803-afc51d1e1603",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 9
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_XUuS4z0prj6VtSu3hpI5z3Ho",
+        "toolName": "github-issue_read",
+        "arguments": {
+          "issue_number": 5,
+          "method": "get",
+          "owner": "waiyeeyuen",
+          "repo": "airflow-agentic-triage-sandbox"
+        },
+        "turnId": "1",
+        "model": "gpt-4.1",
+        "toolTitle": "Get issue details",
+        "mcpServerName": "github",
+        "mcpConfigServerName": "github",
+        "mcpTransport": "http",
+        "mcpConfigSource": "user",
+        "mcpToolName": "issue_read",
+        "input": {
+          "issue_number": 5,
+          "method": "get",
+          "owner": "waiyeeyuen",
+          "repo": "airflow-agentic-triage-sandbox"
+        }
+      },
+      "id": "d906c0ad-ee09-4e81-a70e-cb99e5f25c59",
+      "timestamp": "2026-10-30T02:46:28.274Z",
+      "parentId": "f4daeec0-939e-4863-8ffe-ee6503f456b2",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 16
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_j6NohMOFT2SJhavvOFBUhLcN",
+        "toolName": "github-issue_read",
+        "arguments": {
+          "issue_number": 5,
+          "method": "get_labels",
+          "owner": "waiyeeyuen",
+          "repo": "airflow-agentic-triage-sandbox"
+        },
+        "turnId": "1",
+        "model": "gpt-4.1",
+        "toolTitle": "Get issue details",
+        "mcpServerName": "github",
+        "mcpConfigServerName": "github",
+        "mcpTransport": "http",
+        "mcpConfigSource": "user",
+        "mcpToolName": "issue_read",
+        "input": {
+          "issue_number": 5,
+          "method": "get_labels",
+          "owner": "waiyeeyuen",
+          "repo": "airflow-agentic-triage-sandbox"
+        }
+      },
+      "id": "e6b7e697-7da1-4699-9561-04da7e886908",
+      "timestamp": "2026-10-30T02:46:28.275Z",
+      "parentId": "d906c0ad-ee09-4e81-a70e-cb99e5f25c59",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 17
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_j6NohMOFT2SJhavvOFBUhLcN",
+        "model": "gpt-4.1",
+        "interactionId": "b76e59bb-47e0-426c-83b3-9c9f9d840769",
+        "turnId": "1",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "[]"
+        },
+        "toolTelemetry": {
+          "metrics": {
+            "mcp_result_content_bytes": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21301,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 1
+          }
+        },
+        "toolName": "github-issue_read",
+        "mcpServerName": "github"
+      },
+      "id": "39aa3d31-b4c3-451a-9625-3cc920c96437",
+      "timestamp": "2026-10-30T02:46:29.710Z",
+      "parentId": "e6b7e697-7da1-4699-9561-04da7e886908",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 18
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_XUuS4z0prj6VtSu3hpI5z3Ho",
+        "model": "gpt-4.1",
+        "interactionId": "b76e59bb-47e0-426c-83b3-9c9f9d840769",
+        "turnId": "1",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "[{\"assignees\":[],\"author_association\":\"OWNER\",\"body\":\"### Apache Airflow version\\r\\n\\r\\n2.11.2 (bug verified present on `main` and in released providers)\\r\\n\\r\\n### What happened?\\r\\n\\r\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\r\\n\\r\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\r\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\r\\n\\r\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\r\\n\\r\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\r\\n\\r\\n| clients created (= events) | threads | idle CPU% |\\r\\n|---|---|---|\\r\\n| 0 | 1 | 0.0 |\\r\\n| 50 | 51 | 29.5 |\\r\\n| 150 | 151 | 72.0 |\\r\\n| 400 | 401 | 167.6 |\\r\\n\\r\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\r\\n\\r\\n### What you think should happen instead?\\r\\n\\r\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\r\\n\\r\\n### How to reproduce\\r\\n\\r\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\r\\n\\r\\n```python\\r\\nimport threading\\r\\nimport time\\r\\n\\r\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\r\\n\\r\\n\\r\\ndef cpu_pct(interval: float = 3.0) -> float:\\r\\n    t0, w0 = time.process_time(), time.perf_counter()\\r\\n    time.sleep(interval)\\r\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\r\\n\\r\\n\\r\\ntransports = []\\r\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\r\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\r\\nfor target in (50, 150, 400):\\r\\n    while len(transports) < target:\\r\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\r\\n    time.sleep(1.0)\\r\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\r\\n```\\r\\n\\r\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\r\\n\\r\\n### Operating System\\r\\n\\r\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\r\\n\\r\\n### Versions of Apache Airflow Providers\\r\\n\\r\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\r\\n\\r\\n### Deployment\\r\\n\\r\\nAstronomer\\r\\n\\r\\n### Anything else?\\r\\n\\r\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\r\\n\\r\\n### Are you willing to submit PR?\\r\\n\\r\\n- [x] Yes, I am willing to submit a PR! (#69283)\\r\\n\",\"closed_by_pull_requests\":{\"references\":[],\"total_count\":0},\"created_at\":\"2026-10-30T02:41:41Z\",\"has_children\":false,\"has_parent\":false,\"html_url\":\"https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/issues/5\",\"number\":5,\"reactions\":{\"+1\":0,\"-1\":0,\"confused\":0,\"eyes\":0,\"heart\":0,\"hooray\":0,\"laugh\":0,\"rocket\":0,\"total_count\":0},\"state\":\"open\",\"title\":\"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\",\"updated_at\":\"2026-10-30T02:41:41Z\",\"user\":{\"id\":227090037,\"login\":\"waiyeeyuen\"}}]"
+        },
+        "toolTelemetry": {
+          "metrics": {
+            "mcp_result_content_bytes": 5734,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21301,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 1666
+          }
+        },
+        "toolName": "github-issue_read",
+        "mcpServerName": "github"
+      },
+      "id": "e23487ed-7db7-4af5-aaad-3798aae226dd",
+      "timestamp": "2026-10-30T02:46:30.240Z",
+      "parentId": "39aa3d31-b4c3-451a-9625-3cc920c96437",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 19
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_BClvd1SBLmnDExY0NYVLB32S",
+        "toolName": "bash",
+        "arguments": {
+          "command": "echo '{\"title\": \"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\", \"body\": \"### Apache Airflow version\\n\\n2.11.2 (bug verified present on `main` and in released providers)\\n\\n### What happened?\\n\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\n\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\n\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\n\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\n\\n| clients created (= events) | threads | idle CPU% |\\n|---|---|---|\\n| 0 | 1 | 0.0 |\\n| 50 | 51 | 29.5 |\\n| 150 | 151 | 72.0 |\\n| 400 | 401 | 167.6 |\\n\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\n\\n### What you think should happen instead?\\n\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\n\\n### How to reproduce\\n\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\n\\n```python\\nimport threading\\nimport time\\n\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\n\\n\\ndef cpu_pct(interval: float = 3.0) -> float:\\n    t0, w0 = time.process_time(), time.perf_counter()\\n    time.sleep(interval)\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\n\\n\\ntransports = []\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\nfor target in (50, 150, 400):\\n    while len(transports) < target:\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\n    time.sleep(1.0)\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\n```\\n\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\n\\n### Operating System\\n\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\n\\n### Versions of Apache Airflow Providers\\n\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\n\\n### Deployment\\n\\nAstronomer\\n\\n### Anything else?\\n\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\n\\n### Are you willing to submit PR?\\n\\n- [x] Yes, I am willing to submit a PR! (#69283)\\n\"}' > /tmp/gh-aw/agent/issue5.json",
+          "description": "Write sanitized issue title/body to temp file for triage"
+        },
+        "turnId": "2",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "/",
+            "target",
+            "because",
+            "the",
+            "worker",
+            "thread",
+            "created",
+            "transport",
+            "constructor",
+            "regardless",
+            "What",
+            "you",
+            "think",
+            "should",
+            "happen",
+            "pool",
+            "keep",
+            "exactly",
+            "one",
+            "set",
+            "threads",
+            "threadingnimport",
+            "timennfrom",
+            "openlineage.client.transport.datadog",
+            "import",
+            "DatadogTransportnnndef",
+            "cpu_pct",
+            "float",
+            "3.0",
+            "100",
+            "400",
+            "1.0",
+            "live",
+            "pool-worker",
+            "process",
+            "shows",
+            "accumulating",
+            "Operating",
+            "SystemnnDebian",
+            "Runtime",
+            "13.7.0",
+            "container",
+            "macOS",
+            "Versions",
+            "Apache",
+            "Airflow",
+            "Providersnnapache-airflow-providers-openlineage",
+            "verified",
+            "2.16.0",
+            "current",
+            "versions",
+            "likely",
+            "affected",
+            "well",
+            "Anything",
+            "makes",
+            "this",
+            "most",
+            "visible",
+            "idle",
+            "close",
+            "separate",
+            "report",
+            "being",
+            "filed",
+            "with",
+            "OpenLineage",
+            "that.",
+            "The",
+            "provider-side",
+            "per-event",
+            "client",
+            "rebuild",
+            "affects",
+            "even",
+            "plain",
+            "pays",
+            "connection-pool/session",
+            "per",
+            "Are",
+            "willing",
+            "submit"
+          ],
+          "hasWriteFileRedirection": true
+        },
+        "input": {
+          "command": "echo '{\"title\": \"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\", \"body\": \"### Apache Airflow version\\n\\n2.11.2 (bug verified present on `main` and in released providers)\\n\\n### What happened?\\n\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\n\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\n\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\n\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\n\\n| clients created (= events) | threads | idle CPU% |\\n|---|---|---|\\n| 0 | 1 | 0.0 |\\n| 50 | 51 | 29.5 |\\n| 150 | 151 | 72.0 |\\n| 400 | 401 | 167.6 |\\n\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\n\\n### What you think should happen instead?\\n\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\n\\n### How to reproduce\\n\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\n\\n```python\\nimport threading\\nimport time\\n\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\n\\n\\ndef cpu_pct(interval: float = 3.0) -> float:\\n    t0, w0 = time.process_time(), time.perf_counter()\\n    time.sleep(interval)\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\n\\n\\ntransports = []\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\nfor target in (50, 150, 400):\\n    while len(transports) < target:\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\n    time.sleep(1.0)\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\n```\\n\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\n\\n### Operating System\\n\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\n\\n### Versions of Apache Airflow Providers\\n\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\n\\n### Deployment\\n\\nAstronomer\\n\\n### Anything else?\\n\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\n\\n### Are you willing to submit PR?\\n\\n- [x] Yes, I am willing to submit a PR! (#69283)\\n\"}' > /tmp/gh-aw/agent/issue5.json",
+          "description": "Write sanitized issue title/body to temp file for triage"
+        },
+        "command": "echo '{\"title\": \"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\", \"body\": \"### Apache Airflow version\\n\\n2.11.2 (bug verified present on `main` and in released providers)\\n\\n### What happened?\\n\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\n\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\n\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\n\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\n\\n| clients created (= events) | threads | idle CPU% |\\n|---|---|---|\\n| 0 | 1 | 0.0 |\\n| 50 | 51 | 29.5 |\\n| 150 | 151 | 72.0 |\\n| 400 | 401 | 167.6 |\\n\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\n\\n### What you think should happen instead?\\n\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\n\\n### How to reproduce\\n\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\n\\n```python\\nimport threading\\nimport time\\n\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\n\\n\\ndef cpu_pct(interval: float = 3.0) -> float:\\n    t0, w0 = time.process_time(), time.perf_counter()\\n    time.sleep(interval)\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\n\\n\\ntransports = []\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\nfor target in (50, 150, 400):\\n    while len(transports) < target:\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\n    time.sleep(1.0)\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\n```\\n\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\n\\n### Operating System\\n\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\n\\n### Versions of Apache Airflow Providers\\n\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\n\\n### Deployment\\n\\nAstronomer\\n\\n### Anything else?\\n\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\n\\n### Are you willing to submit PR?\\n\\n- [x] Yes, I am willing to submit a PR! (#69283)\\n\"}' > /tmp/gh-aw/agent/issue5.json"
+      },
+      "id": "d5783fe7-03a8-4ae8-bf3b-0c3a4835b949",
+      "timestamp": "2026-10-30T02:50:36.217Z",
+      "parentId": "6196bd2e-8ec7-4bcb-9c48-b36287e5a700",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 24
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_BClvd1SBLmnDExY0NYVLB32S",
+        "model": "gpt-4.1",
+        "interactionId": "b76e59bb-47e0-426c-83b3-9c9f9d840769",
+        "turnId": "2",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Command blocked: contains dangerous shell expansion patterns (e.g., parameter transformation, indirect expansion, or nested command substitution) that could enable arbitrary code execution. Please rewrite the command without these expansion patterns.",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "shell_error_category": "dangerous_expansion_blocked"
+          },
+          "metrics": {
+            "context_token_limit": 64000,
+            "context_current_tokens": 23112,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "bash"
+      },
+      "id": "0a232ace-5359-47a9-970e-7aab1676e2cb",
+      "timestamp": "2026-10-30T02:50:36.237Z",
+      "parentId": "d5783fe7-03a8-4ae8-bf3b-0c3a4835b949",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 25
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_g9sk3orYeU3eAVA3KebXCFjt",
+        "toolName": "bash",
+        "arguments": {
+          "command": "cat <<EOF > /tmp/gh-aw/agent/issue5.json\n{\"title\": \"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\", \"body\": \"### Apache Airflow version\\n\\n2.11.2 (bug verified present on `main` and in released providers)\\n\\n### What happened?\\n\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\n\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\n\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\n\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\n\\n| clients created (= events) | threads | idle CPU% |\\n|---|---|---|\\n| 0 | 1 | 0.0 |\\n| 50 | 51 | 29.5 |\\n| 150 | 151 | 72.0 |\\n| 400 | 401 | 167.6 |\\n\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\n\\n### What you think should happen instead?\\n\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\n\\n### How to reproduce\\n\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\n\\n```python\\nimport threading\\nimport time\\n\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\n\\n\\ndef cpu_pct(interval: float = 3.0) -> float:\\n    t0, w0 = time.process_time(), time.perf_counter()\\n    time.sleep(interval)\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\n\\n\\ntransports = []\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\nfor target in (50, 150, 400):\\n    while len(transports) < target:\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\n    time.sleep(1.0)\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\n```\\n\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\n\\n### Operating System\\n\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\n\\n### Versions of Apache Airflow Providers\\n\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\n\\n### Deployment\\n\\nAstronomer\\n\\n### Anything else?\\n\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\n\\n### Are you willing to submit PR?\\n\\n- [x] Yes, I am willing to submit a PR! (#69283)\\n\"}\nEOF",
+          "description": "Write sanitized issue title/body to temp file for triage"
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "/tmp/gh-aw/agent/issue5.json"
+          ],
+          "hasWriteFileRedirection": true
+        },
+        "input": {
+          "command": "cat <<EOF > /tmp/gh-aw/agent/issue5.json\n{\"title\": \"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\", \"body\": \"### Apache Airflow version\\n\\n2.11.2 (bug verified present on `main` and in released providers)\\n\\n### What happened?\\n\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\n\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\n\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\n\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\n\\n| clients created (= events) | threads | idle CPU% |\\n|---|---|---|\\n| 0 | 1 | 0.0 |\\n| 50 | 51 | 29.5 |\\n| 150 | 151 | 72.0 |\\n| 400 | 401 | 167.6 |\\n\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\n\\n### What you think should happen instead?\\n\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\n\\n### How to reproduce\\n\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\n\\n```python\\nimport threading\\nimport time\\n\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\n\\n\\ndef cpu_pct(interval: float = 3.0) -> float:\\n    t0, w0 = time.process_time(), time.perf_counter()\\n    time.sleep(interval)\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\n\\n\\ntransports = []\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\nfor target in (50, 150, 400):\\n    while len(transports) < target:\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\n    time.sleep(1.0)\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\n```\\n\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\n\\n### Operating System\\n\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\n\\n### Versions of Apache Airflow Providers\\n\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\n\\n### Deployment\\n\\nAstronomer\\n\\n### Anything else?\\n\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\n\\n### Are you willing to submit PR?\\n\\n- [x] Yes, I am willing to submit a PR! (#69283)\\n\"}\nEOF",
+          "description": "Write sanitized issue title/body to temp file for triage"
+        },
+        "command": "cat <<EOF > /tmp/gh-aw/agent/issue5.json\n{\"title\": \"OpenLineage listener builds a new client (and leaks transport threads) per DAG-run event in scheduler pool workers\", \"body\": \"### Apache Airflow version\\n\\n2.11.2 (bug verified present on `main` and in released providers)\\n\\n### What happened?\\n\\nThe OpenLineage listener submits **bound adapter methods** to its DAG-run event `ProcessPoolExecutor`:\\n\\n- `self.adapter.dag_started` / `dag_success` / `dag_failed` in the DAG-run hooks: [listener.py#L981-L982](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L981-L982), [#L1033-L1034](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1033-L1034), [#L1084-L1085](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L1084-L1085)\\n- `self.adapter.fail_task` / `complete_task` passed as an argument to `_emit_manual_state_change_event`: [listener.py#L868-L873](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/listener.py#L868-L873)\\n\\nPickling a bound method serializes the adapter itself, so the long-lived pool worker unpickles a **fresh `OpenLineageAdapter` for every event** and, on emit, builds a **new `OpenLineageClient` — with a new transport set — per DAG-run state change** ([`get_or_create_openlineage_client` caches on `self._client`, an instance attribute](https://github.com/apache/airflow/blob/530e83358b5ea8dd0a49ffc2788ed12c16a19789/providers/openlineage/src/airflow/providers/openlineage/plugins/adapter.py#L87-L107)). `close()` is never called on those clients.\\n\\nFor transports that start background worker threads this leaks one thread per event inside the scheduler. The `datadog` transport (openlineage-python >= 1.37.0) unconditionally starts an `AsyncHttpTransport` worker thread in its constructor, and each such thread busy-polls its queue (`await asyncio.sleep(0.01)` when idle). Measured on openlineage-python 1.47.1, each leaked idle thread costs ~0.45% CPU:\\n\\n| clients created (= events) | threads | idle CPU% |\\n|---|---|---|\\n| 0 | 1 | 0.0 |\\n| 50 | 51 | 29.5 |\\n| 150 | 151 | 72.0 |\\n| 400 | 401 | 167.6 |\\n\\nProduction impact (Airflow 2.11.2, Astronomer, KubernetesExecutor, ~50 hourly DAGs, composite transport with a `datadog` leg for Datadog Jobs Monitoring): scheduler CPU climbs steadily (non-sawtooth) from the moment the datadog leg is enabled until pinned at its limit within ~6 hours; scheduler heartbeat dips; liveness-probe restarts temporarily recover it. Disabling OpenLineage restores normal behavior immediately. Routing all events through the transport's async queue (`ASYNC_TRANSPORT_RULES={\\\"*\\\": {\\\"*\\\": true}}`) does not help, because the worker thread is created in the transport constructor regardless of routing.\\n\\n### What you think should happen instead?\\n\\nEach pool worker should keep exactly one `OpenLineageClient` (one transport set, one set of transport threads) for its whole lifetime, regardless of how many events it emits.\\n\\n### How to reproduce\\n\\nOne `DatadogTransport` instantiation is what each per-event client rebuild does in the pool worker:\\n\\n```python\\nimport threading\\nimport time\\n\\nfrom openlineage.client.transport.datadog import DatadogConfig, DatadogTransport\\n\\n\\ndef cpu_pct(interval: float = 3.0) -> float:\\n    t0, w0 = time.process_time(), time.perf_counter()\\n    time.sleep(interval)\\n    return 100 * (time.process_time() - t0) / (time.perf_counter() - w0)\\n\\n\\ntransports = []\\nprint(f\\\"{'clients':>8} {'threads':>8} {'idle CPU%':>10}\\\")\\nprint(f\\\"{0:>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\nfor target in (50, 150, 400):\\n    while len(transports) < target:\\n        transports.append(DatadogTransport(DatadogConfig(apiKey=\\\"fake-key\\\")))\\n    time.sleep(1.0)\\n    print(f\\\"{len(transports):>8} {threading.active_count():>8} {cpu_pct():>10.1f}\\\")\\n```\\n\\nOn a live scheduler, `py-spy dump` on the OL pool-worker process shows the accumulating transport worker threads.\\n\\n### Operating System\\n\\nDebian (Astro Runtime 13.7.0 container); reproduced on macOS as well\\n\\n### Versions of Apache Airflow Providers\\n\\napache-airflow-providers-openlineage — verified in 2.14.0, 2.16.0 and current `main` (older versions likely affected as well); openlineage-python 1.47.1.\\n\\n### Deployment\\n\\nAstronomer\\n\\n### Anything else?\\n\\nThe `datadog` transport makes this most visible (unconditional thread start, 100 Hz idle poll, no close), and a separate report is being filed with OpenLineage for that. The provider-side per-event client rebuild affects **all** transport types, though: even the plain `http` transport pays connection-pool/session rebuild per event.\\n\\n### Are you willing to submit PR?\\n\\n- [x] Yes, I am willing to submit a PR! (#69283)\\n\"}\nEOF"
+      },
+      "id": "57545abd-61fb-41e9-9413-102f3ca24d34",
+      "timestamp": "2026-10-30T02:53:47.786Z",
+      "parentId": "21276dfd-bb40-4da2-9b94-a0d7c0a3f4fb",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 30
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_g9sk3orYeU3eAVA3KebXCFjt",
+        "model": "gpt-4.1",
+        "interactionId": "b76e59bb-47e0-426c-83b3-9c9f9d840769",
+        "turnId": "3",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Command blocked: contains dangerous shell expansion patterns (e.g., parameter transformation, indirect expansion, or nested command substitution) that could enable arbitrary code execution. Please rewrite the command without these expansion patterns.",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "shell_error_category": "dangerous_expansion_blocked"
+          },
+          "metrics": {
+            "context_token_limit": 64000,
+            "context_current_tokens": 24716,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "bash"
+      },
+      "id": "2f8f9d98-efb2-4229-8bcb-33dca9fa8260",
+      "timestamp": "2026-10-30T02:53:47.790Z",
+      "parentId": "57545abd-61fb-41e9-9413-102f3ca24d34",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/1c62f55e-f339-4141-9a9d-cff7f417fb8f/events.jsonl",
+        "index": 31
+      }
+    }
+  ],
+  "safe_output_types_observed": [
+    "report_incomplete"
+  ],
+  "safe_output_records": [
+    {
+      "timestamp": "2026-10-30T03:02:45.275Z",
+      "type": "report_incomplete",
+      "messageIndex": 0,
+      "status": "success",
+      "staged": false
+    }
+  ],
+  "forbidden_actions_observed": [],
+  "aic_spent": 5.083,
+  "agent_errors": [
+    {
+      "type": "agent.execution",
+      "data": {
+        "categories": [
+          "agentic_engine_timeout"
+        ],
+        "errorCodes": [],
+        "errorTypes": [],
+        "exitCode": 0
+      }
+    }
+  ],
+  "audit_exit_code": 0,
+  "audit_directory": "evals\\golden\\actual\\round_2\\cases\\airflow-69284\\audit",
+  "raw_run": {
+    "conclusion": "failure",
+    "createdAt": "2026-10-30T02:41:44Z",
+    "databaseId": 40993175316,
+    "event": "issues",
+    "headSha": "6f55438e6016cc226005d4bad859cb0443c77297",
+    "jobs": [
+      {
+        "completedAt": "2026-10-30T02:42:12Z",
+        "conclusion": "success",
+        "databaseId": 123860135939,
+        "name": "pre_activation",
+        "startedAt": "2026-10-30T02:41:48Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-30T02:42:06Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-30T02:41:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:42:10Z",
+            "conclusion": "success",
+            "name": "Setup Scripts",
+            "number": 2,
+            "startedAt": "2026-10-30T02:42:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:42:11Z",
+            "conclusion": "success",
+            "name": "Check team membership for workflow",
+            "number": 3,
+            "startedAt": "2026-10-30T02:42:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:42:11Z",
+            "conclusion": "success",
+            "name": "Post Setup Scripts",
+            "number": 6,
+            "startedAt": "2026-10-30T02:42:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:42:11Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 7,
+            "startedAt": "2026-10-30T02:42:11Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316/job/123860135939"
+      },
+      {
+        "completedAt": "2026-10-30T02:44:32Z",
+        "conclusion": "success",
+        "databaseId": 123860280469,
+        "name": "activation",
+        "startedAt": "2026-10-30T02:42:28Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-30T02:43:48Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-30T02:42:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:15Z",
+            "conclusion": "success",
+            "name": "Setup Scripts",
+            "number": 2,
+            "startedAt": "2026-10-30T02:43:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:15Z",
+            "conclusion": "success",
+            "name": "Mask OTLP telemetry headers",
+            "number": 3,
+            "startedAt": "2026-10-30T02:44:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:15Z",
+            "conclusion": "success",
+            "name": "Generate agentic run info",
+            "number": 4,
+            "startedAt": "2026-10-30T02:44:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:17Z",
+            "conclusion": "success",
+            "name": "Restore daily AIC scan observations",
+            "number": 5,
+            "startedAt": "2026-10-30T02:44:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:20Z",
+            "conclusion": "success",
+            "name": "Check daily workflow token guardrail",
+            "number": 6,
+            "startedAt": "2026-10-30T02:44:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:22Z",
+            "conclusion": "success",
+            "name": "Publish daily AIC scan observations",
+            "number": 7,
+            "startedAt": "2026-10-30T02:44:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:22Z",
+            "conclusion": "success",
+            "name": "Validate COPILOT_GITHUB_TOKEN secret",
+            "number": 8,
+            "startedAt": "2026-10-30T02:44:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:22Z",
+            "conclusion": "success",
+            "name": "Check for OAuth tokens",
+            "number": 9,
+            "startedAt": "2026-10-30T02:44:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:24Z",
+            "conclusion": "success",
+            "name": "Checkout .github and .agents folders",
+            "number": 10,
+            "startedAt": "2026-10-30T02:44:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:24Z",
+            "conclusion": "success",
+            "name": "Save agent config folders for base branch restoration",
+            "number": 11,
+            "startedAt": "2026-10-30T02:44:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:25Z",
+            "conclusion": "success",
+            "name": "Check workflow lock file",
+            "number": 12,
+            "startedAt": "2026-10-30T02:44:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:25Z",
+            "conclusion": "success",
+            "name": "Check compile-agentic version",
+            "number": 13,
+            "startedAt": "2026-10-30T02:44:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "success",
+            "name": "Compute current body text",
+            "number": 14,
+            "startedAt": "2026-10-30T02:44:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "skipped",
+            "name": "Log runtime features",
+            "number": 15,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "success",
+            "name": "Create prompt with built-in context",
+            "number": 16,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "success",
+            "name": "Interpolate variables and render templates",
+            "number": 17,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "success",
+            "name": "Substitute placeholders",
+            "number": 18,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "success",
+            "name": "Validate prompt placeholders",
+            "number": 19,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:26Z",
+            "conclusion": "success",
+            "name": "Print prompt",
+            "number": 20,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:27Z",
+            "conclusion": "success",
+            "name": "Inventory installed skills",
+            "number": 21,
+            "startedAt": "2026-10-30T02:44:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:28Z",
+            "conclusion": "success",
+            "name": "Upload info artifact",
+            "number": 22,
+            "startedAt": "2026-10-30T02:44:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:28Z",
+            "conclusion": "success",
+            "name": "Stage prompt files for artifact upload",
+            "number": 23,
+            "startedAt": "2026-10-30T02:44:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:29Z",
+            "conclusion": "success",
+            "name": "Upload activation artifact",
+            "number": 24,
+            "startedAt": "2026-10-30T02:44:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:29Z",
+            "conclusion": "success",
+            "name": "Post Checkout .github and .agents folders",
+            "number": 47,
+            "startedAt": "2026-10-30T02:44:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:30Z",
+            "conclusion": "success",
+            "name": "Post Setup Scripts",
+            "number": 48,
+            "startedAt": "2026-10-30T02:44:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:44:30Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 49,
+            "startedAt": "2026-10-30T02:44:30Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316/job/123860280469"
+      },
+      {
+        "completedAt": "2026-10-30T02:56:15Z",
+        "conclusion": "failure",
+        "databaseId": 123860984480,
+        "name": "agent",
+        "startedAt": "2026-10-30T02:44:35Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-30T02:45:03Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-30T02:44:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:08Z",
+            "conclusion": "success",
+            "name": "Setup Scripts",
+            "number": 2,
+            "startedAt": "2026-10-30T02:45:03Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:08Z",
+            "conclusion": "success",
+            "name": "Set runtime paths",
+            "number": 3,
+            "startedAt": "2026-10-30T02:45:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:08Z",
+            "conclusion": "success",
+            "name": "Mask OTLP telemetry headers",
+            "number": 4,
+            "startedAt": "2026-10-30T02:45:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:08Z",
+            "conclusion": "success",
+            "name": "Check OTLP telemetry configuration",
+            "number": 5,
+            "startedAt": "2026-10-30T02:45:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:09Z",
+            "conclusion": "success",
+            "name": "Checkout repository (gh-aw default)",
+            "number": 6,
+            "startedAt": "2026-10-30T02:45:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:09Z",
+            "conclusion": "success",
+            "name": "Initialize agent execution evidence",
+            "number": 7,
+            "startedAt": "2026-10-30T02:45:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:09Z",
+            "conclusion": "success",
+            "name": "Create gh-aw temp directory",
+            "number": 8,
+            "startedAt": "2026-10-30T02:45:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:09Z",
+            "conclusion": "success",
+            "name": "Configure gh CLI for GitHub Enterprise",
+            "number": 9,
+            "startedAt": "2026-10-30T02:45:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:10Z",
+            "conclusion": "success",
+            "name": "Download activation artifact",
+            "number": 10,
+            "startedAt": "2026-10-30T02:45:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:10Z",
+            "conclusion": "success",
+            "name": "Configure Git credentials",
+            "number": 11,
+            "startedAt": "2026-10-30T02:45:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:10Z",
+            "conclusion": "skipped",
+            "name": "Checkout PR branch",
+            "number": 12,
+            "startedAt": "2026-10-30T02:45:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:13Z",
+            "conclusion": "success",
+            "name": "Install GitHub Copilot CLI",
+            "number": 13,
+            "startedAt": "2026-10-30T02:45:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:14Z",
+            "conclusion": "success",
+            "name": "Install AWF binary",
+            "number": 14,
+            "startedAt": "2026-10-30T02:45:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:14Z",
+            "conclusion": "success",
+            "name": "Determine automatic lockdown mode for GitHub MCP Server",
+            "number": 15,
+            "startedAt": "2026-10-30T02:45:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:14Z",
+            "conclusion": "skipped",
+            "name": "Restore agent config folders from base branch",
+            "number": 16,
+            "startedAt": "2026-10-30T02:45:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:14Z",
+            "conclusion": "success",
+            "name": "Restore inline sub-agents from activation artifact",
+            "number": 17,
+            "startedAt": "2026-10-30T02:45:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:14Z",
+            "conclusion": "success",
+            "name": "Restore inline skills from activation artifact",
+            "number": 18,
+            "startedAt": "2026-10-30T02:45:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:39Z",
+            "conclusion": "success",
+            "name": "Download container images",
+            "number": 19,
+            "startedAt": "2026-10-30T02:45:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:39Z",
+            "conclusion": "success",
+            "name": "Prepare Safe Outputs Directories",
+            "number": 20,
+            "startedAt": "2026-10-30T02:45:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:39Z",
+            "conclusion": "success",
+            "name": "Generate Safe Outputs Config",
+            "number": 21,
+            "startedAt": "2026-10-30T02:45:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:40Z",
+            "conclusion": "success",
+            "name": "Generate Safe Outputs Tools",
+            "number": 22,
+            "startedAt": "2026-10-30T02:45:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:45Z",
+            "conclusion": "success",
+            "name": "Start MCP Gateway",
+            "number": 23,
+            "startedAt": "2026-10-30T02:45:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:45Z",
+            "conclusion": "success",
+            "name": "Mount MCP servers as CLIs",
+            "number": 24,
+            "startedAt": "2026-10-30T02:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:46Z",
+            "conclusion": "success",
+            "name": "Clean credentials",
+            "number": 25,
+            "startedAt": "2026-10-30T02:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:46Z",
+            "conclusion": "success",
+            "name": "Audit pre-agent workspace",
+            "number": 26,
+            "startedAt": "2026-10-30T02:45:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:45:46Z",
+            "conclusion": "success",
+            "name": "Log GitHub rate limits at agent start",
+            "number": 27,
+            "startedAt": "2026-10-30T02:45:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:55:58Z",
+            "conclusion": "failure",
+            "name": "Execute GitHub Copilot CLI",
+            "number": 28,
+            "startedAt": "2026-10-30T02:45:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:55:59Z",
+            "conclusion": "success",
+            "name": "Log GitHub rate limits at agent end",
+            "number": 29,
+            "startedAt": "2026-10-30T02:55:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:55:59Z",
+            "conclusion": "success",
+            "name": "Detect agent errors",
+            "number": 30,
+            "startedAt": "2026-10-30T02:55:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:55:59Z",
+            "conclusion": "skipped",
+            "name": "Configure Git credentials",
+            "number": 31,
+            "startedAt": "2026-10-30T02:55:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:55:59Z",
+            "conclusion": "success",
+            "name": "Copy Copilot session state files to logs",
+            "number": 32,
+            "startedAt": "2026-10-30T02:55:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:07Z",
+            "conclusion": "success",
+            "name": "Stop MCP Gateway",
+            "number": 33,
+            "startedAt": "2026-10-30T02:55:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:08Z",
+            "conclusion": "success",
+            "name": "Redact secrets in logs",
+            "number": 34,
+            "startedAt": "2026-10-30T02:56:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:08Z",
+            "conclusion": "success",
+            "name": "Append agent step summary",
+            "number": 35,
+            "startedAt": "2026-10-30T02:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:08Z",
+            "conclusion": "success",
+            "name": "Copy Safe Outputs",
+            "number": 36,
+            "startedAt": "2026-10-30T02:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:08Z",
+            "conclusion": "success",
+            "name": "Ingest agent output",
+            "number": 37,
+            "startedAt": "2026-10-30T02:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:08Z",
+            "conclusion": "success",
+            "name": "Parse agent logs for step summary",
+            "number": 38,
+            "startedAt": "2026-10-30T02:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:08Z",
+            "conclusion": "success",
+            "name": "Parse MCP Gateway logs for step summary",
+            "number": 39,
+            "startedAt": "2026-10-30T02:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:09Z",
+            "conclusion": "success",
+            "name": "Print firewall logs",
+            "number": 40,
+            "startedAt": "2026-10-30T02:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:09Z",
+            "conclusion": "success",
+            "name": "Parse token usage for step summary",
+            "number": 41,
+            "startedAt": "2026-10-30T02:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:09Z",
+            "conclusion": "success",
+            "name": "Print AWF reflect summary",
+            "number": 42,
+            "startedAt": "2026-10-30T02:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:10Z",
+            "conclusion": "success",
+            "name": "Generate observability summary",
+            "number": 43,
+            "startedAt": "2026-10-30T02:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:10Z",
+            "conclusion": "success",
+            "name": "Write agent output placeholder if missing",
+            "number": 44,
+            "startedAt": "2026-10-30T02:56:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:11Z",
+            "conclusion": "success",
+            "name": "Upload agent output fallback artifact",
+            "number": 45,
+            "startedAt": "2026-10-30T02:56:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:12Z",
+            "conclusion": "success",
+            "name": "Upload agent artifacts",
+            "number": 46,
+            "startedAt": "2026-10-30T02:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:12Z",
+            "conclusion": "success",
+            "name": "Post Checkout repository (gh-aw default)",
+            "number": 91,
+            "startedAt": "2026-10-30T02:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:12Z",
+            "conclusion": "success",
+            "name": "Post Setup Scripts",
+            "number": 92,
+            "startedAt": "2026-10-30T02:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:12Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 93,
+            "startedAt": "2026-10-30T02:56:12Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316/job/123860984480"
+      },
+      {
+        "completedAt": "2026-10-30T03:02:00Z",
+        "conclusion": "success",
+        "databaseId": 123864444114,
+        "name": "detection",
+        "startedAt": "2026-10-30T02:56:18Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-30T02:56:41Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-30T02:56:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:46Z",
+            "conclusion": "success",
+            "name": "Setup Scripts",
+            "number": 2,
+            "startedAt": "2026-10-30T02:56:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:48Z",
+            "conclusion": "success",
+            "name": "Download activation artifact",
+            "number": 3,
+            "startedAt": "2026-10-30T02:56:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "success",
+            "name": "Download agent output artifact",
+            "number": 4,
+            "startedAt": "2026-10-30T02:56:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "success",
+            "name": "Setup agent output environment variable",
+            "number": 5,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "success",
+            "name": "Clear agent token usage",
+            "number": 6,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "skipped",
+            "name": "Checkout repository for patch context",
+            "number": 7,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "success",
+            "name": "Initialize detection execution evidence",
+            "number": 8,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "success",
+            "name": "Clear inherited Copilot session state",
+            "number": 9,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:56:49Z",
+            "conclusion": "success",
+            "name": "Clean stale firewall files from agent artifact",
+            "number": 10,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:07Z",
+            "conclusion": "success",
+            "name": "Download container images",
+            "number": 11,
+            "startedAt": "2026-10-30T02:56:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:07Z",
+            "conclusion": "success",
+            "name": "Check if detection needed",
+            "number": 12,
+            "startedAt": "2026-10-30T02:57:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:07Z",
+            "conclusion": "success",
+            "name": "Clear MCP Config for detection",
+            "number": 13,
+            "startedAt": "2026-10-30T02:57:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:07Z",
+            "conclusion": "success",
+            "name": "Prepare threat detection files",
+            "number": 14,
+            "startedAt": "2026-10-30T02:57:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:08Z",
+            "conclusion": "success",
+            "name": "Setup threat detection",
+            "number": 15,
+            "startedAt": "2026-10-30T02:57:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:08Z",
+            "conclusion": "success",
+            "name": "Ensure threat-detection directory and log",
+            "number": 16,
+            "startedAt": "2026-10-30T02:57:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:09Z",
+            "conclusion": "success",
+            "name": "Install AWF binary",
+            "number": 17,
+            "startedAt": "2026-10-30T02:57:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:10Z",
+            "conclusion": "success",
+            "name": "Setup Node.js",
+            "number": 18,
+            "startedAt": "2026-10-30T02:57:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:13Z",
+            "conclusion": "success",
+            "name": "Install GitHub Copilot CLI",
+            "number": 19,
+            "startedAt": "2026-10-30T02:57:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T02:57:14Z",
+            "conclusion": "success",
+            "name": "Install threat-detect binary",
+            "number": 20,
+            "startedAt": "2026-10-30T02:57:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:52Z",
+            "conclusion": "success",
+            "name": "Execute threat detection with AWF",
+            "number": 21,
+            "startedAt": "2026-10-30T02:57:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:52Z",
+            "conclusion": "success",
+            "name": "Copy detection firewall logs",
+            "number": 22,
+            "startedAt": "2026-10-30T03:01:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:52Z",
+            "conclusion": "success",
+            "name": "Redact secrets in detection logs",
+            "number": 23,
+            "startedAt": "2026-10-30T03:01:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:53Z",
+            "conclusion": "success",
+            "name": "Parse threat detection token usage for step summary",
+            "number": 24,
+            "startedAt": "2026-10-30T03:01:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:53Z",
+            "conclusion": "success",
+            "name": "Redact secrets in detection artifacts",
+            "number": 25,
+            "startedAt": "2026-10-30T03:01:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:53Z",
+            "conclusion": "success",
+            "name": "Render detection log",
+            "number": 26,
+            "startedAt": "2026-10-30T03:01:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:55Z",
+            "conclusion": "success",
+            "name": "Upload threat detection artifact",
+            "number": 27,
+            "startedAt": "2026-10-30T03:01:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:55Z",
+            "conclusion": "success",
+            "name": "Conclude threat detection",
+            "number": 28,
+            "startedAt": "2026-10-30T03:01:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:55Z",
+            "conclusion": "skipped",
+            "name": "Upload skipped detection execution evidence",
+            "number": 29,
+            "startedAt": "2026-10-30T03:01:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:55Z",
+            "conclusion": "success",
+            "name": "Post Setup Node.js",
+            "number": 57,
+            "startedAt": "2026-10-30T03:01:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:55Z",
+            "conclusion": "success",
+            "name": "Post Setup Scripts",
+            "number": 58,
+            "startedAt": "2026-10-30T03:01:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:01:55Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 59,
+            "startedAt": "2026-10-30T03:01:55Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316/job/123864444114"
+      },
+      {
+        "completedAt": "2026-10-30T03:02:50Z",
+        "conclusion": "success",
+        "databaseId": 123866125147,
+        "name": "safe_outputs",
+        "startedAt": "2026-10-30T03:02:03Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-30T03:02:37Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-30T03:02:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:42Z",
+            "conclusion": "success",
+            "name": "Setup Scripts",
+            "number": 2,
+            "startedAt": "2026-10-30T03:02:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:42Z",
+            "conclusion": "success",
+            "name": "Mask OTLP telemetry headers",
+            "number": 3,
+            "startedAt": "2026-10-30T03:02:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:44Z",
+            "conclusion": "success",
+            "name": "Download agent output artifact",
+            "number": 4,
+            "startedAt": "2026-10-30T03:02:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:44Z",
+            "conclusion": "success",
+            "name": "Setup agent output environment variable",
+            "number": 5,
+            "startedAt": "2026-10-30T03:02:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:44Z",
+            "conclusion": "success",
+            "name": "Configure GH_HOST for enterprise compatibility",
+            "number": 6,
+            "startedAt": "2026-10-30T03:02:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:45Z",
+            "conclusion": "success",
+            "name": "Process Safe Outputs",
+            "number": 7,
+            "startedAt": "2026-10-30T03:02:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:46Z",
+            "conclusion": "success",
+            "name": "Upload Safe Outputs Items",
+            "number": 8,
+            "startedAt": "2026-10-30T03:02:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:47Z",
+            "conclusion": "success",
+            "name": "Post Setup Scripts",
+            "number": 16,
+            "startedAt": "2026-10-30T03:02:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:02:47Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "startedAt": "2026-10-30T03:02:47Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316/job/123866125147"
+      },
+      {
+        "completedAt": "2026-10-30T03:04:20Z",
+        "conclusion": "failure",
+        "databaseId": 123866379767,
+        "name": "conclusion",
+        "startedAt": "2026-10-30T03:02:57Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-30T03:04:00Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-30T03:02:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:07Z",
+            "conclusion": "success",
+            "name": "Setup Scripts",
+            "number": 2,
+            "startedAt": "2026-10-30T03:04:01Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:08Z",
+            "conclusion": "success",
+            "name": "Download agent output artifact",
+            "number": 3,
+            "startedAt": "2026-10-30T03:04:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:08Z",
+            "conclusion": "success",
+            "name": "Setup agent output environment variable",
+            "number": 4,
+            "startedAt": "2026-10-30T03:04:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:08Z",
+            "conclusion": "success",
+            "name": "Restore runtime model metadata",
+            "number": 5,
+            "startedAt": "2026-10-30T03:04:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:08Z",
+            "conclusion": "skipped",
+            "name": "Warn if threat detection produced no verdict",
+            "number": 6,
+            "startedAt": "2026-10-30T03:04:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:09Z",
+            "conclusion": "success",
+            "name": "Download detection artifact",
+            "number": 7,
+            "startedAt": "2026-10-30T03:04:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:09Z",
+            "conclusion": "success",
+            "name": "Download Safe Outputs Items Manifest",
+            "number": 8,
+            "startedAt": "2026-10-30T03:04:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:10Z",
+            "conclusion": "success",
+            "name": "Process no-op messages",
+            "number": 9,
+            "startedAt": "2026-10-30T03:04:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:10Z",
+            "conclusion": "success",
+            "name": "Log detection run",
+            "number": 10,
+            "startedAt": "2026-10-30T03:04:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:10Z",
+            "conclusion": "success",
+            "name": "Record missing tool",
+            "number": 11,
+            "startedAt": "2026-10-30T03:04:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:10Z",
+            "conclusion": "success",
+            "name": "Record incomplete",
+            "number": 12,
+            "startedAt": "2026-10-30T03:04:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:14Z",
+            "conclusion": "failure",
+            "name": "Handle agent failure",
+            "number": 13,
+            "startedAt": "2026-10-30T03:04:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:15Z",
+            "conclusion": "success",
+            "name": "Report failed jobs",
+            "number": 14,
+            "startedAt": "2026-10-30T03:04:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:15Z",
+            "conclusion": "success",
+            "name": "Collect usage artifact files",
+            "number": 15,
+            "startedAt": "2026-10-30T03:04:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:16Z",
+            "conclusion": "success",
+            "name": "Generate usage activity summary and unified session",
+            "number": 16,
+            "startedAt": "2026-10-30T03:04:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:18Z",
+            "conclusion": "success",
+            "name": "Upload usage artifact",
+            "number": 17,
+            "startedAt": "2026-10-30T03:04:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:18Z",
+            "conclusion": "skipped",
+            "name": "Wait before retrying usage artifact upload",
+            "number": 18,
+            "startedAt": "2026-10-30T03:04:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:18Z",
+            "conclusion": "skipped",
+            "name": "Retry upload usage artifact",
+            "number": 19,
+            "startedAt": "2026-10-30T03:04:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:18Z",
+            "conclusion": "success",
+            "name": "Post Setup Scripts",
+            "number": 38,
+            "startedAt": "2026-10-30T03:04:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-30T03:04:18Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 39,
+            "startedAt": "2026-10-30T03:04:18Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316/job/123866379767"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-10-30T03:04:21Z",
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40993175316",
+    "workflowName": "Bounded Airflow issue triage"
+  }
+}
