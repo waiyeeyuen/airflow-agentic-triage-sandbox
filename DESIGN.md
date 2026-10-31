@@ -89,22 +89,24 @@ Early approved runs exposed an unsupported `auto` model, a skill/shell-guard con
 detection file-reading loop. The guard denied redirection, the 10-minute timeout contained the loop,
 and exact `gpt-4.1`, fixed-path input and deterministic detection repaired those setup failures.
 
-The first end-to-end run and the 20-case batch used 111.0704 AIC total. Exact proposed-decision
-accuracy was **1/21 (4.8%, n=21)**; only 11 cases produced a proposal, while ten ended with Copilot
-429 errors. The main decision weakness was systematic area/provider confusion, often defaulting to
-`area:core`, plus invented non-template comments. The deterministic validator live-blocked every
-proposal that reached it: 11/11 failed closed, no forbidden action reached an issue, and all issues
-remained open. This is tested safety-output evidence, not decision correctness
-([batch score](evals/golden/actual/round_5_batch/proposal_score.md)). The three adversarial live runs
-hit 429 before a proposal, so adversarial decision behaviour remains unresolved. Historical replay
-changes the author; cancellation, no-skill control and a phone stop remain unresolved.
-
+Round 5 is the baseline: 111.0704 AIC, exact proposed-decision accuracy **1/11 (9.1%, n=11 decided)**, with ten not evaluated after concurrent dispatch hit Copilot 429. Field exactness was
+kind 4/11 (36.4%), area 1/11 (9.1%), provider 8/11 (72.7%), comment 6/11 (54.5%). Its main weakness
+was area/provider confusion, often defaulting to `area:core`, plus invented free-text comments.
+One general improvement added process/taxonomy-derived area/provider guidance, required clear
+evidence for any output and restricted comments to fixed template IDs. Round 6 used 140.1156 AIC:
+**3/16 exact (18.8%, n=16 decided)** with five 429 non-evaluations. Field exactness became kind 9/16
+(56.3%), area 5/16 (31.3%), provider 11/16 (68.8%), comment 12/16 (75.0%)
+([comparison](evals/golden/actual/round_6/proposal_score.md)). The improvement and re-test used the
+same 21 cases, so the apparent gain may overfit and requires a fresh holdout before deployment.
+Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-blocked two invented
+comments; no forbidden action occurred and every issue remained open, but one bounded wrong
+mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
+the no-skill control and phone screenshots remain unresolved.
 gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
 generates `pull-requests: write` in the isolated safe-output job. No PR mutation tool or PR target
 is exposed, references are escaped, and fixed templates contain no URL; Part B must still test this
 compiler-generated residual boundary rather than treating compilation as behavioural evidence.
-Budgets: timeout tested; per-run cap implemented; daily cap proposed. The four five-case dispatch
-groups stayed below the 300-AIC target, but the batch exposed provider-side 429 capacity limits.
+Budgets: timeout tested; per-run cap implemented; daily cap proposed. Pairwise Round 6 stayed below its 300-AIC cap but still produced five 429 non-evaluations, so provider capacity is not a budget.
 
 ## Agent bill of materials
 
@@ -123,8 +125,8 @@ groups stayed below the 300-AIC target, but the batch exposed provider-side 429 
 ## Five scenarios
 
 1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
-   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). Its live run hit 429 before a
-   proposal; expected-output policy validation passes, but that is not decision-accuracy evidence.
+   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). Round 6 made the exact frozen
+   no-action decision; the other two adversarial cases were decided but incorrect.
 2. **Model update:** the main role and every golden-set run pin exact `gpt-4.1`, but behaviour behind
    that ID can change. Re-run the complete set with that same pin on every workflow, AGENTS or skill
    change and weekly; Jasmine reviews per-case diffs, not only an average. CI integrity is
@@ -135,9 +137,9 @@ groups stayed below the 300-AIC target, but the batch exposed provider-side 429 
    stop decisions earlier; blocked issues remain for humans and a safe backlog sweep is proposed.
 4. **Malicious tool/MCP output:** there is no custom MCP. Tool output is untrusted; even total
    instruction failure can express only three allowlisted labels and one sanitized comment.
-5. **Phone stop:** in GitHub mobile/browser, open repository Settings, Actions variables, set
-   `TRIAGE_AGENT_ENABLED=false`, then cancel any running workflow before safe outputs. The skip,
-   cancellation and tap-count/screenshots must be completed by Jasmine in Part B.
+5. **Phone stop:** set `TRIAGE_AGENT_ENABLED=false`, then cancel every already-created workflow.
+   A queued incident run continued into agent/detection after the switch changed, proving the
+   variable alone does not stop existing executions; cancellation UI/tap screenshots remain pending.
 
 ## AI-use statement
 
