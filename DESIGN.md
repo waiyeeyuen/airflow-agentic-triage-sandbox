@@ -100,7 +100,7 @@ tested the change, so the apparent gain may overfit and needs a fresh holdout be
 Round 5 blocked 11/11 proposals; Round 6 blocked three invented comments. No forbidden action occurred
 and every issue remained open; one wrong mutation added two allowlisted labels. Historical replay
 changes the author, and the no-skill control remains unresolved.
-Post-evaluation, no-match search returns no candidates; all 21 golden bytes stay fixed; live test pending.
+Post-evaluation fallback is 21-case byte-pinned, not live-tested: [run 41184094169][live-check-run] skipped.
 Airflow pairs `area:core` with sub-areas; AGENTS follows observed 48-hour specific-area practice.
 With one CODEOWNER, config needs a second maintainer; PR #58 blocks owner self-approval.
 gh-aw v1.0.1 generates `pull-requests: write` in the isolated safe-output job, but exposes no PR
@@ -136,8 +136,7 @@ mutation tool or target. This residual permission remains unresolved; compilatio
 5. **Phone stop:** set `TRIAGE_AGENT_ENABLED=false`, then cancel every already-created workflow.
    [Run 41166022897](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41166022897)
    had reached `safe_outputs` when cancelled in five taps and 1:37, so cancellation must be fast.
-   The switch reliably stops future runs; issue 57 stayed open with no labels/comments
-   ([evidence](evidence/phone-kill-switch/)).
+   The switch stops future runs; issue 57 had no output ([evidence](evidence/phone-kill-switch/)).
 
 ## AI-use statement
 
@@ -148,3 +147,4 @@ kill-switch test. I checked results in the Actions run history and logs; AI outp
 as evidence without such checks.
 
 [triage-process]: https://github.com/apache/airflow/blob/270b2abfc258c512a0b931af425904321360d043/ISSUE_TRIAGE_PROCESS.rst#L102-L137
+[live-check-run]: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41184094169
