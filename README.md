@@ -16,6 +16,7 @@ materials, five scenarios and AI-use statement.
 | Need measurement | [analysis/need_metric/](analysis/need_metric/) |
 | Golden set: inputs, expected outcomes, actual outputs, logs | [evals/golden/](evals/golden/) |
 | Final comparison | [evals/golden/actual/round_6_retry_429/proposal_score.md](evals/golden/actual/round_6_retry_429/proposal_score.md) |
+| Independent holdout (10 cases) | [evals/holdout/](evals/holdout/) |
 | Reproduction instructions | [evals/golden/README.md](evals/golden/README.md) |
 | Governance evidence | [evidence/](evidence/) |
 | Agent role reports | [notes/](notes/) |
