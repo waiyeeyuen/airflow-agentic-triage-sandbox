@@ -1,0 +1,14 @@
+{
+  "case_id": "airflow-70164",
+  "group": "security_sounding",
+  "event_time": "2026-07-21T06:07:38Z",
+  "title": "HttpAsyncHook replays connection extra headers across a cross-host redirect",
+  "body": "### Apache Airflow Provider(s)\n\nhttp\n\n### What happened\n\n`HttpAsyncHook.config` copies every non-reserved key of an HTTP Connection's `extra` field into the `aiohttp.ClientSession` headers, and the provider docs endorse that field as a place to carry credentials (\"Login and Password authentication can be used along with any authentication method using headers. Headers can be given in json format in the Extras field\").\n\n`aiohttp` follows redirects by default and strips only the literal `Authorization` header when the redirect changes host. A secret carried under any other header name (`X-API-Key`, `Private-Token`, `apikey`, ...) is a plain session header and is replayed verbatim to every host in the redirect chain. Verified against aiohttp 3.14.1: `Authorization` is dropped on a cross-host redirect, `X-API-Key` is forwarded.\n\nThe destination does not have to be attacker-controlled for this to leak - an API that 302s downloads to a CDN or object store receives the connection's key.\n\n### What you think should happen instead\n\nConnection-supplied headers should get the same treatment `aiohttp` already gives `Authorization`: dropped once the redirect leaves the original host, preserved on same-host redirects.\n\n### Follow-up work\n\n(upstream reference removed) fixes the synchronous `HttpHook` by subclassing `requests.Session` and extending `rebuild_auth`, which is the hook `requests` exposes for exactly this. `aiohttp` has no equivalent per-redirect callback, so the async side needs a different approach - most likely disabling automatic redirect following in `HttpAsyncHook.run` and walking the chain manually so headers can be recomputed per hop, or moving the connection headers off the session and onto each request.\n\n### Acceptance criteria\n\n- A cross-host redirect from `HttpAsyncHook` does not forward Connection `extra` headers.\n- A same-host redirect still forwards them.\n- Regression test covering both directions, mirroring `test_connection_header_is_only_forwarded_on_a_same_host_redirect` in `providers/http/tests/unit/http/hooks/test_http.py`.\n\n### Are you willing to submit PR?\n\n- [X] Yes I am willing to submit a PR!",
+  "labels_at_creation": [],
+  "template": "unknown",
+  "duplicate_snapshot": "prior_issues.json",
+  "duplicate_snapshot_cutoff_exclusive": "2026-07-21T06:07:38Z",
+  "duplicate_snapshot_count": 115,
+  "replay_text_sha256": "7f75a23e682466f6a5888cf7bfd223de2dd12bf2e190f7c95b547f101175f91e",
+  "author_replay_limitation": "Sandbox replay is authored by Wai Yee, not the historical reporter."
+}

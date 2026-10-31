@@ -1,0 +1,145 @@
+{
+  "case_id": "airflow-70355",
+  "not_agent_input": true,
+  "first_48h_maintainer_outcome": [
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T07:09:47Z",
+      "actor": "Vamsi-klu",
+      "label": null,
+      "body": "RC testing — Vamsi-klu items from #70355\n\napache-airflow-providers-apache-hive==9.6.0rc1 (PR #68144 / #45049)\n- Environment: apache-airflow/core 3.1.3, Python 3.11.15, Breeze\n- Exact 9.6.0rc1 PyPI wheel and isolated site-packages imports: PASS\n- jdbc_params URL/auth composition, ordering, and HiveOperator passthrough: PASS\n- Empty, invalid-name/value, non-string, classic-CLI, connection-extra security, and separator edge cases: PASS\n- Result: PASS\n\napache-airflow-providers-databricks==7.18.0rc1 (PR #69747 / #69031)\n- Environment: apache-airflow/core 3.1.3, Python 3.11.15, Breeze\n- Exact 7.18.0rc1 PyPI wheel, isolated site-packages imports, and pip check: PASS\n- sqlalchemy_url/get_uri from connection-extra-only http_path and engine URL propagation: PASS\n- sqlalchemy_url made no endpoint lookup; get_conn endpoint precedence and all required encoding/stripping/redaction edges: PASS\n- Result: PASS\n\n---\nDrafted-by: Codex (GPT-5); reviewed by @Vamsi-klu before posting\n"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T08:26:43Z",
+      "actor": "xBis7",
+      "label": null,
+      "body": "I installed the new Kafka provider package under breeze\n\n```\n pip install apache-airflow-providers-apache-kafka==1.15.0rc1\n```\n\nand then ran multiple manual tests and some integration tests.\n\nI can verify that all my changes for the Kafka Event Producer plugin are working! Thanks @shahar1!"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T09:46:40Z",
+      "actor": "guan404ming",
+      "label": null,
+      "body": "Verified my 5 common.ai 0.7.0rc1 changes. All working. Thanks @shahar1!"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T11:16:34Z",
+      "actor": "henry3260",
+      "label": null,
+      "body": "#69612 work expected! thanks"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T11:34:08Z",
+      "actor": "FrankYang0529",
+      "label": null,
+      "body": "#69179 is document update. No function change. Thanks."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T14:02:17Z",
+      "actor": "aaron-y-chen",
+      "label": null,
+      "body": "I've tested #69234, #69990, and #69613, they all work well :)"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T14:11:32Z",
+      "actor": "te-horie",
+      "label": null,
+      "body": "Verified `apache-airflow-providers-amazon 9.33.0rc1` for #69846\n\n- Environment: Airflow 3.1.3, Python 3.11.15, Breeze\n- Confirmed that `AthenaOperator` was loaded from the installed RC package in `site-packages`\n- Locally removed the `database` argument from the `read_table` task in [`example_athena.py`](https://github.com/apache/airflow/blob/2f7f70ba95eb8d047f2fd6f3c98eadff44c835a4/providers/amazon/tests/system/amazon/aws/example_athena.py)\n- Ran `pytest --system providers/amazon/tests/system/amazon/aws/example_athena.py`: **PASS**\n- Confirmed that the Athena query succeeded with only `Catalog` in `QueryExecutionContext`\n\n**Final Result: PASS**👍\n\n<details><summary>Details</summary>\n<p>\n\n**Preparation**\nLocally removed the `database` argument from the `read_table` task in [`example_athena.py`](https://github.com/apache/airflow/blob/2f7f70ba95eb8d047f2fd6f3c98eadff44c835a4/providers/amazon/tests/system/amazon/aws/example_athena.py)\n```diff\ndiff --git a/providers/amazon/tests/system/amazon/aws/example_athena.py b/providers/amazon/tests/system/amazon/aws/example_athena.py\nindex 36a37a8e1c..3c72e9b309 100644\n--- a/providers/amazon/tests/system/amazon/aws/example_athena.py\n+++ b/providers/amazon/tests/system/amazon/aws/example_athena.py\n@@ -129,7 +129,6 @@ with DAG(\n     read_table = AthenaOperator(\n         task_id=\"read_table\",\n         query=query_read_table,\n-        database=athena_database,\n         output_location=f\"s3://{s3_bucket}/\",\n     )\n     # [END howto_operator_athena]\n```\n\n**Setup**\n```\n$ breeze shell --use-airflow-version 3.1.3 --mount-sources tests --python 3.11 --backend postgres --forward-credentials\nUsing constraints for 3.1.3 - exact version specified.\n...\n[Breeze:3.11.15] root@53d1cf05c6f2:/opt/airflow$ pip install \"apache-airflow-providers-amazon==9.33.0rc1\"\n...\nSuccessfully installed apache-airflow-providers-amazon-9.33.0rc1 ...\n[Breeze:3.11.15] root@53d1cf05c6f2:/opt/airflow$ pip show apache-airflow-providers-amazon\nName: apache-airflow-providers-amazon\nVersion: 9.33.0rc1\n...\nLocation: /usr/python/lib/python3.11/site-packages\n...\n[Breeze:3.11.15] root@53d1cf05c6f2:/opt/airflow$ python -c 'import airflow.providers.amazon.aws.operators.athena as m; print(m.__file__)'\n/usr/python/lib/python3.11/site-packages/airflow/providers/amazon/aws/operators/athena.py\n[Breeze:3.11.15] root@53d1cf05c6f2:/opt/airflow$ grep -F 'database: str | None = None,' /usr/python/lib/python3.11/site-packages/airflow/providers/amazon/aws/operators/athena.py\n        database: str | None = None,\n```\n\n**System test execution**\n```\n[Breeze:3.11.15] root@53d1cf05c6f2:/opt/airflow$ env SYSTEM_TESTS_ENV_ID=airflowtest$(date +%s) AWS_PROFILE=airflow-test pytest --system providers/amazon/tests/system/amazon/aws/example_athena.py\n...\nproviders/amazon/tests/system/amazon/aws/example_athena.py::test_run <- ../../usr/python/lib/python3.11/site-packages/tests_common/test_utils/system_tests.py PASSED [100%]\n...\n```\n\n**Athena query verification**\n```\n$ aws athena get-query-execution --query-execution-id <<<REDACTED>>> --profile airflow-test\nQueryExecution:\n  ...\n  Query: SELECT * from airflowtest1784900779_default.airflowtest1784900779_test_table\n  QueryExecutionContext:\n    Catalog: awsdatacatalog\n  QueryExecutionId: <<<REDACTED>>>\n  ...\n  Status:\n    CompletionDateTime: '2026-07-24T22:46:51.651000+09:00'\n    State: SUCCEEDED\n    SubmissionDateTime: '2026-07-24T22:46:51.061000+09:00'\n  ...\n```\n\n</p>\n</details> \n\n---\n\nDrafted-by: OpenAI Codex (GPT-5.6); reviewed by @te-horie before posting"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T14:29:51Z",
+      "actor": "ColtenOuO",
+      "label": null,
+      "body": "Verified #70137 , thanks!"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T15:14:50Z",
+      "actor": "baraka-akeyless",
+      "label": null,
+      "body": "### Verified: `apache-airflow-providers-akeyless==0.3.0rc1`\n\nInstalled in a clean Python 3.10 virtualenv with `pip install apache-airflow-providers-akeyless[cloud_id]==0.3.0rc1`. All smoke tests passed.\n\n**New in 0.3.0 — cloud-based auth in Secrets Backend:**\n- `AkeylessBackend` now supports `aws_iam`, `gcp`, and `azure_ad` in addition to `api_key` and `uid`\n- `_SUPPORTED_BACKEND_AUTH_TYPES` = `('api_key', 'uid', 'aws_iam', 'gcp', 'azure_ad')`\n- `_get_cloud_id()` method exists and the `akeyless_cloud_id` package imports correctly\n- Instantiation with each of the 5 supported auth types succeeds\n- Unsupported types (`jwt`, `k8s`, `certificate`, `ldap`) correctly raise `ValueError`\n- Mocked `aws_iam` backend flow: `akeyless.Auth` called with `access_type=\"aws_iam\"` and `cloud_id` parameter\n\n**Existing functionality (unchanged):**\n- Provider version: `0.3.0`\n- `airflow providers list` shows the provider\n- All 12 hook methods present (`authenticate`, `get_secret_value`, `get_secret_values`, `create_secret`, `get_dynamic_secret_value`, `get_rotated_secret_value`, `list_items`, `delete_item`, `describe_item`, `update_secret_value`, `test_connection`, `get_conn`)\n- 8 hook auth types: `api_key`, `aws_iam`, `gcp`, `azure_ad`, `uid`, `jwt`, `k8s`, `certificate`\n- `conn_type = \"akeyless\"`, `hook_name = \"Akeyless\"`\n- Disabled paths (`connections_path=None`, etc.) return `None`"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T15:45:56Z",
+      "actor": "jason810496",
+      "label": null,
+      "body": "Thanks Shahar!\nI tested all of my changes in this batch and everything works as expected (I have checked the corresponding checkboxes as well).\n\n- **amazon 9.33.0rc1** — #69817, #69816: `s3://` and `cloudwatch://` schemes resolve through the new provider remote-logging dispatch, and `S3RemoteLogIO.from_config()` / `CloudWatchRemoteLogIO.from_config()` build correctly from `[logging]` config (including log-group ARN derivation for CloudWatch).\n- **celery 3.23.0rc1 / cncf.kubernetes 10.20.0rc1** — #69300: `get_streaming_task_log` is present on `KubernetesExecutor` with the expected signature; `CeleryKubernetesExecutor` / `LocalKubernetesExecutor` route k8s-queue TIs to the inner executor and return empty for other queues, and `get_task_log` degrades gracefully when no cluster is reachable.\n- **cncf.kubernetes 10.20.0rc1** — #69301: `[kubernetes_executor] running_pod_log_lines` defaults to 100, env override is respected, values `<= 0` are rejected with `ValueError`, and the option is visible via `airflow config get-value`.\n- **common.ai 0.7.0rc1** — #69636: the `example_agent_dynamic_system_prompt` example DAG parses from the released package with `system_prompt` in `template_fields` carrying the documented Jinja pattern.\n\nEnvironment: `apache-airflow==3.3.0` (Python 3.12, constraints-pinned) + the rc1 packages from PyPI."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T16:58:22Z",
+      "actor": "ashb",
+      "label": null,
+      "body": "@shahar1 Please exclude common.ai from this release round -- we are not sure 70087 is right, and we don't want it to go out just yet."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T19:41:28Z",
+      "actor": "allenc97",
+      "label": null,
+      "body": "Verified `apache-airflow-providers-databricks==7.18.0rc1` for #69509 (Databricks OIDC token federation for AWS IAM)\n\n  - Environment: Apache Airflow 3.2.1, Python 3.12.13\n  - Installed the exact `7.18.0rc1` wheel; confirmed `DatabricksHook` loaded from the installed RC in `site-packages`\n  - Ran the connection end-to-end against a real Databricks workspace connection configured for AWS IAM federation (no PAT / static secret): `DatabricksHook.test_connection()` → `(True, 'Connection successfully tested')`\n  - Confirmed the OIDC token-federation path fires end-to-end: hook fetches a new federated token, exchanges it with Databricks, and a live authenticated API call (`GET /2.0/preview/scim/v2/Me`) correctly resolves to the connection's federated\n  identity\n  - Result: **PASS**\n\n  Drafted by Claude (Sonnet 5); reviewed by @allenc97 before posting."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T20:27:31Z",
+      "actor": "shivaam",
+      "label": null,
+      "body": "I tested my changes from PRs #69005, #69149, and #69669 using the latest provider release candidates.\n\nI ran Airflow tasks for Edge3, SSH, and SFTP. I tested team metrics, worker status, SSH commands, file uploads and downloads, and different SSH key types.\n\nEverything worked as expected. "
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-24T20:55:37Z",
+      "actor": "justinpakzad",
+      "label": null,
+      "body": "Confirming #68259 is working as expected. Tested end-to-end against a Snowflake instance."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-25T15:38:37Z",
+      "actor": "Andrushika",
+      "label": null,
+      "body": "Tested these breaking-change providers on released Airflow 3.3.0 (Python 3.10, postgres backend, breeze):\n- postgres 7.0.0rc2\n- sftp 6.0.0rc1\n- ssh 6.0.0rc1\n- airbyte 6.0.0rc1\n- microsoft-azure 14.0.0rc1.\n\nAll 5 install together cleanly and `airflow providers list` shows the rc versions. Imports pass with the new deps (paramiko 4.0.0, airbyte-api 1.0.1 + httpx, azure-mgmt-datafactory 10.0.0).\n\nFor postgres I also tested against the running database: PostgresHook plus direct psycopg3 sync and async connections, and the SELECT queries worked. psycopg2 is still installable but I did not test a connection through it.\n\nsftp/ssh/airbyte/azure were installation + import checks only (no live servers or credentials).\n\n---\nDrafted-by: Claude Code (Opus 4.8); reviewed by @Andrushika before posting\n"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-25T15:41:11Z",
+      "actor": "aeroyorch",
+      "label": null,
+      "body": "#68414 is doc update, thanks!"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-25T18:06:09Z",
+      "actor": "AlejandroMorgante",
+      "label": null,
+      "body": "Validated the following changes included in the current provider release candidates:\n\n- `apache-airflow-providers-amazon==9.33.0rc1` — #69886: `example_ecr.py` passed against real AWS (`1 passed`); create, repository policy update, delete, and post-test cleanup were verified.\n- `apache-airflow-providers-amazon==9.33.0rc1` — #69930: `example_glue.py` passed against real AWS (`1 passed`); crawler create/update, synchronous and deferrable runs, the Glue job, and post-test cleanup were verified.\n- `apache-airflow-providers-microsoft-azure==14.0.0rc1` — #68799: `example_azure_ai_agents.py` passed against a real Azure AI Foundry project(`1 passed` in each of two runs); create, synchronous and deferrable updates, invocation through `RunAzureAIAgentOperator`, delete, and post-test cleanup were verified.\n\nEnvironment: Breeze, Python 3.10"
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-25T20:01:03Z",
+      "actor": "SameerMesiah97",
+      "label": null,
+      "body": "`apache-airflow-providers-openlineage==2.20.0rc1`\n\nPR #69109: During manual testing, it was discovered that `DagRunInfo.team_name() `was creating a new SQLAlchemy session via `@provide_session`, resulting in an unexpected commit within the scheduler's `on_dag_run_running` callback and triggering the HA lock protection (`RuntimeError: UNEXPECTED COMMIT - THIS WILL BREAK HA LOCKS!)`. Fortunately, the fix is relatively simple i.e. use the existing session used by the `DagRun` ORM object and pass it into `DagBundleModel.get_team_name`. \n\n`apache-airflow-providers-celery==3.23.0rc1`\n\nPR #69092: The scenario needed to trigger the emission of `celery.task_timeout_error` is difficult to reproduce deterministically. Given this is simply passing the existing `team_name` attribute into the metric tags, unit tests should be sufficient. \n\n`apache-airflow-providers-snowflake==6.15.0rc2`:\n\nPR #68942 & PR #69731: Changes are working as expected with no observed regressions.\nPR #68597 & PR #68549: Changes are working as expected with no observed regressions.\n\nI would recommend that a second release candidate (RC2) be prepared for `apache-airflow-providers-openlineage==2.20.0`. This will include the fix for the issue described above for PR #69109."
+    },
+    {
+      "event": "commented",
+      "created_at": "2026-07-25T20:27:31Z",
+      "actor": "SameerMesiah97",
+      "label": null,
+      "body": "> Thanks! OL will be excluded from this release :)\n\n@shahar1 \n\nI have just submitted PR #70452 which should fix the issue. I have verified it using exhaustive manual testing.\n\nI have no reservations against skipping the the OpenLineage provider during this release but as the fix is relatively simple, I think we can try to get a second release candidate in. "
+    }
+  ],
+  "labels_at_collection": [
+    "area:providers",
+    "kind:meta",
+    "testing status"
+  ],
+  "explanation": "Post-event fields are reference-only and must never be supplied to the agent."
+}

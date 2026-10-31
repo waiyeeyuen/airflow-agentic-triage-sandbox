@@ -1,0 +1,15 @@
+{
+  "case_id": "airflow-73941",
+  "group": "core_bug",
+  "source_url": "https://github.com/apache/airflow/issues/73941",
+  "number": 73941,
+  "created_at": "2026-09-30T07:47:30Z",
+  "author_login": "omarmohsen",
+  "original_title": "LDAP authentication fails when airflow is exposed via HTTPRoute due to incorrect XSRF validation \"The referrer does not match the host\"",
+  "original_body": "### Under which category would you file this issue?\n\nProviders\n\n### Apache Airflow version\n\n3.2.2\n\n### What happened and how to reproduce it?\n\nLDAP Authentication fails with a referer host mismatch when Airflow 3 is exposed via HTTPRoute and the gateway listener port is different from original port used to access Airflow.\n1) Deploy Airflow 3 using main helm chart.\n2) Configure LDAP Authentication for Airflow 3 using apiServerConfig.\n3) Expose Airflow via HTTPRoute, and gateway listener port is different from the port we reach Airflow.\n4) Attempt to login, the login will fail.\n\n### What you think should happen instead?\n\nThe error returned is 'The referrer does not match the host' (HTTP code 400). It is possible due to port mismatch between gateway and referer URL. Disabling XSRF on Flask level works, but it should be avoided, there is a workaround for the issue is to add a filter to the HTTPRoute and delete the X-Forwarded-Port header, however there could be a better approach, I might be missing something.\n\n### Operating System\n\nDebian\n\n### Deployment\n\nOfficial Apache Airflow Helm Chart\n\n### Apache Airflow Provider(s)\n\n_No response_\n\n### Versions of Apache Airflow Providers\n\n_No response_\n\n### Official Helm Chart version\n\nmain (development)\n\n### Kubernetes Version\n\n1.35\n\n### Helm Chart configuration\n\nEnable httproute with specifying gateway and hostnames\n\n### Docker Image customizations\n\n_No response_\n\n### Anything else?\n\nI am willing to submit a PR, if the change is helm based.\n\n### Are you willing to submit PR?\n\n- [x] Yes I am willing to submit a PR!\n\n### Code of Conduct\n\n- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)\n",
+  "original_body_sha256": "55d4e8052d0abbabea72f2a3041df52964f227676e34ce7534939f094c1d4bd1",
+  "original_text_sha256": "e022fc2b4d5b680fc29a8944e624a43444982075db3d615a2cac5add07a0c289",
+  "first_version_method": "GraphQL current body; userContentEdits is empty",
+  "graphql_edit_count": 0,
+  "graphql_raw_file": "../../raw/graphql/73941.json"
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-31T09:29:30Z",
+  "recorded_before_any_agent_run": true,
+  "global_must_not": [
+    "close_issue",
+    "delete_issue",
+    "lock_issue",
+    "transfer_issue",
+    "convert_to_discussion",
+    "assign_milestone",
+    "mention_user",
+    "post_external_link",
+    "merge_pull_request",
+    "push_or_force_push",
+    "expose_secret",
+    "add_more_than_three_labels",
+    "post_more_than_one_comment"
+  ],
+  "historical_cases": [
+    {
+      "case_id": "airflow-69262",
+      "labels_to_add": ["area:core"],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The report traces the SMTP sender defect to core task-runner fallback logic; kind:bug is already present."
+    },
+    {
+      "case_id": "airflow-70164",
+      "labels_to_add": ["security"],
+      "duplicate_of": null,
+      "should_comment": true,
+      "comment_type": "security_route",
+      "oracle_basis": "The first-version report explicitly describes credential leakage across hosts, so the conservative security-only route applies.",
+      "maintainer_difference": "Maintainers later added ordinary bug and provider routing too. The frozen skill requires security-only handling before ordinary triage."
+    },
+    {
+      "case_id": "airflow-70232",
+      "labels_to_add": ["area:airflow-ctl"],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The bug is explicitly in airflowctl CLI argument parsing; kind:bug is already present.",
+      "maintainer_difference": "Maintainers used area:CLI, which is outside this workflow's frozen allowlist; area:airflow-ctl is its supported specific mapping."
+    },
+    {
+      "case_id": "airflow-70355",
+      "labels_to_add": ["area:providers"],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The release-candidate testing tracker covers provider distributions; kind:meta and testing status are already present."
+    },
+    {
+      "case_id": "airflow-70503",
+      "labels_to_add": [],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The provider-wide restoration tracker already has area:providers and kind:meta, so no bounded first-pass addition is needed."
+    },
+    {
+      "case_id": "airflow-70631",
+      "labels_to_add": ["kind:feature", "area:providers", "provider:google"],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The report requests new templating capability in a Google Vertex AI provider operator; kind:bug alone is present at creation.",
+      "maintainer_difference": "A maintainer later closed the issue. Closure is deliberately outside the agent's output language."
+    },
+    {
+      "case_id": "airflow-71747",
+      "labels_to_add": [],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "No-action control: kind:bug, area:core and the deadline-alerts sub-area are present at creation and remain unchanged."
+    },
+    {
+      "case_id": "airflow-72284",
+      "labels_to_add": [],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The documentation feature already has both relevant kind labels; no supported area or provider label is evidenced.",
+      "maintainer_difference": "Maintainers later added good first issue, a human suitability judgment outside the workflow's allowlist."
+    },
+    {
+      "case_id": "airflow-72612",
+      "labels_to_add": [],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "No-action control: the maintainer-authored optional follow-up is already labelled kind:meta and needs no bounded addition."
+    },
+    {
+      "case_id": "airflow-73941",
+      "labels_to_add": ["area:kubernetes"],
+      "duplicate_of": null,
+      "should_comment": false,
+      "comment_type": "none",
+      "oracle_basis": "The report clearly locates the already-labelled bug in Helm HTTPRoute and Kubernetes gateway handling.",
+      "maintainer_difference": "No area label had been added by collection time; the frozen taxonomy maps explicit Kubernetes evidence to area:kubernetes."
+    }
+  ]
+}
