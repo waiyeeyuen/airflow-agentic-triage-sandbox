@@ -1,6 +1,6 @@
 # Phone kill-switch test — 2026-10-31
 
-Jasmine used a phone browser to change `TRIAGE_AGENT_ENABLED` from `true` to `false` and cancel
+Wai Yee used a phone browser to change `TRIAGE_AGENT_ENABLED` from `true` to `false` and cancel
 [run 41166022897](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41166022897).
 The observed procedure took five taps and 1 minute 37 seconds.
 

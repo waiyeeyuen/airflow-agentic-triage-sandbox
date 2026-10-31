@@ -55,7 +55,8 @@ def _read(path: Path):
 
 
 def _write(path: Path, value):
-    path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+    with path.open("w", encoding="utf-8", newline="\n") as output:
+        output.write(json.dumps(value, indent=2) + "\n")
 
 
 def run(command: str, *, case=CASE, duplicates=DUPLICATES, validated=VALIDATED,
@@ -63,7 +64,13 @@ def run(command: str, *, case=CASE, duplicates=DUPLICATES, validated=VALIDATED,
     """Execute one finite command using only fixed inputs and outputs."""
     case_data = _read(case)
     if command == "triage-search-duplicates":
-        corpus_path = resolve_corpus(case_data, corpus_root)
+        try:
+            corpus_path = resolve_corpus(case_data, corpus_root)
+        except ValueError as error:
+            if str(error) != "expected one frozen case title match, found 0":
+                raise
+            _write(duplicates, {"method": "tf-idf-cosine-v1", "candidates": []})
+            return
         prior = _read(corpus_path)
         query = f"{(case_data.get('title', '') + ' ') * 5}{case_data.get('body', '')}"
         _write(duplicates, {"method": "tf-idf-cosine-v1", "candidates": rank(query, prior, 5)})

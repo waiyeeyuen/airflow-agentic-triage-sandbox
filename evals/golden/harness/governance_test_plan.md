@@ -8,13 +8,13 @@ approval. Round 1 under `evals/golden/actual/round_1/` is immutable historical e
 ## Prerequisites and user actions
 
 1. Re-authenticate GitHub CLI to the private sandbox; current `gh auth status` is invalid.
-2. Add repository secret `COPILOT_GITHUB_TOKEN` for Jasmine's Copilot-enabled account. Never put
+2. Add repository secret `COPILOT_GITHUB_TOKEN` for Wai Yee's Copilot-enabled account. Never put
    the token in a file, issue, command argument, log or agent environment. Confirm only the name
    with `gh secret list`.
 3. Keep repository variable `TRIAGE_AGENT_ENABLED=false` (or unset) until the skip test and direct
    approval are complete. Set it true only for approved AI runs.
 4. Confirm the repository is private and all creation labels in `replay_plan.json` exist.
-5. Create a non-example approval JSON outside the repository only after Jasmine states the scope
+5. Create a non-example approval JSON outside the repository only after Wai Yee states the scope
    and AIC cap. The first case costs at most 25 AIC ($0.25 at $0.01/AIC).
 6. Builder must provide a separate no-skill workflow/branch or explicitly authorize the Tester to
    make a temporary control variant. The Tester will not edit Builder-owned skill/workflow files.
@@ -52,9 +52,9 @@ cap but requiring explicit approval for each scope.
    issue cost from measured per-run AIC. Do not infer cost from the configured maximum alone.
 7. **No-skill control:** run the same selected case through the Builder-provided no-skill variant;
    compare decisions/tool calls/marker with the normal run. Until the variant exists this is blocked.
-8. **Phone stop (Jasmine only):** in GitHub mobile/browser, navigate to repository Settings →
+8. **Phone stop (Wai Yee only):** in GitHub mobile/browser, navigate to repository Settings →
    Secrets and variables → Actions → Variables, set `TRIAGE_AGENT_ENABLED=false`, then open Actions
-   and cancel any running triage run before its safe-output job. Jasmine records tap count and
+   and cancel any running triage run before its safe-output job. Wai Yee records tap count and
    screenshots; the Tester verifies subsequent run/issue state.
 
 ## Evidence per run

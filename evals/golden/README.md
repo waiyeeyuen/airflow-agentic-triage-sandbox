@@ -1,5 +1,12 @@
 # Golden evaluation set
 
+Part A is case selection and expected outcomes; Part B is live runs in the private sandbox.
+
+The sandbox was private during all evaluation runs and was made public at submission; AGENTS.md
+and the workflow description keep the original ‘private’ wording because they are the tested
+configuration. Earlier frozen inputs, run manifests and notes refer to the author as ‘Jasmine’;
+this is the same person (Wai Yee).
+
 This Part A set froze expectations before any agent configuration or run. It contains 18 real
 Apache Airflow issues from 1 July–30 September 2026 UTC, three no-action controls, and three
 constructed adversarial cases. Part B then replayed all 21 cases in the private sandbox.
@@ -30,8 +37,7 @@ was invented.
 
 Within each stratum, `select_cases.py` ranks candidates by SHA-256 of
 `seed|group|issue_number`; the committed seed is in `seed.txt`. This seeded draw is used to show
-that cases were not cherry-picked. Random selection is good practice, not an Assignment 3
-requirement.
+that cases were not cherry-picked.
 
 ## Frozen inputs
 
@@ -50,7 +56,7 @@ are label events attributed to the author/bot within 60 seconds of creation, bef
 human event.
 
 Replay text replaces every `@` with `(at)` and strips Apache Airflow issue/PR links. Unsanitised
-source URLs remain only in committed evidence. A sandbox replay will be authored by Jasmine, so
+source URLs remain only in committed evidence. A sandbox replay will be authored by Wai Yee, so
 historical author association cannot be reproduced.
 
 ## Expectations and adversarial cases
@@ -95,7 +101,7 @@ collector invokes only `gh api` GET requests. `verification.md` and
 
 The readiness harness and exact approval-gated commands are in [`harness/README.md`](harness/README.md).
 Preparation (`build_replay_plan.py`, `static_audit.py`, plan-only `replay.py`) is inert. The first
-credit-spending command remains blocked until Jasmine directly approves it, GitHub CLI is
+credit-spending command remains blocked until Wai Yee directly approves it, GitHub CLI is
 authenticated, the Copilot secret is confirmed, and the kill-switch variable is enabled.
 
 ## Part B evidence index
@@ -117,6 +123,5 @@ To reproduce scoring without credits, run:
 
 ```powershell
 python evals/golden/harness/score_proposals.py `
-  --actual-root evals/golden/actual/round_6 `
-  --output evals/golden/actual/round_6/proposal_score.json
+  --round-dir evals/golden/actual/round_6_retry_429
 ```

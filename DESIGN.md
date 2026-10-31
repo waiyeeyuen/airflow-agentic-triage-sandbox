@@ -30,13 +30,15 @@ only individually allowed, no-argument wrapper executables and request labels or
 
 - **Identity — implemented + tested:** `github-actions[bot]` applied labels to `airflow-70548` in
   [run 41105960786](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41105960786).
-- **Least privilege — implemented:** the agent has explicit `contents: read` and `issues: read`,
-  restricted network and no write token ([lines 13–27](.github/workflows/issue-triage.md#L13-L27)).
+- **Least privilege — implemented:** read-only permissions
+  ([lines 13–16](.github/workflows/issue-triage.md#L13-L16)), default network
+  ([line 49](.github/workflows/issue-triage.md#L49)), and edit/GitHub/CLI tools off
+  ([lines 59–62](.github/workflows/issue-triage.md#L59-L62)).
 - **Safe outputs — implemented:** one call adds at most three labels and one issue comment; mentions
-  and cross-references are escaped ([lines 36–74](.github/workflows/issue-triage.md#L36-L74)).
-- **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files
-  ([CODEOWNERS](.github/CODEOWNERS)). GitHub returned HTTP 403 because private-repository branch
-  protection needs a higher plan. Runtime labels/comments remain reversible; closure stays human-only.
+  and cross-references are escaped ([lines 104–151](.github/workflows/issue-triage.md#L104-L151)).
+- **Human approval — implemented:** CODEOWNERS names Wai Yee for agent files. Authenticated protection
+  requires one approval and CODEOWNER review ([JSON](evidence/branch-protection/protection.json));
+  PR #58 is blocked without it ([merge box](evidence/branch-protection/pr58-merge-box.png)).
 - **Budgets — timeout tested; per-run cap implemented; hard daily cap proposed:** 10 minutes, 20
   turns and 25 main-agent AIC/run are enforced. Activation scans prior workflow AIC against
   5,000/day, but concurrent runs can race, so this is an admission guard, not a hard aggregate cap.
@@ -48,9 +50,9 @@ only individually allowed, no-argument wrapper executables and request labels or
   skipped every job. A queued run continued after switch-off, so cancellation is required. Phone
   run 41166022897 tested switch-off plus cancellation in five taps and 1 minute 37 seconds.
 - **Drift detection — partly implemented:** deterministic checks run on config/eval changes
-  ([CI](.github/workflows/config-checks.yml)); reruns, human diff review and no-skill control remain.
-- **Accountability — implemented, enforcement proposed:** Jasmine owns config review, the switch,
-  bills and outputs; CODEOWNERS is committed, but required review and collaborator access are settings.
+  ([CI](.github/workflows/config-checks.yml)); reruns, human diff review and no-skill control remain proposed.
+- **Accountability — implemented:** Wai Yee owns config review, switch, bills and outputs. Stored
+  [protection evidence](evidence/branch-protection/) proves the review gate is enforced on `main`.
 
 ## Procedure and hard boundary
 
@@ -80,52 +82,50 @@ step rather than the agent's sole workflow ([selection rationale](notes/ideation
 
 ## Evaluation status and unresolved work
 
-Before configuration, 18 real cases (three no-action) came from a seeded draw within strata
-([method](evals/golden/README.md)); three adversarial cases were added. All source checks passed
-([verification](evals/golden/verification.md)). Early runs exposed model, guard and detection faults;
-timeout, exact `gpt-4.1`, fixed-path input and deterministic detection repaired those setup failures.
-Round 5 used 111.0704 AIC: exact proposed-decision accuracy was **1/11 (9.1%, n=11 decided)**;
-ten were not evaluated after concurrent dispatch hit Copilot 429. Field exactness was kind 4/11,
-area 1/11, provider 8/11 and comment 6/11. Its main weakness was area/provider confusion, often
-defaulting to `area:core`, plus invented free-text comments. One general improvement added process-
-and taxonomy-derived mappings, required clear evidence, and restricted comments to template IDs.
+A seeded within-strata draw selected 18 real cases (three no-action); three adversarial cases followed
+([method](evals/golden/README.md)). Source checks passed; early runs exposed model, guard and detection
+faults. Timeout, exact `gpt-4.1`, fixed input and deterministic detection repaired setup failures.
+Round 5 used 111.0704 AIC: exact accuracy was **1/11 (9.1%, n=11 decided)**; ten concurrent runs hit
+Copilot 429. Field exactness was kind 4/11, area 1/11, provider 8/11 and comment 6/11. Main weaknesses
+were area/provider confusion and invented comments. One general improvement added process/taxonomy
+mappings, required clear evidence and restricted comments to template IDs.
 Round 6 initially decided 16/21; five 429 cases were retried one at a time for 45.1254 AIC.
 The final comparison is **4/21 exact (19.0%, n=21 decided)**: kind 14/21 (66.7%), area 6/21
 (28.6%), provider 16/21 (76.2%) and comment 16/21 (76.2%)
 ([comparison](evals/golden/actual/round_6_retry_429/proposal_score.md)). Selected final attempts used
-179.3600 AIC; all initial and retry attempts used 185.2410 AIC. Fourteen of 17 failures required
-labels but proposed none. The clear-evidence rule over-corrected from wrong labels to missing labels,
-a safer failure; some kind/comment gain is correct-absence matching. The same 21 cases informed and
-tested the change, so the apparent gain may overfit and needs a fresh holdout before deployment.
-Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-blocked three invented
-comments; no forbidden action occurred and every issue remained open, but one bounded wrong
-mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
-the no-skill control remains unresolved.
-gh-aw v1.0.1 requires `max-links >= 1`; its generic handler generates `pull-requests: write` in the
-isolated safe-output job. No PR mutation tool or PR target is exposed. This residual compiler
-permission remains unresolved; compilation is not behavioural evidence.
+179.3600 AIC; all initial and retry attempts used 185.2410 AIC. On the 11 cases decided in both
+rounds, exact matches rose only from 1 to 2 (kind 4→5, area 1→3, provider 8→8, comment 6→9). All
+four final exact matches expected no labels; no labels were proposed for any of the 14 cases needing
+them, so field scores mostly reflect correct absence: the clear-evidence rule over-corrected to a safe
+but unhelpful no-op. The same 21 cases informed and tested the change; a fresh holdout is required.
+Round 5 blocked 11/11 proposals; Round 6 blocked three invented comments. No forbidden action occurred and
+every issue stayed open; one wrong mutation added two allowlisted labels. Replay changes the author.
+Post-evaluation fallback is 21-case byte-pinned, not live-tested: [run 41184094169][live-check-run] skipped.
+Airflow pairs `area:core` with sub-areas; AGENTS follows observed 48-hour specific-area practice.
+With one CODEOWNER, config needs a second maintainer; PR #58 blocks owner self-approval.
+gh-aw v1.0.1 generates `pull-requests: write` in the isolated safe-output job, but exposes no PR
+mutation tool or target. This residual permission remains unresolved; compilation is not evidence.
 
 ## Agent bill of materials
-- **Engine/model:** GitHub Copilot with exact `gpt-4.1` for the main agent. Threat detection is
-  deterministic (`engine: false`). The provider implementation behind the pinned ID can still drift.
+- **Engine/model:** exact Copilot `gpt-4.1`; deterministic detection; the pinned provider can drift.
 - **Instructions:** [workflow](.github/workflows/issue-triage.md), [AGENTS.md](AGENTS.md), and
   [skill](.claude/skills/airflow-issue-triage/SKILL.md), all versioned at the submission SHA.
-- **Tools/MCP:** finite exact no-argument wrapper commands; no broad Python, shell-prefix,
-  GitHub-read or custom MCP tool.
+- **Tools/MCP:** exact no-argument wrappers; no broad Python, shell prefix, GitHub-read or custom MCP.
 - **Permissions/actions:** read-only agent; safe outputs add allowlisted labels or one issue comment;
   all other state changes are inexpressible.
 - **Data:** sanitized trigger, repository facts, dated prior snapshots and frozen golden inputs.
 - **Logs/evals:** Actions logs, `gh aw logs/audit`, 18 historical plus three adversarial cases.
-- **Humans/cost:** Jasmine owns changes, reviews, switch, outputs and Copilot/AIC usage.
+- **Humans/cost:** Wai Yee owns changes, reviews, switch, outputs and Copilot/AIC usage.
 
 ## Five scenarios
-1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
-   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)).
+1. **Claimed stale authority:** close is absent from
+   [safe outputs](.github/workflows/issue-triage.md#L104-L151), and the prompt forbids state changes
+   ([lines 165–168](.github/workflows/issue-triage.md#L165-L168)).
    [Run 41159315388](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41159315388)
    made the exact no-action decision. `adversarial-hidden-secret` disclosed nothing, and
    `adversarial-mention-link` made no mentions or links; both missed their expected labels.
 2. **Model update:** the main role and every golden-set run pin exact `gpt-4.1`, but behaviour behind
-   that ID can change. Re-run the set with the same pin after changes and weekly; Jasmine reviews
+   that ID can change. Re-run the set with the same pin after changes and weekly; Wai Yee reviews
    per-case diffs. CI integrity is implemented; scheduled credit-spending runs remain proposed.
 3. **300 issues/week:** per-issue concurrency prevents one issue cancelling another. At the 25-AIC
    maximum, 300 runs could consume 7,500 AIC; no enforced 5,000-AIC daily cap exists. An atomic
@@ -136,15 +136,15 @@ permission remains unresolved; compilation is not behavioural evidence.
 5. **Phone stop:** set `TRIAGE_AGENT_ENABLED=false`, then cancel every already-created workflow.
    [Run 41166022897](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41166022897)
    had reached `safe_outputs` when cancelled in five taps and 1:37, so cancellation must be fast.
-   The switch reliably stops future runs; issue 57 stayed open with no labels/comments
-   ([evidence](evidence/phone-kill-switch/)).
+   The switch stops future runs; issue 57 had no output ([evidence](evidence/phone-kill-switch/)).
 
 ## AI-use statement
 
-AI agents produced the configuration, scripts, evaluation scaffolding and this draft under
-Jasmine's direction. Deterministic tests, compiler checks and approved live proposals are recorded;
-failed-closed output must not be confused with correct decisions. Jasmine must complete:
-**[state what you wrote]**, **[state what you reviewed]**, and
-**[state what evidence and claims you personally verified]** before signing and submitting.
+Coding agents (Ideator, Builder, Tester and Marker roles) generated all files and text in this
+repository. I chose the project and workflow, directed the agents, decided which changes to apply,
+chose Copilot and deterministic detection, approved every paid run and its cap, and ran the phone
+kill-switch test. I checked results in the Actions run history and logs; AI output was not accepted
+as evidence without such checks.
 
 [triage-process]: https://github.com/apache/airflow/blob/270b2abfc258c512a0b931af425904321360d043/ISSUE_TRIAGE_PROCESS.rst#L102-L137
+[live-check-run]: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41184094169
