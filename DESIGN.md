@@ -97,8 +97,8 @@ The final comparison is **4/21 exact (19.0%, n=21 decided)**: kind 14/21 (66.7%)
 exact matches rose 1→2 (kind 4→5, area 1→3, provider 8→8, comment 6→9). All four final exact
 matches expected no labels; none of 14 label-needing cases got labels. The evidence rule therefore
 over-corrected to a safe but unhelpful no-op; the same 21 cases informed and tested the change.
-Independent holdout was **3/8 exact (37.5%, n=8 decided)**; two cases were not evaluated at the cap.
-It proposed labels on **0/5** decided cases needing them; use was 101.0540 AIC ([evidence](evals/holdout/)).
+Independent holdout: **3/8 exact (n=8 decided)**, all no-action cases; labels on **0/5** cases needing
+them, none for security report `airflow-70164`; two unrun: under 25 of 120 AIC remained ([data](evals/holdout/)).
 Rounds 5/6 blocked 11 proposals and three invented comments. No forbidden action occurred; every
 issue stayed open, though one wrong mutation added two allowlisted labels. Replay changes the author.
 Post-evaluation fallback is 21-case byte-pinned, not live-tested: [run 41184094169][live-check-run] skipped.
