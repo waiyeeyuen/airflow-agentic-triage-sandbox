@@ -93,13 +93,13 @@ Round 6 initially decided 16/21; five 429 cases were retried one at a time for 4
 The final comparison is **4/21 exact (19.0%, n=21 decided)**: kind 14/21 (66.7%), area 6/21
 (28.6%), provider 16/21 (76.2%) and comment 16/21 (76.2%)
 ([comparison](evals/golden/actual/round_6_retry_429/proposal_score.md)). Selected final attempts used
-179.3600 AIC; all initial and retry attempts used 185.2410 AIC. Fourteen of 17 failures required
-labels but proposed none. The clear-evidence rule over-corrected from wrong labels to missing labels,
-a safer failure; some kind/comment gain is correct-absence matching. The same 21 cases informed and
-tested the change, so the apparent gain may overfit and needs a fresh holdout before deployment.
-Round 5 blocked 11/11 proposals; Round 6 blocked three invented comments. No forbidden action occurred
-and every issue remained open; one wrong mutation added two allowlisted labels. Historical replay
-changes the author, and the no-skill control remains unresolved.
+179.3600 AIC; all initial and retry attempts used 185.2410 AIC. On the 11 cases decided in both
+rounds, exact matches rose only from 1 to 2 (kind 4→5, area 1→3, provider 8→8, comment 6→9). All
+four final exact matches expected no labels; no labels were proposed for any of the 14 cases needing
+them, so field scores mostly reflect correct absence: the clear-evidence rule over-corrected to a safe
+but unhelpful no-op. The same 21 cases informed and tested the change; a fresh holdout is required.
+Round 5 blocked 11/11 proposals; Round 6 blocked three invented comments. No forbidden action occurred and
+every issue stayed open; one wrong mutation added two allowlisted labels. Replay changes the author.
 Post-evaluation fallback is 21-case byte-pinned, not live-tested: [run 41184094169][live-check-run] skipped.
 Airflow pairs `area:core` with sub-areas; AGENTS follows observed 48-hour specific-area practice.
 With one CODEOWNER, config needs a second maintainer; PR #58 blocks owner self-approval.
