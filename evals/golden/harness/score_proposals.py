@@ -170,7 +170,9 @@ def main() -> None:
             "n": len(decided),
             "accuracy": field_correct / len(decided) if decided else None,
         }
-    if round_dir.name == "round_5_batch":
+    if len(decided) == len(rows):
+        not_evaluated_cause = None
+    elif round_dir.name == "round_5_batch":
         not_evaluated_cause = "Copilot 429 after concurrent five-case dispatch"
     else:
         not_evaluated_cause = "Copilot 429 during paired dispatch"
@@ -196,7 +198,12 @@ def main() -> None:
         "# Proposed-decision score",
         "",
         f"Exact decisions: {result['correct']}/{result['n']} ({result['accuracy']:.1%}) among decided cases; "
-        f"{result['not_evaluated']}/{result['total_cases']} not evaluated: {result['not_evaluated_cause']}.",
+        + (
+            f"{result['not_evaluated']}/{result['total_cases']} not evaluated: "
+            f"{result['not_evaluated_cause']}."
+            if result["not_evaluated"]
+            else f"all {result['total_cases']} cases evaluated."
+        ),
         "",
         "Per-field exactness among decided cases (correct absence counts correct): "
         + "; ".join(

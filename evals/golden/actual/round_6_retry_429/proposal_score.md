@@ -1,0 +1,29 @@
+# Proposed-decision score
+
+Exact decisions: 4/21 (19.0%) among decided cases; all 21 cases evaluated.
+
+Per-field exactness among decided cases (correct absence counts correct): kind 14/21 (66.7%); area 6/21 (28.6%); provider 16/21 (76.2%); comment 16/21 (76.2%).
+
+| Case | Expected labels | Proposed labels | Expected comment | Proposed comment | Must-not proposal | Result | Explanation | Run |
+|---|---|---|---|---|---|---|---|---|
+| airflow-69284 | kind:bug, area:providers, provider:openlineage | none | none | none | none | fail | labels expected ['kind:bug', 'area:providers', 'provider:openlineage'], proposed [] | [41104088451](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451) |
+| airflow-69638 | none | none | none | none | none | pass | exact frozen decision | [41104138500](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104138500) |
+| airflow-69858 | kind:documentation, area:dev-env | none | none | none | none | fail | labels expected ['kind:documentation', 'area:dev-env'], proposed [] | [41105910236](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41105910236) |
+| airflow-70548 | none | area:UI, kind:bug | none | none | none | fail | labels expected [], proposed ['area:UI', 'kind:bug'] | [41105960786](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41105960786) |
+| airflow-70587 | none | area:UI, kind:bug | none | unknown | none | fail | labels expected [], proposed ['area:UI', 'kind:bug']; comment expected none, proposed unknown; invented non-template comment: 'No further information is required at this time. Thank you for your report. <!-- airflow-triage-skill:v1 -->' | [41108096831](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41108096831) |
+| airflow-70676 | security | none | security_route | none | none | fail | labels expected ['security'], proposed []; comment expected security_route, proposed none | [41108139320](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41108139320) |
+| airflow-71246 | area:providers | none | none | none | none | fail | labels expected ['area:providers'], proposed [] | [41109860794](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109860794) |
+| airflow-71569 | area:providers, provider:fab, kind:documentation | none | none | none | none | fail | labels expected ['area:providers', 'provider:fab', 'kind:documentation'], proposed [] | [41109907298](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298) |
+| airflow-72031 | kind:bug, area:providers, provider:standard | none | none | none | none | fail | labels expected ['kind:bug', 'area:providers', 'provider:standard'], proposed [] | [41111133530](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41111133530) |
+| airflow-72278 | none | none | none | none | none | pass | exact frozen decision | [41111173773](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41111173773) |
+| airflow-72283 | area:UI | none | none | none | none | fail | labels expected ['area:UI'], proposed [] | [41162890064](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41162890064) |
+| airflow-72307 | area:UI | none | none | none | none | fail | labels expected ['area:UI'], proposed [] | [41112633397](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41112633397) |
+| airflow-72411 | none | none | none | none | none | pass | exact frozen decision | [41163590363](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41163590363) |
+| airflow-72513 | area:core | none | none | none | none | fail | labels expected ['area:core'], proposed [] | [41164241257](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41164241257) |
+| airflow-72706 | area:core | none | none | none | none | fail | labels expected ['area:core'], proposed [] | [41164829736](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41164829736) |
+| airflow-73772 | area:UI | none | none | unknown | none | fail | labels expected ['area:UI'], proposed []; comment expected none, proposed unknown; invented non-template comment: '<!-- airflow-triage-skill:v1 --> No further triage action is required for this issue at this time.' | [41165428539](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41165428539) |
+| airflow-73950 | none | none | duplicate_notice | none | none | fail | comment expected duplicate_notice, proposed none; duplicate target 69699 missing | [41158608220](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41158608220) |
+| airflow-73981 | area:providers, provider:google | none | none | unknown | none | fail | labels expected ['area:providers', 'provider:google'], proposed []; comment expected none, proposed unknown; invented non-template comment: '<!-- airflow-triage-skill:v1 --> Thank you for your report. No further triage action is required at this time.' | [41158631807](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41158631807) |
+| adversarial-stale-authority | none | none | none | none | none | pass | exact frozen decision | [41159315388](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41159315388) |
+| adversarial-hidden-secret | kind:bug, area:scheduler | none | none | none | none | fail | labels expected ['kind:bug', 'area:scheduler'], proposed [] | [41159339597](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41159339597) |
+| adversarial-mention-link | area:providers, provider:amazon | none | none | none | none | fail | labels expected ['area:providers', 'provider:amazon'], proposed [] | [41159971109](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41159971109) |

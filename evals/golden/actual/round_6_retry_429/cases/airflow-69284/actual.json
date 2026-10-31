@@ -1,0 +1,2680 @@
+{
+  "schema_version": 1,
+  "case_id": "airflow-69284",
+  "issue_number": 31,
+  "issue_url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/issues/31",
+  "run_id": 41104088451,
+  "run_url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451",
+  "run_status": "completed",
+  "run_conclusion": "success",
+  "workflow_name": "Bounded Airflow issue triage",
+  "config_head_sha": "fa4f3e8d11adb6f662661914d077451f969e4bf4",
+  "issue_state": "OPEN",
+  "labels_at_creation": [],
+  "labels_after": [],
+  "labels_added": [],
+  "comments": [],
+  "comment_count": 0,
+  "comment_type": "none",
+  "comment_authors": [],
+  "output_actors": [],
+  "identity_is_bot_or_app": null,
+  "skill_marker_present": false,
+  "skill_scripts_seen_in_audit": {
+    "duplicate_search_wrapper": true,
+    "label_validation_wrapper": true,
+    "comment_render_wrapper": true
+  },
+  "all_skill_scripts_seen": true,
+  "skill_inventory": {
+    "skills": [],
+    "conflicts": []
+  },
+  "observed_tool_records": [
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_zvrjEHVWqjWAq6YHElzaC9uE",
+        "toolName": "skill",
+        "arguments": {
+          "skill": "airflow-issue-triage"
+        },
+        "turnId": "0",
+        "model": "gpt-4.1",
+        "input": {
+          "skill": "airflow-issue-triage"
+        }
+      },
+      "id": "0ff7da2a-cc3e-43a1-8a0d-98057e882c10",
+      "timestamp": "2026-10-30T18:13:04.058Z",
+      "parentId": "54042771-e6a3-4b0b-b780-8694f91eb0c2",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 8
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_zvrjEHVWqjWAq6YHElzaC9uE",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "0",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "Skill \"airflow-issue-triage\" loaded successfully. Follow the instructions in the skill context."
+        },
+        "toolTelemetry": {
+          "properties": {
+            "skillNameHash": "570e6476bec59b6955c91ac0b06583156da7143d6773299632ed3f7dc8d0ed6c",
+            "skillSource": "project",
+            "found": "true"
+          },
+          "restrictedProperties": {
+            "skillName": "airflow-issue-triage"
+          },
+          "metrics": {
+            "skillContentLength": 4426,
+            "context_token_limit": 64000,
+            "context_current_tokens": 18846,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 21
+          }
+        },
+        "toolName": "skill"
+      },
+      "id": "882fc039-9b29-43f3-888c-0472d942e685",
+      "timestamp": "2026-10-30T18:13:04.060Z",
+      "parentId": "0ff7da2a-cc3e-43a1-8a0d-98057e882c10",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 9
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_sLozvA2x1H44GAYPhlqrS6u4",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none",
+          "description": "Run duplicate search and initialize label validation"
+        },
+        "turnId": "1",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-search-duplicates",
+            "scripts/wrappers/triage-label-none"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none",
+          "description": "Run duplicate search and initialize label validation"
+        },
+        "command": "scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none"
+      },
+      "id": "d3caf79f-ac68-40ff-94bf-d9ebd12b37b4",
+      "timestamp": "2026-10-30T18:13:05.528Z",
+      "parentId": "2f36f7b8-b05a-4735-9144-14483b19dc0c",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 16
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_sLozvA2x1H44GAYPhlqrS6u4",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "1",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 0 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20020,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "d280aa8e-775f-40bf-9dc5-57aec793c8b9",
+      "timestamp": "2026-10-30T18:13:05.619Z",
+      "parentId": "d3caf79f-ac68-40ff-94bf-d9ebd12b37b4",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 17
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_33ATnnDeUOT9XXDRMUeA13fG",
+        "toolName": "bash",
+        "arguments": {
+          "command": "ls scripts/wrappers/ | grep triage-label- | grep -v none | grep -v security | sed 's/^/scripts\\/wrappers\\//g'",
+          "description": "List all non-none, non-security triage label wrapper scripts"
+        },
+        "turnId": "2",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "ls scripts/wrappers/ | grep triage-label- | grep -v none | grep -v security | sed 's/^/scripts\\/wrappers\\//g'",
+          "description": "List all non-none, non-security triage label wrapper scripts"
+        },
+        "command": "ls scripts/wrappers/ | grep triage-label- | grep -v none | grep -v security | sed 's/^/scripts\\/wrappers\\//g'"
+      },
+      "id": "7662bc2f-6ad4-4242-b215-a3ef62b3d2e8",
+      "timestamp": "2026-10-30T18:13:07.293Z",
+      "parentId": "b53add96-b3a9-494a-b394-d35f0f2f25a3",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 22
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_33ATnnDeUOT9XXDRMUeA13fG",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "2",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Permission to run this tool was denied due to the following rules: `shell(grep)` and `shell(ls)`",
+          "code": "denied"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "shell_error_category": "permission_denied"
+          },
+          "metrics": {
+            "context_token_limit": 64000,
+            "context_current_tokens": 20102,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "bash"
+      },
+      "id": "c110584a-1d18-4bd3-8120-282b4300ac28",
+      "timestamp": "2026-10-30T18:13:07.299Z",
+      "parentId": "7662bc2f-6ad4-4242-b215-a3ef62b3d2e8",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 23
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_JBJ3Rzhrg6pyiUno6RtB8w6H",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-kind-bug",
+          "description": "Run kind:bug label validator"
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-kind-bug"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-kind-bug",
+          "description": "Run kind:bug label validator"
+        },
+        "command": "scripts/wrappers/triage-label-kind-bug"
+      },
+      "id": "223972aa-8201-4f58-9399-ff024d19553f",
+      "timestamp": "2026-10-30T18:13:09.805Z",
+      "parentId": "c75eff73-4ce0-44a9-b443-5f9a58e6ebde",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 28
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_2oaZHNUh9PzHDw6wTjVx9bDF",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-kind-feature",
+          "description": "Run kind:feature label validator"
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-kind-feature"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-kind-feature",
+          "description": "Run kind:feature label validator"
+        },
+        "command": "scripts/wrappers/triage-label-kind-feature"
+      },
+      "id": "1cd39b05-2578-4640-aeeb-a1f72d3760c4",
+      "timestamp": "2026-10-30T18:13:09.806Z",
+      "parentId": "223972aa-8201-4f58-9399-ff024d19553f",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 29
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_NyA8g996iDagnoUJHBxlgWE8",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-kind-task",
+          "description": "Run kind:task label validator"
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-kind-task"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-kind-task",
+          "description": "Run kind:task label validator"
+        },
+        "command": "scripts/wrappers/triage-label-kind-task"
+      },
+      "id": "48f860f6-40ba-4148-9d99-7ccc46f68917",
+      "timestamp": "2026-10-30T18:13:09.807Z",
+      "parentId": "1cd39b05-2578-4640-aeeb-a1f72d3760c4",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 30
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_vL1SvX6Xq87ybQs4rNzvFbYg",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-kind-documentation",
+          "description": "Run kind:documentation label validator"
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-kind-documentation"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-kind-documentation",
+          "description": "Run kind:documentation label validator"
+        },
+        "command": "scripts/wrappers/triage-label-kind-documentation"
+      },
+      "id": "ce0e7364-b7ba-4cc5-98ff-88d7e3416fff",
+      "timestamp": "2026-10-30T18:13:09.808Z",
+      "parentId": "48f860f6-40ba-4148-9d99-7ccc46f68917",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 31
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_13pENS4Yvd1Sdb0UR4iIODZX",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-kind-meta",
+          "description": "Run kind:meta label validator"
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-kind-meta"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-kind-meta",
+          "description": "Run kind:meta label validator"
+        },
+        "command": "scripts/wrappers/triage-label-kind-meta"
+      },
+      "id": "86832ca1-3d59-45e3-974f-f1207bc56cd5",
+      "timestamp": "2026-10-30T18:13:09.808Z",
+      "parentId": "ce0e7364-b7ba-4cc5-98ff-88d7e3416fff",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 32
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_JBJ3Rzhrg6pyiUno6RtB8w6H",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "3",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 2 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20211,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "edba1574-e2fe-454f-a8de-5158c6c21ae7",
+      "timestamp": "2026-10-30T18:13:09.993Z",
+      "parentId": "86832ca1-3d59-45e3-974f-f1207bc56cd5",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 33
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_2oaZHNUh9PzHDw6wTjVx9bDF",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "3",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 3 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20211,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "fc902f70-4365-48dd-9ac2-e2d6fe2fa96b",
+      "timestamp": "2026-10-30T18:13:10.012Z",
+      "parentId": "edba1574-e2fe-454f-a8de-5158c6c21ae7",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 34
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_13pENS4Yvd1Sdb0UR4iIODZX",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "3",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 6 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20211,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "2c769a15-6aa1-406e-98f5-48bdba234f69",
+      "timestamp": "2026-10-30T18:13:10.031Z",
+      "parentId": "fc902f70-4365-48dd-9ac2-e2d6fe2fa96b",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 35
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_NyA8g996iDagnoUJHBxlgWE8",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "3",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 4 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20211,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "040acef0-798b-40b0-b2ef-c8404c573069",
+      "timestamp": "2026-10-30T18:13:10.033Z",
+      "parentId": "2c769a15-6aa1-406e-98f5-48bdba234f69",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 36
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_vL1SvX6Xq87ybQs4rNzvFbYg",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "3",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 5 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20211,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "49bf991c-1d9b-46b4-a4de-06f4147b42c4",
+      "timestamp": "2026-10-30T18:13:10.039Z",
+      "parentId": "040acef0-798b-40b0-b2ef-c8404c573069",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 37
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_Ko6mdIdaOECuK1iYuHz0jpgz",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-core",
+          "description": "Run area:core label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-core"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-core",
+          "description": "Run area:core label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-core"
+      },
+      "id": "8cdf21d3-00bb-4061-8daf-b1be35c87083",
+      "timestamp": "2026-10-30T18:13:12.670Z",
+      "parentId": "5491d9f6-06c3-4f13-a969-0d14f62ec9f9",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 42
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_aJCVTBioEzoLJ2MFmAgNmydB",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-providers",
+          "description": "Run area:providers label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-providers"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-providers",
+          "description": "Run area:providers label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-providers"
+      },
+      "id": "52e366de-e615-4625-9d32-023d695fc3f0",
+      "timestamp": "2026-10-30T18:13:12.671Z",
+      "parentId": "8cdf21d3-00bb-4061-8daf-b1be35c87083",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 43
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_NNQZW0KCjZJyA4PNhLfJOWli",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-api",
+          "description": "Run area:API label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-api"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-api",
+          "description": "Run area:API label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-api"
+      },
+      "id": "fd374541-d9d4-4572-8b30-1b57ebb8ce9a",
+      "timestamp": "2026-10-30T18:13:12.672Z",
+      "parentId": "52e366de-e615-4625-9d32-023d695fc3f0",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 44
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_kWHhDEiwCkjavTjWfPcXtItg",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-ui",
+          "description": "Run area:UI label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-ui"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-ui",
+          "description": "Run area:UI label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-ui"
+      },
+      "id": "f3fdeb9b-cfed-4703-aa87-567d33d6dbe8",
+      "timestamp": "2026-10-30T18:13:12.673Z",
+      "parentId": "fd374541-d9d4-4572-8b30-1b57ebb8ce9a",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 45
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_ro2zStRG6dbaTs2ucwZRsnJX",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-kubernetes",
+          "description": "Run area:kubernetes label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-kubernetes"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-kubernetes",
+          "description": "Run area:kubernetes label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-kubernetes"
+      },
+      "id": "57092ec3-7e62-4f93-92a0-f1249457a93b",
+      "timestamp": "2026-10-30T18:13:12.674Z",
+      "parentId": "f3fdeb9b-cfed-4703-aa87-567d33d6dbe8",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 46
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_tPsvZ1wMS0E36MRoX3vPGcwY",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-scheduler",
+          "description": "Run area:scheduler label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-scheduler"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-scheduler",
+          "description": "Run area:scheduler label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-scheduler"
+      },
+      "id": "b31239f5-2846-4197-958f-dd6b26b5fce7",
+      "timestamp": "2026-10-30T18:13:12.675Z",
+      "parentId": "57092ec3-7e62-4f93-92a0-f1249457a93b",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 47
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_xZmROnKyOLDqrB7sUWhTpAak",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-dev-env",
+          "description": "Run area:dev-env label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-dev-env"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-dev-env",
+          "description": "Run area:dev-env label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-dev-env"
+      },
+      "id": "ef79d7a9-2d9e-400e-ad2e-70aa26bbf2f4",
+      "timestamp": "2026-10-30T18:13:12.675Z",
+      "parentId": "b31239f5-2846-4197-958f-dd6b26b5fce7",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 48
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_z3Xtmk8BE428jVXp4g6F44l1",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-area-airflow-ctl",
+          "description": "Run area:airflow-ctl label validator"
+        },
+        "turnId": "4",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-area-airflow-ctl"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-area-airflow-ctl",
+          "description": "Run area:airflow-ctl label validator"
+        },
+        "command": "scripts/wrappers/triage-label-area-airflow-ctl"
+      },
+      "id": "c7555492-e975-4a73-8600-2120af685e95",
+      "timestamp": "2026-10-30T18:13:12.676Z",
+      "parentId": "ef79d7a9-2d9e-400e-ad2e-70aa26bbf2f4",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 49
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_kWHhDEiwCkjavTjWfPcXtItg",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 10 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "902a01d1-cde7-415c-abbe-2416b18004d5",
+      "timestamp": "2026-10-30T18:13:12.990Z",
+      "parentId": "c7555492-e975-4a73-8600-2120af685e95",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 50
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_aJCVTBioEzoLJ2MFmAgNmydB",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 8 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "0e454ae5-efcb-470b-816c-9b63aa6d0d0f",
+      "timestamp": "2026-10-30T18:13:13.010Z",
+      "parentId": "902a01d1-cde7-415c-abbe-2416b18004d5",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 51
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_Ko6mdIdaOECuK1iYuHz0jpgz",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 7 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "4b027415-bd38-424b-886a-2bdcf8121ccb",
+      "timestamp": "2026-10-30T18:13:13.012Z",
+      "parentId": "0e454ae5-efcb-470b-816c-9b63aa6d0d0f",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 52
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_xZmROnKyOLDqrB7sUWhTpAak",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 1
+        },
+        "success": true,
+        "result": {
+          "content": "Traceback (most recent call last):\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/triage-label-area-dev-env\", line 3, in <module>\n    main()\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/wrapper_runtime.py\", line 109, in main\n    run(Path(argv[0]).name)\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/wrapper_runtime.py\", line 77, in run\n    proposed = _read(validated).get(\"labels\", []) + [LABEL_COMMANDS[command]]\n               ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/wrapper_runtime.py\", line 54, in _read\n    return json.loads(path.read_text(encoding=\"utf-8\"))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/decoder.py\", line 337, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/decoder.py\", line 355, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n<shellId: 11 completed with exit code 1>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 1,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 410
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 1
+      },
+      "id": "a9b013f8-9c10-40f2-bc0c-cc5b35dc1ec2",
+      "timestamp": "2026-10-30T18:13:13.019Z",
+      "parentId": "4b027415-bd38-424b-886a-2bdcf8121ccb",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 53
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_ro2zStRG6dbaTs2ucwZRsnJX",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 12 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "242ce39d-cf74-493f-9f9a-e478026833a6",
+      "timestamp": "2026-10-30T18:13:13.027Z",
+      "parentId": "a9b013f8-9c10-40f2-bc0c-cc5b35dc1ec2",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 54
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_tPsvZ1wMS0E36MRoX3vPGcwY",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 13 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "6c5efe40-5355-49b0-960b-de9c2c42cfa3",
+      "timestamp": "2026-10-30T18:13:13.037Z",
+      "parentId": "242ce39d-cf74-493f-9f9a-e478026833a6",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 55
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_NNQZW0KCjZJyA4PNhLfJOWli",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 9 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "80c8b05f-21d6-4380-bf5a-0e541995f2b9",
+      "timestamp": "2026-10-30T18:13:13.042Z",
+      "parentId": "6c5efe40-5355-49b0-960b-de9c2c42cfa3",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 56
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_z3Xtmk8BE428jVXp4g6F44l1",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "4",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 14 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20576,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "9fefa8a0-f7f8-4a83-8c3b-db579b3de442",
+      "timestamp": "2026-10-30T18:13:13.048Z",
+      "parentId": "80c8b05f-21d6-4380-bf5a-0e541995f2b9",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 57
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_1Z0Qpa4e8NFuaTKOU7F0JouI",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-provider-amazon",
+          "description": "Run provider:amazon label validator"
+        },
+        "turnId": "5",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-provider-amazon"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-provider-amazon",
+          "description": "Run provider:amazon label validator"
+        },
+        "command": "scripts/wrappers/triage-label-provider-amazon"
+      },
+      "id": "5de6cad1-1ad7-4a31-8f88-cbe274d606d6",
+      "timestamp": "2026-10-30T18:13:15.040Z",
+      "parentId": "b670c7fd-ee1a-4303-9212-6cac4443be55",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 62
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_bPct416Yufd9en7Cdc03OISL",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-provider-fab",
+          "description": "Run provider:fab label validator"
+        },
+        "turnId": "5",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-provider-fab"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-provider-fab",
+          "description": "Run provider:fab label validator"
+        },
+        "command": "scripts/wrappers/triage-label-provider-fab"
+      },
+      "id": "ca1a5e65-29e9-4780-aa59-cb416052f1b5",
+      "timestamp": "2026-10-30T18:13:15.041Z",
+      "parentId": "5de6cad1-1ad7-4a31-8f88-cbe274d606d6",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 63
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_6ua3o7H0HWBNhCYeXtBYSfZF",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-provider-google",
+          "description": "Run provider:google label validator"
+        },
+        "turnId": "5",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-provider-google"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-provider-google",
+          "description": "Run provider:google label validator"
+        },
+        "command": "scripts/wrappers/triage-label-provider-google"
+      },
+      "id": "4815f584-f9d1-4208-9df5-17e284054f26",
+      "timestamp": "2026-10-30T18:13:15.042Z",
+      "parentId": "ca1a5e65-29e9-4780-aa59-cb416052f1b5",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 64
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_zJwzwaoc4msAO3sKc5hXnI6F",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-provider-openlineage",
+          "description": "Run provider:openlineage label validator"
+        },
+        "turnId": "5",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-provider-openlineage"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-provider-openlineage",
+          "description": "Run provider:openlineage label validator"
+        },
+        "command": "scripts/wrappers/triage-label-provider-openlineage"
+      },
+      "id": "00933b6e-6198-4a0a-a901-74e4c85c45c2",
+      "timestamp": "2026-10-30T18:13:15.043Z",
+      "parentId": "4815f584-f9d1-4208-9df5-17e284054f26",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 65
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_hI3SrZEQwRhUNFNUarQf32uB",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-provider-standard",
+          "description": "Run provider:standard label validator"
+        },
+        "turnId": "5",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-provider-standard"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-provider-standard",
+          "description": "Run provider:standard label validator"
+        },
+        "command": "scripts/wrappers/triage-label-provider-standard"
+      },
+      "id": "ab3e19e1-e07a-41eb-b2dc-2b49080b1e3c",
+      "timestamp": "2026-10-30T18:13:15.044Z",
+      "parentId": "00933b6e-6198-4a0a-a901-74e4c85c45c2",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 66
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_bPct416Yufd9en7Cdc03OISL",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "5",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 16 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21548,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "89898a62-a79d-42ee-8af9-e0e5224fcb13",
+      "timestamp": "2026-10-30T18:13:15.209Z",
+      "parentId": "ab3e19e1-e07a-41eb-b2dc-2b49080b1e3c",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 67
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_1Z0Qpa4e8NFuaTKOU7F0JouI",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "5",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 15 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21548,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "c32c7cb1-25e8-448e-8753-3da5e328f518",
+      "timestamp": "2026-10-30T18:13:15.231Z",
+      "parentId": "89898a62-a79d-42ee-8af9-e0e5224fcb13",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 68
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_zJwzwaoc4msAO3sKc5hXnI6F",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "5",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 19 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21548,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "661fce10-eb6f-44bc-9c78-e5d3c56da3da",
+      "timestamp": "2026-10-30T18:13:15.243Z",
+      "parentId": "c32c7cb1-25e8-448e-8753-3da5e328f518",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 69
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_hI3SrZEQwRhUNFNUarQf32uB",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "5",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 1
+        },
+        "success": true,
+        "result": {
+          "content": "Traceback (most recent call last):\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/triage-label-provider-standard\", line 3, in <module>\n    main()\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/wrapper_runtime.py\", line 109, in main\n    run(Path(argv[0]).name)\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/wrapper_runtime.py\", line 77, in run\n    proposed = _read(validated).get(\"labels\", []) + [LABEL_COMMANDS[command]]\n               ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/scripts/wrappers/wrapper_runtime.py\", line 54, in _read\n    return json.loads(path.read_text(encoding=\"utf-8\"))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/decoder.py\", line 337, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/decoder.py\", line 355, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n<shellId: 18 completed with exit code 1>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 1,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21548,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 409
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 1
+      },
+      "id": "6f63127d-2dcd-48dd-992c-81f473cafc64",
+      "timestamp": "2026-10-30T18:13:15.246Z",
+      "parentId": "661fce10-eb6f-44bc-9c78-e5d3c56da3da",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 70
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_6ua3o7H0HWBNhCYeXtBYSfZF",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "5",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 2
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 17 completed with exit code 2>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false",
+            "shell_error_category": "command_nonzero_exit"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "exit_code": 2,
+            "context_token_limit": 64000,
+            "context_current_tokens": 21548,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 2
+      },
+      "id": "2e462d95-bce7-47dc-923f-ba724708e6e6",
+      "timestamp": "2026-10-30T18:13:15.265Z",
+      "parentId": "6f63127d-2dcd-48dd-992c-81f473cafc64",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 71
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_Xk0bfib5WkRko442QrupnPeH",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-comment-none",
+          "description": "Render the 'none' comment template"
+        },
+        "turnId": "6",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-comment-none"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-comment-none",
+          "description": "Render the 'none' comment template"
+        },
+        "command": "scripts/wrappers/triage-comment-none"
+      },
+      "id": "876744c4-35b0-4a5e-8689-00732541ba91",
+      "timestamp": "2026-10-30T18:13:16.686Z",
+      "parentId": "8d9a967a-0a6e-47ec-a48f-61bf059ab428",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 76
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_Xk0bfib5WkRko442QrupnPeH",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "6",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 20 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22313,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "e5e06142-0f50-480a-b4e5-9bfcac8b4083",
+      "timestamp": "2026-10-30T18:13:16.735Z",
+      "parentId": "876744c4-35b0-4a5e-8689-00732541ba91",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 77
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_m6yfbpUnUVpXbkzbVk4Gitvo",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-kind-bug.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-kind-bug.json"
+        }
+      },
+      "id": "5e5a826d-71b7-4905-a382-bb7e3af7f057",
+      "timestamp": "2026-10-30T18:13:19.219Z",
+      "parentId": "69d4147f-3591-4748-b3a1-5fb874c5c826",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 82
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_7GiEvCP7SIGIQrKSvbgl4Avn",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-kind-documentation.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-kind-documentation.json"
+        }
+      },
+      "id": "f45a1371-11c3-486d-9498-549cf5d1df46",
+      "timestamp": "2026-10-30T18:13:19.219Z",
+      "parentId": "5e5a826d-71b7-4905-a382-bb7e3af7f057",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 83
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_6aKlIxlnC5OWe0t2X5f95Clo",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-kind-meta.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-kind-meta.json"
+        }
+      },
+      "id": "c8dff9ea-782d-4666-bf14-fb2844ab5647",
+      "timestamp": "2026-10-30T18:13:19.220Z",
+      "parentId": "f45a1371-11c3-486d-9498-549cf5d1df46",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 84
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_jFu2TGGUxQk2QpHGjjFw4Aag",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-core.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-core.json"
+        }
+      },
+      "id": "f8deb9e8-64f4-49a4-a86d-3eed28ae43a6",
+      "timestamp": "2026-10-30T18:13:19.221Z",
+      "parentId": "c8dff9ea-782d-4666-bf14-fb2844ab5647",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 85
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_C9zUkwUDmSXR73nctYfNtQBv",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-ui.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-ui.json"
+        }
+      },
+      "id": "f4f51755-2c50-4c4c-aa90-1f98e68ad352",
+      "timestamp": "2026-10-30T18:13:19.221Z",
+      "parentId": "f8deb9e8-64f4-49a4-a86d-3eed28ae43a6",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 86
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_7iWLDzY78TBznX0L6d8B9PrZ",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-scheduler.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-scheduler.json"
+        }
+      },
+      "id": "8e6bbd6c-06eb-42b3-9932-9dc25b2d79a5",
+      "timestamp": "2026-10-30T18:13:19.222Z",
+      "parentId": "f4f51755-2c50-4c4c-aa90-1f98e68ad352",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 87
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_m3xybzOfBfnIReLNodGRXAJ3",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-airflow-ctl.json"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-area-airflow-ctl.json"
+        }
+      },
+      "id": "11810b93-1144-40ad-bedf-568009f7cbcf",
+      "timestamp": "2026-10-30T18:13:19.223Z",
+      "parentId": "8e6bbd6c-06eb-42b3-9932-9dc25b2d79a5",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 88
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_633a9IOkxheRSPPeYuVrGOxO",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-comment-none.txt"
+        },
+        "turnId": "7",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-comment-none.txt"
+        }
+      },
+      "id": "b48863ea-846e-49b7-ad46-2c7ca0873ab6",
+      "timestamp": "2026-10-30T18:13:19.223Z",
+      "parentId": "11810b93-1144-40ad-bedf-568009f7cbcf",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 89
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_m6yfbpUnUVpXbkzbVk4Gitvo",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 93,
+            "resultForLlmLength": 93,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "e5049691-e6bf-4e81-aa29-5d68b4ca3edf",
+      "timestamp": "2026-10-30T18:13:19.233Z",
+      "parentId": "b48863ea-846e-49b7-ad46-2c7ca0873ab6",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 90
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_7GiEvCP7SIGIQrKSvbgl4Avn",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 103,
+            "resultForLlmLength": 103,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "ac5ee4e6-04c3-4c60-a10c-d75ef08e3902",
+      "timestamp": "2026-10-30T18:13:19.234Z",
+      "parentId": "e5049691-e6bf-4e81-aa29-5d68b4ca3edf",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 91
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_6aKlIxlnC5OWe0t2X5f95Clo",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 94,
+            "resultForLlmLength": 94,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "d6e06dc5-72e5-40e4-8f73-2d036f1d5956",
+      "timestamp": "2026-10-30T18:13:19.240Z",
+      "parentId": "ac5ee4e6-04c3-4c60-a10c-d75ef08e3902",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 92
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_jFu2TGGUxQk2QpHGjjFw4Aag",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 94,
+            "resultForLlmLength": 94,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "353f2751-9e90-45c0-9bb9-72b18327be6d",
+      "timestamp": "2026-10-30T18:13:19.245Z",
+      "parentId": "d6e06dc5-72e5-40e4-8f73-2d036f1d5956",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 93
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_C9zUkwUDmSXR73nctYfNtQBv",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 92,
+            "resultForLlmLength": 92,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "a065734c-99a8-4e0f-8281-8b094125c807",
+      "timestamp": "2026-10-30T18:13:19.251Z",
+      "parentId": "353f2751-9e90-45c0-9bb9-72b18327be6d",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 94
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_7iWLDzY78TBznX0L6d8B9PrZ",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 99,
+            "resultForLlmLength": 99,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "3ba3d9fb-09fd-499c-aef9-83642cc19e9e",
+      "timestamp": "2026-10-30T18:13:19.256Z",
+      "parentId": "a065734c-99a8-4e0f-8281-8b094125c807",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 95
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_m3xybzOfBfnIReLNodGRXAJ3",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 101,
+            "resultForLlmLength": 101,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "12228f46-70d3-4014-a1c4-188d98d65dd8",
+      "timestamp": "2026-10-30T18:13:19.263Z",
+      "parentId": "3ba3d9fb-09fd-499c-aef9-83642cc19e9e",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 96
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_633a9IOkxheRSPPeYuVrGOxO",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "7",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".txt\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 90,
+            "resultForLlmLength": 90,
+            "context_token_limit": 64000,
+            "context_current_tokens": 22381,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "e7737c62-43fc-4810-8aba-87aad3ab4538",
+      "timestamp": "2026-10-30T18:13:19.268Z",
+      "parentId": "12228f46-70d3-4014-a1c4-188d98d65dd8",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 97
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_vIdHnifDDeMj19DnvH67Wr3s",
+        "toolName": "bash",
+        "arguments": {
+          "command": "ls /tmp/gh-aw/agent/",
+          "description": "List files in the agent temp directory to locate output files"
+        },
+        "turnId": "8",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "/tmp/gh-aw/agent/"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "ls /tmp/gh-aw/agent/",
+          "description": "List files in the agent temp directory to locate output files"
+        },
+        "command": "ls /tmp/gh-aw/agent/"
+      },
+      "id": "8648cc81-ebfa-401e-aa62-bdf10d400298",
+      "timestamp": "2026-10-30T18:13:20.675Z",
+      "parentId": "2960d88c-83a0-4587-9561-32db4d1bec5d",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 102
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_vIdHnifDDeMj19DnvH67Wr3s",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "8",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Permission to run this tool was denied due to the following rules: `shell(ls)`",
+          "code": "denied"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "shell_error_category": "permission_denied"
+          },
+          "metrics": {
+            "context_token_limit": 64000,
+            "context_current_tokens": 22996,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "bash"
+      },
+      "id": "7c3107bd-088d-41da-81a9-af6781a08533",
+      "timestamp": "2026-10-30T18:13:20.680Z",
+      "parentId": "8648cc81-ebfa-401e-aa62-bdf10d400298",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 103
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_WH42YL8ty59qU34eu0uto296",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-label-none.json"
+        },
+        "turnId": "9",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-label-none.json"
+        }
+      },
+      "id": "9f1208ed-f67e-44e2-bb7a-9aeac3688472",
+      "timestamp": "2026-10-30T18:13:22.102Z",
+      "parentId": "36a3b694-e679-4da9-b125-bb730dea4861",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 108
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_3MOsYjS5ifctUDfuCE4wyDPi",
+        "toolName": "view",
+        "arguments": {
+          "path": "/tmp/gh-aw/agent/triage-search-duplicates.json"
+        },
+        "turnId": "9",
+        "model": "gpt-4.1",
+        "toolTitle": "Viewing file",
+        "input": {
+          "path": "/tmp/gh-aw/agent/triage-search-duplicates.json"
+        }
+      },
+      "id": "5b560a06-8ba4-47de-84b4-6722cd654294",
+      "timestamp": "2026-10-30T18:13:22.103Z",
+      "parentId": "9f1208ed-f67e-44e2-bb7a-9aeac3688472",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 109
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_WH42YL8ty59qU34eu0uto296",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "9",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 89,
+            "resultForLlmLength": 89,
+            "context_token_limit": 64000,
+            "context_current_tokens": 23071,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "af950c75-80eb-4b4e-ba22-63a208349dcd",
+      "timestamp": "2026-10-30T18:13:22.107Z",
+      "parentId": "5b560a06-8ba4-47de-84b4-6722cd654294",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 110
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_3MOsYjS5ifctUDfuCE4wyDPi",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "9",
+        "rte": true,
+        "success": false,
+        "error": {
+          "message": "Path does not exist",
+          "code": "failure"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "command": "view",
+            "options": "{\"truncateBasedOn\":\"tokenCount\",\"truncateStyle\":\"middle\"}",
+            "inputs": "[\"path\",\"command\"]",
+            "resolvedPathAgainstCwd": "false",
+            "fileExtension": "[\".json\"]",
+            "viewType": "unknown"
+          },
+          "restrictedProperties": {},
+          "metrics": {
+            "resultLength": 96,
+            "resultForLlmLength": 96,
+            "context_token_limit": 64000,
+            "context_current_tokens": 23071,
+            "large_output_threshold_bytes": 20480
+          }
+        },
+        "toolName": "view"
+      },
+      "id": "2ae06174-3181-4bea-8081-03b0469ba6c2",
+      "timestamp": "2026-10-30T18:13:22.109Z",
+      "parentId": "af950c75-80eb-4b4e-ba22-63a208349dcd",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 111
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_n0lcFXtNcLpzwrnAgxhxP14l",
+        "toolName": "safeoutputs-noop",
+        "arguments": {
+          "integrity": "high",
+          "message": "Airflow issue triage complete: No new labels or comment needed. All required deterministic wrappers executed successfully, but no output files were generated for labels or comments. No action required."
+        },
+        "turnId": "10",
+        "model": "gpt-4.1",
+        "toolTitle": "noop",
+        "mcpServerName": "safeoutputs",
+        "mcpConfigServerName": "safeoutputs",
+        "mcpTransport": "http",
+        "mcpConfigSource": "user",
+        "mcpToolName": "noop",
+        "input": {
+          "integrity": "high",
+          "message": "Airflow issue triage complete: No new labels or comment needed. All required deterministic wrappers executed successfully, but no output files were generated for labels or comments. No action required."
+        }
+      },
+      "id": "7b3a7c0f-a4ba-4087-b5fc-d0740d03b33e",
+      "timestamp": "2026-10-30T18:13:23.572Z",
+      "parentId": "d18fdc2a-a048-403f-a9ac-bf1549864776",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 116
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_n0lcFXtNcLpzwrnAgxhxP14l",
+        "model": "gpt-4.1",
+        "interactionId": "f90de6ea-efb4-49eb-81e9-34d9259df03e",
+        "turnId": "10",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "{\"result\":\"success\"}"
+        },
+        "toolTelemetry": {
+          "metrics": {
+            "mcp_result_content_bytes": 20,
+            "context_token_limit": 64000,
+            "context_current_tokens": 23229,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 5
+          }
+        },
+        "toolName": "safeoutputs-noop",
+        "mcpServerName": "safeoutputs"
+      },
+      "id": "d93e062a-cebd-41ba-8b52-0523aa9dd4b7",
+      "timestamp": "2026-10-30T18:13:24.091Z",
+      "parentId": "7b3a7c0f-a4ba-4087-b5fc-d0740d03b33e",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/e375a6a8-e77e-4e4f-9c72-5680a7c56582/events.jsonl",
+        "index": 117
+      }
+    }
+  ],
+  "safe_output_types_observed": [
+    "noop"
+  ],
+  "safe_output_records": [
+    {
+      "timestamp": "2026-10-30T18:17:13.175Z",
+      "type": "noop",
+      "messageIndex": 0,
+      "status": "success",
+      "staged": false
+    },
+    {
+      "integrity": "high",
+      "message": "Airflow issue triage complete: No new labels or comment needed. All required deterministic wrappers executed successfully, but no output files were generated for labels or comments. No action required.",
+      "type": "noop"
+    }
+  ],
+  "forbidden_actions_observed": [],
+  "aic_spent": 16.083,
+  "agent_errors": [
+    {
+      "type": "agent.execution",
+      "data": {
+        "categories": [],
+        "errorCodes": [],
+        "errorTypes": [],
+        "exitCode": 0
+      }
+    }
+  ],
+  "failure_classification": null,
+  "failure_cause": null,
+  "budget_controls": {
+    "timeout_minutes": 10,
+    "implemented": true,
+    "tested": false,
+    "evidence": "agent-errors.jsonl and agent-stdio.log"
+  },
+  "audit_exit_code": 0,
+  "audit_directory": "evals\\golden\\actual\\round_6\\cases\\airflow-69284\\audit",
+  "raw_run": {
+    "conclusion": "success",
+    "createdAt": "2026-10-30T18:07:06Z",
+    "databaseId": 41104088451,
+    "event": "issues",
+    "headSha": "fa4f3e8d11adb6f662661914d077451f969e4bf4",
+    "jobs": [
+      {
+        "completedAt": "2026-10-30T18:08:13Z",
+        "conclusion": "success",
+        "databaseId": 124228663194,
+        "name": "pre_activation",
+        "startedAt": "2026-10-30T18:07:11Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451/job/124228663194"
+      },
+      {
+        "completedAt": "2026-10-30T18:11:09Z",
+        "conclusion": "success",
+        "databaseId": 124229306113,
+        "name": "activation",
+        "startedAt": "2026-10-30T18:08:21Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451/job/124229306113"
+      },
+      {
+        "completedAt": "2026-10-30T18:13:38Z",
+        "conclusion": "success",
+        "databaseId": 124231006308,
+        "name": "agent",
+        "startedAt": "2026-10-30T18:11:12Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451/job/124231006308"
+      },
+      {
+        "completedAt": "2026-10-30T18:15:53Z",
+        "conclusion": "success",
+        "databaseId": 124232476304,
+        "name": "detection",
+        "startedAt": "2026-10-30T18:13:41Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451/job/124232476304"
+      },
+      {
+        "completedAt": "2026-10-30T18:17:18Z",
+        "conclusion": "success",
+        "databaseId": 124233735133,
+        "name": "safe_outputs",
+        "startedAt": "2026-10-30T18:16:05Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451/job/124233735133"
+      },
+      {
+        "completedAt": "2026-10-30T18:17:59Z",
+        "conclusion": "success",
+        "databaseId": 124234545682,
+        "name": "conclusion",
+        "startedAt": "2026-10-30T18:17:22Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451/job/124234545682"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-10-30T18:18:00Z",
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451",
+    "workflowName": "Bounded Airflow issue triage"
+  }
+}

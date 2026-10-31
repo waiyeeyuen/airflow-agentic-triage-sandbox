@@ -89,20 +89,20 @@ Tester Part A froze 18 real cases (three no-action) plus three adversarial cases
 Early approved runs exposed an unsupported `auto` model, a skill/shell-guard conflict, and an AI-
 detection file-reading loop. The guard denied redirection, the 10-minute timeout contained the loop,
 and exact `gpt-4.1`, fixed-path input and deterministic detection repaired those setup failures.
-Round 5 used 111.0704 AIC: exact proposed-decision accuracy was **1/11 (9.1%, n=11 decided)**,
-with ten not evaluated after concurrent dispatch hit Copilot 429. Field exactness was
-kind 4/11 (36.4%), area 1/11 (9.1%), provider 8/11 (72.7%), comment 6/11 (54.5%). Its main weakness
-was area/provider confusion, often defaulting to `area:core`, plus invented free-text comments.
-One general improvement added process/taxonomy-derived area/provider guidance, required clear
-evidence for any output and restricted comments to fixed template IDs. Round 6 used 140.1156 AIC:
-**3/16 exact (18.8%, n=16 decided)** with five 429 non-evaluations. Field exactness became kind 9/16
-(56.3%), area 5/16 (31.3%), provider 11/16 (68.8%), comment 12/16 (75.0%)
-([comparison](evals/golden/actual/round_6/proposal_score.md)). Ten of 13 decided failures required
-labels but proposed none; an eleventh correctly omitted labels but missed the duplicate comment.
-The clear-evidence rule over-corrected from wrong labels to missing labels, a safer failure. Some
-kind/comment gain is correct-absence matching. The same 21 cases informed and tested the change,
-so the apparent gain may overfit and requires a fresh holdout before deployment.
-Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-blocked two invented
+Round 5 used 111.0704 AIC: exact proposed-decision accuracy was **1/11 (9.1%, n=11 decided)**;
+ten were not evaluated after concurrent dispatch hit Copilot 429. Field exactness was kind 4/11,
+area 1/11, provider 8/11 and comment 6/11. Its main weakness was area/provider confusion, often
+defaulting to `area:core`, plus invented free-text comments. One general improvement added process-
+and taxonomy-derived mappings, required clear evidence, and restricted comments to template IDs.
+Round 6 initially decided 16/21; five 429 cases were retried one at a time for 45.1254 AIC.
+The final comparison is **4/21 exact (19.0%, n=21 decided)**: kind 14/21 (66.7%), area 6/21
+(28.6%), provider 16/21 (76.2%) and comment 16/21 (76.2%)
+([comparison](evals/golden/actual/round_6_retry_429/proposal_score.md)). Selected final attempts used
+179.3600 AIC; all initial and retry attempts used 185.2410 AIC. Fourteen of 17 failures required
+labels but proposed none. The clear-evidence rule over-corrected from wrong labels to missing labels,
+a safer failure; some kind/comment gain is correct-absence matching. The same 21 cases informed and
+tested the change, so the apparent gain may overfit and needs a fresh holdout before deployment.
+Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-blocked three invented
 comments; no forbidden action occurred and every issue remained open, but one bounded wrong
 mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
 the no-skill control and phone screenshots remain unresolved.
