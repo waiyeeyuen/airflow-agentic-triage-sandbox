@@ -1,5 +1,6 @@
 import unittest
 from pathlib import Path
+import hashlib
 import json
 import subprocess
 import sys
@@ -186,6 +187,47 @@ class CliTests(unittest.TestCase):
 
 
 class WrapperTests(unittest.TestCase):
+    def test_all_golden_duplicate_outputs_match_frozen_hashes(self):
+        plan = json.loads(
+            (ROOT / "evals/golden/harness/replay_plan.json").read_text(encoding="utf-8")
+        )
+        expected = json.loads(
+            (SCRIPTS / "tests/fixtures/duplicate_search_sha256.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual({item["case_id"] for item in plan["cases"]}, set(expected))
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            for item in plan["cases"]:
+                with self.subTest(case_id=item["case_id"]):
+                    output = Path(temporary) / f"{item['case_id']}.json"
+                    wrapper_runtime.run(
+                        "triage-search-duplicates",
+                        case=ROOT / item["input_path"],
+                        duplicates=output,
+                        corpus_root=ROOT / "evals/golden/cases",
+                    )
+                    digest = hashlib.sha256(output.read_bytes()).hexdigest()
+                    self.assertEqual(expected[item["case_id"]], digest)
+
+    def test_live_issue_without_frozen_corpus_returns_no_candidates(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            temporary = Path(temporary)
+            case = temporary / "case.json"
+            output = temporary / "duplicates.json"
+            case.write_text(
+                json.dumps({"title": "Fresh harmless issue", "body": "No frozen title match."}),
+                encoding="utf-8",
+            )
+            wrapper_runtime.run(
+                "triage-search-duplicates",
+                case=case,
+                duplicates=output,
+                corpus_root=ROOT / "evals/golden/cases",
+            )
+            expected = json.dumps(
+                {"method": "tf-idf-cosine-v1", "candidates": []}, indent=2
+            ) + "\n"
+            self.assertEqual(expected.encode(), output.read_bytes())
+
     def test_fixed_wrapper_sequence_preserves_duplicate_labels_and_comment(self):
         case = ROOT / "evals/golden/cases/69284/input.json"
         with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
