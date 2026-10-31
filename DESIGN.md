@@ -44,17 +44,16 @@ only individually allowed, no-argument wrapper executables and request labels or
   it is an admission guard rather than a hard aggregate cap. Run 40993175316 tested the timeout;
   the per-run threshold and admission guard have not been deliberately exhausted.
 - **Audit trail — implemented:** Actions retains trigger/config SHA; `gh aw audit` supplies model,
-  calls, tokens and AIC. The first approved run's evidence is committed under
-  `evals/golden/actual/round_1/`.
+  calls, tokens and AIC; first-run evidence is in `evals/golden/actual/round_1/`.
 - **Kill switch — implemented + tested:** disabled
   [run 40905907762](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40905907762)
-  skipped every job. A queued run continued after switch-off, so cancellation is required; phone test pending.
+  skipped every job. A queued run continued after switch-off, so cancellation is required. Phone
+  run 41166022897 tested switch-off plus cancellation in five taps and 1 minute 37 seconds.
 - **Drift detection — partly implemented:** deterministic checks run on config/eval changes
   ([CI](.github/workflows/config-checks.yml)); weekly/model-change reruns, human diff review and the
   no-skill control remain unresolved.
 - **Accountability — implemented, enforcement proposed:** Jasmine owns config review, the switch,
-  bills and outputs; CODEOWNERS is committed, while required review and collaborator access remain
-  repository-setting tasks.
+  bills and outputs; CODEOWNERS is committed, but required review and collaborator access are settings.
 ## Procedure and hard boundary
 
 The workflow, not the model, writes fixed-path issue JSON. The skill then runs exact no-argument
@@ -105,7 +104,7 @@ tested the change, so the apparent gain may overfit and needs a fresh holdout be
 Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-blocked three invented
 comments; no forbidden action occurred and every issue remained open, but one bounded wrong
 mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
-the no-skill control and phone screenshots remain unresolved.
+the no-skill control remains unresolved.
 gh-aw v1.0.1 requires `max-links >= 1`; its generic handler generates `pull-requests: write` in the
 isolated safe-output job. No PR mutation tool or PR target is exposed. This residual compiler
 permission remains unresolved; compilation is not behavioural evidence.
@@ -138,8 +137,9 @@ permission remains unresolved; compilation is not behavioural evidence.
 4. **Malicious tool/MCP output:** there is no custom MCP. Tool output is untrusted; even total
    instruction failure can express only three allowlisted labels and one sanitized comment.
 5. **Phone stop:** set `TRIAGE_AGENT_ENABLED=false`, then cancel every already-created workflow.
-   A queued incident run continued into agent/detection after the switch changed, proving the
-   variable alone does not stop existing executions; cancellation UI/tap screenshots remain pending.
+   [Run 41166022897](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41166022897)
+   was stopped in five taps and 1:37. The switch read false, cancellation was recorded, and issue 57
+   stayed open with no labels/comments ([evidence](evidence/phone-kill-switch/)).
 
 ## AI-use statement
 
