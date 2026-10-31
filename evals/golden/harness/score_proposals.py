@@ -32,7 +32,7 @@ def proposed(records: list[dict]) -> tuple[list[str], list[str]]:
             )
         elif record.get("type") == "add_comment":
             comments.append(str(record.get("body", "")))
-    return sorted(filter(None, labels)), comments
+    return sorted(set(filter(None, labels))), list(dict.fromkeys(filter(None, comments)))
 
 
 def label_family_exact(expected: list[str], proposed_labels: list[str], prefix: str) -> bool:
@@ -40,6 +40,15 @@ def label_family_exact(expected: list[str], proposed_labels: list[str], prefix: 
     expected_family = sorted(label for label in expected if label.startswith(prefix))
     proposed_family = sorted(label for label in proposed_labels if label.startswith(prefix))
     return expected_family == proposed_family
+
+
+def decision_available(output_types: list[str], agent_errors: list[dict]) -> bool:
+    """Require a real model decision and exclude explicit Copilot-capacity failures."""
+    error_text = json.dumps(agent_errors or [])
+    return (
+        any(item in {"add_labels", "add_comment", "noop"} for item in output_types)
+        and "429" not in error_text
+    )
 
 
 def main() -> None:
@@ -82,7 +91,8 @@ def main() -> None:
         duplicate_exact = duplicate_of is None or (
             len(comments) == 1 and str(duplicate_of) in comments[0]
         )
-        available = bool(records)
+        error_text = json.dumps(actual.get("agent_errors") or [])
+        available = decision_available(output_types, actual.get("agent_errors") or [])
         kind_exact = label_family_exact(expected["labels_to_add"], labels, "kind:")
         area_exact = label_family_exact(expected["labels_to_add"], labels, "area:")
         provider_exact = label_family_exact(expected["labels_to_add"], labels, "provider:")
@@ -97,7 +107,6 @@ def main() -> None:
         if len(actual.get("labels_added") or []) > 3:
             observed_violations.append("add_more_than_three_labels")
         explanations = []
-        error_text = json.dumps(actual.get("agent_errors") or [])
         if not available:
             explanations.append("no model proposal (agent error 429)" if "429" in error_text else "no model proposal")
         if not labels_exact:
@@ -161,6 +170,10 @@ def main() -> None:
             "n": len(decided),
             "accuracy": field_correct / len(decided) if decided else None,
         }
+    if round_dir.name == "round_5_batch":
+        not_evaluated_cause = "Copilot 429 after concurrent five-case dispatch"
+    else:
+        not_evaluated_cause = "Copilot 429 during paired dispatch"
     result = {
         "schema_version": 1,
         "metric": "exact proposed decision versus frozen expectation among decided cases",
@@ -171,7 +184,7 @@ def main() -> None:
         "total_cases": len(rows),
         "cases_with_decision": len(decided),
         "not_evaluated": len(rows) - len(decided),
-        "not_evaluated_cause": "Copilot 429 after concurrent dispatch",
+        "not_evaluated_cause": not_evaluated_cause,
         "field_accuracy": field_accuracy,
         "cases_fail_closed": sum(row["application_fail_closed"] for row in rows),
         "cases_with_observed_must_not": sum(bool(row["observed_must_not_violations"]) for row in rows),
@@ -183,7 +196,7 @@ def main() -> None:
         "# Proposed-decision score",
         "",
         f"Exact decisions: {result['correct']}/{result['n']} ({result['accuracy']:.1%}) among decided cases; "
-        f"{result['not_evaluated']}/{result['total_cases']} not evaluated because concurrent dispatch hit Copilot 429.",
+        f"{result['not_evaluated']}/{result['total_cases']} not evaluated: {result['not_evaluated_cause']}.",
         "",
         "Per-field exactness among decided cases (correct absence counts correct): "
         + "; ".join(

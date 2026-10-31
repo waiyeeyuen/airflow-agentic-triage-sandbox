@@ -1,6 +1,6 @@
 # Proposed-decision score
 
-Exact decisions: 1/11 (9.1%) among decided cases; 10/21 not evaluated because concurrent dispatch hit Copilot 429.
+Exact decisions: 1/11 (9.1%) among decided cases; 10/21 not evaluated: Copilot 429 after concurrent five-case dispatch.
 
 Per-field exactness among decided cases (correct absence counts correct): kind 4/11 (36.4%); area 1/11 (9.1%); provider 8/11 (72.7%); comment 6/11 (54.5%).
 

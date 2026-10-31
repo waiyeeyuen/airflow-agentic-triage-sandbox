@@ -10,7 +10,7 @@ sys.path.insert(0, str(HERE))
 from capture import classify_comment
 from common import BUILDER_COMMIT, EXPECTED_COMMIT, GOLDEN, HARNESS, ROOT, read_json, sha256_file, validate_replay_text
 from replay import validate_approval, validate_round_directory
-from score_proposals import label_family_exact
+from score_proposals import decision_available, label_family_exact, proposed
 
 
 class PlanTests(unittest.TestCase):
@@ -41,6 +41,26 @@ class PlanTests(unittest.TestCase):
             ["area:providers"],
             "provider:",
         ))
+
+    def test_proposal_extraction_deduplicates_applied_and_proposed_records(self):
+        labels, comments = proposed([
+            {"type": "add_labels", "labels": [{"name": "kind:bug"}, {"name": "area:UI"}]},
+            {"type": "add_labels", "labels": [
+                {"name": "kind:bug", "confidence": "HIGH"},
+                {"name": "area:UI", "confidence": "HIGH"},
+            ]},
+            {"type": "add_comment", "body": "fixed template"},
+            {"type": "add_comment", "body": "fixed template", "status": "success"},
+        ])
+        self.assertEqual(["area:UI", "kind:bug"], labels)
+        self.assertEqual(["fixed template"], comments)
+
+    def test_429_report_incomplete_is_not_a_decision_but_noop_is(self):
+        error_429 = [{"type": "agent.execution", "data": {"errorCodes": [429]}}]
+        self.assertFalse(decision_available(["report_incomplete"], error_429))
+        self.assertFalse(decision_available(["noop"], error_429))
+        self.assertTrue(decision_available(["noop"], []))
+        self.assertTrue(decision_available(["add_labels"], []))
 
     def test_example_is_not_accepted_as_approval(self):
         with self.assertRaises(ValueError):

@@ -1,0 +1,519 @@
+{
+  "schema_version": 1,
+  "case_id": "airflow-71569",
+  "issue_number": 38,
+  "issue_url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/issues/38",
+  "run_id": 41109907298,
+  "run_url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298",
+  "run_status": "completed",
+  "run_conclusion": "success",
+  "workflow_name": "Bounded Airflow issue triage",
+  "config_head_sha": "fa4f3e8d11adb6f662661914d077451f969e4bf4",
+  "issue_state": "OPEN",
+  "labels_at_creation": [
+    "kind:bug",
+    "needs-triage"
+  ],
+  "labels_after": [
+    "kind:bug",
+    "needs-triage"
+  ],
+  "labels_added": [],
+  "comments": [],
+  "comment_count": 0,
+  "comment_type": "none",
+  "comment_authors": [],
+  "output_actors": [],
+  "identity_is_bot_or_app": null,
+  "skill_marker_present": false,
+  "skill_scripts_seen_in_audit": {
+    "duplicate_search_wrapper": true,
+    "label_validation_wrapper": true,
+    "comment_render_wrapper": true
+  },
+  "all_skill_scripts_seen": true,
+  "skill_inventory": {
+    "skills": [],
+    "conflicts": []
+  },
+  "observed_tool_records": [
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_qKGKnPMEbrCFAW1cSjzThUTW",
+        "toolName": "skill",
+        "arguments": {
+          "skill": "airflow-issue-triage"
+        },
+        "turnId": "0",
+        "model": "gpt-4.1",
+        "input": {
+          "skill": "airflow-issue-triage"
+        }
+      },
+      "id": "2f5400f2-ea5f-4452-8a28-db288f929507",
+      "timestamp": "2026-10-30T18:52:15.444Z",
+      "parentId": "1f012c23-9db4-4e3a-9b5b-6461881ecf6e",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 8
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_qKGKnPMEbrCFAW1cSjzThUTW",
+        "model": "gpt-4.1",
+        "interactionId": "b85babd2-c0a0-412a-a7a4-3fb356ee6787",
+        "turnId": "0",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "Skill \"airflow-issue-triage\" loaded successfully. Follow the instructions in the skill context."
+        },
+        "toolTelemetry": {
+          "properties": {
+            "skillNameHash": "570e6476bec59b6955c91ac0b06583156da7143d6773299632ed3f7dc8d0ed6c",
+            "skillSource": "project",
+            "found": "true"
+          },
+          "restrictedProperties": {
+            "skillName": "airflow-issue-triage"
+          },
+          "metrics": {
+            "skillContentLength": 4426,
+            "context_token_limit": 64000,
+            "context_current_tokens": 18844,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 21
+          }
+        },
+        "toolName": "skill"
+      },
+      "id": "278414c0-9222-4088-8914-878bc1631752",
+      "timestamp": "2026-10-30T18:52:15.446Z",
+      "parentId": "2f5400f2-ea5f-4452-8a28-db288f929507",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 9
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_idULhIxvQ5hxr1xESUWrKgPF",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-search-duplicates",
+          "description": "Run duplicate search wrapper"
+        },
+        "turnId": "1",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-search-duplicates"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-search-duplicates",
+          "description": "Run duplicate search wrapper"
+        },
+        "command": "scripts/wrappers/triage-search-duplicates"
+      },
+      "id": "93185ce7-1a11-4711-b2e3-8fb53e1f6c61",
+      "timestamp": "2026-10-30T18:52:17.204Z",
+      "parentId": "578fd37d-fdc5-40bd-893d-c05a63c25690",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 16
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_07LXboIGnGsuEq2BvPKkbvwL",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-label-none",
+          "description": "Initialize label validation"
+        },
+        "turnId": "1",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-label-none"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-label-none",
+          "description": "Initialize label validation"
+        },
+        "command": "scripts/wrappers/triage-label-none"
+      },
+      "id": "ea066d72-4c50-40dc-b9de-65950e5739e5",
+      "timestamp": "2026-10-30T18:52:17.205Z",
+      "parentId": "93185ce7-1a11-4711-b2e3-8fb53e1f6c61",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 17
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_07LXboIGnGsuEq2BvPKkbvwL",
+        "model": "gpt-4.1",
+        "interactionId": "b85babd2-c0a0-412a-a7a4-3fb356ee6787",
+        "turnId": "1",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 1 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20015,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "f5b8d24d-8a06-4a4a-a844-b36a8e6923ec",
+      "timestamp": "2026-10-30T18:52:17.295Z",
+      "parentId": "ea066d72-4c50-40dc-b9de-65950e5739e5",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 18
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_idULhIxvQ5hxr1xESUWrKgPF",
+        "model": "gpt-4.1",
+        "interactionId": "b85babd2-c0a0-412a-a7a4-3fb356ee6787",
+        "turnId": "1",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 0 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20015,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "2b3a6ad3-db48-4f34-9b67-476a8e033048",
+      "timestamp": "2026-10-30T18:52:17.310Z",
+      "parentId": "f5b8d24d-8a06-4a4a-a844-b36a8e6923ec",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 19
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_xAHSFFihW1cmRUI2UnLnTaZV",
+        "toolName": "bash",
+        "arguments": {
+          "command": "scripts/wrappers/triage-comment-none",
+          "description": "Render the 'none' comment template"
+        },
+        "turnId": "2",
+        "model": "gpt-4.1",
+        "toolTitle": "Running command",
+        "shellToolInfo": {
+          "possiblePaths": [
+            "scripts/wrappers/triage-comment-none"
+          ],
+          "hasWriteFileRedirection": false
+        },
+        "input": {
+          "command": "scripts/wrappers/triage-comment-none",
+          "description": "Render the 'none' comment template"
+        },
+        "command": "scripts/wrappers/triage-comment-none"
+      },
+      "id": "bd3b4c17-a345-446d-a1bb-9291de15f4d8",
+      "timestamp": "2026-10-30T18:52:18.630Z",
+      "parentId": "4452023d-31d9-47e4-8cc6-75c70d926704",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 24
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_xAHSFFihW1cmRUI2UnLnTaZV",
+        "model": "gpt-4.1",
+        "interactionId": "b85babd2-c0a0-412a-a7a4-3fb356ee6787",
+        "turnId": "2",
+        "rte": true,
+        "shellExecution": {
+          "exitCode": 0
+        },
+        "success": true,
+        "result": {
+          "content": "\n<shellId: 2 completed with exit code 0>"
+        },
+        "toolTelemetry": {
+          "properties": {
+            "customTimeout": "false",
+            "executionMode": "sync",
+            "detached": "false",
+            "sandboxApplied": "false",
+            "sandboxOptOutRequested": "false"
+          },
+          "metrics": {
+            "commandTimeout": 30000,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20161,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 14
+          }
+        },
+        "toolName": "bash",
+        "exitCode": 0
+      },
+      "id": "1ac84259-ba71-48fd-925c-8a85b5935b92",
+      "timestamp": "2026-10-30T18:52:18.677Z",
+      "parentId": "bd3b4c17-a345-446d-a1bb-9291de15f4d8",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 25
+      }
+    },
+    {
+      "type": "tool.execution_start",
+      "data": {
+        "toolCallId": "call_tY5Mb05jCrfMJUT88juZHSFK",
+        "toolName": "safeoutputs-noop",
+        "arguments": {
+          "integrity": "high",
+          "message": "Airflow issue triage complete: No new labels or comment needed for this issue."
+        },
+        "turnId": "3",
+        "model": "gpt-4.1",
+        "toolTitle": "noop",
+        "mcpServerName": "safeoutputs",
+        "mcpConfigServerName": "safeoutputs",
+        "mcpTransport": "http",
+        "mcpConfigSource": "user",
+        "mcpToolName": "noop",
+        "input": {
+          "integrity": "high",
+          "message": "Airflow issue triage complete: No new labels or comment needed for this issue."
+        }
+      },
+      "id": "47418961-28c6-45b3-a67f-0aa0d4b5b5bc",
+      "timestamp": "2026-10-30T18:52:20.739Z",
+      "parentId": "881af5ec-6895-441c-9a39-b1ff116ff787",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 30
+      }
+    },
+    {
+      "type": "tool.execution_complete",
+      "data": {
+        "toolCallId": "call_tY5Mb05jCrfMJUT88juZHSFK",
+        "model": "gpt-4.1",
+        "interactionId": "b85babd2-c0a0-412a-a7a4-3fb356ee6787",
+        "turnId": "3",
+        "rte": true,
+        "success": true,
+        "result": {
+          "content": "{\"result\":\"success\"}"
+        },
+        "toolTelemetry": {
+          "metrics": {
+            "mcp_result_content_bytes": 20,
+            "context_token_limit": 64000,
+            "context_current_tokens": 20229,
+            "large_output_threshold_bytes": 20480,
+            "result_token_count": 5
+          }
+        },
+        "toolName": "safeoutputs-noop",
+        "mcpServerName": "safeoutputs"
+      },
+      "id": "1d7ea707-92cc-4c52-994a-8529ed519614",
+      "timestamp": "2026-10-30T18:52:21.294Z",
+      "parentId": "47418961-28c6-45b3-a67f-0aa0d4b5b5bc",
+      "provenance": {
+        "component": "agent",
+        "phase": "agent",
+        "path": "copilot-session-state/4357b707-955c-4957-9c5f-7b1184bbee61/events.jsonl",
+        "index": 31
+      }
+    }
+  ],
+  "safe_output_types_observed": [
+    "noop"
+  ],
+  "safe_output_records": [
+    {
+      "timestamp": "2026-10-30T18:54:18.835Z",
+      "type": "noop",
+      "messageIndex": 0,
+      "status": "success",
+      "staged": false
+    },
+    {
+      "integrity": "high",
+      "message": "Airflow issue triage complete: No new labels or comment needed for this issue.",
+      "type": "noop"
+    }
+  ],
+  "forbidden_actions_observed": [],
+  "aic_spent": 6.8876,
+  "agent_errors": [
+    {
+      "type": "agent.execution",
+      "data": {
+        "categories": [],
+        "errorCodes": [],
+        "errorTypes": [],
+        "exitCode": 0
+      }
+    }
+  ],
+  "failure_classification": null,
+  "failure_cause": null,
+  "budget_controls": {
+    "timeout_minutes": 10,
+    "implemented": true,
+    "tested": false,
+    "evidence": "agent-errors.jsonl and agent-stdio.log"
+  },
+  "audit_exit_code": 0,
+  "audit_directory": "evals\\golden\\actual\\round_6\\cases\\airflow-71569\\audit",
+  "raw_run": {
+    "conclusion": "success",
+    "createdAt": "2026-10-30T18:47:33Z",
+    "databaseId": 41109907298,
+    "event": "issues",
+    "headSha": "fa4f3e8d11adb6f662661914d077451f969e4bf4",
+    "jobs": [
+      {
+        "completedAt": "2026-10-30T18:49:04Z",
+        "conclusion": "success",
+        "databaseId": 124249329827,
+        "name": "pre_activation",
+        "startedAt": "2026-10-30T18:47:49Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298/job/124249329827"
+      },
+      {
+        "completedAt": "2026-10-30T18:50:36Z",
+        "conclusion": "success",
+        "databaseId": 124250042934,
+        "name": "activation",
+        "startedAt": "2026-10-30T18:49:09Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298/job/124250042934"
+      },
+      {
+        "completedAt": "2026-10-30T18:52:37Z",
+        "conclusion": "success",
+        "databaseId": 124250768266,
+        "name": "agent",
+        "startedAt": "2026-10-30T18:50:39Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298/job/124250768266"
+      },
+      {
+        "completedAt": "2026-10-30T18:53:39Z",
+        "conclusion": "success",
+        "databaseId": 124251718687,
+        "name": "detection",
+        "startedAt": "2026-10-30T18:52:41Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298/job/124251718687"
+      },
+      {
+        "completedAt": "2026-10-30T18:54:22Z",
+        "conclusion": "success",
+        "databaseId": 124252197089,
+        "name": "safe_outputs",
+        "startedAt": "2026-10-30T18:53:43Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298/job/124252197089"
+      },
+      {
+        "completedAt": "2026-10-30T18:55:21Z",
+        "conclusion": "success",
+        "databaseId": 124252540380,
+        "name": "conclusion",
+        "startedAt": "2026-10-30T18:54:26Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298/job/124252540380"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-10-30T18:55:22Z",
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41109907298",
+    "workflowName": "Bounded Airflow issue triage"
+  }
+}
