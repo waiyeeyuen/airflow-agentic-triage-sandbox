@@ -1,0 +1,47 @@
+﻿2026-10-31T09:47:59.7116434Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T09:47:59.7116833Z with:
+2026-10-31T09:47:59.7117547Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'detect_agent_errors.cjs'));
+await main();
+
+2026-10-31T09:47:59.7119451Z   github-token: ***
+2026-10-31T09:47:59.7119578Z   debug: false
+2026-10-31T09:47:59.7119713Z   user-agent: actions/github-script
+2026-10-31T09:47:59.7119873Z   result-encoding: json
+2026-10-31T09:47:59.7120007Z   retries: 0
+2026-10-31T09:47:59.7120143Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T09:47:59.7120314Z env:
+2026-10-31T09:47:59.7120439Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T09:47:59.7120595Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T09:47:59.7121085Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41189835746,github.run_id=41189835746,gh-aw.engine.id=copilot
+2026-10-31T09:47:59.7121594Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T09:47:59.7121764Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T09:47:59.7121946Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T09:47:59.7122088Z   DEFAULT_BRANCH: main
+2026-10-31T09:47:59.7122227Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-31T09:47:59.7122369Z   GH_AW_ASSETS_BRANCH: 
+2026-10-31T09:47:59.7122504Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-31T09:47:59.7122675Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-31T09:47:59.7122854Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-31T09:47:59.7122999Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-31T09:47:59.7123151Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-31T09:47:59.7123290Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-31T09:47:59.7123435Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-31T09:47:59.7123569Z   GH_AW_PR_HEAD_REPO: 
+2026-10-31T09:47:59.7123701Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T09:47:59.7123842Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-31T09:47:59.7123988Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-31T09:47:59.7124186Z   GITHUB_AW_OTEL_TRACE_ID: cd0c9f2128f98fe3884f970ca7ebd008
+2026-10-31T09:47:59.7124393Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 230ba7c15743b499
+2026-10-31T09:47:59.7124574Z   GITHUB_AW_OTEL_JOB_START_MS: 1793439946655
+2026-10-31T09:47:59.7124849Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: a894e98223b5124f5774b14fb8db8d4470bbe2a652791486aaacc940ea571a81
+2026-10-31T09:47:59.7125202Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-31T09:47:59.7125453Z   GH_AW_AGENTIC_EXECUTION_OUTCOME: failure
+2026-10-31T09:47:59.7125622Z   GH_AW_ENGINE_STEP_TIMEOUT_MINUTES: 10
+2026-10-31T09:47:59.7125777Z ##[endgroup]
+2026-10-31T09:47:59.7911039Z [detect-agent-errors] Detected CAPI quota exhaustion: Copilot quota has been exceeded
+2026-10-31T09:47:59.7912114Z [detect-agent-errors] Detected invocation cap exhaustion: the pooled per-run LLM invocation budget is fully saturated
+2026-10-31T09:47:59.7942978Z [detect-agent-errors] Debug playbook: https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#agent-model-and-proxy-classifications

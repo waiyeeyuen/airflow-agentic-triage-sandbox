@@ -1,0 +1,62 @@
+﻿2026-10-31T09:54:20.8136099Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T09:54:20.8136564Z with:
+2026-10-31T09:54:20.8137796Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_token_usage.cjs'));
+await main();
+
+2026-10-31T09:54:20.8141305Z   github-token: ***
+2026-10-31T09:54:20.8141553Z   debug: false
+2026-10-31T09:54:20.8141809Z   user-agent: actions/github-script
+2026-10-31T09:54:20.8142115Z   result-encoding: json
+2026-10-31T09:54:20.8142373Z   retries: 0
+2026-10-31T09:54:20.8142633Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T09:54:20.8143204Z env:
+2026-10-31T09:54:20.8143447Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T09:54:20.8143749Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T09:54:20.8144683Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41190371870,github.run_id=41190371870,gh-aw.engine.id=copilot
+2026-10-31T09:54:20.8145636Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T09:54:20.8145947Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T09:54:20.8146277Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T09:54:20.8146546Z   DEFAULT_BRANCH: main
+2026-10-31T09:54:20.8146805Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-31T09:54:20.8147073Z   GH_AW_ASSETS_BRANCH: 
+2026-10-31T09:54:20.8147320Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-31T09:54:20.8147634Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-31T09:54:20.8147974Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-31T09:54:20.8148243Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-31T09:54:20.8148526Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-31T09:54:20.8148786Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-31T09:54:20.8149053Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-31T09:54:20.8149312Z   GH_AW_PR_HEAD_REPO: 
+2026-10-31T09:54:20.8149565Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T09:54:20.8149829Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-31T09:54:20.8150102Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-31T09:54:20.8150466Z   GITHUB_AW_OTEL_TRACE_ID: 5786342dd06917d933cd00b4a1ae9804
+2026-10-31T09:54:20.8150853Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 6391486972d81185
+2026-10-31T09:54:20.8151188Z   GITHUB_AW_OTEL_JOB_START_MS: 1793440393807
+2026-10-31T09:54:20.8151706Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: 1393106d852e34c914be4f91ffdeab44563338fe5743f7b8189bae5baff71d07
+2026-10-31T09:54:20.8152376Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-31T09:54:20.8153123Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-31T09:54:20.8153481Z   GH_AW_AIC: 7.6376
+2026-10-31T09:54:20.8153726Z   GH_AW_AMBIENT_CONTEXT: 17426
+2026-10-31T09:54:20.8153994Z ##[endgroup]
+2026-10-31T09:54:20.9501898Z Parsing token usage from 1 file(s): /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl (3137 bytes)
+2026-10-31T09:54:20.9650959Z Token Usage
+2026-10-31T09:54:20.9651235Z 
+2026-10-31T09:54:20.9651980Z # | Alias | Input | Output | Cache Read | Cache Write | ΔAI Credits | AI Credits | Duration 
+2026-10-31T09:54:20.9652551Z 
+2026-10-31T09:54:20.9653168Z  1 | gpt41 | 17,426 | 19 | 0 | 0 | 3.5004 | 3.5004 | 2.1s 
+2026-10-31T09:54:20.9654070Z  2 | gpt41 | 1,302 | 75 | 17,280 | 0 | 1.1844 | 4.6848 | 2.6s 
+2026-10-31T09:54:20.9654688Z  3 | gpt41 | 139 | 32 | 18,560 | 0 | 0.9814 | 5.6662 | 1.6s 
+2026-10-31T09:54:20.9655272Z  4 | gpt41 | 192 | 38 | 18,560 | 0 | 0.9968 | 6.663 | 3.0s 
+2026-10-31T09:54:20.9655755Z  5 | gpt41 | 117 | 21 | 18,688 | 0 | 0.9746 | 7.6376 | 1.6s 
+2026-10-31T09:54:20.9656308Z  Total |  | 19,176 | 185 | 73,088 | 0 |  | 7.6376 | 10.8s 
+2026-10-31T09:54:20.9656602Z 
+2026-10-31T09:54:20.9657404Z Legend: `Alias` shows the model shorthand used in the table. `ΔAI Credits` is the per-request cost, and `AI Credits` is the running total mirrored from AWF fields for reporting.
+2026-10-31T09:54:20.9658631Z Token usage summary appended to step summary
+2026-10-31T09:54:20.9673226Z Primary model: gpt-4.1
+2026-10-31T09:54:20.9674227Z AI Credits: 7.6376
+2026-10-31T09:54:20.9675803Z Ambient context: 17426

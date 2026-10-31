@@ -1,0 +1,2946 @@
+{
+  "schema_version": 10,
+  "cache_source": "full",
+  "overview": {
+    "run_id": 41189835746,
+    "workflow_name": "Bounded Airflow issue triage",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-10-31T09:43:17Z",
+    "started_at": "2026-10-31T09:43:17Z",
+    "updated_at": "2026-10-31T09:50:19Z",
+    "duration": "7.0m",
+    "event": "workflow_dispatch",
+    "branch": "holdout-eval",
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41189835746",
+    "logs_path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746"
+  },
+  "comparison": {
+    "baseline_found": false
+  },
+  "task_domain": {
+    "name": "triage",
+    "label": "Triage",
+    "reason": "The run focused on classification, routing, or issue state updates."
+  },
+  "behavior_fingerprint": {
+    "execution_style": "directed",
+    "tool_breadth": "moderate",
+    "actuation_style": "read_only",
+    "resource_profile": "moderate",
+    "dispatch_mode": "standalone",
+    "agentic_fraction": 1
+  },
+  "agentic_assessments": [
+    {
+      "kind": "model_downgrade_available",
+      "severity": "low",
+      "summary": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost.",
+      "evidence": "domain=triage resource_profile=moderate actuation=read_only",
+      "recommendation": "Try engine.model: gpt-4.1-mini or claude-haiku-4-5 in the workflow frontmatter."
+    }
+  ],
+  "metrics": {
+    "token_usage": 386724,
+    "aic": 23.4318,
+    "ambient_context": {
+      "input_tokens": 12432,
+      "cached_tokens": 4992
+    },
+    "working_set": {
+      "measurement_state": "measured",
+      "rebuild_factor": 1.7196750321750323,
+      "cumulative_input_tokens": 21379,
+      "peak_input_tokens": 12432,
+      "rebuild_excess_tokens": 8947,
+      "invocations": 20
+    },
+    "action_minutes": 8,
+    "turns": 1,
+    "error_count": 2,
+    "warning_count": 0
+  },
+  "key_findings": [
+    {
+      "code": "workflow_failed",
+      "category": "error",
+      "severity": "critical",
+      "title": "Workflow Failed",
+      "description": "Workflow 'Bounded Airflow issue triage' failed with 3 error(s): ##[error]Agent execution exited with code 1\n##[error]Process completed with exit code 1.",
+      "impact": "Workflow did not complete successfully and may need intervention",
+      "playbook_url": "https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#audit-findings"
+    },
+    {
+      "code": "threat_detection_job_failed",
+      "category": "security",
+      "severity": "high",
+      "title": "Threat Detection Job Failed",
+      "description": "Usage artifact evidence indicates the threat-detection job did not start",
+      "impact": "Safe outputs may have been blocked because the security control did not run",
+      "playbook_url": "https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#audit-findings"
+    },
+    {
+      "code": "high_token_usage",
+      "category": "performance",
+      "severity": "medium",
+      "title": "High Token Usage",
+      "description": "Used 387k tokens",
+      "impact": "High token usage may indicate verbose outputs or inefficient prompts",
+      "playbook_url": "https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#audit-findings"
+    },
+    {
+      "code": "agentic_model_downgrade_available",
+      "category": "optimization",
+      "severity": "low",
+      "title": "Cheaper Model Available",
+      "description": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost.",
+      "impact": "A smaller model could reduce per-run cost significantly for this task domain"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Review error logs to identify root cause of failure",
+      "reason": "Understanding failure causes helps prevent recurrence",
+      "example": "Check the errors field for specific error messages, or inspect the log files in logs_path"
+    },
+    {
+      "priority": "medium",
+      "action": "Try engine.model: gpt-4.1-mini or claude-haiku-4-5 in the workflow frontmatter.",
+      "reason": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost."
+    }
+  ],
+  "observability_insights": [
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Directed execution path",
+      "summary": "The run remained relatively linear with 1 turns and 3 tool types.",
+      "evidence": "turns=1 tool_types=3"
+    },
+    {
+      "category": "actuation",
+      "severity": "info",
+      "title": "Read-only posture observed",
+      "summary": "The workflow stayed in an analysis posture and did not emit any GitHub write actions.",
+      "evidence": "created_items=0 safe_items=0"
+    },
+    {
+      "category": "network",
+      "severity": "info",
+      "title": "Network policy aligned",
+      "summary": "The firewall observed 29 request(s) with 0 blocked, for a 0% block rate.",
+      "evidence": "blocked=0 total=29"
+    },
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Log template patterns mined",
+      "summary": "Analysis identified 3 distinct event templates across 6 pipeline stages from 5 events.",
+      "evidence": "plan=1 tool_call=1 finish=1"
+    },
+    {
+      "category": "reliability",
+      "severity": "low",
+      "title": "1 anomalous event pattern(s) detected",
+      "summary": "Anomaly detection flagged 1 event(s) as unusual based on template similarity and cluster rarity.",
+      "evidence": "stage=tool_call score=0.65: new log template discovered; rare cluster (few observations)"
+    },
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Agent stage sequence",
+      "summary": "The observed pipeline stage sequence for this run.",
+      "evidence": "plan tool_call tool_call tool_call finish"
+    }
+  ],
+  "performance_metrics": {
+    "tokens_per_minute": 54984.45497630332,
+    "most_used_tool": "bash (20 calls)",
+    "network_requests": 29
+  },
+  "engine_config": {
+    "engine_id": "copilot",
+    "engine_name": "GitHub Copilot CLI",
+    "model": "gpt-4.1",
+    "requested_model": "gpt-4.1",
+    "version": "1.0.103",
+    "cli_version": "v1.0.1",
+    "firewall_version": "v0.29.0",
+    "trigger_event": "workflow_dispatch",
+    "repository": "waiyeeyuen/airflow-agentic-triage-sandbox",
+    "dry_run": false
+  },
+  "prompt_analysis": {
+    "prompt_size": 10707,
+    "prompt_file": "aw-prompts\\prompt.txt"
+  },
+  "session_analysis": {
+    "wall_time": "7.0m",
+    "turn_count": 1,
+    "avg_turn_duration": "7.0m",
+    "tokens_per_minute": 54984.45497630332,
+    "timeout_detected": false
+  },
+  "safe_output_summary": {
+    "total_items": 0,
+    "items_by_type": {},
+    "summary": "No items",
+    "temporary_id_map_status": "loaded"
+  },
+  "jobs": [
+    {
+      "name": "pre_activation",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "37.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:43:22Z",
+          "completed_at": "2026-10-31T09:43:49Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:43:49Z",
+          "completed_at": "2026-10-31T09:43:56Z"
+        },
+        {
+          "name": "Check team membership for workflow",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:43:56Z",
+          "completed_at": "2026-10-31T09:43:57Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:43:57Z",
+          "completed_at": "2026-10-31T09:43:57Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:43:57Z",
+          "completed_at": "2026-10-31T09:43:57Z"
+        }
+      ]
+    },
+    {
+      "name": "activation",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "1.3m",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:44:03Z",
+          "completed_at": "2026-10-31T09:44:40Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:44:40Z",
+          "completed_at": "2026-10-31T09:45:02Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:45:02Z",
+          "completed_at": "2026-10-31T09:45:02Z"
+        },
+        {
+          "name": "Generate agentic run info",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T09:45:02Z",
+          "completed_at": "2026-10-31T09:45:02Z"
+        },
+        {
+          "name": "Restore daily AIC scan observations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T09:45:02Z",
+          "completed_at": "2026-10-31T09:45:03Z"
+        },
+        {
+          "name": "Check daily workflow token guardrail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:45:03Z",
+          "completed_at": "2026-10-31T09:45:03Z"
+        },
+        {
+          "name": "Publish daily AIC scan observations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:45:03Z",
+          "completed_at": "2026-10-31T09:45:04Z"
+        },
+        {
+          "name": "Validate COPILOT_GITHUB_TOKEN secret",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T09:45:04Z",
+          "completed_at": "2026-10-31T09:45:04Z"
+        },
+        {
+          "name": "Check for OAuth tokens",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T09:45:04Z",
+          "completed_at": "2026-10-31T09:45:04Z"
+        },
+        {
+          "name": "Checkout .github and .agents folders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T09:45:04Z",
+          "completed_at": "2026-10-31T09:45:09Z"
+        },
+        {
+          "name": "Save agent config folders for base branch restoration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T09:45:09Z",
+          "completed_at": "2026-10-31T09:45:09Z"
+        },
+        {
+          "name": "Check workflow lock file",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T09:45:09Z",
+          "completed_at": "2026-10-31T09:45:11Z"
+        },
+        {
+          "name": "Check compile-agentic version",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T09:45:11Z",
+          "completed_at": "2026-10-31T09:45:12Z"
+        },
+        {
+          "name": "Compute current body text",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T09:45:12Z",
+          "completed_at": "2026-10-31T09:45:13Z"
+        },
+        {
+          "name": "Log runtime features",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-31T09:45:13Z",
+          "completed_at": "2026-10-31T09:45:13Z"
+        },
+        {
+          "name": "Create prompt with built-in context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T09:45:13Z",
+          "completed_at": "2026-10-31T09:45:13Z"
+        },
+        {
+          "name": "Interpolate variables and render templates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T09:45:13Z",
+          "completed_at": "2026-10-31T09:45:13Z"
+        },
+        {
+          "name": "Substitute placeholders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-31T09:45:13Z",
+          "completed_at": "2026-10-31T09:45:13Z"
+        },
+        {
+          "name": "Validate prompt placeholders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-31T09:45:13Z",
+          "completed_at": "2026-10-31T09:45:13Z"
+        },
+        {
+          "name": "Print prompt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-31T09:45:13Z",
+          "completed_at": "2026-10-31T09:45:14Z"
+        },
+        {
+          "name": "Inventory installed skills",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-31T09:45:14Z",
+          "completed_at": "2026-10-31T09:45:14Z"
+        },
+        {
+          "name": "Upload info artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-31T09:45:14Z",
+          "completed_at": "2026-10-31T09:45:15Z"
+        },
+        {
+          "name": "Stage prompt files for artifact upload",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-31T09:45:15Z",
+          "completed_at": "2026-10-31T09:45:15Z"
+        },
+        {
+          "name": "Upload activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-31T09:45:15Z",
+          "completed_at": "2026-10-31T09:45:16Z"
+        },
+        {
+          "name": "Post Checkout .github and .agents folders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47,
+          "started_at": "2026-10-31T09:45:16Z",
+          "completed_at": "2026-10-31T09:45:16Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 48,
+          "started_at": "2026-10-31T09:45:16Z",
+          "completed_at": "2026-10-31T09:45:16Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 49,
+          "started_at": "2026-10-31T09:45:16Z",
+          "completed_at": "2026-10-31T09:45:16Z"
+        }
+      ]
+    },
+    {
+      "name": "agent",
+      "status": "completed",
+      "conclusion": "failure",
+      "duration": "2.8m",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:45:21Z",
+          "completed_at": "2026-10-31T09:45:43Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:45:43Z",
+          "completed_at": "2026-10-31T09:45:46Z"
+        },
+        {
+          "name": "Set runtime paths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:45:46Z",
+          "completed_at": "2026-10-31T09:45:46Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T09:45:46Z",
+          "completed_at": "2026-10-31T09:45:46Z"
+        },
+        {
+          "name": "Check OTLP telemetry configuration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T09:45:46Z",
+          "completed_at": "2026-10-31T09:45:46Z"
+        },
+        {
+          "name": "Checkout repository (gh-aw default)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:45:46Z",
+          "completed_at": "2026-10-31T09:45:48Z"
+        },
+        {
+          "name": "Initialize agent execution evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:45:48Z",
+          "completed_at": "2026-10-31T09:45:48Z"
+        },
+        {
+          "name": "Create gh-aw temp directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T09:45:48Z",
+          "completed_at": "2026-10-31T09:45:48Z"
+        },
+        {
+          "name": "Configure gh CLI for GitHub Enterprise",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T09:45:48Z",
+          "completed_at": "2026-10-31T09:45:48Z"
+        },
+        {
+          "name": "Download activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T09:45:48Z",
+          "completed_at": "2026-10-31T09:45:48Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T09:45:48Z",
+          "completed_at": "2026-10-31T09:45:48Z"
+        },
+        {
+          "name": "Checkout PR branch",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T09:45:48Z",
+          "completed_at": "2026-10-31T09:45:49Z"
+        },
+        {
+          "name": "Install GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T09:45:49Z",
+          "completed_at": "2026-10-31T09:45:51Z"
+        },
+        {
+          "name": "Install AWF binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T09:45:51Z",
+          "completed_at": "2026-10-31T09:45:52Z"
+        },
+        {
+          "name": "Restore agent config folders from base branch",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-31T09:45:52Z",
+          "completed_at": "2026-10-31T09:45:52Z"
+        },
+        {
+          "name": "Restore inline sub-agents from activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T09:45:52Z",
+          "completed_at": "2026-10-31T09:45:52Z"
+        },
+        {
+          "name": "Restore inline skills from activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T09:45:52Z",
+          "completed_at": "2026-10-31T09:45:52Z"
+        },
+        {
+          "name": "Prepare triggering issue input",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-31T09:45:52Z",
+          "completed_at": "2026-10-31T09:45:52Z"
+        },
+        {
+          "name": "Prepare dispatched evaluation input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-31T09:45:52Z",
+          "completed_at": "2026-10-31T09:45:52Z"
+        },
+        {
+          "name": "Download container images",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-31T09:45:52Z",
+          "completed_at": "2026-10-31T09:46:06Z"
+        },
+        {
+          "name": "Prepare Safe Outputs Directories",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-31T09:46:06Z",
+          "completed_at": "2026-10-31T09:46:06Z"
+        },
+        {
+          "name": "Generate Safe Outputs Config",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-31T09:46:06Z",
+          "completed_at": "2026-10-31T09:46:06Z"
+        },
+        {
+          "name": "Generate Safe Outputs Tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-31T09:46:06Z",
+          "completed_at": "2026-10-31T09:46:06Z"
+        },
+        {
+          "name": "Start MCP Gateway",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-31T09:46:06Z",
+          "completed_at": "2026-10-31T09:46:11Z"
+        },
+        {
+          "name": "Mount MCP servers as CLIs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-31T09:46:11Z",
+          "completed_at": "2026-10-31T09:46:12Z"
+        },
+        {
+          "name": "Clean credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-31T09:46:12Z",
+          "completed_at": "2026-10-31T09:46:12Z"
+        },
+        {
+          "name": "Audit pre-agent workspace",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-31T09:46:12Z",
+          "completed_at": "2026-10-31T09:46:12Z"
+        },
+        {
+          "name": "Execute GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 28,
+          "started_at": "2026-10-31T09:46:12Z",
+          "completed_at": "2026-10-31T09:47:59Z"
+        },
+        {
+          "name": "Detect agent errors",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-31T09:47:59Z",
+          "completed_at": "2026-10-31T09:47:59Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 30,
+          "started_at": "2026-10-31T09:47:59Z",
+          "completed_at": "2026-10-31T09:47:59Z"
+        },
+        {
+          "name": "Copy Copilot session state files to logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-31T09:47:59Z",
+          "completed_at": "2026-10-31T09:47:59Z"
+        },
+        {
+          "name": "Stop MCP Gateway",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32,
+          "started_at": "2026-10-31T09:47:59Z",
+          "completed_at": "2026-10-31T09:48:00Z"
+        },
+        {
+          "name": "Redact secrets in logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-10-31T09:48:00Z",
+          "completed_at": "2026-10-31T09:48:01Z"
+        },
+        {
+          "name": "Append agent step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-10-31T09:48:01Z",
+          "completed_at": "2026-10-31T09:48:01Z"
+        },
+        {
+          "name": "Copy Safe Outputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-10-31T09:48:01Z",
+          "completed_at": "2026-10-31T09:48:01Z"
+        },
+        {
+          "name": "Ingest agent output",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36,
+          "started_at": "2026-10-31T09:48:01Z",
+          "completed_at": "2026-10-31T09:48:01Z"
+        },
+        {
+          "name": "Parse agent logs for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-10-31T09:48:01Z",
+          "completed_at": "2026-10-31T09:48:01Z"
+        },
+        {
+          "name": "Parse MCP Gateway logs for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-31T09:48:01Z",
+          "completed_at": "2026-10-31T09:48:01Z"
+        },
+        {
+          "name": "Print firewall logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-31T09:48:01Z",
+          "completed_at": "2026-10-31T09:48:02Z"
+        },
+        {
+          "name": "Parse token usage for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-31T09:48:02Z",
+          "completed_at": "2026-10-31T09:48:02Z"
+        },
+        {
+          "name": "Print AWF reflect summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-31T09:48:02Z",
+          "completed_at": "2026-10-31T09:48:02Z"
+        },
+        {
+          "name": "Generate observability summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-10-31T09:48:02Z",
+          "completed_at": "2026-10-31T09:48:02Z"
+        },
+        {
+          "name": "Write agent output placeholder if missing",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-10-31T09:48:02Z",
+          "completed_at": "2026-10-31T09:48:02Z"
+        },
+        {
+          "name": "Upload agent output fallback artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-10-31T09:48:02Z",
+          "completed_at": "2026-10-31T09:48:03Z"
+        },
+        {
+          "name": "Upload agent artifacts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-10-31T09:48:03Z",
+          "completed_at": "2026-10-31T09:48:04Z"
+        },
+        {
+          "name": "Post Checkout repository (gh-aw default)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 89,
+          "started_at": "2026-10-31T09:48:04Z",
+          "completed_at": "2026-10-31T09:48:04Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 90,
+          "started_at": "2026-10-31T09:48:04Z",
+          "completed_at": "2026-10-31T09:48:05Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 91,
+          "started_at": "2026-10-31T09:48:05Z",
+          "completed_at": "2026-10-31T09:48:05Z"
+        }
+      ]
+    },
+    {
+      "name": "detection",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "34.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:48:11Z",
+          "completed_at": "2026-10-31T09:48:18Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:48:18Z",
+          "completed_at": "2026-10-31T09:48:23Z"
+        },
+        {
+          "name": "Download activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:48:23Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Clear agent token usage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Checkout repository for patch context",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Initialize detection execution evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Clear inherited Copilot session state",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Clean stale firewall files from agent artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:24Z"
+        },
+        {
+          "name": "Download container images",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T09:48:24Z",
+          "completed_at": "2026-10-31T09:48:34Z"
+        },
+        {
+          "name": "Check if detection needed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T09:48:34Z",
+          "completed_at": "2026-10-31T09:48:34Z"
+        },
+        {
+          "name": "Clear MCP Config for detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T09:48:34Z",
+          "completed_at": "2026-10-31T09:48:34Z"
+        },
+        {
+          "name": "Prepare threat detection files",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T09:48:34Z",
+          "completed_at": "2026-10-31T09:48:34Z"
+        },
+        {
+          "name": "Check out validator source without credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-31T09:48:34Z",
+          "completed_at": "2026-10-31T09:48:36Z"
+        },
+        {
+          "name": "Deterministically validate proposed labels and comment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T09:48:36Z",
+          "completed_at": "2026-10-31T09:48:36Z"
+        },
+        {
+          "name": "Setup threat detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T09:48:36Z",
+          "completed_at": "2026-10-31T09:48:36Z"
+        },
+        {
+          "name": "Ensure threat-detection directory and log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-31T09:48:36Z",
+          "completed_at": "2026-10-31T09:48:36Z"
+        },
+        {
+          "name": "Install AWF binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-31T09:48:36Z",
+          "completed_at": "2026-10-31T09:48:37Z"
+        },
+        {
+          "name": "Setup Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-31T09:48:37Z",
+          "completed_at": "2026-10-31T09:48:37Z"
+        },
+        {
+          "name": "Install GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-31T09:48:37Z",
+          "completed_at": "2026-10-31T09:48:40Z"
+        },
+        {
+          "name": "Install threat-detect binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-31T09:48:40Z",
+          "completed_at": "2026-10-31T09:48:40Z"
+        },
+        {
+          "name": "Copy detection firewall logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-31T09:48:40Z",
+          "completed_at": "2026-10-31T09:48:41Z"
+        },
+        {
+          "name": "Redact secrets in detection logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-31T09:48:41Z",
+          "completed_at": "2026-10-31T09:48:41Z"
+        },
+        {
+          "name": "Parse threat detection token usage for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-31T09:48:41Z",
+          "completed_at": "2026-10-31T09:48:41Z"
+        },
+        {
+          "name": "Redact secrets in detection artifacts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-31T09:48:41Z",
+          "completed_at": "2026-10-31T09:48:41Z"
+        },
+        {
+          "name": "Render detection log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-31T09:48:41Z",
+          "completed_at": "2026-10-31T09:48:41Z"
+        },
+        {
+          "name": "Upload threat detection artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-31T09:48:41Z",
+          "completed_at": "2026-10-31T09:48:42Z"
+        },
+        {
+          "name": "Conclude threat detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-31T09:48:42Z",
+          "completed_at": "2026-10-31T09:48:42Z"
+        },
+        {
+          "name": "Upload skipped detection execution evidence",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 30,
+          "started_at": "2026-10-31T09:48:42Z",
+          "completed_at": "2026-10-31T09:48:42Z"
+        },
+        {
+          "name": "Post Setup Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 58,
+          "started_at": "2026-10-31T09:48:42Z",
+          "completed_at": "2026-10-31T09:48:42Z"
+        },
+        {
+          "name": "Post Check out validator source without credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 59,
+          "started_at": "2026-10-31T09:48:42Z",
+          "completed_at": "2026-10-31T09:48:43Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 60,
+          "started_at": "2026-10-31T09:48:43Z",
+          "completed_at": "2026-10-31T09:48:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 61,
+          "started_at": "2026-10-31T09:48:43Z",
+          "completed_at": "2026-10-31T09:48:43Z"
+        }
+      ]
+    },
+    {
+      "name": "safe_outputs",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "41.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:48:49Z",
+          "completed_at": "2026-10-31T09:49:19Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:49:19Z",
+          "completed_at": "2026-10-31T09:49:23Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:49:23Z",
+          "completed_at": "2026-10-31T09:49:23Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T09:49:23Z",
+          "completed_at": "2026-10-31T09:49:24Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T09:49:24Z",
+          "completed_at": "2026-10-31T09:49:24Z"
+        },
+        {
+          "name": "Configure GH_HOST for enterprise compatibility",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:49:24Z",
+          "completed_at": "2026-10-31T09:49:24Z"
+        },
+        {
+          "name": "Process Safe Outputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:49:24Z",
+          "completed_at": "2026-10-31T09:49:25Z"
+        },
+        {
+          "name": "Upload Safe Outputs Items",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T09:49:25Z",
+          "completed_at": "2026-10-31T09:49:26Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T09:49:26Z",
+          "completed_at": "2026-10-31T09:49:26Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T09:49:26Z",
+          "completed_at": "2026-10-31T09:49:26Z"
+        }
+      ]
+    },
+    {
+      "name": "conclusion",
+      "status": "completed",
+      "conclusion": "failure",
+      "duration": "46.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:49:33Z",
+          "completed_at": "2026-10-31T09:49:59Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:49:59Z",
+          "completed_at": "2026-10-31T09:50:04Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:50:04Z",
+          "completed_at": "2026-10-31T09:50:05Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T09:50:05Z",
+          "completed_at": "2026-10-31T09:50:05Z"
+        },
+        {
+          "name": "Restore runtime model metadata",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T09:50:05Z",
+          "completed_at": "2026-10-31T09:50:05Z"
+        },
+        {
+          "name": "Warn if threat detection produced no verdict",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-31T09:50:05Z",
+          "completed_at": "2026-10-31T09:50:05Z"
+        },
+        {
+          "name": "Download detection artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:50:05Z",
+          "completed_at": "2026-10-31T09:50:06Z"
+        },
+        {
+          "name": "Download Safe Outputs Items Manifest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T09:50:06Z",
+          "completed_at": "2026-10-31T09:50:07Z"
+        },
+        {
+          "name": "Process no-op messages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T09:50:07Z",
+          "completed_at": "2026-10-31T09:50:07Z"
+        },
+        {
+          "name": "Log detection run",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T09:50:07Z",
+          "completed_at": "2026-10-31T09:50:07Z"
+        },
+        {
+          "name": "Record missing tool",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T09:50:07Z",
+          "completed_at": "2026-10-31T09:50:07Z"
+        },
+        {
+          "name": "Record incomplete",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T09:50:07Z",
+          "completed_at": "2026-10-31T09:50:07Z"
+        },
+        {
+          "name": "Handle agent failure",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 13,
+          "started_at": "2026-10-31T09:50:07Z",
+          "completed_at": "2026-10-31T09:50:10Z"
+        },
+        {
+          "name": "Report failed jobs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T09:50:10Z",
+          "completed_at": "2026-10-31T09:50:11Z"
+        },
+        {
+          "name": "Collect usage artifact files",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-31T09:50:11Z",
+          "completed_at": "2026-10-31T09:50:11Z"
+        },
+        {
+          "name": "Generate usage activity summary and unified session",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T09:50:11Z",
+          "completed_at": "2026-10-31T09:50:12Z"
+        },
+        {
+          "name": "Upload usage artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T09:50:12Z",
+          "completed_at": "2026-10-31T09:50:15Z"
+        },
+        {
+          "name": "Wait before retrying usage artifact upload",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-31T09:50:15Z",
+          "completed_at": "2026-10-31T09:50:15Z"
+        },
+        {
+          "name": "Retry upload usage artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-31T09:50:15Z",
+          "completed_at": "2026-10-31T09:50:15Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-31T09:50:15Z",
+          "completed_at": "2026-10-31T09:50:16Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-31T09:50:16Z",
+          "completed_at": "2026-10-31T09:50:16Z"
+        }
+      ]
+    }
+  ],
+  "downloaded_files": [
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\.downloaded-artifacts\\all",
+      "size": 0,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent\\harness_retry.json",
+      "size": 123,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent\\model-resolution.json",
+      "size": 188,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent-errors.jsonl",
+      "size": 125,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent-session.jsonl",
+      "size": 188274,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent-stdio.log",
+      "size": 21595,
+      "description": "Agent standard output/error logs"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent_execution.json",
+      "size": 89,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent_execution_exit_code.txt",
+      "size": 1,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent_output.json",
+      "size": 1321,
+      "description": "Validated safe outputs"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\agent_usage.json",
+      "size": 165,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\aw-prompts\\prompt-import-tree.json",
+      "size": 11157,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\aw-prompts\\prompt-template.txt",
+      "size": 9028,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\aw-prompts\\prompt.txt",
+      "size": 10707,
+      "description": "Input prompt for AI agent"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\aw-prompts\\system.txt",
+      "size": 9011,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\aw-prompts\\user.txt",
+      "size": 1696,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\aw_info.json",
+      "size": 1686,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\awf-config.json",
+      "size": 5854,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\detection\\detection_result.json",
+      "size": 119,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\detection\\detection_usage.json",
+      "size": 52,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\detection\\detection_usage.jsonl",
+      "size": 38,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\detection\\execution.json",
+      "size": 97,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\github_rate_limits.jsonl",
+      "size": 683,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\jobs.json",
+      "size": 30515,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\configuration.jsonl",
+      "size": 138,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\gateway.md",
+      "size": 1551,
+      "description": "Markdown documentation"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\mcp-gateway.log",
+      "size": 31952,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\observed-url-domains.json",
+      "size": 2,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\rpc-messages.jsonl",
+      "size": 13301,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\safeoutputs.log",
+      "size": 2196,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\mcp-logs\\tools.json",
+      "size": 4395,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\models.json",
+      "size": 18631,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\otel.jsonl",
+      "size": 3575,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\pre-agent-audit.txt",
+      "size": 79826,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\runtime\\aw_info.json",
+      "size": 1906,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\safe-output-items.jsonl",
+      "size": 0,
+      "description": "Created items manifest (audit trail)"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\safe-output-outcomes.jsonl",
+      "size": 119,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\agent\\logs\\copilot-model-selection.json",
+      "size": 105,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\agent\\logs\\copilot-session-state\\a8c1c58c-e692-4704-98b1-9ad4971a2017\\checkpoints\\index.md",
+      "size": 172,
+      "description": "Markdown documentation"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\agent\\logs\\copilot-session-state\\a8c1c58c-e692-4704-98b1-9ad4971a2017\\events.jsonl",
+      "size": 155219,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\agent\\logs\\copilot-session-state\\a8c1c58c-e692-4704-98b1-9ad4971a2017\\rewind-file-snapshots\\tracking.json",
+      "size": 29,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\agent\\logs\\process-1793439998449-1793.log",
+      "size": 2074591,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\audit\\awf-resolved-config.json",
+      "size": 14093,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\audit\\docker-compose.redacted.yml",
+      "size": 28103,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\audit\\image-manifest.json",
+      "size": 528,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\audit\\policy-manifest.json",
+      "size": 4198,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\audit\\sensitive-paths.json",
+      "size": 1378,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\audit\\squid.conf",
+      "size": 12779,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\awf-reflect.json",
+      "size": 39744,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\access.log",
+      "size": 8829,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\api-proxy-logs\\agent-runtime\\started-at-ms",
+      "size": 14,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\api-proxy-logs\\models.json",
+      "size": 19697,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\api-proxy-logs\\otel.jsonl",
+      "size": 23459,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\api-proxy-logs\\token-tracker-audit.jsonl",
+      "size": 7881,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\api-proxy-logs\\token-usage.jsonl",
+      "size": 12630,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\audit.jsonl",
+      "size": 17891,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\sandbox\\firewall\\logs\\cache.log",
+      "size": 5051,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\skill_inventory.json",
+      "size": 29,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\temporary-id-map.json",
+      "size": 3,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\activity\\summary.json",
+      "size": 6696,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\agent\\execution.json",
+      "size": 89,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\agent\\harness_retry.json",
+      "size": 123,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\agent\\token_usage.jsonl",
+      "size": 12630,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\agent_usage.json",
+      "size": 165,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\aw_info.json",
+      "size": 1906,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\aw_session.jsonl",
+      "size": 272445,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\detection\\execution.json",
+      "size": 97,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\detection\\token_usage.jsonl",
+      "size": 0,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\detection_usage.jsonl",
+      "size": 38,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\github_rate_limits.jsonl",
+      "size": 9204,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\graders\\grader_manifest.json",
+      "size": 2813,
+      "description": "Grader manifest (configured graders and thresholds)"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\usage\\graders\\grader_results.json",
+      "size": 3766,
+      "description": "Deterministic grader results for the run"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\.complete",
+      "size": 25,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\0_conclusion.txt",
+      "size": 187360,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\1_safe_outputs.txt",
+      "size": 36359,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\2_detection.txt",
+      "size": 82034,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\3_agent.txt",
+      "size": 338467,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\4_activation.txt",
+      "size": 89504,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\5_pre_activation.txt",
+      "size": 8342,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\10_Checkout .github and .agents folders.txt",
+      "size": 13562,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\11_Save agent config folders for base branch restoration.txt",
+      "size": 1626,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\12_Check workflow lock file.txt",
+      "size": 3570,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\13_Check compile-agentic version.txt",
+      "size": 2420,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\14_Compute current body text.txt",
+      "size": 2719,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\16_Create prompt with built-in context.txt",
+      "size": 3188,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\17_Interpolate variables and render templates.txt",
+      "size": 6456,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\18_Substitute placeholders.txt",
+      "size": 2610,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\19_Validate prompt placeholders.txt",
+      "size": 1717,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\1_Set up job.txt",
+      "size": 2132,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\20_Print prompt.txt",
+      "size": 14737,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\21_Inventory installed skills.txt",
+      "size": 1984,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\22_Upload info artifact.txt",
+      "size": 2604,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\23_Stage prompt files for artifact upload.txt",
+      "size": 1323,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\24_Upload activation artifact.txt",
+      "size": 3208,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\2_Setup Scripts.txt",
+      "size": 3979,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\3_Mask OTLP telemetry headers.txt",
+      "size": 1270,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\47_Post Checkout .github and .agents folders.txt",
+      "size": 1787,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\48_Post Setup Scripts.txt",
+      "size": 494,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\49_Complete job.txt",
+      "size": 857,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\4_Generate agentic run info.txt",
+      "size": 7566,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\5_Restore daily AIC scan observations.txt",
+      "size": 1987,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\6_Check daily workflow token guardrail.txt",
+      "size": 2732,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\7_Publish daily AIC scan observations.txt",
+      "size": 1761,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\8_Validate COPILOT_GITHUB_TOKEN secret.txt",
+      "size": 1846,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\9_Check for OAuth tokens.txt",
+      "size": 1444,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\activation\\system.txt",
+      "size": 811,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\10_Download activation artifact.txt",
+      "size": 3600,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\11_Configure Git credentials.txt",
+      "size": 2289,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\12_Checkout PR branch.txt",
+      "size": 2697,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\13_Install GitHub Copilot CLI.txt",
+      "size": 4117,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\14_Install AWF binary.txt",
+      "size": 2932,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\15_Restore agent config folders from base branch.txt",
+      "size": 2350,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\16_Restore inline sub-agents from activation artifact.txt",
+      "size": 2323,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\17_Restore inline skills from activation artifact.txt",
+      "size": 2251,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\19_Prepare dispatched evaluation input.txt",
+      "size": 2136,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\1_Set up job.txt",
+      "size": 2643,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\20_Download container images.txt",
+      "size": 6576,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\21_Prepare Safe Outputs Directories.txt",
+      "size": 2108,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\22_Generate Safe Outputs Config.txt",
+      "size": 3562,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\23_Generate Safe Outputs Tools.txt",
+      "size": 6033,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\24_Start MCP Gateway.txt",
+      "size": 18115,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\25_Mount MCP servers as CLIs.txt",
+      "size": 3795,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\26_Clean credentials.txt",
+      "size": 2679,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\27_Audit pre-agent workspace.txt",
+      "size": 2230,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\28_Execute GitHub Copilot CLI.txt",
+      "size": 51676,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\29_Detect agent errors.txt",
+      "size": 3401,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\2_Setup Scripts.txt",
+      "size": 4763,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\31_Copy Copilot session state files to logs.txt",
+      "size": 2481,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\32_Stop MCP Gateway.txt",
+      "size": 2886,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\33_Redact secrets in logs.txt",
+      "size": 3200,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\34_Append agent step summary.txt",
+      "size": 2248,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\35_Copy Safe Outputs.txt",
+      "size": 2379,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\36_Ingest agent output.txt",
+      "size": 6918,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\37_Parse agent logs for step summary.txt",
+      "size": 56122,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\38_Parse MCP Gateway logs for step summary.txt",
+      "size": 63309,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\39_Print firewall logs.txt",
+      "size": 4911,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\3_Set runtime paths.txt",
+      "size": 2647,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\40_Parse token usage for step summary.txt",
+      "size": 5761,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\41_Print AWF reflect summary.txt",
+      "size": 10011,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\42_Generate observability summary.txt",
+      "size": 3164,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\43_Write agent output placeholder if missing.txt",
+      "size": 2598,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\44_Upload agent output fallback artifact.txt",
+      "size": 4816,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\45_Upload agent artifacts.txt",
+      "size": 4791,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\4_Mask OTLP telemetry headers.txt",
+      "size": 1981,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\5_Check OTLP telemetry configuration.txt",
+      "size": 2126,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\6_Checkout repository (gh-aw default).txt",
+      "size": 13426,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\7_Initialize agent execution evidence.txt",
+      "size": 2288,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\89_Post Checkout repository (gh-aw default).txt",
+      "size": 1927,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\8_Create gh-aw temp directory.txt",
+      "size": 2088,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\90_Post Setup Scripts.txt",
+      "size": 489,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\91_Complete job.txt",
+      "size": 1540,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\9_Configure gh CLI for GitHub Enterprise.txt",
+      "size": 2219,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\agent\\system.txt",
+      "size": 752,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\10_Log detection run.txt",
+      "size": 3383,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\11_Record missing tool.txt",
+      "size": 2921,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\12_Record incomplete.txt",
+      "size": 2939,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\13_Handle agent failure.txt",
+      "size": 9886,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\14_Report failed jobs.txt",
+      "size": 3236,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\15_Collect usage artifact files.txt",
+      "size": 4978,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\16_Generate usage activity summary and unified session.txt",
+      "size": 126533,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\17_Upload usage artifact.txt",
+      "size": 4282,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\1_Set up job.txt",
+      "size": 2196,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\2_Setup Scripts.txt",
+      "size": 4482,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\38_Post Setup Scripts.txt",
+      "size": 494,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\39_Complete job.txt",
+      "size": 119,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\3_Download agent output artifact.txt",
+      "size": 4246,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\4_Setup agent output environment variable.txt",
+      "size": 5454,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\5_Restore runtime model metadata.txt",
+      "size": 1880,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\7_Download detection artifact.txt",
+      "size": 3422,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\8_Download Safe Outputs Items Manifest.txt",
+      "size": 3481,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\9_Process no-op messages.txt",
+      "size": 3479,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\conclusion\\system.txt",
+      "size": 1726,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\10_Clean stale firewall files from agent artifact.txt",
+      "size": 1253,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\11_Download container images.txt",
+      "size": 4225,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\12_Check if detection needed.txt",
+      "size": 1910,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\13_Clear MCP Config for detection.txt",
+      "size": 1373,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\14_Prepare threat detection files.txt",
+      "size": 1838,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\15_Check out validator source without credentials.txt",
+      "size": 12651,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\16_Deterministically validate proposed labels and comment.txt",
+      "size": 1515,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\17_Setup threat detection.txt",
+      "size": 2722,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\18_Ensure threat-detection directory and log.txt",
+      "size": 1332,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\19_Install AWF binary.txt",
+      "size": 2235,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\1_Set up job.txt",
+      "size": 2768,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\20_Setup Node.js.txt",
+      "size": 1682,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\21_Install GitHub Copilot CLI.txt",
+      "size": 3420,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\22_Install threat-detect binary.txt",
+      "size": 2411,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\23_Copy detection firewall logs.txt",
+      "size": 1776,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\24_Redact secrets in detection logs.txt",
+      "size": 2302,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\25_Parse threat detection token usage for step summary.txt",
+      "size": 2441,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\26_Redact secrets in detection artifacts.txt",
+      "size": 2302,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\27_Render detection log.txt",
+      "size": 1977,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\28_Upload threat detection artifact.txt",
+      "size": 3158,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\29_Conclude threat detection.txt",
+      "size": 4200,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\2_Setup Scripts.txt",
+      "size": 3992,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\3_Download activation artifact.txt",
+      "size": 2825,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\4_Download agent output artifact.txt",
+      "size": 3680,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\58_Post Setup Node.js.txt",
+      "size": 50,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\59_Post Check out validator source without credentials.txt",
+      "size": 1787,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\5_Setup agent output environment variable.txt",
+      "size": 5568,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\60_Post Setup Scripts.txt",
+      "size": 493,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\61_Complete job.txt",
+      "size": 298,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\6_Clear agent token usage.txt",
+      "size": 1160,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\8_Initialize detection execution evidence.txt",
+      "size": 1573,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\9_Clear inherited Copilot session state.txt",
+      "size": 1210,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\detection\\system.txt",
+      "size": 729,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\pre_activation\\1_Set up job.txt",
+      "size": 1673,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\pre_activation\\2_Setup Scripts.txt",
+      "size": 3555,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\pre_activation\\3_Check team membership for workflow.txt",
+      "size": 2281,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\pre_activation\\6_Post Setup Scripts.txt",
+      "size": 498,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\pre_activation\\7_Complete job.txt",
+      "size": 347,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\pre_activation\\system.txt",
+      "size": 733,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\16_Post Setup Scripts.txt",
+      "size": 496,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\17_Complete job.txt",
+      "size": 950,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\1_Set up job.txt",
+      "size": 2113,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\2_Setup Scripts.txt",
+      "size": 4866,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\3_Mask OTLP telemetry headers.txt",
+      "size": 2154,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\4_Download agent output artifact.txt",
+      "size": 4628,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\5_Setup agent output environment variable.txt",
+      "size": 5836,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\6_Configure GH_HOST for enterprise compatibility.txt",
+      "size": 2562,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\7_Process Safe Outputs.txt",
+      "size": 8837,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\8_Upload Safe Outputs Items.txt",
+      "size": 3944,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41189835746\\audit\\run-41189835746\\workflow-logs\\safe_outputs\\system.txt",
+      "size": 807,
+      "description": "Text file"
+    }
+  ],
+  "skill_activations": [
+    {
+      "name": "airflow-issue-triage",
+      "status": "invoked",
+      "source": "log_parse",
+      "invocation_count": 1,
+      "timestamp": "",
+      "workflow_name": "Bounded Airflow issue triage",
+      "run_id": 41189835746
+    }
+  ],
+  "steering_notices": [
+    {
+      "type": "ai_credit",
+      "threshold": 80,
+      "request_id": "571fee57-797d-41af-a479-efeac6cbb230",
+      "phase": "agent"
+    }
+  ],
+  "firewall_token_usage": {
+    "total_input_tokens": 21379,
+    "total_output_tokens": 1185,
+    "total_cache_read_tokens": 364160,
+    "total_cache_write_tokens": 0,
+    "total_requests": 20,
+    "total_duration_ms": 22167,
+    "total_response_bytes": 306942,
+    "cache_efficiency": 0,
+    "total_aic": 23.4318,
+    "ambient_context": {
+      "input_tokens": 12432,
+      "cached_tokens": 4992
+    },
+    "by_model": {
+      "gpt-4.1-2025-04-14": {
+        "provider": "copilot",
+        "input_tokens": 21379,
+        "output_tokens": 1185,
+        "cache_read_tokens": 364160,
+        "cache_write_tokens": 0,
+        "requests": 20,
+        "duration_ms": 22167,
+        "response_bytes": 306942,
+        "aic": 23.431800000000006
+      }
+    },
+    "agent_usage": [
+      {
+        "agent_name": "main",
+        "agent_type": "main",
+        "source_engine": "copilot",
+        "instance_count": 1,
+        "served_models": [
+          "gpt-4.1",
+          "gpt-4.1-2025-04-14"
+        ],
+        "requests": 20,
+        "input_tokens": 385539,
+        "output_tokens": 1185,
+        "cache_read_tokens": 364160,
+        "cache_write_tokens": 0,
+        "total_api_duration_ms": 22307,
+        "models": [
+          {
+            "model": "gpt-4.1",
+            "resolved_model": "gpt-4.1",
+            "requests": 20,
+            "input_tokens": 385539,
+            "output_tokens": 1185,
+            "cache_read_tokens": 364160,
+            "cache_write_tokens": 0
+          }
+        ]
+      }
+    ],
+    "steering_notices": [
+      {
+        "type": "ai_credit",
+        "threshold": 80,
+        "request_id": "571fee57-797d-41af-a479-efeac6cbb230",
+        "phase": "agent"
+      }
+    ]
+  },
+  "github_rate_limit_usage": {
+    "total_requests_made": 3,
+    "core_consumed": 2,
+    "core_consumed_source": "response_headers_delta",
+    "core_remaining": 4991,
+    "core_limit": 5000,
+    "resources": [
+      {
+        "resource": "core",
+        "requests_made": 3,
+        "quota_consumed": 2,
+        "final_remaining": 4991,
+        "limit": 5000
+      }
+    ]
+  },
+  "firewall_analysis": {
+    "allowed_domains": [
+      "api.github.com:443",
+      "api.githubcopilot.com:443"
+    ],
+    "total_requests": 29,
+    "allowed_requests": 29,
+    "blocked_requests": 0,
+    "requests_by_domain": {
+      "api.github.com:443": {
+        "allowed": 7,
+        "blocked": 0
+      },
+      "api.githubcopilot.com:443": {
+        "allowed": 22,
+        "blocked": 0
+      }
+    }
+  },
+  "policy_analysis": {
+    "policy_summary": "9 rules, SSL Bump disabled, DLP disabled",
+    "rule_hits": [],
+    "total_requests": 0,
+    "allowed_count": 0,
+    "denied_count": 0,
+    "unique_domains": 0
+  },
+  "errors": [
+    {
+      "type": "step_failure",
+      "message": "##[error]Agent execution exited with code 1\n##[error]Process completed with exit code 1.",
+      "file": "agent"
+    },
+    {
+      "type": "step_failure",
+      "message": "##[error]Agent execution exited with code 1\n##[error]Process completed with exit code 1.",
+      "file": "agent/Execute GitHub Copilot CLI"
+    },
+    {
+      "type": "step_failure",
+      "message": "##[error]Agent reported that it could not complete the task",
+      "file": "conclusion/Handle agent failure"
+    }
+  ],
+  "tool_usage": [
+    {
+      "name": "bash",
+      "call_count": 20
+    },
+    {
+      "name": "skill",
+      "call_count": 1
+    },
+    {
+      "name": "skill:airflow-issue-triage",
+      "call_count": 1
+    }
+  ],
+  "graders": {
+    "version": 2,
+    "results": [
+      {
+        "id": "artifact-production",
+        "name": "Artifact Production",
+        "status": "pass",
+        "value": 0,
+        "unit": "count",
+        "direction": "higher_is_better"
+      },
+      {
+        "id": "context-growth",
+        "name": "Context Growth",
+        "status": "pass",
+        "value": 1.8122239177576098,
+        "unit": "factor",
+        "direction": "lower_is_better"
+      },
+      {
+        "id": "execution-duration",
+        "name": "Execution Duration",
+        "status": "pass",
+        "value": 22167,
+        "unit": "ms",
+        "direction": "lower_is_better"
+      },
+      {
+        "id": "execution-step-count",
+        "name": "Execution Step Count",
+        "status": "pass",
+        "value": 20,
+        "unit": "count",
+        "direction": "lower_is_better"
+      },
+      {
+        "id": "loops",
+        "name": "Loops",
+        "status": "pass",
+        "value": 0,
+        "unit": "count",
+        "passed": true,
+        "direction": "lower_is_better",
+        "threshold": 3
+      },
+      {
+        "id": "retries",
+        "name": "Retries",
+        "status": "pass",
+        "value": 0,
+        "unit": "count",
+        "passed": true,
+        "direction": "lower_is_better",
+        "threshold": 10
+      },
+      {
+        "id": "tool-failure-count",
+        "name": "Tool Failure Count",
+        "status": "fail",
+        "value": 6,
+        "unit": "count",
+        "passed": false,
+        "direction": "lower_is_better",
+        "threshold": 5
+      },
+      {
+        "id": "tool-success-rate",
+        "name": "Tool Success Rate",
+        "status": "fail",
+        "value": 0.7142857142857143,
+        "unit": "ratio",
+        "passed": false,
+        "direction": "higher_is_better",
+        "threshold": 0.8
+      },
+      {
+        "id": "trajectory-efficiency",
+        "name": "Trajectory Efficiency",
+        "status": "pass",
+        "value": 0.09523809523809523,
+        "unit": "ratio",
+        "direction": "higher_is_better"
+      },
+      {
+        "id": "working-set-rebuild-factor",
+        "name": "Working-Set Rebuild Factor",
+        "status": "pass",
+        "value": 1.7196750321750323,
+        "unit": "factor",
+        "direction": "lower_is_better"
+      }
+    ],
+    "total": 10,
+    "passed": 8,
+    "failed": 2,
+    "error_count": 0,
+    "unavailable_count": 0
+  },
+  "ledger": {
+    "transactions_added": 0
+  },
+  "friction": {
+    "measurement_state": "statistical",
+    "canonical_unit": "aic",
+    "sources": [
+      "agent_session",
+      "agent_token_usage",
+      "firewall"
+    ],
+    "total_events": 1,
+    "total_occurrences": 13,
+    "counted_occurrences": 13,
+    "suppressed_occurrences": 0,
+    "cost": {
+      "aic": 15.230670000000003,
+      "tokens": {
+        "input": 13896,
+        "output": 770,
+        "cache_read": 236704,
+        "cache_write": 0,
+        "reasoning": 0,
+        "total": 251370
+      },
+      "turns": 0,
+      "tool_calls": 13,
+      "latency_ms": 0
+    },
+    "total_run_aic": 23.431800000000006,
+    "friction_ratio": 0.65,
+    "dimension_states": {
+      "aic": "statistical",
+      "latency_ms": "unavailable",
+      "tokens": "statistical",
+      "tool_calls": "measured",
+      "turns": "unavailable"
+    },
+    "uncertainty": {
+      "aic": {
+        "state": "statistical",
+        "method": "mean_invocation_apportionment",
+        "confidence": "medium",
+        "relative_error": 0.07824760845150965,
+        "lower_bound": 12.89481353487626,
+        "upper_bound": 17.566526465123744,
+        "confidence_level": 0.95,
+        "sample_size": 20,
+        "basis": "AI credits of errored invocations (measured), of linked follow-up invocations (causal), or the mean healthy-invocation cost (statistical)"
+      },
+      "latency_ms": {
+        "state": "unavailable",
+        "method": "none",
+        "confidence": "none",
+        "sample_size": 1,
+        "basis": "wall-clock duration recorded on the failing tool call or invocation"
+      },
+      "tokens": {
+        "state": "statistical",
+        "method": "mean_invocation_apportionment",
+        "confidence": "medium",
+        "relative_error": 0.00742238954628437,
+        "lower_bound": 247713.098521911,
+        "upper_bound": 255026.901478089,
+        "confidence_level": 0.95,
+        "sample_size": 20,
+        "basis": "token classes of the attributed invocations"
+      },
+      "tool_calls": {
+        "state": "measured",
+        "method": "direct_record",
+        "confidence": "high",
+        "relative_error": 0,
+        "lower_bound": 13,
+        "upper_bound": 13,
+        "sample_size": 13,
+        "basis": "counted friction occurrences that consumed a tool call"
+      },
+      "turns": {
+        "state": "unavailable",
+        "method": "none",
+        "confidence": "none",
+        "basis": "one additional turn per errored or retried model invocation"
+      }
+    },
+    "drivers": [
+      {
+        "driver": "session_tool_failure",
+        "class": "tool_failure",
+        "source": "agent_session",
+        "events": 1,
+        "occurrences": 13,
+        "counted_occurrences": 13,
+        "suppressed_occurrences": 0,
+        "state": "statistical",
+        "cost": {
+          "aic": 15.230670000000003,
+          "tokens": {
+            "input": 13896,
+            "output": 770,
+            "cache_read": 236704,
+            "cache_write": 0,
+            "reasoning": 0,
+            "total": 251370
+          },
+          "turns": 0,
+          "tool_calls": 13,
+          "latency_ms": 0
+        }
+      }
+    ],
+    "groups": [
+      {
+        "group_id": "tool_failure",
+        "primary_source": "agent_session",
+        "event_ids": [
+          "session_tool_failure:aggregate"
+        ],
+        "total_occurrences": 13,
+        "counted_occurrences": 13,
+        "suppressed_occurrences": 0,
+        "rule": "highest-fidelity source owns overlapping occurrences; lower-fidelity sources contribute only their excess"
+      }
+    ],
+    "events": [
+      {
+        "id": "session_tool_failure:aggregate",
+        "driver": "session_tool_failure",
+        "source": "agent_session",
+        "group_id": "tool_failure",
+        "label": "agent session tool executions",
+        "occurrences": 13,
+        "counted_occurrences": 13,
+        "suppressed_occurrences": 0,
+        "attribution_class": "statistically_estimated",
+        "state": "statistical",
+        "estimation_method": "mean_invocation_apportionment",
+        "lower_bound_aic": 12.89481353487626,
+        "upper_bound_aic": 17.566526465123744,
+        "confidence": "medium",
+        "dimension_states": {
+          "aic": "statistical",
+          "latency_ms": "unsupported",
+          "tokens": "statistical",
+          "tool_calls": "measured",
+          "turns": "unsupported"
+        },
+        "cost": {
+          "aic": 15.230670000000003,
+          "tokens": {
+            "input": 13896,
+            "output": 770,
+            "cache_read": 236704,
+            "cache_write": 0,
+            "reasoning": 0,
+            "total": 251370
+          },
+          "turns": 0,
+          "tool_calls": 13,
+          "latency_ms": 0
+        }
+      }
+    ],
+    "unmeasured_drivers": [
+      {
+        "driver": "agent_api_error",
+        "reason": "no_occurrences"
+      },
+      {
+        "driver": "firewall_block",
+        "reason": "no_occurrences"
+      },
+      {
+        "driver": "integrity_filter",
+        "reason": "source_unavailable:mcp_gateway"
+      },
+      {
+        "driver": "mcp_tool_error",
+        "reason": "source_unavailable:mcp_gateway"
+      }
+    ]
+  }
+}

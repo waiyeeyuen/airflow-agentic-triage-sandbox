@@ -1,0 +1,624 @@
+﻿2026-10-31T09:48:01.3833021Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T09:48:01.3833390Z with:
+2026-10-31T09:48:01.3834423Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_copilot_log.cjs'));
+await main();
+
+2026-10-31T09:48:01.3837510Z   github-token: ***
+2026-10-31T09:48:01.3837702Z   debug: false
+2026-10-31T09:48:01.3837905Z   user-agent: actions/github-script
+2026-10-31T09:48:01.3838148Z   result-encoding: json
+2026-10-31T09:48:01.3838346Z   retries: 0
+2026-10-31T09:48:01.3838564Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T09:48:01.3838826Z env:
+2026-10-31T09:48:01.3839012Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T09:48:01.3839255Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T09:48:01.3840038Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41189835746,github.run_id=41189835746,gh-aw.engine.id=copilot
+2026-10-31T09:48:01.3840846Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T09:48:01.3841099Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T09:48:01.3841375Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T09:48:01.3841760Z   DEFAULT_BRANCH: main
+2026-10-31T09:48:01.3841971Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-31T09:48:01.3842191Z   GH_AW_ASSETS_BRANCH: 
+2026-10-31T09:48:01.3842396Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-31T09:48:01.3842658Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-31T09:48:01.3842933Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-31T09:48:01.3843144Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-31T09:48:01.3843385Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-31T09:48:01.3843601Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-31T09:48:01.3843821Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-31T09:48:01.3844030Z   GH_AW_PR_HEAD_REPO: 
+2026-10-31T09:48:01.3844234Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T09:48:01.3844448Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-31T09:48:01.3844678Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-31T09:48:01.3844989Z   GITHUB_AW_OTEL_TRACE_ID: cd0c9f2128f98fe3884f970ca7ebd008
+2026-10-31T09:48:01.3845321Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 230ba7c15743b499
+2026-10-31T09:48:01.3845609Z   GITHUB_AW_OTEL_JOB_START_MS: 1793439946655
+2026-10-31T09:48:01.3846057Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: a894e98223b5124f5774b14fb8db8d4470bbe2a652791486aaacc940ea571a81
+2026-10-31T09:48:01.3846606Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-31T09:48:01.3847129Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/sandbox/agent/logs/
+2026-10-31T09:48:01.3847500Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-31T09:48:01.3847837Z ##[endgroup]
+2026-10-31T09:48:01.5165323Z Using Copilot session log from: copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5262860Z [log-parser] Wrote Copilot result entry to agent-stdio.log: num_turns=21
+2026-10-31T09:48:01.5364764Z [log-parser] Persisted 137 canonical session events
+2026-10-31T09:48:01.5672204Z === Unified session ===
+2026-10-31T09:48:01.5672531Z Records: 136 (agent=136)
+2026-10-31T09:48:01.5672681Z 
+2026-10-31T09:48:01.5672936Z Agent source: agent/copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5673275Z Model: gpt-4.1
+2026-10-31T09:48:01.5673397Z Initialization:
+2026-10-31T09:48:01.5673572Z   Engine: copilot
+2026-10-31T09:48:01.5673797Z   Session ID: a8c1c58c-e692-4704-98b1-9ad4971a2017
+2026-10-31T09:48:01.5674270Z   Working Directory: /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-31T09:48:01.5674624Z 
+2026-10-31T09:48:01.5674705Z Statistics:
+2026-10-31T09:48:01.5674882Z   Turns: 21
+2026-10-31T09:48:01.5675058Z   Duration: 1m 19s
+2026-10-31T09:48:01.5675251Z   Tools: 8/21 succeeded
+2026-10-31T09:48:01.5675888Z   Failed Tools: 13
+2026-10-31T09:48:01.5676097Z   Tokens: 386,724 total (385,539 in / 1,185 out)
+2026-10-31T09:48:01.5676362Z   Cache Read Tokens: 364,160
+2026-10-31T09:48:01.5676585Z   Cache Creation Tokens: 0
+2026-10-31T09:48:01.5676922Z   Errors:
+2026-10-31T09:48:01.5677090Z     {
+2026-10-31T09:48:01.5677269Z   "errorType": "rate_limit",
+2026-10-31T09:48:01.5678404Z   "message": "Failed to get response from the AI model; retried 5 times (total retry wait time: 55.11 seconds) Last error: 429 Maximum LLM invocations exceeded (20 / 20): the shared per-run max-turns budget, including sub-agents, is exhausted. For gh-aw workflows, increase max-turns in workflow frontmatter and recompile; retrying within this run cannot restore the budget.",
+2026-10-31T09:48:01.5679158Z   "statusCode": 429,
+2026-10-31T09:48:01.5679334Z   "originatingMessageId": "77ecb8a4-1ae5-4873-8e9d-bb818253a2cd"
+2026-10-31T09:48:01.5679533Z }
+2026-10-31T09:48:01.5679590Z 
+2026-10-31T09:48:01.5679708Z Chronological trace (user prompts omitted; untimed observations follow):
+2026-10-31T09:48:01.5679869Z 
+2026-10-31T09:48:01.5680201Z [1] agent/agent session.start model=gpt-4.1 sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017 cwd=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox [untimed]
+2026-10-31T09:48:01.5680783Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017
+2026-10-31T09:48:01.5681196Z 
+2026-10-31T09:48:01.5681544Z [2] agent/agent session.init sourceEngine=copilot model=gpt-4.1 sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017 cwd=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox [untimed]
+2026-10-31T09:48:01.5682144Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017
+2026-10-31T09:48:01.5682402Z 
+2026-10-31T09:48:01.5682649Z [3] agent/agent session.info message=Integration ID overridden via environment variable: agentic-workflows [untimed]
+2026-10-31T09:48:01.5683008Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5683180Z 
+2026-10-31T09:48:01.5683282Z [5] agent/agent system.message [system instructions omitted] [untimed]
+2026-10-31T09:48:01.5683556Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5683727Z 
+2026-10-31T09:48:01.5683897Z [6] agent/agent assistant.turn_start turnId=0 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5684232Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5684398Z 
+2026-10-31T09:48:01.5684508Z [7] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5684777Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5684945Z 
+2026-10-31T09:48:01.5685012Z [8] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5685236Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5685401Z 
+2026-10-31T09:48:01.5685577Z [9] agent/agent tool.execution_start toolName=skill toolCallId=call_Eurwf1SezWbGfh4XhaqMQPug [started] [untimed]
+2026-10-31T09:48:01.5685918Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5686154Z ? skill(skill: airflow-issue-triage) [pending]
+2026-10-31T09:48:01.5686273Z 
+2026-10-31T09:48:01.5686275Z 
+2026-10-31T09:48:01.5686466Z [10] agent/agent tool.execution_complete toolName=skill toolCallId=call_Eurwf1SezWbGfh4XhaqMQPug [succeeded] [untimed]
+2026-10-31T09:48:01.5686994Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5687477Z ✓ skill(skill: airflow-issue-triage)
+2026-10-31T09:48:01.5687784Z    └ Skill "airflow-issue-triage" loaded successfully. Follow the instructions in the...
+2026-10-31T09:48:01.5687976Z 
+2026-10-31T09:48:01.5687978Z 
+2026-10-31T09:48:01.5688576Z [11] agent/agent skill.invoked name=airflow-issue-triage path=/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.claude/skills/airflow-issue-triage/SKILL.md source=project trigger=agent-invoked model=gpt-4.1 invokedAtTurn=3 [untimed]
+2026-10-31T09:48:01.5689221Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5689396Z 
+2026-10-31T09:48:01.5689841Z [12] agent/agent skill.context_delivered_ref interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 source=skill-airflow-issue-triage contentId=sha256:83a6e0376b375781cb768d9b56ecce319fe25b43c5693027fdae32322b7c2d52 [skill instructions omitted] [untimed]
+2026-10-31T09:48:01.5690447Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5690620Z 
+2026-10-31T09:48:01.5690699Z [13] agent/agent assistant.turn_end turnId=0 [untimed]
+2026-10-31T09:48:01.5690943Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5691114Z 
+2026-10-31T09:48:01.5691282Z [14] agent/agent assistant.turn_start turnId=1 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5691615Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5691778Z 
+2026-10-31T09:48:01.5691891Z [15] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5692246Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5692414Z 
+2026-10-31T09:48:01.5692480Z [16] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5692705Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5692869Z 
+2026-10-31T09:48:01.5693050Z [17] agent/agent tool.execution_start toolName=bash toolCallId=call_ZiOFuAOfxF4QVeO3itDvkpZ1 [started] [untimed]
+2026-10-31T09:48:01.5693387Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5693711Z ? $ scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none [pending]
+2026-10-31T09:48:01.5694130Z    Arguments: command: scripts/wrappers/triage-search-duplicate..., description: Run duplicate search and initialize labe...
+2026-10-31T09:48:01.5694386Z 
+2026-10-31T09:48:01.5694388Z 
+2026-10-31T09:48:01.5694573Z [18] agent/agent tool.execution_complete toolName=bash toolCallId=call_ZiOFuAOfxF4QVeO3itDvkpZ1 [succeeded] [untimed]
+2026-10-31T09:48:01.5694927Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5695268Z ✓ $ scripts/wrappers/triage-search-duplicates && scripts/wrappers/triage-label-none
+2026-10-31T09:48:01.5695658Z    Arguments: command: scripts/wrappers/triage-search-duplicate..., description: Run duplicate search and initialize labe...
+2026-10-31T09:48:01.5696006Z    └ <shellId: 0 completed with exit code 0>
+2026-10-31T09:48:01.5696118Z 
+2026-10-31T09:48:01.5696120Z 
+2026-10-31T09:48:01.5696195Z [19] agent/agent assistant.turn_end turnId=1 [untimed]
+2026-10-31T09:48:01.5696439Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5696607Z 
+2026-10-31T09:48:01.5696901Z [20] agent/agent assistant.turn_start turnId=2 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5697233Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5697401Z 
+2026-10-31T09:48:01.5697514Z [21] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5697789Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5697953Z 
+2026-10-31T09:48:01.5698022Z [22] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5698242Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5698408Z 
+2026-10-31T09:48:01.5698584Z [23] agent/agent tool.execution_start toolName=bash toolCallId=call_rrMdouuwYO9lr2GQ6Z02Ngpf [started] [untimed]
+2026-10-31T09:48:01.5699044Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5699353Z ? $ ls /tmp/gh-aw/agent/case.json && grep -i 'security' /tmp/gh-aw/agent/case.json [pending]
+2026-10-31T09:48:01.5699728Z    Arguments: command: ls /tmp/gh-aw/agent/case.json && grep -i..., description: Check for security-sounding evidence in ...
+2026-10-31T09:48:01.5699970Z 
+2026-10-31T09:48:01.5699972Z 
+2026-10-31T09:48:01.5700153Z [24] agent/agent tool.execution_complete toolName=bash toolCallId=call_rrMdouuwYO9lr2GQ6Z02Ngpf [failed] [untimed]
+2026-10-31T09:48:01.5700499Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5700825Z ✗ $ ls /tmp/gh-aw/agent/case.json && grep -i 'security' /tmp/gh-aw/agent/case.json
+2026-10-31T09:48:01.5701175Z    Arguments: command: ls /tmp/gh-aw/agent/case.json && grep -i..., description: Check for security-sounding evidence in ...
+2026-10-31T09:48:01.5701592Z    Error: └ denied: Permission to run this tool was denied due to the following rules: `shel...
+2026-10-31T09:48:01.5701788Z 
+2026-10-31T09:48:01.5701790Z 
+2026-10-31T09:48:01.5701870Z [25] agent/agent assistant.turn_end turnId=2 [untimed]
+2026-10-31T09:48:01.5702104Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5702272Z 
+2026-10-31T09:48:01.5702438Z [26] agent/agent assistant.turn_start turnId=3 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5702855Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5703022Z 
+2026-10-31T09:48:01.5703135Z [27] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5703403Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5703569Z 
+2026-10-31T09:48:01.5703633Z [28] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5703859Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5704027Z 
+2026-10-31T09:48:01.5704200Z [29] agent/agent tool.execution_start toolName=bash toolCallId=call_jR8Xl6phm82khg85y8HV7kPh [started] [untimed]
+2026-10-31T09:48:01.5704538Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5704927Z ? $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-api && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5705407Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Run kind, area label validators and rend...
+2026-10-31T09:48:01.5705650Z 
+2026-10-31T09:48:01.5705653Z 
+2026-10-31T09:48:01.5705828Z [30] agent/agent tool.execution_start toolName=bash toolCallId=call_vGcp99TVMckZ7GWYDwm74bOw [started] [untimed]
+2026-10-31T09:48:01.5706168Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5706566Z ? $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-ui && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5707210Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try alternate kind/area label validators...
+2026-10-31T09:48:01.5707462Z 
+2026-10-31T09:48:01.5707464Z 
+2026-10-31T09:48:01.5707647Z [31] agent/agent tool.execution_complete toolName=bash toolCallId=call_jR8Xl6phm82khg85y8HV7kPh [succeeded] [untimed]
+2026-10-31T09:48:01.5707996Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5737908Z ✗ $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-api && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5738562Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Run kind, area label validators and rend...
+2026-10-31T09:48:01.5738971Z    └ <shellId: 2 completed with exit code 2>
+2026-10-31T09:48:01.5739091Z 
+2026-10-31T09:48:01.5739095Z 
+2026-10-31T09:48:01.5739471Z [32] agent/agent tool.execution_complete toolName=bash toolCallId=call_vGcp99TVMckZ7GWYDwm74bOw [succeeded] [untimed]
+2026-10-31T09:48:01.5739854Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5740308Z ✓ $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-ui && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5740789Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try alternate kind/area label validators...
+2026-10-31T09:48:01.5741131Z    └ <shellId: 3 completed with exit code 0>
+2026-10-31T09:48:01.5741243Z 
+2026-10-31T09:48:01.5741246Z 
+2026-10-31T09:48:01.5741328Z [33] agent/agent assistant.turn_end turnId=3 [untimed]
+2026-10-31T09:48:01.5741577Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5741752Z 
+2026-10-31T09:48:01.5741922Z [34] agent/agent assistant.turn_start turnId=4 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5742279Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5742445Z 
+2026-10-31T09:48:01.5742560Z [35] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5742837Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5743007Z 
+2026-10-31T09:48:01.5743163Z [36] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5743388Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5743558Z 
+2026-10-31T09:48:01.5743740Z [37] agent/agent tool.execution_start toolName=bash toolCallId=call_vAtZuMIeRoYlqdBNwbbbcWdd [started] [untimed]
+2026-10-31T09:48:01.5744083Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5744498Z ? $ scripts/wrappers/triage-label-kind-task && scripts/wrappers/triage-label-area-scheduler && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5745001Z    Arguments: command: scripts/wrappers/triage-label-kind-task ..., description: Try kind:task and area:scheduler label v...
+2026-10-31T09:48:01.5745255Z 
+2026-10-31T09:48:01.5745258Z 
+2026-10-31T09:48:01.5745443Z [38] agent/agent tool.execution_complete toolName=bash toolCallId=call_vAtZuMIeRoYlqdBNwbbbcWdd [succeeded] [untimed]
+2026-10-31T09:48:01.5745802Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5746248Z ✗ $ scripts/wrappers/triage-label-kind-task && scripts/wrappers/triage-label-area-scheduler && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5746887Z    Arguments: command: scripts/wrappers/triage-label-kind-task ..., description: Try kind:task and area:scheduler label v...
+2026-10-31T09:48:01.5747226Z    └ <shellId: 4 completed with exit code 2>
+2026-10-31T09:48:01.5747338Z 
+2026-10-31T09:48:01.5747340Z 
+2026-10-31T09:48:01.5747422Z [39] agent/agent assistant.turn_end turnId=4 [untimed]
+2026-10-31T09:48:01.5747667Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5747836Z 
+2026-10-31T09:48:01.5748002Z [40] agent/agent assistant.turn_start turnId=5 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5748337Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5748506Z 
+2026-10-31T09:48:01.5748620Z [41] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5748897Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5749061Z 
+2026-10-31T09:48:01.5749130Z [42] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5749354Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5749521Z 
+2026-10-31T09:48:01.5749699Z [43] agent/agent tool.execution_start toolName=bash toolCallId=call_4F6FWauwY3UyoGVgJfIaStFG [started] [untimed]
+2026-10-31T09:48:01.5750130Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5750570Z ? $ scripts/wrappers/triage-label-kind-documentation && scripts/wrappers/triage-label-area-kubernetes && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5751094Z    Arguments: command: scripts/wrappers/triage-label-kind-docum..., description: Try kind:documentation and area:kubernet...
+2026-10-31T09:48:01.5751353Z 
+2026-10-31T09:48:01.5751355Z 
+2026-10-31T09:48:01.5751544Z [44] agent/agent tool.execution_complete toolName=bash toolCallId=call_4F6FWauwY3UyoGVgJfIaStFG [succeeded] [untimed]
+2026-10-31T09:48:01.5751894Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5752361Z ✓ $ scripts/wrappers/triage-label-kind-documentation && scripts/wrappers/triage-label-area-kubernetes && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5752864Z    Arguments: command: scripts/wrappers/triage-label-kind-docum..., description: Try kind:documentation and area:kubernet...
+2026-10-31T09:48:01.5753207Z    └ <shellId: 5 completed with exit code 0>
+2026-10-31T09:48:01.5753319Z 
+2026-10-31T09:48:01.5753322Z 
+2026-10-31T09:48:01.5753401Z [45] agent/agent assistant.turn_end turnId=5 [untimed]
+2026-10-31T09:48:01.5753716Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5754014Z 
+2026-10-31T09:48:01.5754381Z [46] agent/agent assistant.turn_start turnId=6 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5754713Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5754882Z 
+2026-10-31T09:48:01.5754992Z [47] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5755266Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5755430Z 
+2026-10-31T09:48:01.5755499Z [48] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5755729Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5755982Z 
+2026-10-31T09:48:01.5756164Z [49] agent/agent tool.execution_start toolName=bash toolCallId=call_jdFJBTWs3YJbboXlsHKvPzME [started] [untimed]
+2026-10-31T09:48:01.5756504Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5756999Z ? $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt [pending]
+2026-10-31T09:48:01.5757402Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5757649Z 
+2026-10-31T09:48:01.5757651Z 
+2026-10-31T09:48:01.5757837Z [50] agent/agent tool.execution_complete toolName=bash toolCallId=call_jdFJBTWs3YJbboXlsHKvPzME [failed] [untimed]
+2026-10-31T09:48:01.5758186Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5758545Z ✗ $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt
+2026-10-31T09:48:01.5758920Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5759347Z    Error: └ denied: Permission to run this tool was denied due to the following rules: `shel...
+2026-10-31T09:48:01.5759544Z 
+2026-10-31T09:48:01.5759546Z 
+2026-10-31T09:48:01.5759625Z [51] agent/agent assistant.turn_end turnId=6 [untimed]
+2026-10-31T09:48:01.5759870Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5760041Z 
+2026-10-31T09:48:01.5760205Z [52] agent/agent assistant.turn_start turnId=7 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5760537Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5760704Z 
+2026-10-31T09:48:01.5760815Z [53] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5761084Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5761351Z 
+2026-10-31T09:48:01.5761416Z [54] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5761636Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5761802Z 
+2026-10-31T09:48:01.5761978Z [55] agent/agent tool.execution_start toolName=bash toolCallId=call_B8rbbidpyShxivznASL7s2GZ [started] [untimed]
+2026-10-31T09:48:01.5762315Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5762716Z ? $ scripts/wrappers/triage-label-kind-meta && scripts/wrappers/triage-label-area-dev-env && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5763204Z    Arguments: command: scripts/wrappers/triage-label-kind-meta ..., description: Try kind:meta and area:dev-env label val...
+2026-10-31T09:48:01.5763454Z 
+2026-10-31T09:48:01.5763456Z 
+2026-10-31T09:48:01.5763639Z [56] agent/agent tool.execution_complete toolName=bash toolCallId=call_B8rbbidpyShxivznASL7s2GZ [succeeded] [untimed]
+2026-10-31T09:48:01.5763989Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5764419Z ✗ $ scripts/wrappers/triage-label-kind-meta && scripts/wrappers/triage-label-area-dev-env && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5764882Z    Arguments: command: scripts/wrappers/triage-label-kind-meta ..., description: Try kind:meta and area:dev-env label val...
+2026-10-31T09:48:01.5765294Z    └ <shellId: 7 completed with exit code 2>
+2026-10-31T09:48:01.5765403Z 
+2026-10-31T09:48:01.5765405Z 
+2026-10-31T09:48:01.5765479Z [57] agent/agent assistant.turn_end turnId=7 [untimed]
+2026-10-31T09:48:01.5765716Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5765883Z 
+2026-10-31T09:48:01.5766045Z [58] agent/agent assistant.turn_start turnId=8 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5766373Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5766543Z 
+2026-10-31T09:48:01.5766653Z [59] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5767038Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5767203Z 
+2026-10-31T09:48:01.5767269Z [60] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5767493Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5767659Z 
+2026-10-31T09:48:01.5767833Z [61] agent/agent tool.execution_start toolName=bash toolCallId=call_zyIYdCcsq5jCKwKCkmFI1EC6 [started] [untimed]
+2026-10-31T09:48:01.5768169Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5768556Z ? $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-core && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5769030Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Try kind:bug and area:core label validat...
+2026-10-31T09:48:01.5769279Z 
+2026-10-31T09:48:01.5769281Z 
+2026-10-31T09:48:01.5769463Z [62] agent/agent tool.execution_complete toolName=bash toolCallId=call_zyIYdCcsq5jCKwKCkmFI1EC6 [succeeded] [untimed]
+2026-10-31T09:48:01.5769811Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5770236Z ✓ $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-core && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5770691Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Try kind:bug and area:core label validat...
+2026-10-31T09:48:01.5771019Z    └ <shellId: 8 completed with exit code 0>
+2026-10-31T09:48:01.5771128Z 
+2026-10-31T09:48:01.5771130Z 
+2026-10-31T09:48:01.5771208Z [63] agent/agent assistant.turn_end turnId=8 [untimed]
+2026-10-31T09:48:01.5771441Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5771742Z 
+2026-10-31T09:48:01.5771903Z [64] agent/agent assistant.turn_start turnId=9 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5772231Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5772423Z 
+2026-10-31T09:48:01.5772532Z [65] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5772806Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5772968Z 
+2026-10-31T09:48:01.5773034Z [66] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5773253Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5773417Z 
+2026-10-31T09:48:01.5773592Z [67] agent/agent tool.execution_start toolName=bash toolCallId=call_w9clhWaKqp1uSm8bcfzwWDtp [started] [untimed]
+2026-10-31T09:48:01.5773927Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5774248Z ? $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt [pending]
+2026-10-31T09:48:01.5774638Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5774882Z 
+2026-10-31T09:48:01.5774884Z 
+2026-10-31T09:48:01.5775065Z [68] agent/agent tool.execution_complete toolName=bash toolCallId=call_w9clhWaKqp1uSm8bcfzwWDtp [failed] [untimed]
+2026-10-31T09:48:01.5775488Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5775816Z ✗ $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt
+2026-10-31T09:48:01.5776187Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5776604Z    Error: └ denied: Permission to run this tool was denied due to the following rules: `shel...
+2026-10-31T09:48:01.5776882Z 
+2026-10-31T09:48:01.5776888Z 
+2026-10-31T09:48:01.5776967Z [69] agent/agent assistant.turn_end turnId=9 [untimed]
+2026-10-31T09:48:01.5777200Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5777368Z 
+2026-10-31T09:48:01.5777531Z [70] agent/agent assistant.turn_start turnId=10 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5777861Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5778031Z 
+2026-10-31T09:48:01.5778140Z [71] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5778412Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5778575Z 
+2026-10-31T09:48:01.5778640Z [72] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5778863Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5779024Z 
+2026-10-31T09:48:01.5779200Z [73] agent/agent tool.execution_start toolName=bash toolCallId=call_tXIDiVW9yytEZhYNltnK10I6 [started] [untimed]
+2026-10-31T09:48:01.5779537Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5779952Z ? $ scripts/wrappers/triage-label-kind-task && scripts/wrappers/triage-label-area-airflow-ctl && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5780444Z    Arguments: command: scripts/wrappers/triage-label-kind-task ..., description: Try kind:task and area:airflow-ctl label...
+2026-10-31T09:48:01.5780696Z 
+2026-10-31T09:48:01.5780698Z 
+2026-10-31T09:48:01.5780882Z [74] agent/agent tool.execution_complete toolName=bash toolCallId=call_tXIDiVW9yytEZhYNltnK10I6 [succeeded] [untimed]
+2026-10-31T09:48:01.5781230Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5781673Z ✗ $ scripts/wrappers/triage-label-kind-task && scripts/wrappers/triage-label-area-airflow-ctl && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5782233Z    Arguments: command: scripts/wrappers/triage-label-kind-task ..., description: Try kind:task and area:airflow-ctl label...
+2026-10-31T09:48:01.5782570Z    └ <shellId: 10 completed with exit code 2>
+2026-10-31T09:48:01.5782682Z 
+2026-10-31T09:48:01.5782684Z 
+2026-10-31T09:48:01.5782764Z [75] agent/agent assistant.turn_end turnId=10 [untimed]
+2026-10-31T09:48:01.5783001Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5783173Z 
+2026-10-31T09:48:01.5783340Z [76] agent/agent assistant.turn_start turnId=11 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5783667Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5783834Z 
+2026-10-31T09:48:01.5783942Z [77] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5784213Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5784378Z 
+2026-10-31T09:48:01.5784443Z [78] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5784665Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5784827Z 
+2026-10-31T09:48:01.5785001Z [79] agent/agent tool.execution_start toolName=bash toolCallId=call_5v4ddCz685bdl2USddrjMEfC [started] [untimed]
+2026-10-31T09:48:01.5785335Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5785821Z ? $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-providers && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5786310Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Try kind:bug and area:providers label va...
+2026-10-31T09:48:01.5786559Z 
+2026-10-31T09:48:01.5786562Z 
+2026-10-31T09:48:01.5786830Z [80] agent/agent tool.execution_complete toolName=bash toolCallId=call_5v4ddCz685bdl2USddrjMEfC [succeeded] [untimed]
+2026-10-31T09:48:01.5787174Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5787612Z ✓ $ scripts/wrappers/triage-label-kind-bug && scripts/wrappers/triage-label-area-providers && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5788077Z    Arguments: command: scripts/wrappers/triage-label-kind-bug &..., description: Try kind:bug and area:providers label va...
+2026-10-31T09:48:01.5788412Z    └ <shellId: 11 completed with exit code 0>
+2026-10-31T09:48:01.5788525Z 
+2026-10-31T09:48:01.5788527Z 
+2026-10-31T09:48:01.5788606Z [81] agent/agent assistant.turn_end turnId=11 [untimed]
+2026-10-31T09:48:01.5788842Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5789009Z 
+2026-10-31T09:48:01.5789175Z [82] agent/agent assistant.turn_start turnId=12 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5789501Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5789666Z 
+2026-10-31T09:48:01.5789785Z [83] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5790056Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5790219Z 
+2026-10-31T09:48:01.5790285Z [84] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5790503Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5790671Z 
+2026-10-31T09:48:01.5790847Z [85] agent/agent tool.execution_start toolName=bash toolCallId=call_wdpVHFPFZ5bBk2wkpZxQnWoh [started] [untimed]
+2026-10-31T09:48:01.5791186Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5791500Z ? $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt [pending]
+2026-10-31T09:48:01.5791890Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5792131Z 
+2026-10-31T09:48:01.5792221Z 
+2026-10-31T09:48:01.5792403Z [86] agent/agent tool.execution_complete toolName=bash toolCallId=call_wdpVHFPFZ5bBk2wkpZxQnWoh [failed] [untimed]
+2026-10-31T09:48:01.5792744Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5793074Z ✗ $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt
+2026-10-31T09:48:01.5793443Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5793867Z    Error: └ denied: Permission to run this tool was denied due to the following rules: `shel...
+2026-10-31T09:48:01.5794163Z 
+2026-10-31T09:48:01.5794166Z 
+2026-10-31T09:48:01.5794286Z [87] agent/agent assistant.turn_end turnId=12 [untimed]
+2026-10-31T09:48:01.5794653Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5794922Z 
+2026-10-31T09:48:01.5795185Z [88] agent/agent assistant.turn_start turnId=13 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5795707Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5795971Z 
+2026-10-31T09:48:01.5796141Z [89] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5796417Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5796849Z 
+2026-10-31T09:48:01.5796925Z [90] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5797147Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5797309Z 
+2026-10-31T09:48:01.5797486Z [91] agent/agent tool.execution_start toolName=bash toolCallId=call_YjLlSvWWtUcSwSNl0p5LyXDI [started] [untimed]
+2026-10-31T09:48:01.5797823Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5798221Z ? $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-api && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5798711Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:api label vali...
+2026-10-31T09:48:01.5798962Z 
+2026-10-31T09:48:01.5798965Z 
+2026-10-31T09:48:01.5799151Z [92] agent/agent tool.execution_complete toolName=bash toolCallId=call_YjLlSvWWtUcSwSNl0p5LyXDI [succeeded] [untimed]
+2026-10-31T09:48:01.5799501Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5799955Z ✗ $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-api && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5800425Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:api label vali...
+2026-10-31T09:48:01.5800763Z    └ <shellId: 13 completed with exit code 2>
+2026-10-31T09:48:01.5800875Z 
+2026-10-31T09:48:01.5800878Z 
+2026-10-31T09:48:01.5800958Z [93] agent/agent assistant.turn_end turnId=13 [untimed]
+2026-10-31T09:48:01.5801198Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5801365Z 
+2026-10-31T09:48:01.5801532Z [94] agent/agent assistant.turn_start turnId=14 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5801861Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5802033Z 
+2026-10-31T09:48:01.5802144Z [95] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5802415Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5802580Z 
+2026-10-31T09:48:01.5802643Z [96] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5802868Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5803031Z 
+2026-10-31T09:48:01.5803206Z [97] agent/agent tool.execution_start toolName=bash toolCallId=call_1OBT8Xh0tTvaLhnehLeHunhJ [started] [untimed]
+2026-10-31T09:48:01.5803645Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5804057Z ? $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-providers && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5804559Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:providers labe...
+2026-10-31T09:48:01.5804813Z 
+2026-10-31T09:48:01.5804816Z 
+2026-10-31T09:48:01.5805002Z [98] agent/agent tool.execution_complete toolName=bash toolCallId=call_1OBT8Xh0tTvaLhnehLeHunhJ [succeeded] [untimed]
+2026-10-31T09:48:01.5805353Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5805802Z ✓ $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-providers && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5806279Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:providers labe...
+2026-10-31T09:48:01.5806624Z    └ <shellId: 14 completed with exit code 0>
+2026-10-31T09:48:01.5806803Z 
+2026-10-31T09:48:01.5806805Z 
+2026-10-31T09:48:01.5806884Z [99] agent/agent assistant.turn_end turnId=14 [untimed]
+2026-10-31T09:48:01.5807119Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5807286Z 
+2026-10-31T09:48:01.5807544Z [100] agent/agent assistant.turn_start turnId=15 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5807876Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5808042Z 
+2026-10-31T09:48:01.5808155Z [101] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5808428Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5808594Z 
+2026-10-31T09:48:01.5808660Z [102] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5808892Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5809057Z 
+2026-10-31T09:48:01.5809231Z [103] agent/agent tool.execution_start toolName=bash toolCallId=call_C2KV5vhmthX73kj7cCL2Mrey [started] [untimed]
+2026-10-31T09:48:01.5809570Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5809884Z ? $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt [pending]
+2026-10-31T09:48:01.5810275Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5810518Z 
+2026-10-31T09:48:01.5810520Z 
+2026-10-31T09:48:01.5810704Z [104] agent/agent tool.execution_complete toolName=bash toolCallId=call_C2KV5vhmthX73kj7cCL2Mrey [failed] [untimed]
+2026-10-31T09:48:01.5811050Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5811382Z ✗ $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt
+2026-10-31T09:48:01.5811753Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5812175Z    Error: └ denied: Permission to run this tool was denied due to the following rules: `shel...
+2026-10-31T09:48:01.5812366Z 
+2026-10-31T09:48:01.5812368Z 
+2026-10-31T09:48:01.5812455Z [105] agent/agent assistant.turn_end turnId=15 [untimed]
+2026-10-31T09:48:01.5812697Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5812861Z 
+2026-10-31T09:48:01.5813029Z [106] agent/agent assistant.turn_start turnId=16 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5813361Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5813528Z 
+2026-10-31T09:48:01.5813641Z [107] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5814004Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5814170Z 
+2026-10-31T09:48:01.5814240Z [108] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5814465Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5814632Z 
+2026-10-31T09:48:01.5814808Z [109] agent/agent tool.execution_start toolName=bash toolCallId=call_OBX2YXUkKWQn8G3w9TLZBfes [started] [untimed]
+2026-10-31T09:48:01.5815152Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5815569Z ? $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-kubernetes && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5816079Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:kubernetes lab...
+2026-10-31T09:48:01.5816328Z 
+2026-10-31T09:48:01.5816330Z 
+2026-10-31T09:48:01.5816517Z [110] agent/agent tool.execution_complete toolName=bash toolCallId=call_OBX2YXUkKWQn8G3w9TLZBfes [succeeded] [untimed]
+2026-10-31T09:48:01.5816964Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5817412Z ✗ $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-kubernetes && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5817893Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:kubernetes lab...
+2026-10-31T09:48:01.5818315Z    └ <shellId: 16 completed with exit code 2>
+2026-10-31T09:48:01.5818428Z 
+2026-10-31T09:48:01.5818430Z 
+2026-10-31T09:48:01.5818509Z [111] agent/agent assistant.turn_end turnId=16 [untimed]
+2026-10-31T09:48:01.5818754Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5818920Z 
+2026-10-31T09:48:01.5819090Z [112] agent/agent assistant.turn_start turnId=17 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5819431Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5819596Z 
+2026-10-31T09:48:01.5819709Z [113] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5819983Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5820150Z 
+2026-10-31T09:48:01.5820218Z [114] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5820448Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5820615Z 
+2026-10-31T09:48:01.5820793Z [115] agent/agent tool.execution_start toolName=bash toolCallId=call_0xG8Z1SMDx1kgiLSnTQQhgAb [started] [untimed]
+2026-10-31T09:48:01.5821131Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5821530Z ? $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-ui && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5822022Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:ui label valid...
+2026-10-31T09:48:01.5822276Z 
+2026-10-31T09:48:01.5822278Z 
+2026-10-31T09:48:01.5822463Z [116] agent/agent tool.execution_complete toolName=bash toolCallId=call_0xG8Z1SMDx1kgiLSnTQQhgAb [succeeded] [untimed]
+2026-10-31T09:48:01.5822816Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5823247Z ✓ $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-ui && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5823716Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:ui label valid...
+2026-10-31T09:48:01.5824053Z    └ <shellId: 17 completed with exit code 0>
+2026-10-31T09:48:01.5824163Z 
+2026-10-31T09:48:01.5824165Z 
+2026-10-31T09:48:01.5824244Z [117] agent/agent assistant.turn_end turnId=17 [untimed]
+2026-10-31T09:48:01.5824484Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5824739Z 
+2026-10-31T09:48:01.5824995Z [118] agent/agent assistant.turn_start turnId=18 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5825330Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5825493Z 
+2026-10-31T09:48:01.5825606Z [119] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5825885Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5826050Z 
+2026-10-31T09:48:01.5826119Z [120] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5826343Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5826508Z 
+2026-10-31T09:48:01.5826921Z [121] agent/agent tool.execution_start toolName=bash toolCallId=call_6udkB6opPzQP46lNsZRCdsLU [started] [untimed]
+2026-10-31T09:48:01.5827267Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5827587Z ? $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt [pending]
+2026-10-31T09:48:01.5827977Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5828222Z 
+2026-10-31T09:48:01.5828224Z 
+2026-10-31T09:48:01.5828495Z [122] agent/agent tool.execution_complete toolName=bash toolCallId=call_6udkB6opPzQP46lNsZRCdsLU [failed] [untimed]
+2026-10-31T09:48:01.5828846Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5829181Z ✗ $ cat /tmp/gh-aw/agent/triage-labels.json && cat /tmp/gh-aw/agent/triage-comment.txt
+2026-10-31T09:48:01.5829553Z    Arguments: command: cat /tmp/gh-aw/agent/triage-labels.json ..., description: Read validated labels and rendered comme...
+2026-10-31T09:48:01.5829972Z    Error: └ denied: Permission to run this tool was denied due to the following rules: `shel...
+2026-10-31T09:48:01.5830168Z 
+2026-10-31T09:48:01.5830170Z 
+2026-10-31T09:48:01.5830251Z [123] agent/agent assistant.turn_end turnId=18 [untimed]
+2026-10-31T09:48:01.5830490Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5830658Z 
+2026-10-31T09:48:01.5830824Z [124] agent/agent assistant.turn_start turnId=19 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5831161Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5831327Z 
+2026-10-31T09:48:01.5831435Z [125] agent/agent session.usage_record [extension payload omitted] [untimed]
+2026-10-31T09:48:01.5831735Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5831898Z 
+2026-10-31T09:48:01.5831967Z [126] agent/agent assistant.message [untimed]
+2026-10-31T09:48:01.5832190Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5832359Z 
+2026-10-31T09:48:01.5832536Z [127] agent/agent tool.execution_start toolName=bash toolCallId=call_rSkwncmvKT06LUSHdQ02nuTd [started] [untimed]
+2026-10-31T09:48:01.5832874Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5833288Z ? $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-scheduler && scripts/wrappers/triage-comment-none [pending]
+2026-10-31T09:48:01.5833790Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:scheduler labe...
+2026-10-31T09:48:01.5834041Z 
+2026-10-31T09:48:01.5834044Z 
+2026-10-31T09:48:01.5834232Z [128] agent/agent tool.execution_complete toolName=bash toolCallId=call_rSkwncmvKT06LUSHdQ02nuTd [succeeded] [untimed]
+2026-10-31T09:48:01.5834582Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5835028Z ✗ $ scripts/wrappers/triage-label-kind-feature && scripts/wrappers/triage-label-area-scheduler && scripts/wrappers/triage-comment-none
+2026-10-31T09:48:01.5835603Z    Arguments: command: scripts/wrappers/triage-label-kind-featu..., description: Try kind:feature and area:scheduler labe...
+2026-10-31T09:48:01.5835937Z    └ <shellId: 19 completed with exit code 2>
+2026-10-31T09:48:01.5836115Z 
+2026-10-31T09:48:01.5836118Z 
+2026-10-31T09:48:01.5836245Z [129] agent/agent assistant.turn_end turnId=19 [untimed]
+2026-10-31T09:48:01.5836633Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5836992Z 
+2026-10-31T09:48:01.5837258Z [130] agent/agent assistant.turn_start turnId=20 interactionId=30140a0e-c1cd-4a5c-9296-0cd34eb8aba1 [untimed]
+2026-10-31T09:48:01.5837592Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5837759Z 
+2026-10-31T09:48:01.5837838Z [131] agent/agent assistant.turn_end turnId=20 [untimed]
+2026-10-31T09:48:01.5838079Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5838250Z 
+2026-10-31T09:48:01.5838996Z [132] agent/agent session.error errorType=rate_limit statusCode=429 message=Failed to get response from the AI model; retried 5 times (total retry wait time: 55.11 seconds) Last error: 429 Maximum LLM invocations exceeded (20 / 20): the shared per-run max-turns budget, including sub-agents, is exhausted. For gh-aw workflows, increase max-turns in workflow frontmatter and recompile; retrying within this run cannot restore the budget. [untimed]
+2026-10-31T09:48:01.5840013Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5840182Z 
+2026-10-31T09:48:01.5840245Z [133] agent/agent session.result  [untimed]
+2026-10-31T09:48:01.5840572Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017
+2026-10-31T09:48:01.5840831Z 
+2026-10-31T09:48:01.5841070Z [134] agent/agent session.shutdown shutdownType=routine currentModel=gpt-4.1 premiumRequests=0 totalApiDurationMs=22307 totalNanoAiu=0 [untimed]
+2026-10-31T09:48:01.5841576Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl
+2026-10-31T09:48:01.5841841Z 
+2026-10-31T09:48:01.5841979Z [135] agent/agent session.result durationMs=78964 [untimed]
+2026-10-31T09:48:01.5842533Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017
+2026-10-31T09:48:01.5842957Z 
+2026-10-31T09:48:01.5843086Z [136] agent/agent session.result numTurns=21 [untimed]
+2026-10-31T09:48:01.5843637Z   path=copilot-session-state/a8c1c58c-e692-4704-98b1-9ad4971a2017/events.jsonl sessionId=a8c1c58c-e692-4704-98b1-9ad4971a2017

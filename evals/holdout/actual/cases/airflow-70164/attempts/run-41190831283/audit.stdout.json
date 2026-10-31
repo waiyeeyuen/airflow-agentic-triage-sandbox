@@ -1,0 +1,2237 @@
+{
+  "schema_version": 10,
+  "cache_source": "full",
+  "overview": {
+    "run_id": 41190831283,
+    "workflow_name": "Bounded Airflow issue triage",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-10-31T09:58:32Z",
+    "started_at": "2026-10-31T09:58:32Z",
+    "updated_at": "2026-10-31T10:04:08Z",
+    "duration": "5.6m",
+    "event": "workflow_dispatch",
+    "branch": "holdout-eval",
+    "url": "https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41190831283",
+    "logs_path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283"
+  },
+  "comparison": {
+    "baseline_found": false
+  },
+  "task_domain": {
+    "name": "triage",
+    "label": "Triage",
+    "reason": "The run focused on classification, routing, or issue state updates."
+  },
+  "behavior_fingerprint": {
+    "execution_style": "adaptive",
+    "tool_breadth": "moderate",
+    "actuation_style": "read_only",
+    "resource_profile": "moderate",
+    "dispatch_mode": "standalone",
+    "agentic_fraction": 1
+  },
+  "agentic_assessments": [
+    {
+      "kind": "model_downgrade_available",
+      "severity": "low",
+      "summary": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost.",
+      "evidence": "domain=triage resource_profile=moderate actuation=read_only",
+      "recommendation": "Try engine.model: gpt-4.1-mini or claude-haiku-4-5 in the workflow frontmatter."
+    }
+  ],
+  "metrics": {
+    "token_usage": 92250,
+    "aic": 7.6068,
+    "ambient_context": {
+      "input_tokens": 17422,
+      "cached_tokens": 0
+    },
+    "working_set": {
+      "measurement_state": "measured",
+      "rebuild_factor": 1.0975777752267248,
+      "cumulative_input_tokens": 19122,
+      "peak_input_tokens": 17422,
+      "rebuild_excess_tokens": 1700,
+      "invocations": 5
+    },
+    "action_minutes": 6,
+    "turns": 1,
+    "error_count": 0,
+    "warning_count": 0
+  },
+  "key_findings": [
+    {
+      "code": "threat_detection_job_failed",
+      "category": "security",
+      "severity": "high",
+      "title": "Threat Detection Job Failed",
+      "description": "Usage artifact evidence indicates the threat-detection job did not start",
+      "impact": "Safe outputs may have been blocked because the security control did not run",
+      "playbook_url": "https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#audit-findings"
+    },
+    {
+      "code": "high_token_usage",
+      "category": "performance",
+      "severity": "medium",
+      "title": "High Token Usage",
+      "description": "Used 92.2k tokens",
+      "impact": "High token usage may indicate verbose outputs or inefficient prompts",
+      "playbook_url": "https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#audit-findings"
+    },
+    {
+      "code": "workflow_succeeded",
+      "category": "success",
+      "severity": "info",
+      "title": "Workflow Completed Successfully",
+      "description": "Completed in 1 turns with no reported workflow errors",
+      "impact": "No action needed",
+      "playbook_url": "https://github.com/github/gh-aw/blob/main/.github/aw/debug-playbook.md#audit-findings"
+    },
+    {
+      "code": "agentic_model_downgrade_available",
+      "category": "optimization",
+      "severity": "low",
+      "title": "Cheaper Model Available",
+      "description": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost.",
+      "impact": "A smaller model could reduce per-run cost significantly for this task domain"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "low",
+      "action": "Monitor workflow performance over time",
+      "reason": "Tracking metrics helps identify trends and optimization opportunities",
+      "example": "Run 'gh aw logs' periodically to review cost and performance trends"
+    },
+    {
+      "priority": "medium",
+      "action": "Try engine.model: gpt-4.1-mini or claude-haiku-4-5 in the workflow frontmatter.",
+      "reason": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost."
+    }
+  ],
+  "observability_insights": [
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Adaptive execution path",
+      "summary": "The run stayed moderately dynamic with 1 turns and 5 tool types.",
+      "evidence": "turns=1 tool_types=5"
+    },
+    {
+      "category": "actuation",
+      "severity": "info",
+      "title": "Read-only posture observed",
+      "summary": "The workflow stayed in an analysis posture and did not emit any GitHub write actions.",
+      "evidence": "created_items=0 safe_items=0"
+    },
+    {
+      "category": "network",
+      "severity": "info",
+      "title": "Network policy aligned",
+      "summary": "The firewall observed 14 request(s) with 0 blocked, for a 0% block rate.",
+      "evidence": "blocked=0 total=14"
+    },
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Log template patterns mined",
+      "summary": "Analysis identified 4 distinct event templates across 6 pipeline stages from 8 events.",
+      "evidence": "plan=1 tool_call=1 tool_result=1 finish=1"
+    },
+    {
+      "category": "reliability",
+      "severity": "medium",
+      "title": "2 anomalous event pattern(s) detected",
+      "summary": "Anomaly detection flagged 2 event(s) as unusual based on template similarity and cluster rarity.",
+      "evidence": "stage=tool_call score=0.65: new log template discovered; rare cluster (few observations); stage=tool_result score=0.65: new log template discovered; rare cluster (few observations)"
+    },
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Agent stage sequence",
+      "summary": "The observed pipeline stage sequence for this run.",
+      "evidence": "plan tool_call tool_call tool_call tool_call tool_call tool_result finish"
+    }
+  ],
+  "performance_metrics": {
+    "tokens_per_minute": 16473.214285714286,
+    "most_used_tool": "bash (2 calls)",
+    "network_requests": 14
+  },
+  "engine_config": {
+    "engine_id": "copilot",
+    "engine_name": "GitHub Copilot CLI",
+    "model": "gpt-4.1",
+    "requested_model": "gpt-4.1",
+    "version": "1.0.103",
+    "cli_version": "v1.0.1",
+    "firewall_version": "v0.29.0",
+    "trigger_event": "workflow_dispatch",
+    "repository": "waiyeeyuen/airflow-agentic-triage-sandbox",
+    "dry_run": false
+  },
+  "prompt_analysis": {
+    "prompt_size": 10707,
+    "prompt_file": "aw-prompts\\prompt.txt"
+  },
+  "session_analysis": {
+    "wall_time": "5.6m",
+    "turn_count": 1,
+    "avg_turn_duration": "5.6m",
+    "tokens_per_minute": 16473.214285714286,
+    "timeout_detected": false
+  },
+  "safe_output_summary": {
+    "total_items": 0,
+    "items_by_type": {},
+    "summary": "No items",
+    "temporary_id_map_status": "loaded"
+  },
+  "mcp_server_health": {
+    "total_servers": 1,
+    "healthy_servers": 1,
+    "degraded_servers": 0,
+    "failed_servers": 0,
+    "summary": "1 server(s), 1 healthy, 0 degraded, 0 failed",
+    "total_requests": 1,
+    "total_errors": 0,
+    "error_rate": 0,
+    "servers": [
+      {
+        "server_name": "safeoutputs",
+        "request_count": 1,
+        "tool_calls": 1,
+        "error_count": 0,
+        "error_rate": 0,
+        "error_rate_str": "0.0%",
+        "avg_latency": "0ns",
+        "status": "✅ healthy"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "name": "pre_activation",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "39.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:58:37Z",
+          "completed_at": "2026-10-31T09:59:10Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:59:10Z",
+          "completed_at": "2026-10-31T09:59:13Z"
+        },
+        {
+          "name": "Check team membership for workflow",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:59:13Z",
+          "completed_at": "2026-10-31T09:59:14Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:59:14Z",
+          "completed_at": "2026-10-31T09:59:14Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:59:14Z",
+          "completed_at": "2026-10-31T09:59:14Z"
+        }
+      ]
+    },
+    {
+      "name": "activation",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "44.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T09:59:21Z",
+          "completed_at": "2026-10-31T09:59:43Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T09:59:43Z",
+          "completed_at": "2026-10-31T09:59:50Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T09:59:50Z",
+          "completed_at": "2026-10-31T09:59:50Z"
+        },
+        {
+          "name": "Generate agentic run info",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T09:59:50Z",
+          "completed_at": "2026-10-31T09:59:50Z"
+        },
+        {
+          "name": "Restore daily AIC scan observations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T09:59:50Z",
+          "completed_at": "2026-10-31T09:59:50Z"
+        },
+        {
+          "name": "Check daily workflow token guardrail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T09:59:50Z",
+          "completed_at": "2026-10-31T09:59:50Z"
+        },
+        {
+          "name": "Publish daily AIC scan observations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T09:59:50Z",
+          "completed_at": "2026-10-31T09:59:51Z"
+        },
+        {
+          "name": "Validate COPILOT_GITHUB_TOKEN secret",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T09:59:51Z",
+          "completed_at": "2026-10-31T09:59:51Z"
+        },
+        {
+          "name": "Check for OAuth tokens",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T09:59:51Z",
+          "completed_at": "2026-10-31T09:59:51Z"
+        },
+        {
+          "name": "Checkout .github and .agents folders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T09:59:51Z",
+          "completed_at": "2026-10-31T09:59:54Z"
+        },
+        {
+          "name": "Save agent config folders for base branch restoration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T09:59:54Z",
+          "completed_at": "2026-10-31T09:59:54Z"
+        },
+        {
+          "name": "Check workflow lock file",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T09:59:54Z",
+          "completed_at": "2026-10-31T09:59:55Z"
+        },
+        {
+          "name": "Check compile-agentic version",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T09:59:55Z",
+          "completed_at": "2026-10-31T09:59:55Z"
+        },
+        {
+          "name": "Compute current body text",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T09:59:55Z",
+          "completed_at": "2026-10-31T09:59:56Z"
+        },
+        {
+          "name": "Log runtime features",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-31T09:59:56Z",
+          "completed_at": "2026-10-31T09:59:56Z"
+        },
+        {
+          "name": "Create prompt with built-in context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T09:59:56Z",
+          "completed_at": "2026-10-31T09:59:56Z"
+        },
+        {
+          "name": "Interpolate variables and render templates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T09:59:56Z",
+          "completed_at": "2026-10-31T09:59:56Z"
+        },
+        {
+          "name": "Substitute placeholders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-31T09:59:56Z",
+          "completed_at": "2026-10-31T09:59:57Z"
+        },
+        {
+          "name": "Validate prompt placeholders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-31T09:59:57Z",
+          "completed_at": "2026-10-31T09:59:57Z"
+        },
+        {
+          "name": "Print prompt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-31T09:59:57Z",
+          "completed_at": "2026-10-31T09:59:57Z"
+        },
+        {
+          "name": "Inventory installed skills",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-31T09:59:57Z",
+          "completed_at": "2026-10-31T09:59:57Z"
+        },
+        {
+          "name": "Upload info artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-31T09:59:57Z",
+          "completed_at": "2026-10-31T09:59:58Z"
+        },
+        {
+          "name": "Stage prompt files for artifact upload",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-31T09:59:58Z",
+          "completed_at": "2026-10-31T09:59:58Z"
+        },
+        {
+          "name": "Upload activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-31T09:59:58Z",
+          "completed_at": "2026-10-31T10:00:00Z"
+        },
+        {
+          "name": "Post Checkout .github and .agents folders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47,
+          "started_at": "2026-10-31T10:00:00Z",
+          "completed_at": "2026-10-31T10:00:00Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 48,
+          "started_at": "2026-10-31T10:00:00Z",
+          "completed_at": "2026-10-31T10:00:01Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 49,
+          "started_at": "2026-10-31T10:00:01Z",
+          "completed_at": "2026-10-31T10:00:01Z"
+        }
+      ]
+    },
+    {
+      "name": "agent",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "1.6m",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T10:00:06Z",
+          "completed_at": "2026-10-31T10:00:17Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T10:00:17Z",
+          "completed_at": "2026-10-31T10:00:21Z"
+        },
+        {
+          "name": "Set runtime paths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T10:00:21Z",
+          "completed_at": "2026-10-31T10:00:21Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T10:00:21Z",
+          "completed_at": "2026-10-31T10:00:21Z"
+        },
+        {
+          "name": "Check OTLP telemetry configuration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T10:00:21Z",
+          "completed_at": "2026-10-31T10:00:21Z"
+        },
+        {
+          "name": "Checkout repository (gh-aw default)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T10:00:21Z",
+          "completed_at": "2026-10-31T10:00:22Z"
+        },
+        {
+          "name": "Initialize agent execution evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T10:00:22Z",
+          "completed_at": "2026-10-31T10:00:22Z"
+        },
+        {
+          "name": "Create gh-aw temp directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T10:00:22Z",
+          "completed_at": "2026-10-31T10:00:22Z"
+        },
+        {
+          "name": "Configure gh CLI for GitHub Enterprise",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T10:00:22Z",
+          "completed_at": "2026-10-31T10:00:22Z"
+        },
+        {
+          "name": "Download activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T10:00:22Z",
+          "completed_at": "2026-10-31T10:00:23Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T10:00:23Z",
+          "completed_at": "2026-10-31T10:00:23Z"
+        },
+        {
+          "name": "Checkout PR branch",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T10:00:23Z",
+          "completed_at": "2026-10-31T10:00:24Z"
+        },
+        {
+          "name": "Install GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T10:00:24Z",
+          "completed_at": "2026-10-31T10:00:26Z"
+        },
+        {
+          "name": "Install AWF binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T10:00:26Z",
+          "completed_at": "2026-10-31T10:00:27Z"
+        },
+        {
+          "name": "Restore agent config folders from base branch",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-31T10:00:27Z",
+          "completed_at": "2026-10-31T10:00:27Z"
+        },
+        {
+          "name": "Restore inline sub-agents from activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T10:00:27Z",
+          "completed_at": "2026-10-31T10:00:27Z"
+        },
+        {
+          "name": "Restore inline skills from activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T10:00:27Z",
+          "completed_at": "2026-10-31T10:00:27Z"
+        },
+        {
+          "name": "Prepare triggering issue input",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-31T10:00:27Z",
+          "completed_at": "2026-10-31T10:00:27Z"
+        },
+        {
+          "name": "Prepare dispatched evaluation input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-31T10:00:27Z",
+          "completed_at": "2026-10-31T10:00:27Z"
+        },
+        {
+          "name": "Download container images",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-31T10:00:27Z",
+          "completed_at": "2026-10-31T10:00:40Z"
+        },
+        {
+          "name": "Prepare Safe Outputs Directories",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-31T10:00:40Z",
+          "completed_at": "2026-10-31T10:00:40Z"
+        },
+        {
+          "name": "Generate Safe Outputs Config",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-31T10:00:40Z",
+          "completed_at": "2026-10-31T10:00:40Z"
+        },
+        {
+          "name": "Generate Safe Outputs Tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-31T10:00:40Z",
+          "completed_at": "2026-10-31T10:00:41Z"
+        },
+        {
+          "name": "Start MCP Gateway",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-31T10:00:41Z",
+          "completed_at": "2026-10-31T10:00:46Z"
+        },
+        {
+          "name": "Mount MCP servers as CLIs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-31T10:00:46Z",
+          "completed_at": "2026-10-31T10:00:46Z"
+        },
+        {
+          "name": "Clean credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-31T10:00:46Z",
+          "completed_at": "2026-10-31T10:00:46Z"
+        },
+        {
+          "name": "Audit pre-agent workspace",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-31T10:00:46Z",
+          "completed_at": "2026-10-31T10:00:46Z"
+        },
+        {
+          "name": "Execute GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-31T10:00:46Z",
+          "completed_at": "2026-10-31T10:01:29Z"
+        },
+        {
+          "name": "Detect agent errors",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-31T10:01:29Z",
+          "completed_at": "2026-10-31T10:01:29Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-10-31T10:01:29Z",
+          "completed_at": "2026-10-31T10:01:29Z"
+        },
+        {
+          "name": "Copy Copilot session state files to logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-31T10:01:29Z",
+          "completed_at": "2026-10-31T10:01:29Z"
+        },
+        {
+          "name": "Stop MCP Gateway",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32,
+          "started_at": "2026-10-31T10:01:29Z",
+          "completed_at": "2026-10-31T10:01:30Z"
+        },
+        {
+          "name": "Redact secrets in logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-10-31T10:01:30Z",
+          "completed_at": "2026-10-31T10:01:30Z"
+        },
+        {
+          "name": "Append agent step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-10-31T10:01:30Z",
+          "completed_at": "2026-10-31T10:01:30Z"
+        },
+        {
+          "name": "Copy Safe Outputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-10-31T10:01:30Z",
+          "completed_at": "2026-10-31T10:01:30Z"
+        },
+        {
+          "name": "Ingest agent output",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36,
+          "started_at": "2026-10-31T10:01:30Z",
+          "completed_at": "2026-10-31T10:01:30Z"
+        },
+        {
+          "name": "Parse agent logs for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-10-31T10:01:30Z",
+          "completed_at": "2026-10-31T10:01:31Z"
+        },
+        {
+          "name": "Parse MCP Gateway logs for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-31T10:01:31Z",
+          "completed_at": "2026-10-31T10:01:31Z"
+        },
+        {
+          "name": "Print firewall logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-31T10:01:31Z",
+          "completed_at": "2026-10-31T10:01:31Z"
+        },
+        {
+          "name": "Parse token usage for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-31T10:01:31Z",
+          "completed_at": "2026-10-31T10:01:31Z"
+        },
+        {
+          "name": "Print AWF reflect summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-31T10:01:31Z",
+          "completed_at": "2026-10-31T10:01:32Z"
+        },
+        {
+          "name": "Generate observability summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-10-31T10:01:32Z",
+          "completed_at": "2026-10-31T10:01:32Z"
+        },
+        {
+          "name": "Write agent output placeholder if missing",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-10-31T10:01:32Z",
+          "completed_at": "2026-10-31T10:01:32Z"
+        },
+        {
+          "name": "Upload agent output fallback artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-10-31T10:01:32Z",
+          "completed_at": "2026-10-31T10:01:33Z"
+        },
+        {
+          "name": "Upload agent artifacts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-10-31T10:01:33Z",
+          "completed_at": "2026-10-31T10:01:35Z"
+        },
+        {
+          "name": "Post Checkout repository (gh-aw default)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 89,
+          "started_at": "2026-10-31T10:01:35Z",
+          "completed_at": "2026-10-31T10:01:35Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 90,
+          "started_at": "2026-10-31T10:01:35Z",
+          "completed_at": "2026-10-31T10:01:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 91,
+          "started_at": "2026-10-31T10:01:35Z",
+          "completed_at": "2026-10-31T10:01:35Z"
+        }
+      ]
+    },
+    {
+      "name": "detection",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "54.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T10:01:52Z",
+          "completed_at": "2026-10-31T10:02:15Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T10:02:15Z",
+          "completed_at": "2026-10-31T10:02:19Z"
+        },
+        {
+          "name": "Download activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T10:02:19Z",
+          "completed_at": "2026-10-31T10:02:20Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T10:02:20Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Clear agent token usage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Checkout repository for patch context",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Initialize detection execution evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Clear inherited Copilot session state",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Clean stale firewall files from agent artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:21Z"
+        },
+        {
+          "name": "Download container images",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T10:02:21Z",
+          "completed_at": "2026-10-31T10:02:34Z"
+        },
+        {
+          "name": "Check if detection needed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T10:02:34Z",
+          "completed_at": "2026-10-31T10:02:34Z"
+        },
+        {
+          "name": "Clear MCP Config for detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T10:02:34Z",
+          "completed_at": "2026-10-31T10:02:34Z"
+        },
+        {
+          "name": "Prepare threat detection files",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T10:02:34Z",
+          "completed_at": "2026-10-31T10:02:34Z"
+        },
+        {
+          "name": "Check out validator source without credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-31T10:02:34Z",
+          "completed_at": "2026-10-31T10:02:35Z"
+        },
+        {
+          "name": "Deterministically validate proposed labels and comment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T10:02:35Z",
+          "completed_at": "2026-10-31T10:02:35Z"
+        },
+        {
+          "name": "Setup threat detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T10:02:35Z",
+          "completed_at": "2026-10-31T10:02:36Z"
+        },
+        {
+          "name": "Ensure threat-detection directory and log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-31T10:02:36Z",
+          "completed_at": "2026-10-31T10:02:36Z"
+        },
+        {
+          "name": "Install AWF binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-31T10:02:36Z",
+          "completed_at": "2026-10-31T10:02:36Z"
+        },
+        {
+          "name": "Setup Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-31T10:02:36Z",
+          "completed_at": "2026-10-31T10:02:37Z"
+        },
+        {
+          "name": "Install GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-31T10:02:37Z",
+          "completed_at": "2026-10-31T10:02:40Z"
+        },
+        {
+          "name": "Install threat-detect binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-31T10:02:40Z",
+          "completed_at": "2026-10-31T10:02:41Z"
+        },
+        {
+          "name": "Copy detection firewall logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-31T10:02:41Z",
+          "completed_at": "2026-10-31T10:02:41Z"
+        },
+        {
+          "name": "Redact secrets in detection logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-31T10:02:41Z",
+          "completed_at": "2026-10-31T10:02:41Z"
+        },
+        {
+          "name": "Parse threat detection token usage for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-31T10:02:41Z",
+          "completed_at": "2026-10-31T10:02:41Z"
+        },
+        {
+          "name": "Redact secrets in detection artifacts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-31T10:02:41Z",
+          "completed_at": "2026-10-31T10:02:41Z"
+        },
+        {
+          "name": "Render detection log",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-31T10:02:41Z",
+          "completed_at": "2026-10-31T10:02:41Z"
+        },
+        {
+          "name": "Upload threat detection artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-31T10:02:41Z",
+          "completed_at": "2026-10-31T10:02:42Z"
+        },
+        {
+          "name": "Conclude threat detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-31T10:02:42Z",
+          "completed_at": "2026-10-31T10:02:42Z"
+        },
+        {
+          "name": "Upload skipped detection execution evidence",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 30,
+          "started_at": "2026-10-31T10:02:42Z",
+          "completed_at": "2026-10-31T10:02:42Z"
+        },
+        {
+          "name": "Post Setup Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 58,
+          "started_at": "2026-10-31T10:02:42Z",
+          "completed_at": "2026-10-31T10:02:43Z"
+        },
+        {
+          "name": "Post Check out validator source without credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 59,
+          "started_at": "2026-10-31T10:02:43Z",
+          "completed_at": "2026-10-31T10:02:43Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 60,
+          "started_at": "2026-10-31T10:02:43Z",
+          "completed_at": "2026-10-31T10:02:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 61,
+          "started_at": "2026-10-31T10:02:43Z",
+          "completed_at": "2026-10-31T10:02:43Z"
+        }
+      ]
+    },
+    {
+      "name": "safe_outputs",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "35.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T10:02:49Z",
+          "completed_at": "2026-10-31T10:03:13Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T10:03:13Z",
+          "completed_at": "2026-10-31T10:03:17Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T10:03:17Z",
+          "completed_at": "2026-10-31T10:03:17Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T10:03:17Z",
+          "completed_at": "2026-10-31T10:03:18Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T10:03:18Z",
+          "completed_at": "2026-10-31T10:03:18Z"
+        },
+        {
+          "name": "Configure GH_HOST for enterprise compatibility",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-31T10:03:18Z",
+          "completed_at": "2026-10-31T10:03:18Z"
+        },
+        {
+          "name": "Process Safe Outputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T10:03:18Z",
+          "completed_at": "2026-10-31T10:03:19Z"
+        },
+        {
+          "name": "Upload Safe Outputs Items",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T10:03:19Z",
+          "completed_at": "2026-10-31T10:03:20Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T10:03:20Z",
+          "completed_at": "2026-10-31T10:03:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T10:03:20Z",
+          "completed_at": "2026-10-31T10:03:20Z"
+        }
+      ]
+    },
+    {
+      "name": "conclusion",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "41.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-31T10:03:29Z",
+          "completed_at": "2026-10-31T10:03:51Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-31T10:03:51Z",
+          "completed_at": "2026-10-31T10:03:58Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-31T10:03:58Z",
+          "completed_at": "2026-10-31T10:03:59Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-31T10:03:59Z",
+          "completed_at": "2026-10-31T10:03:59Z"
+        },
+        {
+          "name": "Restore runtime model metadata",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-31T10:03:59Z",
+          "completed_at": "2026-10-31T10:03:59Z"
+        },
+        {
+          "name": "Warn if threat detection produced no verdict",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-31T10:03:59Z",
+          "completed_at": "2026-10-31T10:03:59Z"
+        },
+        {
+          "name": "Download detection artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-31T10:03:59Z",
+          "completed_at": "2026-10-31T10:04:00Z"
+        },
+        {
+          "name": "Download Safe Outputs Items Manifest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-31T10:04:00Z",
+          "completed_at": "2026-10-31T10:04:01Z"
+        },
+        {
+          "name": "Process no-op messages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-31T10:04:01Z",
+          "completed_at": "2026-10-31T10:04:01Z"
+        },
+        {
+          "name": "Log detection run",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-31T10:04:01Z",
+          "completed_at": "2026-10-31T10:04:02Z"
+        },
+        {
+          "name": "Record missing tool",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-31T10:04:02Z",
+          "completed_at": "2026-10-31T10:04:02Z"
+        },
+        {
+          "name": "Record incomplete",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-31T10:04:02Z",
+          "completed_at": "2026-10-31T10:04:02Z"
+        },
+        {
+          "name": "Handle agent failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-31T10:04:02Z",
+          "completed_at": "2026-10-31T10:04:02Z"
+        },
+        {
+          "name": "Report failed jobs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-31T10:04:02Z",
+          "completed_at": "2026-10-31T10:04:03Z"
+        },
+        {
+          "name": "Collect usage artifact files",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-31T10:04:03Z",
+          "completed_at": "2026-10-31T10:04:03Z"
+        },
+        {
+          "name": "Generate usage activity summary and unified session",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-31T10:04:03Z",
+          "completed_at": "2026-10-31T10:04:05Z"
+        },
+        {
+          "name": "Upload usage artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-31T10:04:05Z",
+          "completed_at": "2026-10-31T10:04:06Z"
+        },
+        {
+          "name": "Wait before retrying usage artifact upload",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-31T10:04:06Z",
+          "completed_at": "2026-10-31T10:04:06Z"
+        },
+        {
+          "name": "Retry upload usage artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-31T10:04:06Z",
+          "completed_at": "2026-10-31T10:04:06Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-31T10:04:06Z",
+          "completed_at": "2026-10-31T10:04:06Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-31T10:04:06Z",
+          "completed_at": "2026-10-31T10:04:06Z"
+        }
+      ]
+    }
+  ],
+  "downloaded_files": [
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\.downloaded-artifacts\\all",
+      "size": 0,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent\\harness_retry.json",
+      "size": 98,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent\\model-resolution.json",
+      "size": 188,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent-errors.jsonl",
+      "size": 97,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent-session.jsonl",
+      "size": 91201,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent-stdio.log",
+      "size": 15522,
+      "description": "Agent standard output/error logs"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent_execution.json",
+      "size": 89,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent_execution_exit_code.txt",
+      "size": 1,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent_output.json",
+      "size": 146,
+      "description": "Validated safe outputs"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\agent_usage.json",
+      "size": 162,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\aw-prompts\\prompt-import-tree.json",
+      "size": 11157,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\aw-prompts\\prompt-template.txt",
+      "size": 9028,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\aw-prompts\\prompt.txt",
+      "size": 10707,
+      "description": "Input prompt for AI agent"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\aw-prompts\\system.txt",
+      "size": 9011,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\aw-prompts\\user.txt",
+      "size": 1696,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\aw_info.json",
+      "size": 1686,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\awf-config.json",
+      "size": 5854,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\detection\\detection_result.json",
+      "size": 119,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\detection\\detection_usage.json",
+      "size": 52,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\detection\\detection_usage.jsonl",
+      "size": 38,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\detection\\execution.json",
+      "size": 97,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\github_rate_limits.jsonl",
+      "size": 686,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\jobs.json",
+      "size": 30515,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\configuration.jsonl",
+      "size": 138,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\gateway.md",
+      "size": 2001,
+      "description": "Markdown documentation"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\mcp-gateway.log",
+      "size": 39781,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\observed-url-domains.json",
+      "size": 2,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\rpc-messages.jsonl",
+      "size": 13895,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\safeoutputs.log",
+      "size": 4650,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\mcp-logs\\tools.json",
+      "size": 4395,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\models.json",
+      "size": 18631,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\otel.jsonl",
+      "size": 3575,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\pre-agent-audit.txt",
+      "size": 79826,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\runtime\\aw_info.json",
+      "size": 1906,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\safe-output-items.jsonl",
+      "size": 0,
+      "description": "Created items manifest (audit trail)"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\safe-output-outcomes.jsonl",
+      "size": 106,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\safeoutputs.jsonl",
+      "size": 123,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\agent\\logs\\copilot-model-selection.json",
+      "size": 105,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\agent\\logs\\copilot-session-state\\2bee365a-ae14-436e-b991-7d27d89ae14d\\checkpoints\\index.md",
+      "size": 172,
+      "description": "Markdown documentation"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\agent\\logs\\copilot-session-state\\2bee365a-ae14-436e-b991-7d27d89ae14d\\events.jsonl",
+      "size": 79972,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\agent\\logs\\copilot-session-state\\2bee365a-ae14-436e-b991-7d27d89ae14d\\rewind-file-snapshots\\tracking.json",
+      "size": 29,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\agent\\logs\\process-1793440874488-1804.log",
+      "size": 391672,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\audit\\awf-resolved-config.json",
+      "size": 14093,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\audit\\docker-compose.redacted.yml",
+      "size": 28103,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\audit\\image-manifest.json",
+      "size": 528,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\audit\\policy-manifest.json",
+      "size": 4198,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\audit\\sensitive-paths.json",
+      "size": 1378,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\audit\\squid.conf",
+      "size": 12779,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\awf-reflect.json",
+      "size": 39736,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\access.log",
+      "size": 3339,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\api-proxy-logs\\agent-runtime\\started-at-ms",
+      "size": 14,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\api-proxy-logs\\models.json",
+      "size": 19697,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\api-proxy-logs\\otel.jsonl",
+      "size": 4948,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\api-proxy-logs\\token-tracker-audit.jsonl",
+      "size": 1968,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\api-proxy-logs\\token-usage.jsonl",
+      "size": 3135,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\audit.jsonl",
+      "size": 6671,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\sandbox\\firewall\\logs\\cache.log",
+      "size": 5051,
+      "description": "Log file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\skill_inventory.json",
+      "size": 29,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\temporary-id-map.json",
+      "size": 3,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\activity\\summary.json",
+      "size": 5888,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\agent\\execution.json",
+      "size": 89,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\agent\\harness_retry.json",
+      "size": 98,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\agent\\token_usage.jsonl",
+      "size": 3135,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\agent_usage.json",
+      "size": 162,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\aw_info.json",
+      "size": 1906,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\aw_session.jsonl",
+      "size": 136811,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\detection\\execution.json",
+      "size": 97,
+      "description": "JSON data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\detection\\token_usage.jsonl",
+      "size": 0,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\detection_usage.jsonl",
+      "size": 38,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\github_rate_limits.jsonl",
+      "size": 7371,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\graders\\grader_manifest.json",
+      "size": 2813,
+      "description": "Grader manifest (configured graders and thresholds)"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\usage\\graders\\grader_results.json",
+      "size": 3732,
+      "description": "Deterministic grader results for the run"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\.complete",
+      "size": 25,
+      "description": ""
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\0_conclusion.txt",
+      "size": 116304,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\1_safe_outputs.txt",
+      "size": 36440,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\2_detection.txt",
+      "size": 82067,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\3_agent.txt",
+      "size": 303976,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\4_activation.txt",
+      "size": 88818,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\5_pre_activation.txt",
+      "size": 8345,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\activation\\system.txt",
+      "size": 811,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\agent\\system.txt",
+      "size": 752,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\conclusion\\system.txt",
+      "size": 1726,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\detection\\system.txt",
+      "size": 729,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\pre_activation\\system.txt",
+      "size": 733,
+      "description": "Text file"
+    },
+    {
+      "path": "C:\\Users\\yuenw\\Documents\\y3 sem 1\\open source\\assignment3\\h\\evals\\holdout\\actual\\cases\\airflow-70164\\attempts\\run-41190831283\\audit\\run-41190831283\\workflow-logs\\safe_outputs\\system.txt",
+      "size": 807,
+      "description": "Text file"
+    }
+  ],
+  "noops": [
+    {
+      "message": "Airflow issue triage complete: No labels or comment needed for this issue. No action required.",
+      "timestamp": "",
+      "workflow_name": "Bounded Airflow issue triage",
+      "run_id": 41190831283
+    }
+  ],
+  "skill_activations": [
+    {
+      "name": "airflow-issue-triage",
+      "status": "invoked",
+      "source": "log_parse",
+      "invocation_count": 1,
+      "timestamp": "",
+      "workflow_name": "Bounded Airflow issue triage",
+      "run_id": 41190831283
+    }
+  ],
+  "firewall_token_usage": {
+    "total_input_tokens": 19122,
+    "total_output_tokens": 168,
+    "total_cache_read_tokens": 72960,
+    "total_cache_write_tokens": 0,
+    "total_requests": 5,
+    "total_duration_ms": 11331,
+    "total_response_bytes": 38228,
+    "cache_efficiency": 0,
+    "total_aic": 7.6068,
+    "ambient_context": {
+      "input_tokens": 17422,
+      "cached_tokens": 0
+    },
+    "by_model": {
+      "gpt-4.1-2025-04-14": {
+        "provider": "copilot",
+        "input_tokens": 19122,
+        "output_tokens": 168,
+        "cache_read_tokens": 72960,
+        "cache_write_tokens": 0,
+        "requests": 5,
+        "duration_ms": 11331,
+        "response_bytes": 38228,
+        "aic": 7.6068
+      }
+    },
+    "agent_usage": [
+      {
+        "agent_name": "main",
+        "agent_type": "main",
+        "source_engine": "copilot",
+        "instance_count": 1,
+        "served_models": [
+          "gpt-4.1",
+          "gpt-4.1-2025-04-14"
+        ],
+        "requests": 5,
+        "input_tokens": 92082,
+        "output_tokens": 168,
+        "cache_read_tokens": 72960,
+        "cache_write_tokens": 0,
+        "total_api_duration_ms": 11398,
+        "models": [
+          {
+            "model": "gpt-4.1",
+            "resolved_model": "gpt-4.1",
+            "requests": 5,
+            "input_tokens": 92082,
+            "output_tokens": 168,
+            "cache_read_tokens": 72960,
+            "cache_write_tokens": 0
+          }
+        ]
+      }
+    ]
+  },
+  "github_rate_limit_usage": {
+    "total_requests_made": 3,
+    "core_consumed": 2,
+    "core_consumed_source": "response_headers_delta",
+    "core_remaining": 4980,
+    "core_limit": 5000,
+    "resources": [
+      {
+        "resource": "core",
+        "requests_made": 3,
+        "quota_consumed": 2,
+        "final_remaining": 4980,
+        "limit": 5000
+      }
+    ]
+  },
+  "firewall_analysis": {
+    "allowed_domains": [
+      "api.github.com:443",
+      "api.githubcopilot.com:443"
+    ],
+    "total_requests": 14,
+    "allowed_requests": 14,
+    "blocked_requests": 0,
+    "requests_by_domain": {
+      "api.github.com:443": {
+        "allowed": 7,
+        "blocked": 0
+      },
+      "api.githubcopilot.com:443": {
+        "allowed": 7,
+        "blocked": 0
+      }
+    }
+  },
+  "policy_analysis": {
+    "policy_summary": "9 rules, SSL Bump disabled, DLP disabled",
+    "rule_hits": [],
+    "total_requests": 0,
+    "allowed_count": 0,
+    "denied_count": 0,
+    "unique_domains": 0
+  },
+  "tool_usage": [
+    {
+      "name": "bash",
+      "call_count": 2
+    },
+    {
+      "name": "safeoutputs-noop",
+      "call_count": 1
+    },
+    {
+      "name": "safeoutputs.noop",
+      "call_count": 1,
+      "max_input_size": 108
+    },
+    {
+      "name": "skill",
+      "call_count": 1
+    },
+    {
+      "name": "skill:airflow-issue-triage",
+      "call_count": 1
+    }
+  ],
+  "mcp_tool_usage": {
+    "summary": [
+      {
+        "server_name": "safeoutputs",
+        "tool_name": "noop",
+        "call_count": 1,
+        "total_input_size": 108,
+        "total_output_size": 0,
+        "avg_input_size": 108,
+        "max_input_size": 108,
+        "max_output_size": 0
+      }
+    ],
+    "tool_calls": [
+      {
+        "timestamp": "2026-10-31T10:01:24.986Z",
+        "server_name": "safeoutputs",
+        "tool_name": "noop",
+        "input_size": 0,
+        "output_size": 0,
+        "status": "unknown"
+      }
+    ],
+    "servers": [
+      {
+        "server_name": "safeoutputs",
+        "tool_call_count": 1,
+        "request_count": 1,
+        "total_input_size": 108,
+        "total_output_size": 0,
+        "avg_input_size": 108,
+        "max_input_size": 108,
+        "avg_duration": "0ns"
+      }
+    ]
+  },
+  "graders": {
+    "version": 2,
+    "results": [
+      {
+        "id": "artifact-production",
+        "name": "Artifact Production",
+        "status": "pass",
+        "value": 0,
+        "unit": "count",
+        "direction": "higher_is_better"
+      },
+      {
+        "id": "context-growth",
+        "name": "Context Growth",
+        "status": "pass",
+        "value": 1.106014563385127,
+        "unit": "factor",
+        "direction": "lower_is_better"
+      },
+      {
+        "id": "execution-duration",
+        "name": "Execution Duration",
+        "status": "pass",
+        "value": 11331,
+        "unit": "ms",
+        "direction": "lower_is_better"
+      },
+      {
+        "id": "execution-step-count",
+        "name": "Execution Step Count",
+        "status": "pass",
+        "value": 5,
+        "unit": "count",
+        "direction": "lower_is_better"
+      },
+      {
+        "id": "loops",
+        "name": "Loops",
+        "status": "pass",
+        "value": 0,
+        "unit": "count",
+        "passed": true,
+        "direction": "lower_is_better",
+        "threshold": 3
+      },
+      {
+        "id": "retries",
+        "name": "Retries",
+        "status": "pass",
+        "value": 0,
+        "unit": "count",
+        "passed": true,
+        "direction": "lower_is_better",
+        "threshold": 10
+      },
+      {
+        "id": "tool-failure-count",
+        "name": "Tool Failure Count",
+        "status": "pass",
+        "value": 1,
+        "unit": "count",
+        "passed": true,
+        "direction": "lower_is_better",
+        "threshold": 5
+      },
+      {
+        "id": "tool-success-rate",
+        "name": "Tool Success Rate",
+        "status": "pass",
+        "value": 0.8,
+        "unit": "ratio",
+        "passed": true,
+        "direction": "higher_is_better",
+        "threshold": 0.8
+      },
+      {
+        "id": "trajectory-efficiency",
+        "name": "Trajectory Efficiency",
+        "status": "pass",
+        "value": 0.8,
+        "unit": "ratio",
+        "direction": "higher_is_better"
+      },
+      {
+        "id": "working-set-rebuild-factor",
+        "name": "Working-Set Rebuild Factor",
+        "status": "pass",
+        "value": 1.0975777752267248,
+        "unit": "factor",
+        "direction": "lower_is_better"
+      }
+    ],
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "error_count": 0,
+    "unavailable_count": 0
+  },
+  "ledger": {
+    "transactions_added": 0
+  },
+  "friction": {
+    "measurement_state": "measured",
+    "canonical_unit": "aic",
+    "sources": [
+      "agent_session",
+      "agent_token_usage",
+      "firewall",
+      "mcp_gateway"
+    ],
+    "total_events": 0,
+    "total_occurrences": 0,
+    "counted_occurrences": 0,
+    "suppressed_occurrences": 0,
+    "cost": {
+      "aic": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "reasoning": 0,
+        "total": 0
+      },
+      "turns": 0,
+      "tool_calls": 0,
+      "latency_ms": 0
+    },
+    "total_run_aic": 7.6068,
+    "friction_ratio": 0,
+    "dimension_states": {
+      "aic": "measured",
+      "latency_ms": "measured",
+      "tokens": "measured",
+      "tool_calls": "measured",
+      "turns": "measured"
+    },
+    "uncertainty": {
+      "aic": {
+        "state": "measured",
+        "method": "direct_record",
+        "confidence": "high",
+        "relative_error": 0,
+        "lower_bound": 0,
+        "upper_bound": 0,
+        "sample_size": 5,
+        "basis": "AI credits of errored invocations (measured), of linked follow-up invocations (causal), or the mean healthy-invocation cost (statistical)"
+      },
+      "latency_ms": {
+        "state": "measured",
+        "method": "direct_record",
+        "confidence": "high",
+        "relative_error": 0,
+        "lower_bound": 0,
+        "upper_bound": 0,
+        "basis": "wall-clock duration recorded on the failing tool call or invocation"
+      },
+      "tokens": {
+        "state": "measured",
+        "method": "direct_record",
+        "confidence": "high",
+        "relative_error": 0,
+        "lower_bound": 0,
+        "upper_bound": 0,
+        "sample_size": 5,
+        "basis": "token classes of the attributed invocations"
+      },
+      "tool_calls": {
+        "state": "measured",
+        "method": "direct_record",
+        "confidence": "high",
+        "relative_error": 0,
+        "lower_bound": 0,
+        "upper_bound": 0,
+        "basis": "counted friction occurrences that consumed a tool call"
+      },
+      "turns": {
+        "state": "measured",
+        "method": "direct_record",
+        "confidence": "high",
+        "relative_error": 0,
+        "lower_bound": 0,
+        "upper_bound": 0,
+        "basis": "one additional turn per errored or retried model invocation"
+      }
+    },
+    "unmeasured_drivers": [
+      {
+        "driver": "agent_api_error",
+        "reason": "no_occurrences"
+      },
+      {
+        "driver": "firewall_block",
+        "reason": "no_occurrences"
+      },
+      {
+        "driver": "integrity_filter",
+        "reason": "no_occurrences"
+      },
+      {
+        "driver": "mcp_tool_error",
+        "reason": "no_occurrences"
+      },
+      {
+        "driver": "session_tool_failure",
+        "reason": "no_occurrences"
+      }
+    ]
+  }
+}

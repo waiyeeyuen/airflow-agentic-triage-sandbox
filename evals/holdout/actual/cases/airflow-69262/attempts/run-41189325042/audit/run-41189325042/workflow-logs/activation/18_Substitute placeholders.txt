@@ -1,0 +1,41 @@
+﻿2026-10-31T09:37:26.2711798Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T09:37:26.2712317Z with:
+2026-10-31T09:37:26.2714433Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+
+const substitutePlaceholders = require(path.join(actionsDir, 'substitute_placeholders.cjs'));
+
+// Call the substitution function
+return await substitutePlaceholders({
+  file: process.env.GH_AW_PROMPT,
+  substitutions: {
+    GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST,
+    GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: process.env.GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED
+  }
+});
+
+2026-10-31T09:37:26.2719433Z   github-token: ***
+2026-10-31T09:37:26.2719690Z   debug: false
+2026-10-31T09:37:26.2719934Z   user-agent: actions/github-script
+2026-10-31T09:37:26.2720216Z   result-encoding: json
+2026-10-31T09:37:26.2720477Z   retries: 0
+2026-10-31T09:37:26.2720723Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T09:37:26.2721021Z env:
+2026-10-31T09:37:26.2721228Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T09:37:26.2721498Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T09:37:26.2722377Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41189325042,github.run_id=41189325042,gh-aw.engine.id=copilot
+2026-10-31T09:37:26.2723233Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T09:37:26.2723513Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T09:37:26.2723820Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T09:37:26.2724083Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T09:37:26.2724351Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T09:37:26.2724661Z   GITHUB_AW_OTEL_TRACE_ID: 70a0894ca2811ce470c87f0990e6497d
+2026-10-31T09:37:26.2725017Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 313de845beb00fc4
+2026-10-31T09:37:26.2725329Z   GITHUB_AW_OTEL_JOB_START_MS: 1793439440198
+2026-10-31T09:37:26.2725696Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T09:37:26.2726221Z   GH_AW_MCP_CLI_SERVERS_LIST: - `safeoutputs` — run `safeoutputs --help` to see available tools
+2026-10-31T09:37:26.2727041Z   GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: true
+2026-10-31T09:37:26.2727348Z ##[endgroup]
+2026-10-31T09:37:26.4125744Z [substitutePlaceholders] /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt (2 substitution(s))

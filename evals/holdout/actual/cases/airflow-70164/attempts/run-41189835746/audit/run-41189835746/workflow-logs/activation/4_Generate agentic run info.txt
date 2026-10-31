@@ -1,0 +1,112 @@
+﻿2026-10-31T09:45:02.2205977Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T09:45:02.2206519Z with:
+2026-10-31T09:45:02.2208082Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'generate_aw_info.cjs'));
+await main(core, context);
+
+2026-10-31T09:45:02.2213090Z   github-token: ***
+2026-10-31T09:45:02.2213402Z   debug: false
+2026-10-31T09:45:02.2213679Z   user-agent: actions/github-script
+2026-10-31T09:45:02.2214219Z   result-encoding: json
+2026-10-31T09:45:02.2214495Z   retries: 0
+2026-10-31T09:45:02.2214956Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T09:45:02.2216110Z env:
+2026-10-31T09:45:02.2216374Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T09:45:02.2216714Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T09:45:02.2218232Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41189835746,github.run_id=41189835746,gh-aw.engine.id=copilot
+2026-10-31T09:45:02.2220809Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T09:45:02.2221191Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T09:45:02.2221746Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T09:45:02.2222080Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T09:45:02.2222579Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T09:45:02.2222931Z   GITHUB_AW_OTEL_TRACE_ID: cd0c9f2128f98fe3884f970ca7ebd008
+2026-10-31T09:45:02.2223353Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 22c490f2c07bbd80
+2026-10-31T09:45:02.2223719Z   GITHUB_AW_OTEL_JOB_START_MS: 1793439902008
+2026-10-31T09:45:02.2224284Z   GH_AW_INFO_ENGINE_ID: copilot
+2026-10-31T09:45:02.2224839Z   GH_AW_INFO_ENGINE_NAME: GitHub Copilot CLI
+2026-10-31T09:45:02.2227153Z   GH_AW_INFO_MODEL: gpt-4.1
+2026-10-31T09:45:02.2231626Z   GH_AW_INFO_VERSION: 1.0.103
+2026-10-31T09:45:02.2232196Z   GH_AW_INFO_AGENT_VERSION: 1.0.103
+2026-10-31T09:45:02.2232513Z   GH_AW_INFO_CLI_VERSION: v1.0.1
+2026-10-31T09:45:02.2232879Z   GH_AW_INFO_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T09:45:02.2233772Z   GH_AW_INFO_WORKFLOW_ID: waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval
+2026-10-31T09:45:02.2234445Z   GH_AW_INFO_EXPERIMENTAL: false
+2026-10-31T09:45:02.2234767Z   GH_AW_INFO_SUPPORTS_TOOLS_ALLOWLIST: true
+2026-10-31T09:45:02.2235291Z   GH_AW_INFO_STAGED: false
+2026-10-31T09:45:02.2235778Z   GH_AW_INFO_ALLOWED_DOMAINS: ["defaults"]
+2026-10-31T09:45:02.2236286Z   GH_AW_INFO_FIREWALL_ENABLED: true
+2026-10-31T09:45:02.2236597Z   GH_AW_INFO_AWF_VERSION: v0.29.0
+2026-10-31T09:45:02.2236898Z   GH_AW_INFO_AWMG_VERSION: 
+2026-10-31T09:45:02.2237523Z   GH_AW_INFO_FIREWALL_TYPE: squid
+2026-10-31T09:45:02.2238017Z   GH_AW_INFO_AGENT_RUNTIME: 
+2026-10-31T09:45:02.2238335Z   GH_AW_INFO_ENGINE_HARNESS: copilot-cli
+2026-10-31T09:45:02.2238920Z   GH_AW_INFO_MODEL_CONFIG: {"routing":{"enabled":false},"models":{"allowed":[],"blocked":[]},"max_ai_credits_source":"frontmatter"}
+2026-10-31T09:45:02.2239505Z   GH_AW_INFO_MAX_AI_CREDITS: 25
+2026-10-31T09:45:02.2239802Z   GH_AW_COMPILED_STRICT: true
+2026-10-31T09:45:02.2240401Z   GH_AW_INFO_MODEL_COSTS: {"providers":{"github-copilot":{"models":{"gpt-4.1":{"cost":{"cache_read":"5e-07","input":"2e-06","output":"8e-06"}}}}}}
+2026-10-31T09:45:02.2241021Z ##[endgroup]
+2026-10-31T09:45:02.8186839Z Starting context variable validation...
+2026-10-31T09:45:02.8194012Z ✓ github.event.repository.id is valid: 1438577493
+2026-10-31T09:45:02.8198561Z ✓ github.event.sender.id is valid: 227090037
+2026-10-31T09:45:02.8201494Z Validated 2 context variables
+2026-10-31T09:45:02.8204259Z ✅ All context variables validated successfully
+2026-10-31T09:45:02.8208656Z Lockdown mode not explicitly enabled, skipping validation
+2026-10-31T09:45:02.8211483Z Repository visibility: unknown
+2026-10-31T09:45:02.8213964Z Compiled with strict mode: true
+2026-10-31T09:45:02.8519840Z Generated merged models.json at: /tmp/gh-aw/models.json
+2026-10-31T09:45:02.8530081Z Generated aw_info.json at: /tmp/gh-aw/aw_info.json
+2026-10-31T09:45:02.8533304Z {
+2026-10-31T09:45:02.8533782Z   "engine_id": "copilot",
+2026-10-31T09:45:02.8579386Z   "engine_name": "GitHub Copilot CLI",
+2026-10-31T09:45:02.8579831Z   "model": "gpt-4.1",
+2026-10-31T09:45:02.8580117Z   "version": "1.0.103",
+2026-10-31T09:45:02.8580410Z   "agent_version": "1.0.103",
+2026-10-31T09:45:02.8581452Z   "workflow_name": "Bounded Airflow issue triage",
+2026-10-31T09:45:02.8582181Z   "workflow_id": "waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval",
+2026-10-31T09:45:02.8583221Z   "workflow_call_id": "41189835746-1:waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval",
+2026-10-31T09:45:02.8584711Z   "caller_workflow_ref": "waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval",
+2026-10-31T09:45:02.8585419Z   "experimental": false,
+2026-10-31T09:45:02.8585728Z   "supports_tools_allowlist": true,
+2026-10-31T09:45:02.8586045Z   "cache_memory": false,
+2026-10-31T09:45:02.8586320Z   "run_id": 41189835746,
+2026-10-31T09:45:02.8586589Z   "run_number": 56,
+2026-10-31T09:45:02.8586850Z   "run_attempt": "1",
+2026-10-31T09:45:02.8587202Z   "repository": "waiyeeyuen/airflow-agentic-triage-sandbox",
+2026-10-31T09:45:02.8587616Z   "ref": "refs/heads/holdout-eval",
+2026-10-31T09:45:02.8588230Z   "sha": "96727004b780f961f5c7e331e8024221116b2762",
+2026-10-31T09:45:02.8588599Z   "actor": "waiyeeyuen",
+2026-10-31T09:45:02.8588903Z   "event_name": "workflow_dispatch",
+2026-10-31T09:45:02.8589222Z   "target_repo": "",
+2026-10-31T09:45:02.8589495Z   "staged": false,
+2026-10-31T09:45:02.8589757Z   "dry_run": false,
+2026-10-31T09:45:02.8590020Z   "allowed_domains": [
+2026-10-31T09:45:02.8590278Z     "defaults"
+2026-10-31T09:45:02.8590517Z   ],
+2026-10-31T09:45:02.8590783Z   "firewall_enabled": true,
+2026-10-31T09:45:02.8591069Z   "awf_version": "v0.29.0",
+2026-10-31T09:45:02.8592078Z   "awmg_version": "",
+2026-10-31T09:45:02.8592386Z   "agent_runtime": "",
+2026-10-31T09:45:02.8592646Z   "steps": {
+2026-10-31T09:45:02.8592891Z     "firewall": "squid"
+2026-10-31T09:45:02.8593149Z   },
+2026-10-31T09:45:02.8593393Z   "created_at": "2026-10-31T09:45:02.821Z",
+2026-10-31T09:45:02.8593722Z   "cli_version": "v1.0.1",
+2026-10-31T09:45:02.8594022Z   "engine_harness": "copilot-cli",
+2026-10-31T09:45:02.8594666Z   "workflow_ref": "waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval",
+2026-10-31T09:45:02.8595371Z   "server_url": "https://github.com",
+2026-10-31T09:45:02.8595697Z   "model_config": {
+2026-10-31T09:45:02.8595959Z     "routing": {
+2026-10-31T09:45:02.8596210Z       "enabled": false
+2026-10-31T09:45:02.8596468Z     },
+2026-10-31T09:45:02.8596702Z     "models": {
+2026-10-31T09:45:02.8596949Z       "allowed": [],
+2026-10-31T09:45:02.8597645Z       "blocked": []
+2026-10-31T09:45:02.8598465Z     },
+2026-10-31T09:45:02.8598755Z     "max_ai_credits_source": "frontmatter",
+2026-10-31T09:45:02.8599100Z     "max_ai_credits": 25
+2026-10-31T09:45:02.8599364Z   }
+2026-10-31T09:45:02.8599594Z }
+2026-10-31T09:45:02.8653100Z Generated workflow overview in step summary

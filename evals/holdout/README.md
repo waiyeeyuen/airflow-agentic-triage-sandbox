@@ -6,7 +6,7 @@ were committed and pushed.
 
 ## Frozen-expectation commit
 
-`a4a824ea52407944ceda75927f70672f56c50cc7`
+`96727004b780f961f5c7e331e8024221116b2762`
 
 That commit contains the selection, first-version inputs, dated prior-issue snapshots, two independent
 GraphQL fetches, SHA-256 hashes, reference outcomes, verification results and `expected.json`.
@@ -66,3 +66,17 @@ The final golden attempts used 179.36 AIC for 21 cases, or 8.54 AIC per case. At
 ten holdout cases are estimated at about **85.4 AIC**. The approved execution phase, if granted,
 will stop at **120 AIC total**, even if cases remain unfinished; each individual run retains the
 submitted configuration's 25-AIC cap.
+
+## Sequential-runner correction
+
+Case `airflow-70164` first ran as
+[41189835746](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41189835746).
+It failed with HTTP 429 after exhausting the shared per-run model-invocation limit (20/20), not a
+concurrent-dispatch rate limit. The next dispatch,
+[41190347793](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41190347793),
+was skipped before activation, ran no model and used 0 AIC. This was a harness sequencing error:
+`run_sequential.py` turned the switch off after dispatch but before `pre_activation` evaluated it.
+The runner now keeps the switch on until `pre_activation` visibly completes successfully, then
+turns it off. The one replacement dispatch,
+[41190831283](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41190831283),
+completed successfully and is the single retry of the first model attempt.

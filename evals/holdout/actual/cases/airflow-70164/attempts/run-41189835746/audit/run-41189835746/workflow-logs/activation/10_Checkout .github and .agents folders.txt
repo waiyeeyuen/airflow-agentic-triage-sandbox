@@ -1,0 +1,146 @@
+﻿2026-10-31T09:45:04.2278971Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-31T09:45:04.2279698Z with:
+2026-10-31T09:45:04.2280052Z   persist-credentials: false
+2026-10-31T09:45:04.2349929Z   sparse-checkout: .github
+.agents
+.claude
+.codex
+.gemini
+.pi
+
+2026-10-31T09:45:04.2350440Z   sparse-checkout-cone-mode: true
+2026-10-31T09:45:04.2350752Z   fetch-depth: 1
+2026-10-31T09:45:04.2351073Z   repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T09:45:04.2353998Z   token: ***
+2026-10-31T09:45:04.2354260Z   ssh-strict: true
+2026-10-31T09:45:04.2354518Z   ssh-user: git
+2026-10-31T09:45:04.2354760Z   clean: true
+2026-10-31T09:45:04.2355000Z   fetch-tags: false
+2026-10-31T09:45:04.2355263Z   show-progress: true
+2026-10-31T09:45:04.2355527Z   lfs: false
+2026-10-31T09:45:04.2355779Z   submodules: false
+2026-10-31T09:45:04.2356045Z   set-safe-directory: true
+2026-10-31T09:45:04.2356350Z   allow-unsafe-pr-checkout: false
+2026-10-31T09:45:04.2356668Z env:
+2026-10-31T09:45:04.2356922Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T09:45:04.2357285Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T09:45:04.2363610Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41189835746,github.run_id=41189835746,gh-aw.engine.id=copilot
+2026-10-31T09:45:04.2380563Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T09:45:04.2380964Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T09:45:04.2381319Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T09:45:04.2381622Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T09:45:04.2381927Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T09:45:04.2382273Z   GITHUB_AW_OTEL_TRACE_ID: cd0c9f2128f98fe3884f970ca7ebd008
+2026-10-31T09:45:04.2382687Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 22c490f2c07bbd80
+2026-10-31T09:45:04.2383057Z   GITHUB_AW_OTEL_JOB_START_MS: 1793439902008
+2026-10-31T09:45:04.2383375Z ##[endgroup]
+2026-10-31T09:45:04.5463607Z Syncing repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T09:45:04.5465055Z ##[group]Getting Git version info
+2026-10-31T09:45:04.5465715Z Working directory is '/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox'
+2026-10-31T09:45:04.5466964Z [command]/usr/bin/git version
+2026-10-31T09:45:04.6949424Z git version 2.56.0
+2026-10-31T09:45:04.6984827Z ##[endgroup]
+2026-10-31T09:45:04.7047192Z Temporarily overriding HOME='/home/runner/work/_temp/1c5ab050-2cb0-4733-95ea-8fec3428989c' before making global git config changes
+2026-10-31T09:45:04.7049924Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T09:45:04.7089197Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-31T09:45:04.7519853Z Deleting the contents of '/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox'
+2026-10-31T09:45:04.7595469Z ##[group]Determining repository object format
+2026-10-31T09:45:04.7601394Z ##[endgroup]
+2026-10-31T09:45:04.7604591Z ##[group]Initializing the repository
+2026-10-31T09:45:04.7693083Z [command]/usr/bin/git init /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-31T09:45:04.9970185Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-31T09:45:05.0037193Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-31T09:45:05.0038165Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-31T09:45:05.0038635Z hint: call:
+2026-10-31T09:45:05.0038877Z hint:
+2026-10-31T09:45:05.0039249Z hint: 	git config --global init.defaultBranch <name>
+2026-10-31T09:45:05.0039624Z hint:
+2026-10-31T09:45:05.0039997Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-31T09:45:05.0040571Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-31T09:45:05.0060770Z hint:
+2026-10-31T09:45:05.0061221Z hint: 	git branch -m <name>
+2026-10-31T09:45:05.0061912Z hint:
+2026-10-31T09:45:05.0062363Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-31T09:45:05.0912667Z Initialized empty Git repository in /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/
+2026-10-31T09:45:05.0914507Z [command]/usr/bin/git remote add origin https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T09:45:05.1564001Z ##[endgroup]
+2026-10-31T09:45:05.1565086Z ##[group]Disabling automatic garbage collection
+2026-10-31T09:45:05.1616642Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-31T09:45:05.1742766Z ##[endgroup]
+2026-10-31T09:45:05.1743703Z ##[group]Setting up auth
+2026-10-31T09:45:05.1744472Z Removing SSH command configuration
+2026-10-31T09:45:05.1745524Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T09:45:05.1846173Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T09:45:05.6454745Z Removing HTTP extra header
+2026-10-31T09:45:05.6455480Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T09:45:05.6490090Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T09:45:05.6781428Z Removing includeIf entries pointing to credentials config files
+2026-10-31T09:45:05.6833479Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T09:45:05.6923650Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T09:45:05.7211266Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-31T09:45:05.7276295Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path /home/runner/work/_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:05.7338957Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:05.7552000Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:05.7603980Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:05.8045340Z ##[endgroup]
+2026-10-31T09:45:05.8047111Z ##[group]Fetching the repository
+2026-10-31T09:45:05.8055458Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +96727004b780f961f5c7e331e8024221116b2762:refs/remotes/origin/holdout-eval
+2026-10-31T09:45:07.4554463Z From https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T09:45:07.4555713Z  * [new ref]         96727004b780f961f5c7e331e8024221116b2762 -> origin/holdout-eval
+2026-10-31T09:45:07.4955428Z [command]/usr/bin/git branch --list --remote origin/holdout-eval
+2026-10-31T09:45:07.5012126Z   origin/holdout-eval
+2026-10-31T09:45:07.5074132Z [command]/usr/bin/git rev-parse refs/remotes/origin/holdout-eval
+2026-10-31T09:45:07.5909272Z 96727004b780f961f5c7e331e8024221116b2762
+2026-10-31T09:45:07.5911461Z ##[endgroup]
+2026-10-31T09:45:07.5912018Z ##[group]Determining the checkout info
+2026-10-31T09:45:07.5912987Z ##[endgroup]
+2026-10-31T09:45:07.5913415Z ##[group]Setting up sparse checkout
+2026-10-31T09:45:07.5932743Z [command]/usr/bin/git sparse-checkout set .github .agents .claude .codex .gemini .pi
+2026-10-31T09:45:07.7048922Z ##[endgroup]
+2026-10-31T09:45:07.7049531Z ##[group]Checking out the ref
+2026-10-31T09:45:07.7058402Z [command]/usr/bin/git checkout --progress --force -B holdout-eval refs/remotes/origin/holdout-eval
+2026-10-31T09:45:09.1938526Z Updating files:   9% (1/11)
+2026-10-31T09:45:09.1945970Z Updating files:  18% (2/11)
+2026-10-31T09:45:09.1950117Z Updating files:  27% (3/11)
+2026-10-31T09:45:09.1955725Z Updating files:  36% (4/11)
+2026-10-31T09:45:09.1963822Z Updating files:  45% (5/11)
+2026-10-31T09:45:09.1968179Z Updating files:  54% (6/11)
+2026-10-31T09:45:09.1971857Z Updating files:  63% (7/11)
+2026-10-31T09:45:09.1991519Z Updating files:  72% (8/11)
+2026-10-31T09:45:09.2006702Z Updating files:  81% (9/11)
+2026-10-31T09:45:09.2021951Z Updating files:  90% (10/11)
+2026-10-31T09:45:09.2023645Z Updating files: 100% (11/11)
+2026-10-31T09:45:09.2024018Z Updating files: 100% (11/11), done.
+2026-10-31T09:45:09.3948773Z Switched to a new branch 'holdout-eval'
+2026-10-31T09:45:09.3974244Z branch 'holdout-eval' set up to track 'origin/holdout-eval'.
+2026-10-31T09:45:09.3989600Z ##[endgroup]
+2026-10-31T09:45:09.4033435Z [command]/usr/bin/git log -1 --format=%H
+2026-10-31T09:45:09.4141757Z 96727004b780f961f5c7e331e8024221116b2762
+2026-10-31T09:45:09.4158804Z ##[group]Removing auth
+2026-10-31T09:45:09.4159178Z Removing SSH command configuration
+2026-10-31T09:45:09.4161394Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T09:45:09.4209539Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T09:45:09.5543406Z Removing HTTP extra header
+2026-10-31T09:45:09.5551561Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T09:45:09.5608543Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T09:45:09.5842250Z Removing includeIf entries pointing to credentials config files
+2026-10-31T09:45:09.5845864Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T09:45:09.5865833Z includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path
+2026-10-31T09:45:09.5866871Z includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path
+2026-10-31T09:45:09.5867541Z includeif.gitdir:/github/workspace/.git.path
+2026-10-31T09:45:09.5868382Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T09:45:09.5881314Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path
+2026-10-31T09:45:09.5900730Z /home/runner/work/_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:09.5911818Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-7bb27ca3\-71f0\-4ee2\-a100\-717777f9a124\.config
+2026-10-31T09:45:09.5941753Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path
+2026-10-31T09:45:09.5959977Z /home/runner/work/_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:09.5970326Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-7bb27ca3\-71f0\-4ee2\-a100\-717777f9a124\.config
+2026-10-31T09:45:09.6994537Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-31T09:45:09.7046374Z /github/runner_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:09.7072082Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-7bb27ca3\-71f0\-4ee2\-a100\-717777f9a124\.config
+2026-10-31T09:45:09.7150160Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T09:45:09.7168485Z /github/runner_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config
+2026-10-31T09:45:09.7181074Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-7bb27ca3\-71f0\-4ee2\-a100\-717777f9a124\.config
+2026-10-31T09:45:09.8518585Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T09:45:09.8749946Z Removing credentials config '/home/runner/work/_temp/git-credentials-7bb27ca3-71f0-4ee2-a100-717777f9a124.config'
+2026-10-31T09:45:09.8764812Z ##[endgroup]
