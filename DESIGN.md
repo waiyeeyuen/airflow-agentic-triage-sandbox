@@ -73,8 +73,9 @@ output types; the built-in safe-output allowlists remain an independent enforcem
 
 The output language deliberately omits close, delete, lock, transfer, Discussion conversion,
 milestones, assignment, mentions, PR creation/review/merge and every push. Airflow permits human
-triagers to close, convert, milestone, fix, mention experts and label
-([pinned process lines 102–137](https://github.com/apache/airflow/blob/270b2abfc258c512a0b931af425904321360d043/ISSUE_TRIAGE_PROCESS.rst#L102-L137)); only bounded labels and one comment are delegated.
+triagers to close, convert, milestone, fix, mention experts and label. Only bounded labels and one
+comment are delegated ([pinned process][triage-process]).
+[triage-process]: notes/ideation.md
 
 ## Rejected alternative
 
@@ -88,7 +89,8 @@ Tester Part A froze 18 real cases (three no-action) plus three adversarial cases
 Early approved runs exposed an unsupported `auto` model, a skill/shell-guard conflict, and an AI-
 detection file-reading loop. The guard denied redirection, the 10-minute timeout contained the loop,
 and exact `gpt-4.1`, fixed-path input and deterministic detection repaired those setup failures.
-Round 5 is the baseline: 111.0704 AIC, exact proposed-decision accuracy **1/11 (9.1%, n=11 decided)**, with ten not evaluated after concurrent dispatch hit Copilot 429. Field exactness was
+Round 5 used 111.0704 AIC: exact proposed-decision accuracy was **1/11 (9.1%, n=11 decided)**,
+with ten not evaluated after concurrent dispatch hit Copilot 429. Field exactness was
 kind 4/11 (36.4%), area 1/11 (9.1%), provider 8/11 (72.7%), comment 6/11 (54.5%). Its main weakness
 was area/provider confusion, often defaulting to `area:core`, plus invented free-text comments.
 One general improvement added process/taxonomy-derived area/provider guidance, required clear
@@ -107,9 +109,7 @@ the no-skill control and phone screenshots remain unresolved.
 gh-aw v1.0.1 requires `max-links >= 1`; its generic handler generates `pull-requests: write` in the
 isolated safe-output job. No PR mutation tool or PR target is exposed. This residual compiler
 permission remains unresolved; compilation is not behavioural evidence.
-Budgets: timeout tested; per-run cap implemented; daily cap proposed. Pairwise Round 6 stayed below its 300-AIC cap but still produced five 429 non-evaluations, so provider capacity is not a budget.
 ## Agent bill of materials
-
 - **Engine/model:** GitHub Copilot with exact `gpt-4.1` for the main agent. Threat detection is
   deterministic (`engine: false`). The provider implementation behind the pinned ID can still drift.
 - **Instructions:** [workflow](.github/workflows/issue-triage.md), [AGENTS.md](AGENTS.md), and
