@@ -36,9 +36,9 @@ only individually allowed, no-argument wrapper executables and request labels or
   ([lines 59–62](.github/workflows/issue-triage.md#L59-L62)).
 - **Safe outputs — implemented:** one call adds at most three labels and one issue comment; mentions
   and cross-references are escaped ([lines 104–151](.github/workflows/issue-triage.md#L104-L151)).
-- **Human approval — implemented:** CODEOWNERS names Jasmine for agent files. Main protection requires
-  one approval and CODEOWNERS review ([CODEOWNERS](.github/CODEOWNERS)). Runtime labels/comments
-  remain reversible; closure stays human-only.
+- **Human approval — implemented:** CODEOWNERS names Jasmine for agent files. Authenticated protection
+  requires one approval and CODEOWNER review ([JSON](evidence/branch-protection/protection.json));
+  PR #58 is blocked without it ([merge box](evidence/branch-protection/pr58-merge-box.png)).
 - **Budgets — timeout tested; per-run cap implemented; hard daily cap proposed:** 10 minutes, 20
   turns and 25 main-agent AIC/run are enforced. Activation scans prior workflow AIC against
   5,000/day, but concurrent runs can race, so this is an admission guard, not a hard aggregate cap.
@@ -51,8 +51,8 @@ only individually allowed, no-argument wrapper executables and request labels or
   run 41166022897 tested switch-off plus cancellation in five taps and 1 minute 37 seconds.
 - **Drift detection — partly implemented:** deterministic checks run on config/eval changes
   ([CI](.github/workflows/config-checks.yml)); reruns, human diff review and no-skill control remain proposed.
-- **Accountability — implemented:** Jasmine owns config review, the switch, bills and outputs;
-  CODEOWNERS review is enforced on `main`.
+- **Accountability — implemented:** Jasmine owns config review, switch, bills and outputs. Stored
+  [protection evidence](evidence/branch-protection/) proves the review gate is enforced on `main`.
 
 ## Procedure and hard boundary
 
