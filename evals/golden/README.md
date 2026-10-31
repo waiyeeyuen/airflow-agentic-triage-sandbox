@@ -1,8 +1,8 @@
 # Golden evaluation set
 
-This Part A set freezes expectations before any agent configuration or run. It contains 18 real
+This Part A set froze expectations before any agent configuration or run. It contains 18 real
 Apache Airflow issues from 1 July–30 September 2026 UTC, three no-action controls, and three
-constructed adversarial cases. No replay issue has been created and no AI credits have been spent.
+constructed adversarial cases. Part B then replayed all 21 cases in the private sandbox.
 
 ## Population and draw
 
@@ -95,6 +95,28 @@ collector invokes only `gh api` GET requests. `verification.md` and
 
 The readiness harness and exact approval-gated commands are in [`harness/README.md`](harness/README.md).
 Preparation (`build_replay_plan.py`, `static_audit.py`, plan-only `replay.py`) is inert. The first
-credit-spending command is deliberately blocked until Jasmine directly approves it, GitHub CLI is
-re-authenticated, the Copilot secret is confirmed, and the kill-switch variable is enabled. No
-model run has been authorized or executed yet.
+credit-spending command remains blocked until Jasmine directly approves it, GitHub CLI is
+authenticated, the Copilot secret is confirmed, and the kill-switch variable is enabled.
+
+## Part B evidence index
+
+Each case's `actual.json` is the compact audit record: it includes the run URL and status, model
+outputs, output actors, tool records, safe-output ledger, AIC, errors, jobs and configuration SHA.
+The round manifest records approval and dispatch details; each `proposal_score.json` records the
+machine-readable comparison with the frozen expectations. Raw downloaded logs may be regenerated
+with `python evals/golden/harness/capture_results.py --help` and `gh aw audit <run-id>`.
+
+- [Round 1](actual/round_1/) and [Round 2](actual/round_2/): initial setup and guard failure.
+- [Round 3](actual/round_3/) and [Round 4](actual/round_4/): corrected setup and first live block.
+- [Round 5](actual/round_5_batch/): baseline batch, manifest, compact audit records and score.
+- [Round 6 initial](actual/round_6/) and [completed score](actual/round_6_retry_429/): improved batch,
+  sequential 429 retries, manifests, compact audit records and scores for all 21 cases.
+- [Queued-run incident](actual/round_6_stale_incident/): kill-switch/cancellation evidence.
+
+To reproduce scoring without credits, run:
+
+```powershell
+python evals/golden/harness/score_proposals.py `
+  --actual-root evals/golden/actual/round_6 `
+  --output evals/golden/actual/round_6/proposal_score.json
+```

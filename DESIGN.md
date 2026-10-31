@@ -35,9 +35,9 @@ only individually allowed, no-argument wrapper executables and request labels or
 - **Safe outputs — implemented:** one call adding at most three explicit labels and one triggering-
   issue comment; mentions and cross-references are escaped
   ([lines 36–74](.github/workflows/issue-triage.md#L36-L74)).
-- **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files,
-  but branch protection still needs enabling ([CODEOWNERS](.github/CODEOWNERS)). Runtime labels and
-  fixed comments are reversible; closure and conversion stay human-only.
+- **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files
+  ([CODEOWNERS](.github/CODEOWNERS)). GitHub returned HTTP 403 because private-repository branch
+  protection needs a higher plan. Runtime labels/comments remain reversible; closure stays human-only.
 - **Budgets — timeout tested; per-run cap implemented; hard daily cap proposed:** 10 minutes, 20
   turns and 25 main-agent AIC/run are enforced. The compiled activation job scans prior workflow
   AIC against 5,000/day and blocks when already exceeded, but concurrent activations can race, so
