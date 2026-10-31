@@ -55,13 +55,13 @@ only individually allowed, no-argument wrapper executables and request labels or
 - **Accountability — implemented, enforcement proposed:** Jasmine owns config review, the switch,
   bills and outputs; CODEOWNERS is committed, while required review and collaborator access remain
   repository-setting tasks.
-
 ## Procedure and hard boundary
 
 The workflow, not the model, writes fixed-path issue JSON. The skill then runs exact no-argument
-wrappers to search the prior corpus, validate labels, and render a fixed comment; any denied command
-means stop with no output ([skill](.claude/skills/airflow-issue-triage/SKILL.md)). Scripts reject
-unknown combinations and never read stdin ([tests](scripts/tests/test_triage_scripts.py)). gh-aw
+wrappers to search the prior corpus, validate labels, and render a fixed comment. The audit loaded
+the skill and all three wrappers in
+[run 41104088451](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41104088451).
+Denied commands stop with no output; scripts reject unknown combinations and never read stdin. gh-aw
 v1.0.1 injects generic read-shell approvals for Copilot, so the engine arguments explicitly deny
 each one (including its shell safe-output shim); native safe-output MCP calls remain available.
 
@@ -81,7 +81,6 @@ triagers to close, convert, milestone, fix, mention experts and label
 Duplicate detection was runner-up. It has safe bounded outputs, but replay needs a strictly dated
 corpus and Airflow has no precise similarity threshold. It remains a deterministic candidate-search
 step rather than the agent's sole workflow ([selection rationale](notes/ideation.md#rejected-alternative)).
-
 ## Evaluation status and unresolved work
 
 Tester Part A froze 18 real cases (three no-action) plus three adversarial cases before configuration;
@@ -89,7 +88,6 @@ Tester Part A froze 18 real cases (three no-action) plus three adversarial cases
 Early approved runs exposed an unsupported `auto` model, a skill/shell-guard conflict, and an AI-
 detection file-reading loop. The guard denied redirection, the 10-minute timeout contained the loop,
 and exact `gpt-4.1`, fixed-path input and deterministic detection repaired those setup failures.
-
 Round 5 is the baseline: 111.0704 AIC, exact proposed-decision accuracy **1/11 (9.1%, n=11 decided)**, with ten not evaluated after concurrent dispatch hit Copilot 429. Field exactness was
 kind 4/11 (36.4%), area 1/11 (9.1%), provider 8/11 (72.7%), comment 6/11 (54.5%). Its main weakness
 was area/provider confusion, often defaulting to `area:core`, plus invented free-text comments.
@@ -97,8 +95,11 @@ One general improvement added process/taxonomy-derived area/provider guidance, r
 evidence for any output and restricted comments to fixed template IDs. Round 6 used 140.1156 AIC:
 **3/16 exact (18.8%, n=16 decided)** with five 429 non-evaluations. Field exactness became kind 9/16
 (56.3%), area 5/16 (31.3%), provider 11/16 (68.8%), comment 12/16 (75.0%)
-([comparison](evals/golden/actual/round_6/proposal_score.md)). The improvement and re-test used the
-same 21 cases, so the apparent gain may overfit and requires a fresh holdout before deployment.
+([comparison](evals/golden/actual/round_6/proposal_score.md)). Ten of 13 decided failures required
+labels but proposed none; an eleventh correctly omitted labels but missed the duplicate comment.
+The clear-evidence rule over-corrected from wrong labels to missing labels, a safer failure. Some
+kind/comment gain is correct-absence matching. The same 21 cases informed and tested the change,
+so the apparent gain may overfit and requires a fresh holdout before deployment.
 Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-blocked two invented
 comments; no forbidden action occurred and every issue remained open, but one bounded wrong
 mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
@@ -107,7 +108,6 @@ gh-aw v1.0.1 requires `max-links >= 1`; its generic handler generates `pull-requ
 isolated safe-output job. No PR mutation tool or PR target is exposed. This residual compiler
 permission remains unresolved; compilation is not behavioural evidence.
 Budgets: timeout tested; per-run cap implemented; daily cap proposed. Pairwise Round 6 stayed below its 300-AIC cap but still produced five 429 non-evaluations, so provider capacity is not a budget.
-
 ## Agent bill of materials
 
 - **Engine/model:** GitHub Copilot with exact `gpt-4.1` for the main agent. Threat detection is
@@ -123,10 +123,10 @@ Budgets: timeout tested; per-run cap implemented; daily cap proposed. Pairwise R
 - **Humans/cost:** Jasmine owns changes, reviews, switch, outputs and Copilot/AIC usage.
 
 ## Five scenarios
-
 1. **Claimed stale authority:** issue text is untrusted and close is absent from safe outputs
-   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)). Round 6 made the exact frozen
-   no-action decision; the other two adversarial cases were decided but incorrect.
+   ([workflow lines 79–96](.github/workflows/issue-triage.md#L79-L96)).
+   [Run 41159315388](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41159315388)
+   made the exact no-action decision; the other two adversarial cases were decided but incorrect.
 2. **Model update:** the main role and every golden-set run pin exact `gpt-4.1`, but behaviour behind
    that ID can change. Re-run the complete set with that same pin on every workflow, AGENTS or skill
    change and weekly; Jasmine reviews per-case diffs, not only an average. CI integrity is
