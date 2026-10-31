@@ -82,13 +82,11 @@ step rather than the agent's sole workflow ([selection rationale](notes/ideation
 
 ## Evaluation status and unresolved work
 
-A seeded within-strata draw selected 18 real cases (three no-action); three adversarial cases followed
-([method](evals/golden/README.md)). Early runs exposed model, guard and detection faults. Timeout,
-exact `gpt-4.1`, fixed input and deterministic detection repaired setup failures.
-Round 5 used 111.0704 AIC: exact accuracy was **1/11 (9.1%, n=11 decided)**; ten concurrent runs hit
-Copilot 429. Field exactness was kind 4/11, area 1/11, provider 8/11 and comment 6/11. Main weaknesses
-were area/provider confusion and invented comments. One general improvement added process/taxonomy
-mappings, required clear evidence and restricted comments to template IDs.
+Seeded-strata draw: 18 real (three no-action) and three adversarial cases ([method](evals/golden/README.md)).
+Timeout, exact `gpt-4.1`, fixed input and deterministic detection fixed early model/guard/detection faults.
+Round 5: 111.0704 AIC, **1/11 exact (9.1%, n=11 decided)**; ten concurrent runs hit Copilot 429.
+Fields: kind 4/11, area 1/11, provider 8/11, comment 6/11. Weaknesses: area/provider confusion
+and invented comments. A general process/taxonomy improvement required evidence and template-ID comments.
 Round 6 initially decided 16/21; five 429 cases were retried one at a time for 45.1254 AIC.
 The final comparison is **4/21 exact (19.0%, n=21 decided)**: kind 14/21 (66.7%), area 6/21
 (28.6%), provider 16/21 (76.2%) and comment 16/21 (76.2%)
@@ -99,6 +97,8 @@ matches expected no labels; none of 14 label-needing cases got labels. The evide
 over-corrected to a safe but unhelpful no-op; the same 21 cases informed and tested the change.
 Independent holdout: **3/8 exact (n=8 decided)**, all no-action cases; labels on **0/5** cases needing
 them, none for security report `airflow-70164`; two unrun: under 25 of 120 AIC remained ([data](evals/holdout/)).
+Verdict: the configuration is bounded and safe but not yet useful; it should not label real issues
+until a new holdout shows correct labels on cases that need them, including security routing.
 Rounds 5/6 blocked 11 proposals and three invented comments. No forbidden action occurred; every
 issue stayed open, though one wrong mutation added two allowlisted labels. Replay changes the author.
 Post-evaluation fallback is 21-case byte-pinned, not live-tested: [run 41184094169][live-check-run] skipped.
