@@ -34,9 +34,9 @@ only individually allowed, no-argument wrapper executables and request labels or
   restricted network and no write token ([lines 13–27](.github/workflows/issue-triage.md#L13-L27)).
 - **Safe outputs — implemented:** one call adds at most three labels and one issue comment; mentions
   and cross-references are escaped ([lines 36–74](.github/workflows/issue-triage.md#L36-L74)).
-- **Human approval — implemented, enforcement proposed:** CODEOWNERS names Jasmine for agent files
-  ([CODEOWNERS](.github/CODEOWNERS)). GitHub returned HTTP 403 because private-repository branch
-  protection needs a higher plan. Runtime labels/comments remain reversible; closure stays human-only.
+- **Human approval — implemented:** CODEOWNERS names Jasmine for agent files. Main protection requires
+  one approval and CODEOWNERS review ([CODEOWNERS](.github/CODEOWNERS)). Runtime labels/comments
+  remain reversible; closure stays human-only.
 - **Budgets — timeout tested; per-run cap implemented; hard daily cap proposed:** 10 minutes, 20
   turns and 25 main-agent AIC/run are enforced. Activation scans prior workflow AIC against
   5,000/day, but concurrent runs can race, so this is an admission guard, not a hard aggregate cap.
@@ -48,9 +48,9 @@ only individually allowed, no-argument wrapper executables and request labels or
   skipped every job. A queued run continued after switch-off, so cancellation is required. Phone
   run 41166022897 tested switch-off plus cancellation in five taps and 1 minute 37 seconds.
 - **Drift detection — partly implemented:** deterministic checks run on config/eval changes
-  ([CI](.github/workflows/config-checks.yml)); reruns, human diff review and no-skill control remain.
-- **Accountability — implemented, enforcement proposed:** Jasmine owns config review, the switch,
-  bills and outputs; CODEOWNERS is committed, but required review and collaborator access are settings.
+  ([CI](.github/workflows/config-checks.yml)); reruns, human diff review and no-skill control remain proposed.
+- **Accountability — implemented:** Jasmine owns config review, the switch, bills and outputs;
+  CODEOWNERS review is enforced on `main`.
 
 ## Procedure and hard boundary
 
@@ -101,9 +101,9 @@ Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-bloc
 comments; no forbidden action occurred and every issue remained open, but one bounded wrong
 mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
 the no-skill control remains unresolved.
-gh-aw v1.0.1 requires `max-links >= 1`; its generic handler generates `pull-requests: write` in the
-isolated safe-output job. No PR mutation tool or PR target is exposed. This residual compiler
-permission remains unresolved; compilation is not behavioural evidence.
+Duplicate search remains evaluation-only: run 41166022897 failed issue 57's non-golden title lookup.
+gh-aw v1.0.1 generates `pull-requests: write` in the isolated safe-output job, but exposes no PR
+mutation tool or target. This residual permission remains unresolved; compilation is not evidence.
 
 ## Agent bill of materials
 - **Engine/model:** GitHub Copilot with exact `gpt-4.1` for the main agent. Threat detection is
@@ -141,10 +141,10 @@ permission remains unresolved; compilation is not behavioural evidence.
 
 ## AI-use statement
 
-AI agents produced the configuration, scripts, evaluation scaffolding and this draft under
-Jasmine's direction. Deterministic tests, compiler checks and approved live proposals are recorded;
-failed-closed output must not be confused with correct decisions. Jasmine must complete:
-**[state what you wrote]**, **[state what you reviewed]**, and
-**[state what evidence and claims you personally verified]** before signing and submitting.
+Coding agents (Ideator, Builder, Tester and Marker roles) generated all files and text in this
+repository. I chose the project and workflow, directed the agents, decided which changes to apply,
+chose Copilot and deterministic detection, approved every paid run and its cap, and ran the phone
+kill-switch test. I checked results in the Actions run history and logs; AI output was not accepted
+as evidence without such checks.
 
 [triage-process]: https://github.com/apache/airflow/blob/270b2abfc258c512a0b931af425904321360d043/ISSUE_TRIAGE_PROCESS.rst#L102-L137

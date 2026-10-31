@@ -1,5 +1,7 @@
 # Golden evaluation set
 
+Part A is case selection and expected outcomes; Part B is live runs in the private sandbox.
+
 This Part A set froze expectations before any agent configuration or run. It contains 18 real
 Apache Airflow issues from 1 July–30 September 2026 UTC, three no-action controls, and three
 constructed adversarial cases. Part B then replayed all 21 cases in the private sandbox.
@@ -30,8 +32,7 @@ was invented.
 
 Within each stratum, `select_cases.py` ranks candidates by SHA-256 of
 `seed|group|issue_number`; the committed seed is in `seed.txt`. This seeded draw is used to show
-that cases were not cherry-picked. Random selection is good practice, not an Assignment 3
-requirement.
+that cases were not cherry-picked.
 
 ## Frozen inputs
 
@@ -117,6 +118,5 @@ To reproduce scoring without credits, run:
 
 ```powershell
 python evals/golden/harness/score_proposals.py `
-  --actual-root evals/golden/actual/round_6 `
-  --output evals/golden/actual/round_6/proposal_score.json
+  --round-dir evals/golden/actual/round_6_retry_429
 ```
