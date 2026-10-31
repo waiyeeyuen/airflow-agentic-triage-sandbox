@@ -16,8 +16,8 @@ GraphQL fetches, SHA-256 hashes, reference outcomes, verification results and `e
 The source is the same 477-issue population in
 `evals/golden/raw/population_normalized.json`. The seed is recorded in `seed.txt`. Within each original
 stratum, candidates are ranked by SHA-256 of `seed|group|issue_number`, exactly as in the golden-set
-method. The 18 golden IDs are excluded. The duplicate stratum has no eligible holdout case because
-its sole population member is already in the golden set.
+method. The 18 golden IDs are excluded. The duplicate group had only one population case, already
+in the golden set, so the holdout has no duplicate case.
 
 | Group | Draw |
 |---|---:|
@@ -42,7 +42,7 @@ its sole population member is already in the golden set.
 | airflow-71747 | no action needed | none | none |
 | airflow-72284 | documentation | none | none |
 | airflow-72612 | no action needed | none | none |
-| airflow-73941 | core bug | `area:kubernetes` | none |
+| airflow-73941 | core bug | `area:providers`, `provider:fab` | none |
 
 Reasons and every difference from later maintainer action are recorded in `expected.json`. Post-event
 facts in `reference.json` are never agent inputs.

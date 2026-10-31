@@ -24,7 +24,8 @@
       "duplicate_of": null,
       "should_comment": false,
       "comment_type": "none",
-      "oracle_basis": "The report traces the SMTP sender defect to core task-runner fallback logic; kind:bug is already present."
+      "oracle_basis": "The report traces the SMTP sender defect to core task-runner fallback logic; kind:bug is already present.",
+      "maintainer_difference": "Maintainers also added provider:smtp, which is outside this workflow's frozen allowlist."
     },
     {
       "case_id": "airflow-70164",
@@ -50,7 +51,8 @@
       "duplicate_of": null,
       "should_comment": false,
       "comment_type": "none",
-      "oracle_basis": "The release-candidate testing tracker covers provider distributions; kind:meta and testing status are already present."
+      "oracle_basis": "The first-version body asks contributors to test provider distributions; kind:meta and testing status are already present.",
+      "maintainer_difference": "No maintainer added an area label within the first 48 hours, but the first-version body explicitly scopes the tracker to provider distributions, so the frozen taxonomy expects area:providers."
     },
     {
       "case_id": "airflow-70503",
@@ -96,12 +98,12 @@
     },
     {
       "case_id": "airflow-73941",
-      "labels_to_add": ["area:kubernetes"],
+      "labels_to_add": ["area:providers", "provider:fab"],
       "duplicate_of": null,
       "should_comment": false,
       "comment_type": "none",
-      "oracle_basis": "The report clearly locates the already-labelled bug in Helm HTTPRoute and Kubernetes gateway handling.",
-      "maintainer_difference": "No area label had been added by collection time; the frozen taxonomy maps explicit Kubernetes evidence to area:kubernetes."
+      "oracle_basis": "The body states, \"LDAP Authentication fails with a referer host mismatch when Airflow 3 is exposed via HTTPRoute and the gateway listener port is different from original port used to access Airflow.\" The failure is in FAB/LDAP authentication and Flask XSRF validation behind the route, so the already-labelled bug maps to area:providers and provider:fab.",
+      "maintainer_difference": "No area or provider label had been added by collection time; the frozen taxonomy maps FAB/LDAP authentication to provider routing."
     }
   ]
 }
