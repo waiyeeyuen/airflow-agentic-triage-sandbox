@@ -28,8 +28,8 @@ and tool outputs that echo them. A pre-agent step prepares immutable issue JSON;
 only individually allowed, no-argument wrapper executables and request labels or one comment
 ([workflow](.github/workflows/issue-triage.md)).
 
-- **Identity — implemented:** the separate safe-output job uses the Actions bot, not Jasmine's
-  token; Part B must capture the posting identity.
+- **Identity — implemented + tested:** `github-actions[bot]` applied labels to `airflow-70548` in
+  [run 41105960786](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41105960786).
 - **Least privilege — implemented:** the agent has explicit `contents: read` and `issues: read`,
   restricted network and no write token ([lines 13–27](.github/workflows/issue-triage.md#L13-L27)).
 - **Safe outputs — implemented:** one call adding at most three explicit labels and one triggering-
@@ -46,11 +46,12 @@ only individually allowed, no-argument wrapper executables and request labels or
 - **Audit trail — implemented:** Actions retains trigger/config SHA; `gh aw audit` supplies model,
   calls, tokens and AIC. The first approved run's evidence is committed under
   `evals/golden/actual/round_1/`.
-- **Kill switch — implemented:** repository variable `TRIAGE_AGENT_ENABLED` gates every run
-  ([line 12](.github/workflows/issue-triage.md#L12)). Skip, cancellation and phone tests are pending.
+- **Kill switch — implemented + tested:** disabled
+  [run 40905907762](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/40905907762)
+  skipped every job. A queued run continued after switch-off, so cancellation is required; phone test pending.
 - **Drift detection — partly implemented:** deterministic checks run on config/eval changes
-  ([CI](.github/workflows/config-checks.yml)); weekly and every model/config-change golden rerun,
-  human diff review by Jasmine, and a no-skill control remain proposed until Part B.
+  ([CI](.github/workflows/config-checks.yml)); weekly/model-change reruns, human diff review and the
+  no-skill control remain unresolved.
 - **Accountability — implemented, enforcement proposed:** Jasmine owns config review, the switch,
   bills and outputs; CODEOWNERS is committed, while required review and collaborator access remain
   repository-setting tasks.
@@ -102,10 +103,9 @@ Round 5 live-blocked 11/11 proposals with no forbidden action. Round 6 live-bloc
 comments; no forbidden action occurred and every issue remained open, but one bounded wrong
 mutation added two allowlisted labels as `github-actions[bot]`. Historical replay changes the author;
 the no-skill control and phone screenshots remain unresolved.
-gh-aw v1.0.1 requires `max-links` to be at least one and its generic label/comment handler
-generates `pull-requests: write` in the isolated safe-output job. No PR mutation tool or PR target
-is exposed, references are escaped, and fixed templates contain no URL; Part B must still test this
-compiler-generated residual boundary rather than treating compilation as behavioural evidence.
+gh-aw v1.0.1 requires `max-links >= 1`; its generic handler generates `pull-requests: write` in the
+isolated safe-output job. No PR mutation tool or PR target is exposed. This residual compiler
+permission remains unresolved; compilation is not behavioural evidence.
 Budgets: timeout tested; per-run cap implemented; daily cap proposed. Pairwise Round 6 stayed below its 300-AIC cap but still produced five 429 non-evaluations, so provider capacity is not a budget.
 
 ## Agent bill of materials
