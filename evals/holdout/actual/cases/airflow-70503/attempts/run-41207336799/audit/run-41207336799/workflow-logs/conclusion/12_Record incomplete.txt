@@ -1,0 +1,37 @@
+﻿2026-10-31T13:56:00.5550305Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T13:56:00.5550931Z with:
+2026-10-31T13:56:00.5554727Z   github-token: ***
+2026-10-31T13:56:00.5556129Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'report_incomplete_handler.cjs'));
+await main();
+
+2026-10-31T13:56:00.5557577Z   debug: false
+2026-10-31T13:56:00.5557885Z   user-agent: actions/github-script
+2026-10-31T13:56:00.5559144Z   result-encoding: json
+2026-10-31T13:56:00.5560331Z   retries: 0
+2026-10-31T13:56:00.5560699Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T13:56:00.5561092Z env:
+2026-10-31T13:56:00.5562077Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T13:56:00.5562471Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T13:56:00.5563510Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41207336799,github.run_id=41207336799,gh-aw.engine.id=copilot
+2026-10-31T13:56:00.5570202Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T13:56:00.5576817Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T13:56:00.5578015Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T13:56:00.5579079Z   GH_AW_JOB_DISPLAY_NAMES: {"activation":"activation","agent":"agent","conclusion":"conclusion","detection":"detection","pre_activation":"pre_activation","safe_outputs":"safe_outputs"}
+2026-10-31T13:56:00.5580248Z   GH_AW_JOB_RESULTS: {"activation":{"result":"success"},"agent":{"result":"success"},"detection":{"result":"success"},"safe_outputs":{"result":"success"}}
+2026-10-31T13:56:00.5581261Z   GH_AW_JOB_TIMING_ELIGIBLE: {"activation":true,"agent":true,"conclusion":true,"detection":true,"pre_activation":true,"safe_outputs":true}
+2026-10-31T13:56:00.5581944Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T13:56:00.5582346Z   GITHUB_AW_OTEL_TRACE_ID: 9a7b8a0a42324c54b6b978a77504f0dd
+2026-10-31T13:56:00.5619700Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 61eafd7670d24fdc
+2026-10-31T13:56:00.5620200Z   GITHUB_AW_OTEL_JOB_START_MS: 1793454957999
+2026-10-31T13:56:00.5620634Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-31T13:56:00.5621062Z   GH_AW_REPORT_INCOMPLETE_CREATE_ISSUE: true
+2026-10-31T13:56:00.5621503Z   GH_AW_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T13:56:00.5622298Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/blob/holdout-eval/.github/workflows/issue-triage.md
+2026-10-31T13:56:00.5623049Z   GH_AW_ENGINE_ID: copilot
+2026-10-31T13:56:00.5623389Z   GH_AW_ENGINE_MODEL: gpt-4.1
+2026-10-31T13:56:00.5623724Z ##[endgroup]
+2026-10-31T13:56:00.7423568Z Max count: unlimited

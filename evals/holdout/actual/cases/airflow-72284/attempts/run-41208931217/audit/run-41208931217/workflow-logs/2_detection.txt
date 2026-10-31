@@ -1,0 +1,954 @@
+﻿2026-10-31T14:14:14.6854365Z Current runner version: '2.338.2'
+2026-10-31T14:14:14.6873579Z ##[group]Runner Image Provisioner
+2026-10-31T14:14:14.6874195Z Hosted Compute Agent
+2026-10-31T14:14:14.6874575Z Version: 20261021.618
+2026-10-31T14:14:14.6874998Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-31T14:14:14.6875504Z Build Date: 2026-10-21T00:45:21Z
+2026-10-31T14:14:14.6875920Z Worker ID: {4fa5c439-a30b-4c8f-a1ba-8e21dd781ce7}
+2026-10-31T14:14:14.6876365Z Region: centralus
+2026-10-31T14:14:14.6876726Z Cloud: Azure
+2026-10-31T14:14:14.6877090Z ##[endgroup]
+2026-10-31T14:14:14.6877929Z ##[group]Operating System
+2026-10-31T14:14:14.6878303Z Ubuntu
+2026-10-31T14:14:14.6878616Z 24.04.5
+2026-10-31T14:14:14.6878979Z LTS
+2026-10-31T14:14:14.6879328Z ##[endgroup]
+2026-10-31T14:14:14.6879689Z ##[group]Runner Image
+2026-10-31T14:14:14.6880192Z Image: ubuntu-24.04
+2026-10-31T14:14:14.6880535Z Version: 20261025.353.1
+2026-10-31T14:14:14.6881500Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-31T14:14:14.6882418Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-10-31T14:14:14.6882980Z ##[endgroup]
+2026-10-31T14:14:14.6883649Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T14:14:14.6885080Z Contents: read
+2026-10-31T14:14:14.6885425Z Metadata: read
+2026-10-31T14:14:14.6885836Z ##[endgroup]
+2026-10-31T14:14:14.6887224Z Secret source: Actions
+2026-10-31T14:14:14.6887876Z Cache mode: write
+2026-10-31T14:14:14.6888496Z Prepare workflow directory
+2026-10-31T14:14:14.7313891Z Prepare all required actions
+2026-10-31T14:14:14.7359334Z Getting action download info
+2026-10-31T14:14:14.9909770Z Download action repository 'github/gh-aw@0627fdbe4beb5f3b71aa569f8d97150b87f2111a' (SHA:0627fdbe4beb5f3b71aa569f8d97150b87f2111a)
+2026-10-31T14:14:22.9970763Z Download action repository 'actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333' (SHA:9000827ccba6bdab643e8b6fd33ac0654aef8333)
+2026-10-31T14:14:23.3222124Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-31T14:14:23.3525909Z Download action repository 'actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3' (SHA:3a2844b7e9c422d3c10d287c895573f7108da1b3)
+2026-10-31T14:14:23.7165378Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-10-31T14:14:23.8004432Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-10-31T14:14:23.9627436Z Complete job name: detection
+2026-10-31T14:14:24.0095551Z ##[group]Run github/gh-aw/actions/setup@0627fdbe4beb5f3b71aa569f8d97150b87f2111a
+2026-10-31T14:14:24.0095897Z with:
+2026-10-31T14:14:24.0096046Z   destination: /home/runner/work/_temp/gh-aw/actions
+2026-10-31T14:14:24.0096218Z   job-name: detection
+2026-10-31T14:14:24.0096354Z   trace-id: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:24.0096532Z   parent-span-id: d217fd983ca41500
+2026-10-31T14:14:24.0096692Z   safe-output-artifact-client: false
+2026-10-31T14:14:24.0096886Z env:
+2026-10-31T14:14:24.0097002Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:24.0097158Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:24.0097641Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:24.0098100Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:24.0098282Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:24.0098446Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:24.0098581Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:24.0098738Z   GH_AW_SETUP_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T14:14:24.0099086Z   GH_AW_CURRENT_WORKFLOW_REF: waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval
+2026-10-31T14:14:24.0099600Z   GH_AW_INFO_VERSION: 1.0.103
+2026-10-31T14:14:24.0099738Z   GH_AW_INFO_AWF_VERSION: v0.29.0
+2026-10-31T14:14:24.0099883Z   GH_AW_INFO_ENGINE_ID: copilot
+2026-10-31T14:14:24.0100017Z   GH_AW_SETUP_AW_CONTEXT: 
+2026-10-31T14:14:24.0100143Z ##[endgroup]
+2026-10-31T14:14:26.8711234Z Successfully copied 798 files to /home/runner/work/_temp/gh-aw/actions
+2026-10-31T14:14:26.8722058Z ##[group]Runtime TLS inventory (not a trust-store attestation)
+2026-10-31T14:14:26.8791462Z curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10
+2026-10-31T14:14:26.8958022Z Node v22.23.4; OpenSSL 3.5.9
+2026-10-31T14:14:27.4203053Z go1.24.13
+2026-10-31T14:14:27.4300540Z /usr/bin/gh: go1.27.3
+2026-10-31T14:14:27.4308380Z gh-aw: unavailable for build-toolchain inspection
+2026-10-31T14:14:27.4310109Z Python/certifi: not inspected by shell setup; record each client's interpreter, TLS backend and selected CA bundle separately.
+2026-10-31T14:14:27.4310836Z Container, proxy and MCP trust stores require separate image/vendor evidence.
+2026-10-31T14:14:27.4312710Z Browser updates and successful HTTPS connections do not attest CA distrust.
+2026-10-31T14:14:27.4313998Z ##[endgroup]
+2026-10-31T14:14:27.7742105Z Successfully copied 114 mcp-scripts files to /home/runner/work/_temp/gh-aw/mcp-scripts
+2026-10-31T14:14:27.9736137Z Successfully copied 173 safe-outputs files to /home/runner/work/_temp/gh-aw/safeoutputs
+2026-10-31T14:14:28.0147816Z [info] [otlp] INPUT_TRACE_ID=842627486cd10be517f7fbcfe7b0ce27 (will reuse activation trace)
+2026-10-31T14:14:28.0148572Z [info] [otlp] INPUT_PARENT_SPAN_ID=d217fd983ca41500 (will parent setup span)
+2026-10-31T14:14:28.0152529Z [info] [otlp] no OTLP endpoints have usable credentials, skipping setup span
+2026-10-31T14:14:28.0189283Z [info] [otlp] resolved trace-id=842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:28.0191741Z [info] [otlp] trace-id=842627486cd10be517f7fbcfe7b0ce27 written to GITHUB_OUTPUT
+2026-10-31T14:14:28.0192195Z [info] [otlp] span-id=b3b0b27de3fce02c written to GITHUB_OUTPUT
+2026-10-31T14:14:28.0192606Z [info] [otlp] parent-span-id=d217fd983ca41500 written to GITHUB_OUTPUT
+2026-10-31T14:14:28.0192974Z [info] [otlp] GITHUB_AW_OTEL_TRACE_ID written to GITHUB_ENV
+2026-10-31T14:14:28.0193329Z [info] [otlp] GITHUB_AW_OTEL_PARENT_SPAN_ID written to GITHUB_ENV
+2026-10-31T14:14:28.0193683Z [info] [otlp] GITHUB_AW_OTEL_JOB_START_MS written to GITHUB_ENV
+2026-10-31T14:14:28.0546226Z ##[group]Run actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+2026-10-31T14:14:28.0546454Z with:
+2026-10-31T14:14:28.0546565Z   name: activation
+2026-10-31T14:14:28.0546688Z   path: /tmp/gh-aw
+2026-10-31T14:14:28.0546810Z   merge-multiple: false
+2026-10-31T14:14:28.0546972Z   repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:14:28.0547162Z   run-id: 41208931217
+2026-10-31T14:14:28.0547298Z   skip-decompress: false
+2026-10-31T14:14:28.0547427Z   digest-mismatch: error
+2026-10-31T14:14:28.0547550Z env:
+2026-10-31T14:14:28.0547691Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:28.0547874Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:28.0548362Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:28.0548839Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:28.0549016Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:28.0549185Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:28.0549325Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:28.0549487Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:28.0549683Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:28.0549854Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:28.0550129Z ##[endgroup]
+2026-10-31T14:14:28.1599250Z Downloading single artifact
+2026-10-31T14:14:28.3248030Z Preparing to download the following artifacts:
+2026-10-31T14:14:28.3248698Z - activation (ID: 13045377313, Size: 50345, Expected Digest: sha256:4ccf05c288229cb3214302f9e0e8e998a3b87d555e2f0767e69c70b955c578a9)
+2026-10-31T14:14:28.6428149Z Redirecting to blob download url: https://productionresultssa32.blob.core.windows.net/actions-results/b0df8e11-1911-4fab-bc64-2ed9ed538f97/workflow-job-run-470f87bb-6f09-553a-8b67-b4114206f90a/artifacts/b15526c9c0e75acea3d1f8055de216c85f0330baf8604e13d8c6ce90fb90d6d7.zip
+2026-10-31T14:14:28.6428797Z Starting download of artifact to: /tmp/gh-aw
+2026-10-31T14:14:28.7995998Z (node:4990) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-10-31T14:14:28.7996509Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-31T14:14:28.8352102Z SHA256 digest of downloaded artifact is 4ccf05c288229cb3214302f9e0e8e998a3b87d555e2f0767e69c70b955c578a9
+2026-10-31T14:14:28.8352614Z Artifact download completed successfully.
+2026-10-31T14:14:28.8352875Z Total of 1 artifact(s) downloaded
+2026-10-31T14:14:28.8355893Z Download artifact has finished successfully
+2026-10-31T14:14:28.8485062Z ##[group]Run actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+2026-10-31T14:14:28.8485282Z with:
+2026-10-31T14:14:28.8485408Z   pattern: {agent,agent-output-fallback}
+2026-10-31T14:14:28.8485562Z   merge-multiple: true
+2026-10-31T14:14:28.8485689Z   path: /tmp/gh-aw/
+2026-10-31T14:14:28.8485844Z   repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:14:28.8486018Z   run-id: 41208931217
+2026-10-31T14:14:28.8486140Z   skip-decompress: false
+2026-10-31T14:14:28.8486272Z   digest-mismatch: error
+2026-10-31T14:14:28.8486390Z env:
+2026-10-31T14:14:28.8486502Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:28.8486649Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:28.8487137Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:28.8487619Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:28.8487773Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:28.8487937Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:28.8488070Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:28.8488233Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:28.8488424Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:28.8488593Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:28.8488740Z ##[endgroup]
+2026-10-31T14:14:29.0884948Z Found 4 artifact(s)
+2026-10-31T14:14:29.0885460Z Filtering artifacts by pattern '{agent,agent-output-fallback}'
+2026-10-31T14:14:29.0900736Z Preparing to download the following artifacts:
+2026-10-31T14:14:29.0901396Z - agent (ID: 13045875562, Size: 206558, Expected Digest: sha256:f3708ab7b71dfba1f8daab0c253fb75fc95e40b66a1932cf61578ced7f8bb7d5)
+2026-10-31T14:14:29.0902201Z - agent-output-fallback (ID: 13045149123, Size: 2077, Expected Digest: sha256:6641f99c3a680fd59d83be81bc95b5c45fa5a64108576766ce19e8b8b6e7371a)
+2026-10-31T14:14:29.3886265Z Redirecting to blob download url: https://productionresultssa32.blob.core.windows.net/actions-results/b0df8e11-1911-4fab-bc64-2ed9ed538f97/workflow-job-run-9f1dc90a-4fb7-5d1b-8ac2-47740dfda383/artifacts/d4f0bc5a29de06b510f9aa428f1eedba926012b591fef7a518e776a7c9bd1824.zip
+2026-10-31T14:14:29.3887301Z Starting download of artifact to: /tmp/gh-aw
+2026-10-31T14:14:29.4530926Z Redirecting to blob download url: https://productionresultssa32.blob.core.windows.net/actions-results/b0df8e11-1911-4fab-bc64-2ed9ed538f97/workflow-job-run-9f1dc90a-4fb7-5d1b-8ac2-47740dfda383/artifacts/daa0da78a4f899948f184de1c2267d4cff63de5d280692a88333f56508605a86.zip
+2026-10-31T14:14:29.4532441Z Starting download of artifact to: /tmp/gh-aw
+2026-10-31T14:14:29.5745176Z (node:5002) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-10-31T14:14:29.5745803Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-31T14:14:29.6260795Z SHA256 digest of downloaded artifact is 6641f99c3a680fd59d83be81bc95b5c45fa5a64108576766ce19e8b8b6e7371a
+2026-10-31T14:14:29.6261439Z Artifact download completed successfully.
+2026-10-31T14:14:29.7354971Z SHA256 digest of downloaded artifact is f3708ab7b71dfba1f8daab0c253fb75fc95e40b66a1932cf61578ced7f8bb7d5
+2026-10-31T14:14:29.7355463Z Artifact download completed successfully.
+2026-10-31T14:14:29.7355734Z Total of 2 artifact(s) downloaded
+2026-10-31T14:14:29.7358393Z Download artifact has finished successfully
+2026-10-31T14:14:29.7507885Z ##[group]Run mkdir -p /tmp/gh-aw/
+2026-10-31T14:14:29.7508154Z [36;1mmkdir -p /tmp/gh-aw/[0m
+2026-10-31T14:14:29.7508337Z [36;1mfind "/tmp/gh-aw/" -type f -print[0m
+2026-10-31T14:14:29.7508572Z [36;1mif [ -f "/tmp/gh-aw/agent_output.json" ]; then[0m
+2026-10-31T14:14:29.7508827Z [36;1m  echo "GH_AW_AGENT_OUTPUT=/tmp/gh-aw/agent_output.json" >> "$GITHUB_OUTPUT"[0m
+2026-10-31T14:14:29.7509050Z [36;1mfi[0m
+2026-10-31T14:14:29.7527475Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:29.7527622Z env:
+2026-10-31T14:14:29.7527745Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:29.7527909Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:29.7528402Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:29.7528885Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:29.7529080Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:29.7529248Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:29.7529394Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:29.7529560Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:29.7529762Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:29.7529939Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:29.7530098Z ##[endgroup]
+2026-10-31T14:14:29.7597809Z /tmp/gh-aw/agent/model-resolution.json
+2026-10-31T14:14:29.7598117Z /tmp/gh-aw/agent/harness_retry.json
+2026-10-31T14:14:29.7598389Z /tmp/gh-aw/runtime/aw_info.json
+2026-10-31T14:14:29.7598626Z /tmp/gh-aw/base/AGENTS.md
+2026-10-31T14:14:29.7598852Z /tmp/gh-aw/base/.github/CODEOWNERS
+2026-10-31T14:14:29.7599110Z /tmp/gh-aw/base/.github/workflows/config-checks.yml
+2026-10-31T14:14:29.7599334Z /tmp/gh-aw/base/.github/workflows/issue-triage.lock.yml
+2026-10-31T14:14:29.7599540Z /tmp/gh-aw/base/.github/workflows/issue-triage.md
+2026-10-31T14:14:29.7599728Z /tmp/gh-aw/base/.github/SECURITY.md
+2026-10-31T14:14:29.7599884Z /tmp/gh-aw/github_rate_limits.jsonl
+2026-10-31T14:14:29.7600074Z /tmp/gh-aw/mcp-logs/mcp-gateway.log
+2026-10-31T14:14:29.7600228Z /tmp/gh-aw/mcp-logs/gateway.md
+2026-10-31T14:14:29.7600386Z /tmp/gh-aw/mcp-logs/configuration.jsonl
+2026-10-31T14:14:29.7600565Z /tmp/gh-aw/mcp-logs/observed-url-domains.json
+2026-10-31T14:14:29.7600746Z /tmp/gh-aw/mcp-logs/rpc-messages.jsonl
+2026-10-31T14:14:29.7600903Z /tmp/gh-aw/mcp-logs/tools.json
+2026-10-31T14:14:29.7601054Z /tmp/gh-aw/mcp-logs/safeoutputs.log
+2026-10-31T14:14:29.7601204Z /tmp/gh-aw/otel.jsonl
+2026-10-31T14:14:29.7601534Z /tmp/gh-aw/agent-stdio.log
+2026-10-31T14:14:29.7601756Z /tmp/gh-aw/safeoutputs.jsonl
+2026-10-31T14:14:29.7601987Z /tmp/gh-aw/agent_execution.json
+2026-10-31T14:14:29.7602218Z /tmp/gh-aw/agent-session.jsonl
+2026-10-31T14:14:29.7602443Z /tmp/gh-aw/aw_info.json
+2026-10-31T14:14:29.7602650Z /tmp/gh-aw/awf-config.json
+2026-10-31T14:14:29.7602874Z /tmp/gh-aw/agent_output.json
+2026-10-31T14:14:29.7603103Z /tmp/gh-aw/skill_inventory.json
+2026-10-31T14:14:29.7603335Z /tmp/gh-aw/agent_usage.json
+2026-10-31T14:14:29.7603792Z /tmp/gh-aw/models.json
+2026-10-31T14:14:29.7604041Z /tmp/gh-aw/pre-agent-audit.txt
+2026-10-31T14:14:29.7604284Z /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:29.7604533Z /tmp/gh-aw/aw-prompts/user.txt
+2026-10-31T14:14:29.7604784Z /tmp/gh-aw/aw-prompts/prompt-template.txt
+2026-10-31T14:14:29.7605000Z /tmp/gh-aw/aw-prompts/system.txt
+2026-10-31T14:14:29.7605256Z /tmp/gh-aw/aw-prompts/prompt-import-tree.json
+2026-10-31T14:14:29.7605529Z /tmp/gh-aw/agent-errors.jsonl
+2026-10-31T14:14:29.7605700Z /tmp/gh-aw/agent_execution_exit_code.txt
+2026-10-31T14:14:29.7605896Z /tmp/gh-aw/sandbox/agent/logs/process-1793456022454-1817.log
+2026-10-31T14:14:29.7606123Z /tmp/gh-aw/sandbox/agent/logs/copilot-model-selection.json
+2026-10-31T14:14:29.7606432Z /tmp/gh-aw/sandbox/agent/logs/copilot-session-state/3be0ab6d-5ff3-48af-9767-ed1fbe768cae/events.jsonl
+2026-10-31T14:14:29.7606998Z /tmp/gh-aw/sandbox/agent/logs/copilot-session-state/3be0ab6d-5ff3-48af-9767-ed1fbe768cae/rewind-file-snapshots/tracking.json
+2026-10-31T14:14:29.7607448Z /tmp/gh-aw/sandbox/agent/logs/copilot-session-state/3be0ab6d-5ff3-48af-9767-ed1fbe768cae/checkpoints/index.md
+2026-10-31T14:14:29.7607763Z /tmp/gh-aw/sandbox/firewall/audit/image-manifest.json
+2026-10-31T14:14:29.7607995Z /tmp/gh-aw/sandbox/firewall/audit/sensitive-paths.json
+2026-10-31T14:14:29.7608255Z /tmp/gh-aw/sandbox/firewall/audit/docker-compose.redacted.yml
+2026-10-31T14:14:29.7608485Z /tmp/gh-aw/sandbox/firewall/audit/awf-resolved-config.json
+2026-10-31T14:14:29.7608697Z /tmp/gh-aw/sandbox/firewall/audit/policy-manifest.json
+2026-10-31T14:14:29.7608891Z /tmp/gh-aw/sandbox/firewall/audit/squid.conf
+2026-10-31T14:14:29.7609063Z /tmp/gh-aw/sandbox/firewall/logs/access.log
+2026-10-31T14:14:29.7609240Z /tmp/gh-aw/sandbox/firewall/logs/audit.jsonl
+2026-10-31T14:14:29.7609447Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-31T14:14:29.7609687Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-31T14:14:29.7609940Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms
+2026-10-31T14:14:29.7610223Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-31T14:14:29.7610472Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/models.json
+2026-10-31T14:14:29.7610668Z /tmp/gh-aw/sandbox/firewall/logs/cache.log
+2026-10-31T14:14:29.7610842Z /tmp/gh-aw/sandbox/firewall/awf-reflect.json
+2026-10-31T14:14:29.7631896Z ##[group]Run rm -f /tmp/gh-aw/agent_usage.json
+2026-10-31T14:14:29.7632111Z [36;1mrm -f /tmp/gh-aw/agent_usage.json[0m
+2026-10-31T14:14:29.7645420Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:29.7645562Z env:
+2026-10-31T14:14:29.7645685Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:29.7645844Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:29.7646343Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:29.7646832Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:29.7646999Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:29.7647173Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:29.7647319Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:29.7647489Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:29.7647706Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:29.7647885Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:29.7648045Z ##[endgroup]
+2026-10-31T14:14:29.7708065Z ##[group]Run mkdir -p "/tmp/gh-aw/threat-detection"
+2026-10-31T14:14:29.7708295Z [36;1mmkdir -p "/tmp/gh-aw/threat-detection"[0m
+2026-10-31T14:14:29.7708529Z [36;1mevidence_tmp="/tmp/gh-aw/threat-detection/execution.json.tmp"[0m
+2026-10-31T14:14:29.7708935Z [36;1mprintf '{"version":1,"component":"detection","run_id":%s,"run_attempt":%s,"state":"not_started"}\n' "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" > "$evidence_tmp"[0m
+2026-10-31T14:14:29.7709430Z [36;1mmv "$evidence_tmp" "/tmp/gh-aw/threat-detection/execution.json"[0m
+2026-10-31T14:14:29.7723192Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:29.7723332Z env:
+2026-10-31T14:14:29.7723453Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:29.7723612Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:29.7724118Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:29.7724593Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:29.7724758Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:29.7724927Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:29.7725072Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:29.7725237Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:29.7725443Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:29.7725623Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:29.7725785Z ##[endgroup]
+2026-10-31T14:14:29.7790947Z ##[group]Run rm -rf /tmp/gh-aw/sandbox/agent/logs/copilot-session-state
+2026-10-31T14:14:29.7791226Z [36;1mrm -rf /tmp/gh-aw/sandbox/agent/logs/copilot-session-state[0m
+2026-10-31T14:14:29.7804890Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:29.7805030Z env:
+2026-10-31T14:14:29.7805154Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:29.7805338Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:29.7805829Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:29.7806308Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:29.7806471Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:29.7806645Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:29.7806788Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:29.7806958Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:29.7807192Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:29.7807369Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:29.7807529Z ##[endgroup]
+2026-10-31T14:14:29.7861834Z ##[group]Run rm -rf /tmp/gh-aw/sandbox/firewall/logs
+2026-10-31T14:14:29.7862059Z [36;1mrm -rf /tmp/gh-aw/sandbox/firewall/logs[0m
+2026-10-31T14:14:29.7862251Z [36;1mrm -rf /tmp/gh-aw/sandbox/firewall/audit[0m
+2026-10-31T14:14:29.7875765Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:29.7875909Z env:
+2026-10-31T14:14:29.7876026Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:29.7876186Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:29.7876675Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:29.7877149Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:29.7877324Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:29.7877497Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:29.7877643Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:29.7877827Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:29.7878029Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:29.7878209Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:29.7878365Z ##[endgroup]
+2026-10-31T14:14:29.7943783Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/download_docker_images.sh" ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96 ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50
+2026-10-31T14:14:29.7945258Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/download_docker_images.sh" ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96 ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50[0m
+2026-10-31T14:14:29.7959319Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:29.7959464Z env:
+2026-10-31T14:14:29.7959610Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:29.7959770Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:29.7960261Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:29.7960739Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:29.7960906Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:29.7961081Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:29.7961230Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:29.7961542Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:29.7961748Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:29.7961931Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:29.7962090Z ##[endgroup]
+2026-10-31T14:14:29.8000114Z Starting download of 3 image(s) with max 4 concurrent downloads...
+2026-10-31T14:14:29.8047561Z Attempt 1 of 3: Pulling ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50...
+2026-10-31T14:14:29.8048618Z Attempt 1 of 3: Pulling ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b...
+2026-10-31T14:14:29.8052127Z Attempt 1 of 3: Pulling ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96...
+2026-10-31T14:14:30.3230884Z ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50
+2026-10-31T14:14:30.3247027Z Successfully pulled ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50
+2026-10-31T14:14:30.3247692Z Tagging digest-pinned image as ghcr.io/github/gh-aw-firewall/squid:0.29.0
+2026-10-31T14:14:30.3374657Z Aliasing ghcr.io/github/gh-aw-firewall/squid:0.29.0 as ghcr.io/github/gh-aw-firewall/squid:latest
+2026-10-31T14:14:38.1284892Z ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b
+2026-10-31T14:14:38.1317958Z Successfully pulled ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b
+2026-10-31T14:14:38.1318898Z Tagging digest-pinned image as ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0
+2026-10-31T14:14:38.1473996Z Aliasing ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0 as ghcr.io/github/gh-aw-firewall/api-proxy:latest
+2026-10-31T14:14:39.6523728Z ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96
+2026-10-31T14:14:39.6549339Z Successfully pulled ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96
+2026-10-31T14:14:39.6549954Z Tagging digest-pinned image as ghcr.io/github/gh-aw-firewall/agent:0.29.0
+2026-10-31T14:14:39.6672251Z Aliasing ghcr.io/github/gh-aw-firewall/agent:0.29.0 as ghcr.io/github/gh-aw-firewall/agent:latest
+2026-10-31T14:14:39.6794687Z All images downloaded successfully
+2026-10-31T14:14:39.6822966Z ##[group]Run if [[ -n "$OUTPUT_TYPES" || "$HAS_PATCH" == "true" ]]; then
+2026-10-31T14:14:39.6823252Z [36;1mif [[ -n "$OUTPUT_TYPES" || "$HAS_PATCH" == "true" ]]; then[0m
+2026-10-31T14:14:39.6823476Z [36;1m  echo "run_detection=true" >> "$GITHUB_OUTPUT"[0m
+2026-10-31T14:14:39.6823736Z [36;1m  echo "Detection will run: output_types=$OUTPUT_TYPES, has_patch=$HAS_PATCH"[0m
+2026-10-31T14:14:39.6824092Z [36;1melse[0m
+2026-10-31T14:14:39.6824246Z [36;1m  echo "run_detection=false" >> "$GITHUB_OUTPUT"[0m
+2026-10-31T14:14:39.6824484Z [36;1m  echo "Detection skipped: no agent outputs or patches to analyze"[0m
+2026-10-31T14:14:39.6824689Z [36;1mfi[0m
+2026-10-31T14:14:39.6840152Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:39.6840300Z env:
+2026-10-31T14:14:39.6840419Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:39.6840582Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:39.6841103Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:39.6841836Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:39.6842002Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:39.6842177Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:39.6842321Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:39.6842496Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:39.6842697Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:39.6842877Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:39.6843037Z   OUTPUT_TYPES: noop
+2026-10-31T14:14:39.6843165Z   HAS_PATCH: false
+2026-10-31T14:14:39.6843286Z ##[endgroup]
+2026-10-31T14:14:39.6872858Z Detection will run: output_types=noop, has_patch=false
+2026-10-31T14:14:39.6893908Z ##[group]Run rm -f "${RUNNER_TEMP}/gh-aw/mcp-config/mcp-servers.json"
+2026-10-31T14:14:39.6894181Z [36;1mrm -f "${RUNNER_TEMP}/gh-aw/mcp-config/mcp-servers.json"[0m
+2026-10-31T14:14:39.6894394Z [36;1mrm -f "$HOME/.copilot/mcp-config.json"[0m
+2026-10-31T14:14:39.6894588Z [36;1mrm -f "$GITHUB_WORKSPACE/.gemini/settings.json"[0m
+2026-10-31T14:14:39.6907425Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:39.6907566Z env:
+2026-10-31T14:14:39.6907682Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:39.6907839Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:39.6908323Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:39.6908790Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:39.6908948Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:39.6909143Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:39.6909283Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:39.6909447Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:39.6909642Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:39.6909815Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:39.6909966Z ##[endgroup]
+2026-10-31T14:14:39.6977783Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/prepare_threat_detection_files.sh"
+2026-10-31T14:14:39.6978086Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/prepare_threat_detection_files.sh"[0m
+2026-10-31T14:14:39.6990822Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:39.6990959Z env:
+2026-10-31T14:14:39.6991082Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:39.6991236Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:39.6991834Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:39.6992297Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:39.6992454Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:39.6992622Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:39.6992761Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:39.6992939Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:39.6993135Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:39.6993308Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:39.6993462Z ##[endgroup]
+2026-10-31T14:14:39.7091564Z Prepared threat detection files:
+2026-10-31T14:14:39.7100899Z total 24
+2026-10-31T14:14:39.7101084Z drwxr-xr-x 3 runner runner 4096 Oct 31 14:14 .
+2026-10-31T14:14:39.7101378Z drwxr-xr-x 9 runner runner 4096 Oct 31 14:14 ..
+2026-10-31T14:14:39.7101660Z -rw-r--r-- 1 runner runner  130 Oct 31 14:14 agent_output.json
+2026-10-31T14:14:39.7101878Z drwxr-xr-x 2 runner runner 4096 Oct 31 14:14 aw-prompts
+2026-10-31T14:14:39.7102087Z -rw-r--r-- 1 runner runner 1686 Oct 31 14:14 aw_info.json
+2026-10-31T14:14:39.7102360Z -rw-r--r-- 1 runner runner   97 Oct 31 14:14 execution.json
+2026-10-31T14:14:39.7148343Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-31T14:14:39.7148549Z with:
+2026-10-31T14:14:39.7148672Z   persist-credentials: false
+2026-10-31T14:14:39.7148845Z   repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:14:39.7150112Z   token: ***
+2026-10-31T14:14:39.7150230Z   ssh-strict: true
+2026-10-31T14:14:39.7150347Z   ssh-user: git
+2026-10-31T14:14:39.7150463Z   clean: true
+2026-10-31T14:14:39.7150593Z   sparse-checkout-cone-mode: true
+2026-10-31T14:14:39.7150745Z   fetch-depth: 1
+2026-10-31T14:14:39.7150860Z   fetch-tags: false
+2026-10-31T14:14:39.7150982Z   show-progress: true
+2026-10-31T14:14:39.7151102Z   lfs: false
+2026-10-31T14:14:39.7151213Z   submodules: false
+2026-10-31T14:14:39.7151499Z   set-safe-directory: true
+2026-10-31T14:14:39.7151663Z   allow-unsafe-pr-checkout: false
+2026-10-31T14:14:39.7151805Z env:
+2026-10-31T14:14:39.7151925Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:39.7152091Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:39.7152563Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:39.7153029Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:39.7153189Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:39.7153443Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:39.7153621Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:39.7153787Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:39.7153988Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:39.7154201Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:39.7154396Z ##[endgroup]
+2026-10-31T14:14:39.7797904Z Syncing repository: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:14:39.7798622Z ##[group]Getting Git version info
+2026-10-31T14:14:39.7799081Z Working directory is '/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox'
+2026-10-31T14:14:39.7799642Z [command]/usr/bin/git version
+2026-10-31T14:14:39.7888241Z git version 2.56.0
+2026-10-31T14:14:39.7903750Z ##[endgroup]
+2026-10-31T14:14:39.7911450Z Temporarily overriding HOME='/home/runner/work/_temp/e5a314d6-87b8-404a-8b90-df866bb37e01' before making global git config changes
+2026-10-31T14:14:39.7912074Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T14:14:39.7922142Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-31T14:14:39.7962481Z Deleting the contents of '/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox'
+2026-10-31T14:14:39.7964453Z ##[group]Determining repository object format
+2026-10-31T14:14:39.7965587Z ##[endgroup]
+2026-10-31T14:14:39.7965926Z ##[group]Initializing the repository
+2026-10-31T14:14:39.7968465Z [command]/usr/bin/git init /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-31T14:14:39.8072876Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-31T14:14:39.8073494Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-31T14:14:39.8074001Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-31T14:14:39.8074435Z hint: call:
+2026-10-31T14:14:39.8074979Z hint:
+2026-10-31T14:14:39.8075263Z hint: 	git config --global init.defaultBranch <name>
+2026-10-31T14:14:39.8075547Z hint:
+2026-10-31T14:14:39.8075808Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-31T14:14:39.8076234Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-31T14:14:39.8076557Z hint:
+2026-10-31T14:14:39.8076741Z hint: 	git branch -m <name>
+2026-10-31T14:14:39.8076941Z hint:
+2026-10-31T14:14:39.8077503Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-31T14:14:39.8086003Z Initialized empty Git repository in /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/
+2026-10-31T14:14:39.8095745Z [command]/usr/bin/git remote add origin https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:14:39.8147107Z ##[endgroup]
+2026-10-31T14:14:39.8147461Z ##[group]Disabling automatic garbage collection
+2026-10-31T14:14:39.8149609Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-31T14:14:39.8183656Z ##[endgroup]
+2026-10-31T14:14:39.8184260Z ##[group]Setting up auth
+2026-10-31T14:14:39.8184750Z Removing SSH command configuration
+2026-10-31T14:14:39.8188936Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T14:14:39.8227276Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T14:14:39.8545301Z Removing HTTP extra header
+2026-10-31T14:14:39.8550108Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T14:14:39.8589035Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T14:14:39.8769033Z Removing includeIf entries pointing to credentials config files
+2026-10-31T14:14:39.8780882Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T14:14:39.8818777Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T14:14:39.9009802Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-31T14:14:39.9053153Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path /home/runner/work/_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:39.9090710Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:39.9127949Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:39.9164040Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:39.9199336Z ##[endgroup]
+2026-10-31T14:14:39.9199679Z ##[group]Fetching the repository
+2026-10-31T14:14:39.9204130Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +96727004b780f961f5c7e331e8024221116b2762:refs/remotes/origin/holdout-eval
+2026-10-31T14:14:40.8479611Z From https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:14:40.8479957Z  * [new ref]         96727004b780f961f5c7e331e8024221116b2762 -> origin/holdout-eval
+2026-10-31T14:14:40.8489019Z [command]/usr/bin/git branch --list --remote origin/holdout-eval
+2026-10-31T14:14:40.8523656Z   origin/holdout-eval
+2026-10-31T14:14:40.8529184Z [command]/usr/bin/git rev-parse refs/remotes/origin/holdout-eval
+2026-10-31T14:14:40.8560981Z 96727004b780f961f5c7e331e8024221116b2762
+2026-10-31T14:14:40.8564205Z ##[endgroup]
+2026-10-31T14:14:40.8564545Z ##[group]Determining the checkout info
+2026-10-31T14:14:40.8565129Z ##[endgroup]
+2026-10-31T14:14:40.8568261Z [command]/usr/bin/git sparse-checkout disable
+2026-10-31T14:14:40.8637704Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-31T14:14:40.8665659Z ##[group]Checking out the ref
+2026-10-31T14:14:40.8668195Z [command]/usr/bin/git checkout --progress --force -B holdout-eval refs/remotes/origin/holdout-eval
+2026-10-31T14:14:41.0318077Z Switched to a new branch 'holdout-eval'
+2026-10-31T14:14:41.0323751Z branch 'holdout-eval' set up to track 'origin/holdout-eval'.
+2026-10-31T14:14:41.0350014Z ##[endgroup]
+2026-10-31T14:14:41.0403127Z [command]/usr/bin/git log -1 --format=%H
+2026-10-31T14:14:41.0436435Z 96727004b780f961f5c7e331e8024221116b2762
+2026-10-31T14:14:41.0446744Z ##[group]Removing auth
+2026-10-31T14:14:41.0447007Z Removing SSH command configuration
+2026-10-31T14:14:41.0447298Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T14:14:41.0485277Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T14:14:41.0681450Z Removing HTTP extra header
+2026-10-31T14:14:41.0683428Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T14:14:41.0720898Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T14:14:41.0910669Z Removing includeIf entries pointing to credentials config files
+2026-10-31T14:14:41.0913760Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T14:14:41.0950795Z includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path
+2026-10-31T14:14:41.0951648Z includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path
+2026-10-31T14:14:41.0952185Z includeif.gitdir:/github/workspace/.git.path
+2026-10-31T14:14:41.0952516Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T14:14:41.0958340Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path
+2026-10-31T14:14:41.0989859Z /home/runner/work/_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:41.0997452Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-de5af117\-885c\-4ee8\-92dd\-955159521477\.config
+2026-10-31T14:14:41.1040061Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path
+2026-10-31T14:14:41.1070145Z /home/runner/work/_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:41.1076745Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-de5af117\-885c\-4ee8\-92dd\-955159521477\.config
+2026-10-31T14:14:41.1114823Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-31T14:14:41.1145623Z /github/runner_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:41.1151751Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-de5af117\-885c\-4ee8\-92dd\-955159521477\.config
+2026-10-31T14:14:41.1189417Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T14:14:41.1219089Z /github/runner_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config
+2026-10-31T14:14:41.1226156Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-de5af117\-885c\-4ee8\-92dd\-955159521477\.config
+2026-10-31T14:14:41.1284762Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T14:14:41.1475144Z Removing credentials config '/home/runner/work/_temp/git-credentials-de5af117-885c-4ee8-92dd-955159521477.config'
+2026-10-31T14:14:41.1481226Z ##[endgroup]
+2026-10-31T14:14:41.1587628Z ##[group]Run python3 scripts/validate_safe_outputs.py --input /tmp/gh-aw/threat-detection/agent_output.json --detection-result /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-31T14:14:41.1588301Z [36;1mpython3 scripts/validate_safe_outputs.py --input /tmp/gh-aw/threat-detection/agent_output.json --detection-result /tmp/gh-aw/threat-detection/detection_result.json[0m
+2026-10-31T14:14:41.1604308Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:41.1604458Z env:
+2026-10-31T14:14:41.1604584Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:41.1604747Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:41.1605248Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:41.1605735Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:41.1605906Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:41.1606110Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:41.1606260Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:41.1606438Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:41.1606647Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:41.1606834Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:41.1606997Z ##[endgroup]
+2026-10-31T14:14:41.1848999Z {"comment_calls": 0, "items": 1, "label_calls": 0, "valid": true}
+2026-10-31T14:14:41.1926842Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:14:41.1927077Z with:
+2026-10-31T14:14:41.1927713Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'setup_threat_detection.cjs'));
+await main();
+
+2026-10-31T14:14:41.1929517Z   github-token: ***
+2026-10-31T14:14:41.1929648Z   debug: false
+2026-10-31T14:14:41.1929790Z   user-agent: actions/github-script
+2026-10-31T14:14:41.1929956Z   result-encoding: json
+2026-10-31T14:14:41.1930087Z   retries: 0
+2026-10-31T14:14:41.1930233Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:14:41.1930403Z env:
+2026-10-31T14:14:41.1930530Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:41.1930690Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:41.1931206Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:41.1931923Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:41.1932096Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:41.1932274Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:41.1932425Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:41.1932597Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:41.1932861Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:41.1933186Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:41.1933364Z   WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T14:14:41.1933642Z   WORKFLOW_DESCRIPTION: Bounded first-pass issue triage for the private Airflow evaluation sandbox.
+2026-10-31T14:14:41.1933904Z   HAS_PATCH: false
+2026-10-31T14:14:41.1934046Z   GH_AW_DETECTION_CONTINUE_ON_ERROR: false
+2026-10-31T14:14:41.1934217Z   GH_AW_DETECTION_SKIP_PROMPT_SUMMARY: true
+2026-10-31T14:14:41.1934381Z ##[endgroup]
+2026-10-31T14:14:41.2609206Z Removed framework system prompt block from /tmp/gh-aw/threat-detection/aw-prompts/prompt.txt
+2026-10-31T14:14:41.2609795Z Prompt file found: /tmp/gh-aw/threat-detection/aw-prompts/prompt.txt (1757 bytes)
+2026-10-31T14:14:41.2610280Z Agent output file found: /tmp/gh-aw/threat-detection/agent_output.json (130 bytes)
+2026-10-31T14:14:41.2615418Z Skipping threat detection prompt step summary (external detector renders its own prompt)
+2026-10-31T14:14:41.2616239Z Threat detection setup completed
+2026-10-31T14:14:41.2711069Z ##[group]Run mkdir -p /tmp/gh-aw/threat-detection
+2026-10-31T14:14:41.2711530Z [36;1mmkdir -p /tmp/gh-aw/threat-detection[0m
+2026-10-31T14:14:41.2711771Z [36;1mtouch /tmp/gh-aw/threat-detection/detection.log[0m
+2026-10-31T14:14:41.2727735Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:41.2727886Z env:
+2026-10-31T14:14:41.2728012Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:41.2728177Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:41.2728686Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:41.2729175Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:41.2729346Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:41.2729525Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:41.2729675Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:41.2729886Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:41.2730096Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:41.2730282Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:41.2730469Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:41.2730645Z ##[endgroup]
+2026-10-31T14:14:41.2834222Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/install_awf_binary.sh" v0.29.0 --rootless
+2026-10-31T14:14:41.2834775Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/install_awf_binary.sh" v0.29.0 --rootless[0m
+2026-10-31T14:14:41.2854091Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:41.2854249Z env:
+2026-10-31T14:14:41.2854378Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:41.2854545Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:41.2855066Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:41.2855579Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:41.2855751Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:41.2855932Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:41.2856084Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:41.2856301Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:41.2856510Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:41.2856699Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:41.2856889Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:41.2857066Z ##[endgroup]
+2026-10-31T14:14:41.2964542Z Installing awf with checksum verification (version: v0.29.0, os: Linux, arch: x86_64)
+2026-10-31T14:14:41.2986124Z Cleaning up stale AWF chroot directories...
+2026-10-31T14:14:41.3195306Z Downloading checksums from 'https://github.com/github/gh-aw-firewall/releases/download/v0.29.0/checksums.txt'...
+2026-10-31T14:14:41.5846132Z Node.js >= 20 detected (v22.23.4), using lightweight bundle...
+2026-10-31T14:14:41.5847245Z Downloading bundle from 'https://github.com/github/gh-aw-firewall/releases/download/v0.29.0/awf-bundle.js'...
+2026-10-31T14:14:41.9527183Z Verifying SHA256 checksum for awf-bundle.js...
+2026-10-31T14:14:41.9594356Z ✓ Checksum verification passed for awf-bundle.js
+2026-10-31T14:14:41.9640501Z ✓ Installed awf bundle to /home/runner/.local/lib/awf/awf-bundle.js
+2026-10-31T14:14:42.2357684Z 0.29.0
+2026-10-31T14:14:42.2435753Z ✓ AWF installation complete
+2026-10-31T14:14:42.2503459Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+2026-10-31T14:14:42.2503690Z with:
+2026-10-31T14:14:42.2503813Z   node-version: 24
+2026-10-31T14:14:42.2503954Z   package-manager-cache: false
+2026-10-31T14:14:42.2504108Z   check-latest: false
+2026-10-31T14:14:42.2505362Z   token: ***
+2026-10-31T14:14:42.2505480Z env:
+2026-10-31T14:14:42.2505605Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:42.2505770Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:42.2506342Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:42.2507038Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:42.2507287Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:42.2507612Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:42.2507882Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:42.2523298Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:42.2523625Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:42.2523936Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:42.2524258Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:42.2524545Z ##[endgroup]
+2026-10-31T14:14:42.3410890Z Found in cache @ /opt/hostedtoolcache/node/24.22.1/x64
+2026-10-31T14:14:42.4091136Z ##[group]Environment details
+2026-10-31T14:14:42.6760183Z node: v24.22.1
+2026-10-31T14:14:42.6760414Z npm: 11.19.1
+2026-10-31T14:14:42.6760596Z yarn: 1.22.22
+2026-10-31T14:14:42.6760980Z ##[endgroup]
+2026-10-31T14:14:42.6864898Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/install_copilot_cli.sh" 1.0.103 --checksums-sha256 26cd3e4b32cde498e4961fb4d48e7b85d7859fc69af1a645a19201fdd577bdb2 --prefer-toolcache
+2026-10-31T14:14:42.6865591Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/install_copilot_cli.sh" 1.0.103 --checksums-sha256 26cd3e4b32cde498e4961fb4d48e7b85d7859fc69af1a645a19201fdd577bdb2 --prefer-toolcache[0m
+2026-10-31T14:14:42.6885920Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:42.6886090Z env:
+2026-10-31T14:14:42.6886213Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:42.6886376Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:42.6886866Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:42.6887356Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:42.6887539Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:42.6887715Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:42.6887861Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:42.6888028Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:42.6888232Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:42.6888409Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:42.6888591Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:42.6888762Z   GH_HOST: github.com
+2026-10-31T14:14:42.6888897Z   GH_AW_COPILOT_MIN_VERSION: 1.0.35
+2026-10-31T14:14:42.6889049Z ##[endgroup]
+2026-10-31T14:14:42.6970323Z Ensuring correct ownership of /home/runner/.copilot...
+2026-10-31T14:14:42.7067108Z Cleaning up stale AWF chroot directories...
+2026-10-31T14:14:42.7187597Z Installing GitHub Copilot CLI version 1.0.103 (os: Linux, arch: x86_64)...
+2026-10-31T14:14:42.7217639Z Using Copilot CLI minimum version from GH_AW_COPILOT_MIN_VERSION: 1.0.35
+2026-10-31T14:14:42.7230686Z Explicit Copilot CLI version argument provided (1.0.103); skipping compat matrix resolution.
+2026-10-31T14:14:42.7235582Z Searching toolcache for GitHub Copilot CLI (requested: 1.0.103, arch: x64, range: 1.0.35..none)...
+2026-10-31T14:14:42.7240191Z   Scanning toolcache root: /opt/hostedtoolcache/copilot-cli
+2026-10-31T14:14:42.7404282Z   Found candidate: /opt/hostedtoolcache/copilot-cli/1.0.101/x64/bin/copilot (version: 1.0.101, arch: x64)
+2026-10-31T14:14:42.7410695Z   Skipping candidate (version mismatch: want 1.0.103, got 1.0.101)
+2026-10-31T14:14:42.7411071Z   No compatible toolcache entry found
+2026-10-31T14:14:42.7421162Z Downloading checksums from https://github.com/github/copilot-cli/releases/download/v1.0.103/SHA256SUMS.txt...
+2026-10-31T14:14:42.9770704Z Downloading binary from https://github.com/github/copilot-cli/releases/download/v1.0.103/copilot-linux-x64.tar.gz...
+2026-10-31T14:14:43.6427956Z Verifying SHA256 checksum for copilot-linux-x64.tar.gz...
+2026-10-31T14:14:43.7197936Z ✓ Checksum verification passed for copilot-linux-x64.tar.gz
+2026-10-31T14:14:43.7198241Z Installing binary to /usr/local/bin...
+2026-10-31T14:14:44.5636406Z Verifying Copilot CLI installation...
+2026-10-31T14:14:45.1358203Z GitHub Copilot CLI 1.0.103.
+2026-10-31T14:14:45.1358507Z Run 'copilot update' to check for updates.
+2026-10-31T14:14:45.1403382Z ✓ Copilot CLI installation complete
+2026-10-31T14:14:45.2158844Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/install_threat_detect_binary.sh" v0.5.3 --artifact-base-url https://github.com/github/gh-aw-threat-detection/releases/download --sha256-amd64 7cfab3bd02717968a0584ddd3790cff22550059e36d6f656c4f35e9d27851009 --sha256-arm64 6f355949af98e7b5527a958ac11431bd7867db45c0191b94c3a205c662181cc6
+2026-10-31T14:14:45.2160071Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/install_threat_detect_binary.sh" v0.5.3 --artifact-base-url https://github.com/github/gh-aw-threat-detection/releases/download --sha256-amd64 7cfab3bd02717968a0584ddd3790cff22550059e36d6f656c4f35e9d27851009 --sha256-arm64 6f355949af98e7b5527a958ac11431bd7867db45c0191b94c3a205c662181cc6[0m
+2026-10-31T14:14:45.2178016Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:45.2178173Z env:
+2026-10-31T14:14:45.2178306Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.2178465Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:45.2178984Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:45.2179458Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:45.2179646Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:45.2179826Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:45.2179970Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:45.2180143Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:45.2180355Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:45.2180537Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:45.2180719Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:45.2180888Z ##[endgroup]
+2026-10-31T14:14:45.2304101Z Installing threat-detect with compiler-pinned checksum verification (version: v0.5.3, os: Linux, arch: x86_64)
+2026-10-31T14:14:45.2398576Z Downloading binary from "https://github.com/github/gh-aw-threat-detection/releases/download/v0.5.3/threat-detect-linux-amd64"...
+2026-10-31T14:14:45.4669521Z Verifying SHA256 checksum for threat-detect-linux-amd64...
+2026-10-31T14:14:45.4711862Z ✓ Checksum verification passed for threat-detect-linux-amd64
+2026-10-31T14:14:45.5327322Z threat-detect v0.5.3
+2026-10-31T14:14:45.5331721Z ✓ threat-detect installation complete
+2026-10-31T14:14:45.5416675Z ##[group]Run mkdir -p /tmp/gh-aw/threat-detection/sandbox/firewall
+2026-10-31T14:14:45.5417036Z [36;1mmkdir -p /tmp/gh-aw/threat-detection/sandbox/firewall[0m
+2026-10-31T14:14:45.5417674Z [36;1mif [ -d /tmp/gh-aw/sandbox/firewall/logs ]; then mkdir -p /tmp/gh-aw/threat-detection/sandbox/firewall/logs && cp -r /tmp/gh-aw/sandbox/firewall/logs/. /tmp/gh-aw/threat-detection/sandbox/firewall/logs/; fi[0m
+2026-10-31T14:14:45.5418400Z [36;1mif [ -d /tmp/gh-aw/sandbox/firewall/audit ]; then mkdir -p /tmp/gh-aw/threat-detection/sandbox/firewall/audit && cp -r /tmp/gh-aw/sandbox/firewall/audit/. /tmp/gh-aw/threat-detection/sandbox/firewall/audit/; fi[0m
+2026-10-31T14:14:45.5434685Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:45.5434831Z env:
+2026-10-31T14:14:45.5434958Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.5435117Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:45.5435626Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:45.5436100Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:45.5436276Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:45.5436453Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:45.5436598Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:45.5436768Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:45.5436973Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:45.5437155Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:45.5437337Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:45.5437508Z ##[endgroup]
+2026-10-31T14:14:45.5513916Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:14:45.5514140Z with:
+2026-10-31T14:14:45.5515080Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'redact_secrets.cjs'));
+const { persistDetectionMasks } = require(path.join(actionsDir, 'detection_mask_state.cjs'));
+await main({ additionalDirectories: ["/tmp/gh-aw/threat-detection/sandbox/firewall"], persistDetectionMasks });
+
+2026-10-31T14:14:45.5517151Z   github-token: ***
+2026-10-31T14:14:45.5517277Z   debug: false
+2026-10-31T14:14:45.5517409Z   user-agent: actions/github-script
+2026-10-31T14:14:45.5517567Z   result-encoding: json
+2026-10-31T14:14:45.5517699Z   retries: 0
+2026-10-31T14:14:45.5517853Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:14:45.5518021Z env:
+2026-10-31T14:14:45.5518144Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.5518300Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:45.5518789Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:45.5519266Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:45.5519432Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:45.5519606Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:45.5519750Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:45.5519921Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:45.5520126Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:45.5520304Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:45.5520487Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:45.5520731Z   GH_AW_SECRET_NAMES: GH_AW_DEFAULT_OTLP_ENDPOINT,GH_AW_DEFAULT_OTLP_HEADERS
+2026-10-31T14:14:45.5520951Z   SECRET_GH_AW_DEFAULT_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.5521112Z   SECRET_GH_AW_DEFAULT_OTLP_HEADERS: 
+2026-10-31T14:14:45.5521261Z ##[endgroup]
+2026-10-31T14:14:45.6860051Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:14:45.6860419Z with:
+2026-10-31T14:14:45.6861546Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_token_usage.cjs'));
+await main();
+
+2026-10-31T14:14:45.6865045Z   github-token: ***
+2026-10-31T14:14:45.6865237Z   debug: false
+2026-10-31T14:14:45.6865438Z   user-agent: actions/github-script
+2026-10-31T14:14:45.6865676Z   result-encoding: json
+2026-10-31T14:14:45.6865879Z   retries: 0
+2026-10-31T14:14:45.6866093Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:14:45.6866360Z env:
+2026-10-31T14:14:45.6866547Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.6866797Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:45.6867622Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:45.6868426Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:45.6868697Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:45.6868993Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:45.6869225Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:45.6869486Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:45.6869810Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:45.6870111Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:45.6870388Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:45.6870712Z   GH_AW_TOKEN_USAGE_SUMMARY_TITLE: Threat Detection Token Usage
+2026-10-31T14:14:45.6871046Z   GH_AW_PHASE: detection
+2026-10-31T14:14:45.6871519Z   GH_AW_AGENT_USAGE_PATH: /tmp/gh-aw/threat-detection/detection_usage.json
+2026-10-31T14:14:45.6871949Z   GH_AW_AGENT_USAGE_JSONL_PATH: /tmp/gh-aw/threat-detection/detection_usage.jsonl
+2026-10-31T14:14:45.6872309Z   GH_AW_WRITE_EMPTY_USAGE: true
+2026-10-31T14:14:45.6872474Z ##[endgroup]
+2026-10-31T14:14:45.7738581Z Recorded explicit zero token usage evidence
+2026-10-31T14:14:45.7739039Z No token usage data found, skipping summary
+2026-10-31T14:14:45.7886287Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:14:45.7886662Z with:
+2026-10-31T14:14:45.7888240Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'redact_secrets.cjs'));
+const { persistDetectionMasks } = require(path.join(actionsDir, 'detection_mask_state.cjs'));
+await main({ additionalDirectories: ["/tmp/gh-aw/threat-detection/sandbox/firewall"], persistDetectionMasks });
+
+2026-10-31T14:14:45.7891983Z   github-token: ***
+2026-10-31T14:14:45.7892193Z   debug: false
+2026-10-31T14:14:45.7892403Z   user-agent: actions/github-script
+2026-10-31T14:14:45.7892675Z   result-encoding: json
+2026-10-31T14:14:45.7892885Z   retries: 0
+2026-10-31T14:14:45.7893137Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:14:45.7893409Z env:
+2026-10-31T14:14:45.7893603Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.7893855Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:45.7894642Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:45.7895420Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:45.7895682Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:45.7895955Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:45.7896183Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:45.7896453Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:45.7896766Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:45.7897294Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:45.7897565Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:45.7897940Z   GH_AW_SECRET_NAMES: GH_AW_DEFAULT_OTLP_ENDPOINT,GH_AW_DEFAULT_OTLP_HEADERS
+2026-10-31T14:14:45.7898272Z   SECRET_GH_AW_DEFAULT_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.7898523Z   SECRET_GH_AW_DEFAULT_OTLP_HEADERS: 
+2026-10-31T14:14:45.7898759Z ##[endgroup]
+2026-10-31T14:14:45.9229714Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:14:45.9230678Z with:
+2026-10-31T14:14:45.9232025Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'render_detection_log.cjs'));
+await main();
+
+2026-10-31T14:14:45.9235314Z   github-token: ***
+2026-10-31T14:14:45.9237159Z   debug: false
+2026-10-31T14:14:45.9237366Z   user-agent: actions/github-script
+2026-10-31T14:14:45.9237629Z   result-encoding: json
+2026-10-31T14:14:45.9237855Z   retries: 0
+2026-10-31T14:14:45.9238329Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:14:45.9238684Z env:
+2026-10-31T14:14:45.9238880Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:45.9239124Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:45.9240856Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:45.9253832Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:45.9254137Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:45.9254422Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:45.9254658Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:45.9254939Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:45.9255299Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:45.9255591Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:45.9255899Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:45.9256174Z ##[endgroup]
+2026-10-31T14:14:46.0330125Z Log is empty, skipping render: /tmp/gh-aw/threat-detection/detection.log
+2026-10-31T14:14:46.0465070Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-10-31T14:14:46.0465316Z with:
+2026-10-31T14:14:46.0465434Z   name: detection
+2026-10-31T14:14:46.0466046Z   path: /tmp/gh-aw/threat-detection/detection_result.json
+/tmp/gh-aw/threat-detection/execution.json
+/tmp/gh-aw/threat-detection/detection_usage.json
+/tmp/gh-aw/threat-detection/detection_usage.jsonl
+/tmp/gh-aw/threat-detection/sandbox/firewall/logs/
+/tmp/gh-aw/threat-detection/sandbox/firewall/audit/
+
+2026-10-31T14:14:46.0466688Z   if-no-files-found: ignore
+2026-10-31T14:14:46.0466833Z   retention-days: 0
+2026-10-31T14:14:46.0466978Z   compression-level: 6
+2026-10-31T14:14:46.0467111Z   overwrite: false
+2026-10-31T14:14:46.0467243Z   include-hidden-files: false
+2026-10-31T14:14:46.0467386Z   archive: true
+2026-10-31T14:14:46.0467510Z env:
+2026-10-31T14:14:46.0467634Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:46.0467796Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:46.0468314Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:46.0468806Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:46.0468976Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:46.0469153Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:46.0469304Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:46.0469475Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:46.0469686Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:46.0470005Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:46.0470192Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:46.0470366Z ##[endgroup]
+2026-10-31T14:14:46.1673319Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-31T14:14:46.1676654Z The least common ancestor is /tmp/gh-aw/threat-detection. This will be the root directory of the artifact
+2026-10-31T14:14:46.1677318Z With the provided path, there will be 4 files uploaded
+2026-10-31T14:14:46.1681675Z Artifact name is valid!
+2026-10-31T14:14:46.1683355Z Root directory input is valid!
+2026-10-31T14:14:46.4276750Z Uploading artifact: detection.zip
+2026-10-31T14:14:46.4302555Z Beginning upload of artifact content to blob storage
+2026-10-31T14:14:46.5987239Z Uploaded bytes 790
+2026-10-31T14:14:46.6352404Z Finished uploading artifact content to blob storage!
+2026-10-31T14:14:46.6353059Z SHA256 digest of uploaded artifact is 84a87f8cbb8483c01564025da57cd53d6ce2f564d67ef0fd11d2600c77050d3c
+2026-10-31T14:14:46.6353574Z Finalizing artifact upload
+2026-10-31T14:14:47.1753463Z Artifact detection successfully finalized. Artifact ID 13045915554
+2026-10-31T14:14:47.1755795Z Artifact detection has been successfully uploaded! Final size is 790 bytes. Artifact ID is 13045915554
+2026-10-31T14:14:47.1760740Z Artifact download URL: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41208931217/artifacts/13045915554
+2026-10-31T14:14:47.2039766Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-31T14:14:47.2040278Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json[0m
+2026-10-31T14:14:47.2063794Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:14:47.2063948Z env:
+2026-10-31T14:14:47.2064079Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:47.2064249Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:47.2065550Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:47.2066332Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:47.2066509Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:47.2067910Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:47.2068081Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:47.2068260Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:47.2068477Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:47.2068667Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:47.2068857Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T14:14:47.2069036Z   RUN_DETECTION: true
+2026-10-31T14:14:47.2069182Z   DETECTION_AGENTIC_EXECUTION_OUTCOME: 
+2026-10-31T14:14:47.2069351Z   THREAT_DETECT_INSTALL_OUTCOME: success
+2026-10-31T14:14:47.2069525Z   GH_AW_DETECTION_CONTINUE_ON_ERROR: false
+2026-10-31T14:14:47.2070858Z ##[endgroup]
+2026-10-31T14:14:47.2187104Z ════════════════════════════════════════════════════════
+2026-10-31T14:14:47.2187580Z 🛡️  Threat Detection: Parse Results & Conclude
+2026-10-31T14:14:47.2188034Z ════════════════════════════════════════════════════════
+2026-10-31T14:14:47.2188384Z 📋 RUN_DETECTION env: "true"
+2026-10-31T14:14:47.2188669Z 📋 continue-on-error: false
+2026-10-31T14:14:47.2189008Z 📋 detection execution outcome: ""
+2026-10-31T14:14:47.2189426Z 📁 Threat detection directory: /tmp/gh-aw/threat-detection
+2026-10-31T14:14:47.2189925Z 📄 Detection log path: /tmp/gh-aw/threat-detection/detection.log
+2026-10-31T14:14:47.2190489Z 📄 Structured result path: /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-31T14:14:47.2191071Z 📄 Full result path: /tmp/gh-aw/threat-detection/detection_result_full.json
+2026-10-31T14:14:47.2191807Z 🔍 Detection is required. Proceeding to parse detection result...
+2026-10-31T14:14:47.2192315Z 🔎 Checking for structured result file: /tmp/gh-aw/threat-detection/detection_result.json
+2026-10-31T14:14:47.2192862Z ✔️  Structured result file found and parsed successfully.
+2026-10-31T14:14:47.2193214Z 📄 No full result file found at: /tmp/gh-aw/threat-detection/detection_result_full.json
+2026-10-31T14:14:47.2193567Z    Reasons will be rendered from the structured result file, if it carries any.
+2026-10-31T14:14:47.2193903Z 📋 Threat detection verdict (from structured result file):
+2026-10-31T14:14:47.2194118Z    prompt_injection : false
+2026-10-31T14:14:47.2194277Z    secret_leak      : false
+2026-10-31T14:14:47.2194428Z    malicious_patch  : false
+2026-10-31T14:14:47.2194576Z    reasons          : (none)
+2026-10-31T14:14:47.2194729Z    warnings         : (none)
+2026-10-31T14:14:47.2194973Z ✅ No security threats detected. Safe outputs may proceed.
+2026-10-31T14:14:47.2195267Z ════════════════════════════════════════════════════════
+2026-10-31T14:14:47.2195501Z 🛡️  Threat detection conclusion complete.
+2026-10-31T14:14:47.2195781Z ════════════════════════════════════════════════════════
+2026-10-31T14:14:47.2259311Z Post job cleanup.
+2026-10-31T14:14:47.3214562Z Post job cleanup.
+2026-10-31T14:14:47.3815348Z [command]/usr/bin/git version
+2026-10-31T14:14:47.3853913Z git version 2.56.0
+2026-10-31T14:14:47.3880343Z Temporarily overriding HOME='/home/runner/work/_temp/f92574ff-4902-44e3-8481-53353aced549' before making global git config changes
+2026-10-31T14:14:47.3880931Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T14:14:47.3884664Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/airflow-agentic-triage-sandbox/airflow-agentic-triage-sandbox
+2026-10-31T14:14:47.3921506Z Removing SSH command configuration
+2026-10-31T14:14:47.3927013Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T14:14:47.3972452Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T14:14:47.4192343Z Removing HTTP extra header
+2026-10-31T14:14:47.4198259Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T14:14:47.4241644Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T14:14:47.4515033Z Removing includeIf entries pointing to credentials config files
+2026-10-31T14:14:47.4520926Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T14:14:47.4593642Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T14:14:47.4913625Z Post job cleanup.
+2026-10-31T14:14:47.5381647Z [info] [otlp] sending conclusion span "gh-aw.detection.conclusion" to configured endpoints
+2026-10-31T14:14:47.5451158Z [info] [otlp] conclusion span export attempted
+2026-10-31T14:14:47.5452450Z Cleaning up /tmp/gh-aw...
+2026-10-31T14:14:47.5595593Z Cleaned up /tmp/gh-aw
+2026-10-31T14:14:47.5666556Z No /tmp/awf-*-chroot-home directories found
+2026-10-31T14:14:47.5736020Z No /tmp/awf-chroot-* directories found
+2026-10-31T14:14:47.5830589Z Evaluate and set job outputs
+2026-10-31T14:14:47.5835105Z Set output 'detection_conclusion'
+2026-10-31T14:14:47.5836145Z Set output 'detection_success'
+2026-10-31T14:14:47.5836563Z Set output 'run_detection'
+2026-10-31T14:14:47.5836904Z Cleaning up orphan processes

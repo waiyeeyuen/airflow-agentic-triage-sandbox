@@ -1,0 +1,60 @@
+✓ Downloaded artifacts for run 41207336799
+
+i MCP Gateway Metrics
+
+Total Requests: 3
+Total Tool Calls: 3
+Total Errors: 2
+Servers: 1
+Time Range: 1m2s
+
+Server Usage
+╭───────────┬────────┬──────────┬────────┬──────╮
+│Server     │Requests│Tool Calls│Avg Time│Errors│
+├───────────┼────────┼──────────┼────────┼──────┤
+│safeoutputs│3       │3         │0ms     │2     │
+╰───────────┴────────┴──────────┴────────┴──────╯
+
+i Unified MCP + Firewall + Agent Event Timeline
+
+Total Events  : 31
+  Gateway     : 4  (tool_calls=4, difc_filtered=0, guard_blocked=0)
+  Agent       : 27  (turns=1, tool_start=9, tool_done=9, messages=8, reasoning=0)
+
+Event Timeline
+╭────────────┬───┬───────────────────┬────────────────────────────────────────────────┬─────────╮
+│Time        │Src│Kind               │Detail                                          │Status   │
+├────────────┼───┼───────────────────┼────────────────────────────────────────────────┼─────────┤
+│13:52:11.782│GW │⚙ tool_call        │safeoutputs/tools/list                          │initiated│
+│13:52:48.832│AG │○ agent_turn       │turn 1                                          │         │
+│13:52:50.582│AG │● assistant_message│                                                │         │
+│13:52:50.584│AG │▶ tool_start       │skill                                           │         │
+│13:52:50.587│AG │■ tool_done        │                                                │success  │
+│13:52:52.161│AG │● assistant_message│                                                │         │
+│13:52:52.163│AG │▶ tool_start       │bash                                            │         │
+│13:52:52.269│AG │■ tool_done        │                                                │success  │
+│13:52:57.083│AG │● assistant_message│                                                │         │
+│13:52:57.085│AG │▶ tool_start       │bash                                            │         │
+│13:52:57.171│AG │■ tool_done        │                                                │success  │
+│13:53:01.383│AG │● assistant_message│                                                │         │
+│13:53:01.384│AG │▶ tool_start       │bash                                            │         │
+│13:53:01.385│AG │▶ tool_start       │bash                                            │         │
+│13:53:01.454│AG │■ tool_done        │                                                │success  │
+│13:53:01.510│AG │■ tool_done        │                                                │success  │
+│13:53:03.153│AG │● assistant_message│                                                │         │
+│13:53:03.154│AG │▶ tool_start       │bash                                            │         │
+│13:53:03.210│AG │■ tool_done        │                                                │success  │
+│13:53:09.252│AG │● assistant_message│                                                │         │
+│13:53:09.253│AG │▶ tool_start       │safeoutputs/safeoutputs-add_labels              │         │
+│13:53:09.254│AG │▶ tool_start       │safeoutputs/safeoutputs-add_comment             │         │
+│13:53:09.526│GW │⚙ tool_call        │safeoutputs/add_labels                          │initiated│
+│13:53:09.526│GW │⚙ tool_call        │safeoutputs/add_comment                         │initiated│
+│13:53:09.536│AG │■ tool_done        │                                                │error    │
+│13:53:09.538│AG │■ tool_done        │                                                │error    │
+│13:53:13.354│AG │● assistant_message│                                                │         │
+│13:53:13.355│AG │▶ tool_start       │safeoutputs/safeoutputs-noop                    │         │
+│13:53:13.365│GW │⚙ tool_call        │safeoutputs/noop                                │initiated│
+│13:53:13.370│AG │■ tool_done        │                                                │success  │
+│13:53:14.954│AG │● assistant_message│No labels or comments were applied because th...│         │
+╰────────────┴───┴───────────────────┴────────────────────────────────────────────────┴─────────╯
+✓ Parsed log for run 41207336799 → C:\Users\yuenw\Documents\y3 sem 1\open source\assignment3\h\evals\holdout\actual\cases\airflow-70503\attempts\run-41207336799\audit\run-41207336799\log.md

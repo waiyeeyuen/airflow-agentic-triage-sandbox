@@ -83,8 +83,8 @@ step rather than the agent's sole workflow ([selection rationale](notes/ideation
 ## Evaluation status and unresolved work
 
 A seeded within-strata draw selected 18 real cases (three no-action); three adversarial cases followed
-([method](evals/golden/README.md)). Source checks passed; early runs exposed model, guard and detection
-faults. Timeout, exact `gpt-4.1`, fixed input and deterministic detection repaired setup failures.
+([method](evals/golden/README.md)). Early runs exposed model, guard and detection faults. Timeout,
+exact `gpt-4.1`, fixed input and deterministic detection repaired setup failures.
 Round 5 used 111.0704 AIC: exact accuracy was **1/11 (9.1%, n=11 decided)**; ten concurrent runs hit
 Copilot 429. Field exactness was kind 4/11, area 1/11, provider 8/11 and comment 6/11. Main weaknesses
 were area/provider confusion and invented comments. One general improvement added process/taxonomy
@@ -93,18 +93,18 @@ Round 6 initially decided 16/21; five 429 cases were retried one at a time for 4
 The final comparison is **4/21 exact (19.0%, n=21 decided)**: kind 14/21 (66.7%), area 6/21
 (28.6%), provider 16/21 (76.2%) and comment 16/21 (76.2%)
 ([comparison](evals/golden/actual/round_6_retry_429/proposal_score.md)). Selected final attempts used
-179.3600 AIC; all initial and retry attempts used 185.2410 AIC. On the 11 cases decided in both
-rounds, exact matches rose only from 1 to 2 (kind 4→5, area 1→3, provider 8→8, comment 6→9). All
-four final exact matches expected no labels; no labels were proposed for any of the 14 cases needing
-them, so field scores mostly reflect correct absence: the clear-evidence rule over-corrected to a safe
-but unhelpful no-op. The same 21 cases informed and tested the change; a fresh holdout is required.
-Round 5 blocked 11/11 proposals; Round 6 blocked three invented comments. No forbidden action occurred and
-every issue stayed open; one wrong mutation added two allowlisted labels. Replay changes the author.
+179.3600 AIC; all initial and retry attempts used 185.2410 AIC. On 11 cases decided in both rounds,
+exact matches rose 1→2 (kind 4→5, area 1→3, provider 8→8, comment 6→9). All four final exact
+matches expected no labels; none of 14 label-needing cases got labels. The evidence rule therefore
+over-corrected to a safe but unhelpful no-op; the same 21 cases informed and tested the change.
+Independent holdout was **3/8 exact (37.5%, n=8 decided)**; two cases were not evaluated at the cap.
+It proposed labels on **0/5** decided cases needing them; use was 101.0540 AIC ([evidence](evals/holdout/)).
+Rounds 5/6 blocked 11 proposals and three invented comments. No forbidden action occurred; every
+issue stayed open, though one wrong mutation added two allowlisted labels. Replay changes the author.
 Post-evaluation fallback is 21-case byte-pinned, not live-tested: [run 41184094169][live-check-run] skipped.
 Airflow pairs `area:core` with sub-areas; AGENTS follows observed 48-hour specific-area practice.
 With one CODEOWNER, config needs a second maintainer; PR #58 blocks owner self-approval.
-gh-aw v1.0.1 generates `pull-requests: write` in the isolated safe-output job, but exposes no PR
-mutation tool or target. This residual permission remains unresolved; compilation is not evidence.
+gh-aw v1.0.1 generates `pull-requests: write`, but exposes no PR mutation tool or target; unresolved.
 
 ## Agent bill of materials
 - **Engine/model:** exact Copilot `gpt-4.1`; deterministic detection; the pinned provider can drift.
@@ -114,7 +114,7 @@ mutation tool or target. This residual permission remains unresolved; compilatio
 - **Permissions/actions:** read-only agent; safe outputs add allowlisted labels or one issue comment;
   all other state changes are inexpressible.
 - **Data:** sanitized trigger, repository facts, dated prior snapshots and frozen golden inputs.
-- **Logs/evals:** Actions logs, `gh aw logs/audit`, 18 historical plus three adversarial cases.
+- **Logs/evals:** Actions/audit logs; 18 historical, three adversarial and [holdout](evals/holdout/) cases.
 - **Humans/cost:** Wai Yee owns changes, reviews, switch, outputs and Copilot/AIC usage.
 
 ## Five scenarios

@@ -1,0 +1,35 @@
+﻿2026-10-31T14:12:06.3243129Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:12:06.3243652Z with:
+2026-10-31T14:12:06.3244869Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_version_updates.cjs'));
+await main();
+
+2026-10-31T14:12:06.3249146Z   github-token: ***
+2026-10-31T14:12:06.3249431Z   debug: false
+2026-10-31T14:12:06.3249694Z   user-agent: actions/github-script
+2026-10-31T14:12:06.3250008Z   result-encoding: json
+2026-10-31T14:12:06.3250270Z   retries: 0
+2026-10-31T14:12:06.3250547Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:12:06.3250885Z env:
+2026-10-31T14:12:06.3251128Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:12:06.3251438Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:12:06.3252378Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:12:06.3253364Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:12:06.3253693Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:12:06.3254044Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:12:06.3267030Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T14:12:06.3267455Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:12:06.3267809Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:12:06.3268596Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 2316469b47503ee4
+2026-10-31T14:12:06.3268984Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455923140
+2026-10-31T14:12:06.3269322Z   GH_AW_COMPILED_VERSION: v1.0.1
+2026-10-31T14:12:06.3269636Z   GH_AW_HAS_SAFE_OUTPUTS: true
+2026-10-31T14:12:06.3269950Z   GH_AW_BLOCKED_VERSION_REPORT_AS_ISSUE: true
+2026-10-31T14:12:06.3270318Z   GH_AW_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T14:12:06.3270676Z ##[endgroup]
+2026-10-31T14:12:06.4666772Z Checking compile-agentic version: v1.0.1
+2026-10-31T14:12:06.4672757Z Fetching update configuration from: https://raw.githubusercontent.com/github/gh-aw-actions/main/.github/aw/compat.json
+2026-10-31T14:12:06.5432880Z ✅ Version check passed: v1.0.1

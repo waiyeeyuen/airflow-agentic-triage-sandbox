@@ -35,6 +35,37 @@ def main() -> None:
     sys.argv = ["score_proposals.py", "--round-dir", str(HOLDOUT / "actual")]
     score_proposals.main()
 
+    score_path = HOLDOUT / "actual" / "proposal_score.json"
+    score = read_json(score_path)
+    manifest = read_json(HOLDOUT / "actual" / "run_manifest.json")
+    if score["not_evaluated"]:
+        score["not_evaluated_cause"] = (
+            "120-AIC hard-cap admission check left less than the 25-AIC per-run reserve"
+        )
+    score["total_aic"] = manifest["total_aic_all_attempts"]
+    score_path.write_text(json.dumps(score, indent=2) + "\n", encoding="utf-8")
+
+    markdown_path = HOLDOUT / "actual" / "proposal_score.md"
+    markdown = markdown_path.read_text(encoding="utf-8")
+    markdown = markdown.replace(
+        "Copilot 429 during paired dispatch",
+        score["not_evaluated_cause"] or "all cases evaluated",
+    )
+    markdown += f"\nTotal AIC across all attempts: {score['total_aic']:.4f}.\n"
+    markdown_path.write_text(markdown, encoding="utf-8")
+    print(
+        json.dumps(
+            {
+                "correct": score["correct"],
+                "n": score["n"],
+                "not_evaluated": score["not_evaluated"],
+                "not_evaluated_cause": score["not_evaluated_cause"],
+                "total_aic_all_attempts": score["total_aic"],
+            },
+            indent=2,
+        )
+    )
+
 
 if __name__ == "__main__":
     main()

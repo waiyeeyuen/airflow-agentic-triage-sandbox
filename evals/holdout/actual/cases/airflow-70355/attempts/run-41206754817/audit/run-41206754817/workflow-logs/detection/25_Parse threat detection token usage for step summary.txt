@@ -1,0 +1,35 @@
+﻿2026-10-31T13:46:32.6388941Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T13:46:32.6389289Z with:
+2026-10-31T13:46:32.6390179Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_token_usage.cjs'));
+await main();
+
+2026-10-31T13:46:32.6393363Z   github-token: ***
+2026-10-31T13:46:32.6393582Z   debug: false
+2026-10-31T13:46:32.6393779Z   user-agent: actions/github-script
+2026-10-31T13:46:32.6394025Z   result-encoding: json
+2026-10-31T13:46:32.6394224Z   retries: 0
+2026-10-31T13:46:32.6394429Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T13:46:32.6394679Z env:
+2026-10-31T13:46:32.6395041Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T13:46:32.6395298Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T13:46:32.6395997Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41206754817,github.run_id=41206754817,gh-aw.engine.id=copilot
+2026-10-31T13:46:32.6396701Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T13:46:32.6396954Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T13:46:32.6397204Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T13:46:32.6397418Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T13:46:32.6397658Z   GITHUB_AW_OTEL_TRACE_ID: 8c26b87034406d7316ed246829636813
+2026-10-31T13:46:32.6397955Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ae9ae5541af9b1ed
+2026-10-31T13:46:32.6398215Z   GITHUB_AW_OTEL_JOB_START_MS: 1793454370857
+2026-10-31T13:46:32.6398483Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-31T13:46:32.6398789Z   GH_AW_TOKEN_USAGE_SUMMARY_TITLE: Threat Detection Token Usage
+2026-10-31T13:46:32.6399064Z   GH_AW_PHASE: detection
+2026-10-31T13:46:32.6399342Z   GH_AW_AGENT_USAGE_PATH: /tmp/gh-aw/threat-detection/detection_usage.json
+2026-10-31T13:46:32.6399737Z   GH_AW_AGENT_USAGE_JSONL_PATH: /tmp/gh-aw/threat-detection/detection_usage.jsonl
+2026-10-31T13:46:32.6400066Z   GH_AW_WRITE_EMPTY_USAGE: true
+2026-10-31T13:46:32.6400267Z ##[endgroup]
+2026-10-31T13:46:32.7509519Z Recorded explicit zero token usage evidence
+2026-10-31T13:46:32.7510161Z No token usage data found, skipping summary

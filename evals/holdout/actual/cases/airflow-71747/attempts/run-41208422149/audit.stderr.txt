@@ -1,0 +1,45 @@
+✓ Downloaded artifacts for run 41208422149
+
+i MCP Gateway Metrics
+
+Total Requests: 1
+Total Tool Calls: 1
+Total Errors: 0
+Servers: 1
+Time Range: 45s
+
+Server Usage
+╭───────────┬────────┬──────────┬────────┬──────╮
+│Server     │Requests│Tool Calls│Avg Time│Errors│
+├───────────┼────────┼──────────┼────────┼──────┤
+│safeoutputs│1       │1         │0ms     │0     │
+╰───────────┴────────┴──────────┴────────┴──────╯
+
+i Unified MCP + Firewall + Agent Event Timeline
+
+Total Events  : 16
+  Gateway     : 2  (tool_calls=2, difc_filtered=0, guard_blocked=0)
+  Agent       : 14  (turns=1, tool_start=4, tool_done=4, messages=5, reasoning=0)
+
+Event Timeline
+╭────────────┬───┬───────────────────┬────────────────────────────────────────────────┬─────────╮
+│Time        │Src│Kind               │Detail                                          │Status   │
+├────────────┼───┼───────────────────┼────────────────────────────────────────────────┼─────────┤
+│14:07:19.363│GW │⚙ tool_call        │safeoutputs/tools/list                          │initiated│
+│14:07:55.396│AG │○ agent_turn       │turn 1                                          │         │
+│14:07:57.930│AG │● assistant_message│                                                │         │
+│14:07:57.932│AG │▶ tool_start       │skill                                           │         │
+│14:07:57.935│AG │■ tool_done        │                                                │success  │
+│14:08:00.287│AG │● assistant_message│                                                │         │
+│14:08:00.289│AG │▶ tool_start       │bash                                            │         │
+│14:08:00.399│AG │■ tool_done        │                                                │success  │
+│14:08:02.305│AG │● assistant_message│                                                │         │
+│14:08:02.306│AG │▶ tool_start       │bash                                            │         │
+│14:08:02.359│AG │■ tool_done        │                                                │success  │
+│14:08:04.583│AG │● assistant_message│                                                │         │
+│14:08:04.584│AG │▶ tool_start       │safeoutputs/safeoutputs-noop                    │         │
+│14:08:04.844│GW │⚙ tool_call        │safeoutputs/noop                                │initiated│
+│14:08:04.851│AG │■ tool_done        │                                                │success  │
+│14:08:06.442│AG │● assistant_message│No new labels or comment are needed for this ...│         │
+╰────────────┴───┴───────────────────┴────────────────────────────────────────────────┴─────────╯
+✓ Parsed log for run 41208422149 → C:\Users\yuenw\Documents\y3 sem 1\open source\assignment3\h\evals\holdout\actual\cases\airflow-71747\attempts\run-41208422149\audit\run-41208422149\log.md

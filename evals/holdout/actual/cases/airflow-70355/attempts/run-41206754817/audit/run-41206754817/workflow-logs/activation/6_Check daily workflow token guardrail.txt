@@ -1,0 +1,38 @@
+﻿2026-10-31T13:43:43.6223288Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T13:43:43.6224200Z with:
+2026-10-31T13:43:43.6227949Z   github-token: ***
+2026-10-31T13:43:43.6229425Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_daily_aic_workflow_guardrail.cjs'));
+await main();
+
+2026-10-31T13:43:43.6230805Z   debug: false
+2026-10-31T13:43:43.6231105Z   user-agent: actions/github-script
+2026-10-31T13:43:43.6231817Z   result-encoding: json
+2026-10-31T13:43:43.6232111Z   retries: 0
+2026-10-31T13:43:43.6232429Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T13:43:43.6232787Z env:
+2026-10-31T13:43:43.6233060Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T13:43:43.6233399Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T13:43:43.6234558Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41206754817,github.run_id=41206754817,gh-aw.engine.id=copilot
+2026-10-31T13:43:43.6235564Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T13:43:43.6235915Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T13:43:43.6236283Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T13:43:43.6236606Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T13:43:43.6237354Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T13:43:43.6237736Z   GITHUB_AW_OTEL_TRACE_ID: 8c26b87034406d7316ed246829636813
+2026-10-31T13:43:43.6238170Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 31e2cfc9c00b8c63
+2026-10-31T13:43:43.6238626Z   GITHUB_AW_OTEL_JOB_START_MS: 1793454223098
+2026-10-31T13:43:43.6239014Z   GH_AW_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T13:43:43.6239405Z   GH_AW_WORKFLOW_ID: issue-triage
+2026-10-31T13:43:43.6239957Z   GH_AW_RUN_URL: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41206754817
+2026-10-31T13:43:43.6240572Z   GH_AW_WORKFLOW_DISPATCH_AW_CONTEXT: 
+2026-10-31T13:43:43.6240930Z   GH_AW_HAS_SLASH_COMMAND: false
+2026-10-31T13:43:43.6241250Z   GH_AW_HAS_LABEL_COMMAND: false
+2026-10-31T13:43:43.6244679Z   GH_AW_GITHUB_TOKEN: ***
+2026-10-31T13:43:43.6245012Z   GH_AW_MAX_AI_CREDITS: 25
+2026-10-31T13:43:43.6245360Z ##[endgroup]
+2026-10-31T13:43:43.8395113Z [daily-workflow-aic] Resolved daily AIC guardrail limits: {"dailyAICThreshold":5000,"perRunMaxAICredits":25,"perRunFallbackAvailable":true}
+2026-10-31T13:43:43.8409874Z Skipping daily workflow AI Credits guardrail for manual or command-driven runs.

@@ -1,0 +1,95 @@
+﻿2026-10-31T13:54:41.8224147Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T13:54:41.8224766Z with:
+2026-10-31T13:54:41.8227920Z   github-token: ***
+2026-10-31T13:54:41.8229318Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit, process.env.GH_AW_GITHUB_TOKEN_SOURCE);
+const { main } = require(path.join(actionsDir, 'process_safe_outputs.cjs'));
+await main();
+
+2026-10-31T13:54:41.8230776Z   debug: false
+2026-10-31T13:54:41.8231088Z   user-agent: actions/github-script
+2026-10-31T13:54:41.8231443Z   result-encoding: json
+2026-10-31T13:54:41.8232073Z   retries: 0
+2026-10-31T13:54:41.8232393Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T13:54:41.8232970Z env:
+2026-10-31T13:54:41.8233252Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T13:54:41.8233602Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T13:54:41.8234634Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41207336799,github.run_id=41207336799,gh-aw.engine.id=copilot
+2026-10-31T13:54:41.8235599Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T13:54:41.8235965Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T13:54:41.8236359Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T13:54:41.8236689Z   GH_AW_AGENT_AIC: 13.6826
+2026-10-31T13:54:41.8236989Z   GH_AW_AIC: 13.6826
+2026-10-31T13:54:41.8237292Z   GH_AW_AMBIENT_CONTEXT: 17427
+2026-10-31T13:54:41.8237753Z   GH_AW_CALLER_WORKFLOW_ID: waiyeeyuen/airflow-agentic-triage-sandbox/issue-triage
+2026-10-31T13:54:41.8238259Z   GH_AW_DETECTION_CONCLUSION: success
+2026-10-31T13:54:41.8238628Z   GH_AW_DETECTION_REASON: 
+2026-10-31T13:54:41.8238944Z   GH_AW_ENGINE_ID: copilot
+2026-10-31T13:54:41.8239273Z   GH_AW_ENGINE_MODEL: gpt-4.1
+2026-10-31T13:54:41.8239597Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T13:54:41.8239911Z   GH_AW_RUN_DETECTION: true
+2026-10-31T13:54:41.8240242Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-10-31T13:54:41.8240581Z   GH_AW_WORKFLOW_ID: issue-triage
+2026-10-31T13:54:41.8240948Z   GH_AW_WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T13:54:41.8241724Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/blob/holdout-eval/.github/workflows/issue-triage.md
+2026-10-31T13:54:41.8242710Z   GITHUB_AW_OTEL_TRACE_ID: 9a7b8a0a42324c54b6b978a77504f0dd
+2026-10-31T13:54:41.8243355Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 8b005a37e9fae86e
+2026-10-31T13:54:41.8243759Z   GITHUB_AW_OTEL_JOB_START_MS: 1793454880633
+2026-10-31T13:54:41.8244126Z   GH_HOST: github.com
+2026-10-31T13:54:41.8244433Z   GH_AW_JOB_CHECK_RUN_ID: 124555880230
+2026-10-31T13:54:41.8244812Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-31T13:54:41.8245201Z   GH_AW_COMMENT_ID: 
+2026-10-31T13:54:41.8249276Z   GH_AW_MENTIONS_GITHUB_TOKEN: ***
+2026-10-31T13:54:41.8255129Z   GH_AW_ALLOWED_DOMAINS: api.snapcraft.io,archive.ubuntu.com,azure.archive.ubuntu.com,crl.geotrust.com,crl.globalsign.com,crl.identrust.com,crl.sectigo.com,crl.thawte.com,crl.usertrust.com,crl.verisign.com,crl3.digicert.com,crl4.digicert.com,crls.ssl.com,json-schema.org,json.schemastore.org,keyserver.ubuntu.com,ocsp.digicert.com,ocsp.geotrust.com,ocsp.globalsign.com,ocsp.identrust.com,ocsp.sectigo.com,ocsp.ssl.com,ocsp.thawte.com,ocsp.usertrust.com,ocsp.verisign.com,packagecloud.io,packages.cloud.google.com,packages.microsoft.com,ppa.launchpad.net,s.symcb.com,s.symcd.com,security.ubuntu.com,ts-crl.ws.symantec.com,ts-ocsp.ws.symantec.com,www.googleapis.com
+2026-10-31T13:54:41.8260781Z   GITHUB_SERVER_URL: https://github.com
+2026-10-31T13:54:41.8261170Z   GITHUB_API_URL: https://api.github.com
+2026-10-31T13:54:41.8264345Z   GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: {"add_comment":{"discussions":false,"max":1,"max_links":1,"target":"triggering"},"add_labels":{"allowed":["security","kind:bug","kind:feature","kind:task","kind:documentation","kind:meta","area:core","area:providers","area:API","area:UI","area:kubernetes","area:scheduler","area:dev-env","area:airflow-ctl","provider:amazon","provider:fab","provider:google","provider:openlineage","provider:standard"],"max":1,"max_labels":3,"target":"triggering"},"create_report_incomplete_issue":{},"mentions":{"enabled":false},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-31T13:54:41.8266967Z   GH_AW_GITHUB_TOKEN_SOURCE: github_actions
+2026-10-31T13:54:41.8267336Z ##[endgroup]
+2026-10-31T13:54:42.0463218Z Safe Output Handler Manager starting...
+2026-10-31T13:54:42.0480968Z Loaded config from GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: {"add_comment":{"discussions":false,"max":1,"max_links":1,"target":"triggering"},"add_labels":{"allowed":["security","kind:bug","kind:feature","kind:task","kind:documentation","kind:meta","area:core","area:providers","area:API","area:UI","area:kubernetes","area:scheduler","area:dev-env","area:airflow-ctl","provider:amazon","provider:fab","provider:google","provider:openlineage","provider:standard"],"max":1,"max_labels":3,"target":"triggering"},"create_report_incomplete_issue":{},"mentions":{"enabled":false},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-31T13:54:42.0495074Z Agent output content length: 171
+2026-10-31T13:54:42.0498710Z Found 1 message(s) in agent output
+2026-10-31T13:54:42.0515726Z Loading and initializing safe output handlers based on configuration...
+2026-10-31T13:54:42.0587736Z [MENTIONS] Mentions explicitly disabled - all mentions will be escaped
+2026-10-31T13:54:42.0610090Z Add comment configuration: max=1, target=triggering
+2026-10-31T13:54:42.0613579Z Default target repo: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T13:54:42.0618993Z ✓ Loaded and initialized handler for: add_comment
+2026-10-31T13:54:42.0664284Z Add labels configuration: max=1, max-labels=3
+2026-10-31T13:54:42.0668257Z Allowed labels: security, kind:bug, kind:feature, kind:task, kind:documentation, kind:meta, area:core, area:providers, area:API, area:UI, area:kubernetes, area:scheduler, area:dev-env, area:airflow-ctl, provider:amazon, provider:fab, provider:google, provider:openlineage, provider:standard
+2026-10-31T13:54:42.0671802Z Create missing labels: false
+2026-10-31T13:54:42.0675146Z Default target repo: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T13:54:42.0679158Z ✓ Loaded and initialized handler for: add_labels
+2026-10-31T13:54:42.4321064Z Max count: unlimited
+2026-10-31T13:54:42.4321848Z ✓ Loaded and initialized handler for: report_missing_tool
+2026-10-31T13:54:42.4322513Z Max count: unlimited
+2026-10-31T13:54:42.4323725Z ✓ Loaded and initialized handler for: report_missing_data
+2026-10-31T13:54:42.4324994Z Max count: 2
+2026-10-31T13:54:42.4325390Z ✓ Loaded and initialized handler for: noop
+2026-10-31T13:54:42.4325761Z Max count: unlimited
+2026-10-31T13:54:42.4326174Z ✓ Loaded and initialized handler for: report_incomplete
+2026-10-31T13:54:42.4326633Z Title prefix: [incomplete]
+2026-10-31T13:54:42.4326978Z Default labels: agentic-workflows
+2026-10-31T13:54:42.4327320Z Max count: 1
+2026-10-31T13:54:42.4327757Z ✓ Loaded and initialized handler for: create_report_incomplete_issue
+2026-10-31T13:54:42.4330524Z Loaded 7 handler(s)
+2026-10-31T13:54:42.4331073Z ℹ️ Rate-limit headroom: 4990/5000 requests remaining (99%) [safe_outputs_pre_check]
+2026-10-31T13:54:42.4331830Z Collected 0 missing tool(s), 0 missing data item(s), 1 noop message(s), and 0 incomplete signal(s)
+2026-10-31T13:54:42.4332413Z Processing 1 message(s) in order of appearance...
+2026-10-31T13:54:42.4333000Z Processing message 1/1: noop
+2026-10-31T13:54:42.4333812Z ✓ Recorded noop message: Triage audit complete: workflow_dispatch event does not support safe-output writes. No labels or comments were applied.
+2026-10-31T13:54:42.4334566Z ✓ Message 1 (noop) completed successfully
+2026-10-31T13:54:42.4335194Z Stored 0 missing tool(s), 0 missing data item(s), 1 noop message(s), and 0 incomplete signal(s) for footer generation
+2026-10-31T13:54:42.4336144Z 📝 Safe output summaries written to step summary
+2026-10-31T13:54:42.4336409Z 
+2026-10-31T13:54:42.4336553Z === Processing Summary ===
+2026-10-31T13:54:42.4336884Z Total messages: 1
+2026-10-31T13:54:42.4337263Z Status: success
+2026-10-31T13:54:42.4337568Z Successful: 1
+2026-10-31T13:54:42.4337842Z Failed: 0
+2026-10-31T13:54:42.4338134Z Temporary IDs registered: 0
+2026-10-31T13:54:42.4338473Z Synthetic updates: 0
+2026-10-31T13:54:42.4338832Z Wrote temporary ID map to file for artifact upload
+2026-10-31T13:54:42.4339250Z Safe Output Handler Manager completed

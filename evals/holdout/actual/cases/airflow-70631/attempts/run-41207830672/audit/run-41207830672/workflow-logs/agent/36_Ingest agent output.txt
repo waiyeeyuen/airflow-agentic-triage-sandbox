@@ -1,0 +1,67 @@
+﻿2026-10-31T14:01:08.4219326Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:01:08.4219901Z with:
+2026-10-31T14:01:08.4221824Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'collect_ndjson_output.cjs'));
+await main();
+
+2026-10-31T14:01:08.4225871Z   github-token: ***
+2026-10-31T14:01:08.4226119Z   debug: false
+2026-10-31T14:01:08.4226359Z   user-agent: actions/github-script
+2026-10-31T14:01:08.4226649Z   result-encoding: json
+2026-10-31T14:01:08.4226887Z   retries: 0
+2026-10-31T14:01:08.4227161Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:01:08.4227472Z env:
+2026-10-31T14:01:08.4227698Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:01:08.4227978Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:01:08.4228908Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41207830672,github.run_id=41207830672,gh-aw.engine.id=copilot
+2026-10-31T14:01:08.4229872Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:01:08.4230173Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:01:08.4230493Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:01:08.4231135Z   DEFAULT_BRANCH: main
+2026-10-31T14:01:08.4231405Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-31T14:01:08.4231666Z   GH_AW_ASSETS_BRANCH: 
+2026-10-31T14:01:08.4231902Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-31T14:01:08.4232202Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-31T14:01:08.4232522Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-31T14:01:08.4232775Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-31T14:01:08.4233041Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-31T14:01:08.4233289Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-31T14:01:08.4233537Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-31T14:01:08.4233780Z   GH_AW_PR_HEAD_REPO: 
+2026-10-31T14:01:08.4234006Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:01:08.4234249Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-31T14:01:08.4234503Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-31T14:01:08.4234852Z   GITHUB_AW_OTEL_TRACE_ID: 7320fa77c0e4bf3d2fe057f65a5f4d5a
+2026-10-31T14:01:08.4235225Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 6532394e68ede1ff
+2026-10-31T14:01:08.4235554Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455155044
+2026-10-31T14:01:08.4236059Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: 0c24171e63a17e25ca2b08168c4f119a1cff30d64dd2cc7827ca3480af00a0d9
+2026-10-31T14:01:08.4236713Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-31T14:01:08.4237270Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-31T14:01:08.4243472Z   GH_AW_ALLOWED_DOMAINS: api.snapcraft.io,archive.ubuntu.com,azure.archive.ubuntu.com,crl.geotrust.com,crl.globalsign.com,crl.identrust.com,crl.sectigo.com,crl.thawte.com,crl.usertrust.com,crl.verisign.com,crl3.digicert.com,crl4.digicert.com,crls.ssl.com,json-schema.org,json.schemastore.org,keyserver.ubuntu.com,ocsp.digicert.com,ocsp.geotrust.com,ocsp.globalsign.com,ocsp.identrust.com,ocsp.sectigo.com,ocsp.ssl.com,ocsp.thawte.com,ocsp.usertrust.com,ocsp.verisign.com,packagecloud.io,packages.cloud.google.com,packages.microsoft.com,ppa.launchpad.net,s.symcb.com,s.symcd.com,security.ubuntu.com,ts-crl.ws.symantec.com,ts-ocsp.ws.symantec.com,www.googleapis.com
+2026-10-31T14:01:08.4249037Z   GH_AW_ALLOWED_GITHUB_REFS: 
+2026-10-31T14:01:08.4249324Z   GITHUB_SERVER_URL: https://github.com
+2026-10-31T14:01:08.4249638Z   GITHUB_API_URL: https://api.github.com
+2026-10-31T14:01:08.4249920Z ##[endgroup]
+2026-10-31T14:01:08.5724597Z Loaded validation config from /home/runner/work/_temp/gh-aw/safeoutputs/validation.json
+2026-10-31T14:01:08.5726325Z [INGESTION] Reading config from: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+2026-10-31T14:01:08.5730934Z [INGESTION] Raw config content: {"add_comment":{"discussions":false,"max":1,"max_links":1,"target":"triggering"},"add_labels":{"allowed":["security","kind:bug","kind:feature","kind:task","kind:documentation","kind:meta","area:core","area:providers","area:API","area:UI","area:kubernetes","area:scheduler","area:dev-env","area:airflow-ctl","provider:amazon","provider:fab","provider:google","provider:openlineage","provider:standard"],"max":1,"max_labels":3,"target":"triggering"},"create_report_incomplete_issue":{},"mentions":{"enabled":false},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-31T14:01:08.5740058Z [INGESTION] Parsed config keys: ["add_comment","add_labels","create_report_incomplete_issue","mentions","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-31T14:01:08.5742172Z [INGESTION] Output file path: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-31T14:01:08.5743160Z Raw output content length: 143
+2026-10-31T14:01:08.5744669Z [INGESTION] First 500 chars of output: {"message":"Triage audit complete: workflow_dispatch event does not support safe-output writes. No labels or comments applied.","type":"noop"}
+2026-10-31T14:01:08.5745993Z 
+2026-10-31T14:01:08.5746594Z [INGESTION] Normalizing config keys (dash -> underscore)
+2026-10-31T14:01:08.5748233Z [INGESTION] Expected output types after normalization: ["add_comment","add_labels","create_report_incomplete_issue","mentions","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-31T14:01:08.5753928Z [INGESTION] Expected output types full config: {"add_comment":{"discussions":false,"max":1,"max_links":1,"target":"triggering"},"add_labels":{"allowed":["security","kind:bug","kind:feature","kind:task","kind:documentation","kind:meta","area:core","area:providers","area:API","area:UI","area:kubernetes","area:scheduler","area:dev-env","area:airflow-ctl","provider:amazon","provider:fab","provider:google","provider:openlineage","provider:standard"],"max":1,"max_labels":3,"target":"triggering"},"create_report_incomplete_issue":{},"mentions":{"enabled":false},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-31T14:01:08.5759018Z [INGESTION] Processing line 1: {"message":"Triage audit complete: workflow_dispatch event does not support safe-output writes. No labels or comments applied.","type":"noop"}...
+2026-10-31T14:01:08.5761068Z [INGESTION] Line 1: Original type='noop', Normalized type='noop'
+2026-10-31T14:01:08.5761780Z Line 1: type 'noop'
+2026-10-31T14:01:08.5762541Z GitHub reference filtering: all references will be escaped (GH_AW_ALLOWED_GITHUB_REFS is empty)
+2026-10-31T14:01:08.5801031Z Line 1: Valid noop item
+2026-10-31T14:01:08.5802040Z Successfully parsed 1 valid output items
+2026-10-31T14:01:08.6206951Z Stored validated output to: /tmp/gh-aw/agent_output.json
+2026-10-31T14:01:08.6214711Z output_types: noop
+2026-10-31T14:01:08.6216456Z No patch or bundle files found in: /tmp/gh-aw

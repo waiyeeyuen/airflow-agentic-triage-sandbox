@@ -1,0 +1,64 @@
+﻿2026-10-31T14:08:11.4948171Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/print_firewall_logs.sh" --rootless
+2026-10-31T14:08:11.4948799Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/print_firewall_logs.sh" --rootless[0m
+2026-10-31T14:08:11.4969668Z shell: /usr/bin/bash -e {0}
+2026-10-31T14:08:11.4969957Z env:
+2026-10-31T14:08:11.4970177Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:08:11.4970473Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:08:11.4971428Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208422149,github.run_id=41208422149,gh-aw.engine.id=copilot
+2026-10-31T14:08:11.4972371Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:08:11.4972675Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:08:11.4972999Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:08:11.4973257Z   DEFAULT_BRANCH: main
+2026-10-31T14:08:11.4973501Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-31T14:08:11.4973752Z   GH_AW_ASSETS_BRANCH: 
+2026-10-31T14:08:11.4974020Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-31T14:08:11.4974311Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-31T14:08:11.4974674Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-31T14:08:11.4975105Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-31T14:08:11.4975366Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-31T14:08:11.4975607Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-31T14:08:11.4975844Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-31T14:08:11.4976082Z   GH_AW_PR_HEAD_REPO: 
+2026-10-31T14:08:11.4976309Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:08:11.4976543Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-31T14:08:11.4976801Z   GH_AW_WORKFLOW_ID_SANITIZED: issuetriage
+2026-10-31T14:08:11.4977151Z   GITHUB_AW_OTEL_TRACE_ID: f21d23832a9fac84b9dd38e31d599503
+2026-10-31T14:08:11.4977530Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: f016625d46cbea5f
+2026-10-31T14:08:11.4977851Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455615835
+2026-10-31T14:08:11.4978355Z   GH_AW_COPILOT_SDK_MCP_CONFIG_SHA256: b060986ce3064dd8e92e43944e7faf917e469c8ef9deae3b72500080adbe8dbd
+2026-10-31T14:08:11.4979028Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-31T14:08:11.4979882Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-31T14:08:11.4980213Z   GH_AW_AIC: 7.6066
+2026-10-31T14:08:11.4980433Z   GH_AW_AMBIENT_CONTEXT: 17420
+2026-10-31T14:08:11.4980719Z   AWF_LOGS_DIR: /tmp/gh-aw/sandbox/firewall/logs
+2026-10-31T14:08:11.4981028Z ##[endgroup]
+2026-10-31T14:08:12.0619646Z <details>
+2026-10-31T14:08:12.0620175Z <summary>Firewall Activity</summary>
+2026-10-31T14:08:12.0620573Z 
+2026-10-31T14:08:12.0621199Z ▼ 14 requests | 14 allowed | 0 blocked | 2 unique domains
+2026-10-31T14:08:12.0621677Z 
+2026-10-31T14:08:12.0621874Z | Domain | Allowed | Denied |
+2026-10-31T14:08:12.0622327Z |--------|---------|--------|
+2026-10-31T14:08:12.0622738Z | api.github.com | 7 | 0 |
+2026-10-31T14:08:12.0623153Z | api.githubcopilot.com | 7 | 0 |
+2026-10-31T14:08:12.0623444Z 
+2026-10-31T14:08:12.0623573Z <details>
+2026-10-31T14:08:12.0623947Z <summary>Policy Rules</summary>
+2026-10-31T14:08:12.0624220Z 
+2026-10-31T14:08:12.0624382Z | Rule | Action | Hits | Description |
+2026-10-31T14:08:12.0624795Z |------|--------|------|-------------|
+2026-10-31T14:08:12.0626117Z | allow-topology-peer-awmg-mcpg | ✅ allow | 0 | Allow trusted topology peer "awmg-mcpg" on any port (network-isolation mode, before Safe_ports deny) |
+2026-10-31T14:08:12.0628005Z | deny-unsafe-ports | 🚫 deny | 0 | Deny requests to ports not in Safe_ports ACL (only 80, 443, and user-specified ports allowed) |
+2026-10-31T14:08:12.0629758Z | deny-connect-unsafe-ports | 🚫 deny | 0 | Deny CONNECT (HTTPS) to ports not in Safe_ports ACL |
+2026-10-31T14:08:12.0631250Z | allow-api-proxy-ip | ✅ allow | 0 | Allow connections to the AWF api-proxy sidecar IP before raw-IP deny rules |
+2026-10-31T14:08:12.0633049Z | allow-from-api-proxy | ✅ allow | 0 | Allow unrestricted outbound from api-proxy sidecar (trusted AWF component, not subject to agent domain ACL) |
+2026-10-31T14:08:12.0634660Z | deny-raw-ipv4 | 🚫 deny | 0 | Deny requests to raw IPv4 addresses (bypasses domain filtering) |
+2026-10-31T14:08:12.0636367Z | deny-raw-ipv6 | 🚫 deny | 0 | Deny requests to raw IPv6 addresses (bypasses domain filtering) |
+2026-10-31T14:08:12.0637561Z | allow-both-plain | ✅ allow | 0 | Allow HTTP and HTTPS traffic to these domains |
+2026-10-31T14:08:12.0638718Z | deny-default | 🚫 deny | 0 | Deny all traffic not matching any allow rule (default deny) |
+2026-10-31T14:08:12.0640235Z | unknown | 🚫 deny | 14 | Unattributed traffic (port/method-based rules not replayable from logs) |
+2026-10-31T14:08:12.0640949Z 
+2026-10-31T14:08:12.0641104Z </details>
+2026-10-31T14:08:12.0641339Z 
+2026-10-31T14:08:12.0641477Z </details>
+2026-10-31T14:08:12.0641692Z 

@@ -1,0 +1,33 @@
+﻿2026-10-31T14:05:57.5615836Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:05:57.5616338Z with:
+2026-10-31T14:05:57.5619288Z   github-token: ***
+2026-10-31T14:05:57.5675498Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_membership.cjs'));
+await main();
+
+2026-10-31T14:05:57.5678552Z   debug: false
+2026-10-31T14:05:57.5678818Z   user-agent: actions/github-script
+2026-10-31T14:05:57.5679111Z   result-encoding: json
+2026-10-31T14:05:57.5679560Z   retries: 0
+2026-10-31T14:05:57.5679833Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:05:57.5680154Z env:
+2026-10-31T14:05:57.5680372Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:05:57.5683324Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:05:57.5684252Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208422149,github.run_id=41208422149,gh-aw.engine.id=copilot
+2026-10-31T14:05:57.5685206Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:05:57.5685498Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:05:57.5685812Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:05:57.5686072Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:05:57.5686369Z   GITHUB_AW_OTEL_TRACE_ID: f21d23832a9fac84b9dd38e31d599503
+2026-10-31T14:05:57.5686732Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5fb6dbbd9cd9046d
+2026-10-31T14:05:57.5688537Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455557400
+2026-10-31T14:05:57.5688915Z   GH_AW_REQUIRED_ROLES: admin,maintainer,write
+2026-10-31T14:05:57.5689277Z ##[endgroup]
+2026-10-31T14:05:57.8973223Z Event workflow_dispatch requires validation
+2026-10-31T14:05:57.8987868Z Checking if user 'waiyeeyuen' has required permissions for waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T14:05:57.8991615Z Required permissions: admin, maintainer, write
+2026-10-31T14:05:58.3054570Z Repository permission level: admin
+2026-10-31T14:05:58.3085154Z ✅ User has admin access to repository

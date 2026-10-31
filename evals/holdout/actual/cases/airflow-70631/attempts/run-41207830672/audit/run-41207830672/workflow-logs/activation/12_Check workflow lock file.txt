@@ -1,0 +1,44 @@
+﻿2026-10-31T13:58:37.7209493Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T13:58:37.7210059Z with:
+2026-10-31T13:58:37.7212366Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_workflow_timestamp_api.cjs'));
+await main();
+
+2026-10-31T13:58:37.7216656Z   github-token: ***
+2026-10-31T13:58:37.7216961Z   debug: false
+2026-10-31T13:58:37.7217250Z   user-agent: actions/github-script
+2026-10-31T13:58:37.7217581Z   result-encoding: json
+2026-10-31T13:58:37.7217869Z   retries: 0
+2026-10-31T13:58:37.7218198Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T13:58:37.7218552Z env:
+2026-10-31T13:58:37.7218807Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T13:58:37.7219132Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T13:58:37.7220117Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41207830672,github.run_id=41207830672,gh-aw.engine.id=copilot
+2026-10-31T13:58:37.7222986Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T13:58:37.7224052Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T13:58:37.7224485Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T13:58:37.7224819Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T13:58:37.7225142Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T13:58:37.7225498Z   GITHUB_AW_OTEL_TRACE_ID: 7320fa77c0e4bf3d2fe057f65a5f4d5a
+2026-10-31T13:58:37.7225922Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: abc1509791554024
+2026-10-31T13:58:37.7226590Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455115381
+2026-10-31T13:58:37.7227199Z   GH_AW_WORKFLOW_FILE: issue-triage.lock.yml
+2026-10-31T13:58:37.7227909Z   GH_AW_CONTEXT_WORKFLOW_REF: waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval
+2026-10-31T13:58:37.7228600Z ##[endgroup]
+2026-10-31T13:58:37.8844686Z Checking for stale lock file using frontmatter hash:
+2026-10-31T13:58:37.8850825Z   Source: .github/workflows/issue-triage.md
+2026-10-31T13:58:37.8854759Z   Lock file: .github/workflows/issue-triage.lock.yml
+2026-10-31T13:58:37.8860494Z Env workflow ref already identifies this workflow, skipping referenced_workflows API lookup
+2026-10-31T13:58:37.8866168Z GITHUB_WORKFLOW_REF: waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval
+2026-10-31T13:58:37.8874230Z GH_AW_CONTEXT_WORKFLOW_REF: waiyeeyuen/airflow-agentic-triage-sandbox/.github/workflows/issue-triage.lock.yml@refs/heads/holdout-eval (available as env fallback)
+2026-10-31T13:58:37.8880447Z GITHUB_REPOSITORY: waiyeeyuen/airflow-agentic-triage-sandbox
+2026-10-31T13:58:37.8888022Z Resolved source repo: waiyeeyuen/airflow-agentic-triage-sandbox @ refs/heads/holdout-eval
+2026-10-31T13:58:37.8890215Z Same-repo invocation: checking out waiyeeyuen/airflow-agentic-triage-sandbox @ refs/heads/holdout-eval
+2026-10-31T13:58:38.4273079Z Frontmatter hash comparison:
+2026-10-31T13:58:38.4276978Z   Lock file hash:    9d3216cd3584d8cedf947c17e265efa423f7872acfbd6a56edc254d8ef79defe
+2026-10-31T13:58:38.4280044Z   Recomputed hash:   9d3216cd3584d8cedf947c17e265efa423f7872acfbd6a56edc254d8ef79defe
+2026-10-31T13:58:38.4283095Z   Status: ✅ Hashes match
+2026-10-31T13:58:38.4285959Z ✅ Lock file is up to date (hashes match)

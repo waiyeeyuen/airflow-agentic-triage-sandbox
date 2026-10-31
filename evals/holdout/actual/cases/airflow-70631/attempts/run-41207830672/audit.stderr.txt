@@ -1,0 +1,58 @@
+✓ Downloaded artifacts for run 41207830672
+
+i MCP Gateway Metrics
+
+Total Requests: 3
+Total Tool Calls: 3
+Total Errors: 2
+Servers: 1
+Time Range: 1m22s
+
+Server Usage
+╭───────────┬────────┬──────────┬────────┬──────╮
+│Server     │Requests│Tool Calls│Avg Time│Errors│
+├───────────┼────────┼──────────┼────────┼──────┤
+│safeoutputs│3       │3         │0ms     │2     │
+╰───────────┴────────┴──────────┴────────┴──────╯
+
+i Unified MCP + Firewall + Agent Event Timeline
+
+Total Events  : 29
+  Gateway     : 4  (tool_calls=4, difc_filtered=0, guard_blocked=0)
+  Agent       : 25  (turns=1, tool_start=8, tool_done=8, messages=8, reasoning=0)
+
+Event Timeline
+╭────────────┬───┬───────────────────┬────────────────────────────────────────────────┬─────────╮
+│Time        │Src│Kind               │Detail                                          │Status   │
+├────────────┼───┼───────────────────┼────────────────────────────────────────────────┼─────────┤
+│13:59:39.091│GW │⚙ tool_call        │safeoutputs/tools/list                          │initiated│
+│14:00:10.306│AG │○ agent_turn       │turn 1                                          │         │
+│14:00:16.253│AG │● assistant_message│                                                │         │
+│14:00:16.255│AG │▶ tool_start       │skill                                           │         │
+│14:00:16.261│AG │■ tool_done        │                                                │success  │
+│14:00:21.067│AG │● assistant_message│                                                │         │
+│14:00:21.068│AG │▶ tool_start       │bash                                            │         │
+│14:00:21.177│AG │■ tool_done        │                                                │success  │
+│14:00:28.526│AG │● assistant_message│                                                │         │
+│14:00:28.527│AG │▶ tool_start       │bash                                            │         │
+│14:00:28.585│AG │■ tool_done        │                                                │success  │
+│14:00:33.101│AG │● assistant_message│                                                │         │
+│14:00:33.103│AG │▶ tool_start       │bash                                            │         │
+│14:00:33.161│AG │■ tool_done        │                                                │success  │
+│14:00:38.013│AG │● assistant_message│                                                │         │
+│14:00:38.015│AG │▶ tool_start       │bash                                            │         │
+│14:00:38.103│AG │■ tool_done        │                                                │success  │
+│14:00:55.246│AG │● assistant_message│                                                │         │
+│14:00:55.248│AG │▶ tool_start       │safeoutputs/safeoutputs-add_labels              │         │
+│14:00:55.249│AG │▶ tool_start       │safeoutputs/safeoutputs-add_comment             │         │
+│14:00:55.515│GW │⚙ tool_call        │safeoutputs/add_labels                          │initiated│
+│14:00:55.515│GW │⚙ tool_call        │safeoutputs/add_comment                         │initiated│
+│14:00:55.526│AG │■ tool_done        │                                                │error    │
+│14:00:55.528│AG │■ tool_done        │                                                │error    │
+│14:01:01.122│AG │● assistant_message│                                                │         │
+│14:01:01.123│AG │▶ tool_start       │safeoutputs/safeoutputs-noop                    │         │
+│14:01:01.131│GW │⚙ tool_call        │safeoutputs/noop                                │initiated│
+│14:01:01.138│AG │■ tool_done        │                                                │success  │
+│14:01:04.008│AG │● assistant_message│Triage audit complete. No labels or comments ...│         │
+╰────────────┴───┴───────────────────┴────────────────────────────────────────────────┴─────────╯
+✓ Parsed log for run 41207830672 → C:\Users\yuenw\Documents\y3 sem 1\open source\assignment3\h\evals\holdout\actual\cases\airflow-70631\attempts\run-41207830672\audit\run-41207830672\log.md

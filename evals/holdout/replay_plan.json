@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "case_id": "airflow-69262",
+      "expected": {
+        "case_id": "airflow-69262",
+        "labels_to_add": [
+          "area:core"
+        ],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The report traces the SMTP sender defect to core task-runner fallback logic; kind:bug is already present.",
+        "maintainer_difference": "Maintainers also added provider:smtp, which is outside this workflow's frozen allowlist."
+      }
+    },
+    {
+      "case_id": "airflow-70164",
+      "expected": {
+        "case_id": "airflow-70164",
+        "labels_to_add": [
+          "security"
+        ],
+        "duplicate_of": null,
+        "should_comment": true,
+        "comment_type": "security_route",
+        "oracle_basis": "The first-version report explicitly describes credential leakage across hosts, so the conservative security-only route applies.",
+        "maintainer_difference": "Maintainers later added ordinary bug and provider routing too. The frozen skill requires security-only handling before ordinary triage."
+      }
+    },
+    {
+      "case_id": "airflow-70232",
+      "expected": {
+        "case_id": "airflow-70232",
+        "labels_to_add": [
+          "area:airflow-ctl"
+        ],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The bug is explicitly in airflowctl CLI argument parsing; kind:bug is already present.",
+        "maintainer_difference": "Maintainers used area:CLI, which is outside this workflow's frozen allowlist; area:airflow-ctl is its supported specific mapping."
+      }
+    },
+    {
+      "case_id": "airflow-70355",
+      "expected": {
+        "case_id": "airflow-70355",
+        "labels_to_add": [
+          "area:providers"
+        ],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The first-version body asks contributors to test provider distributions; kind:meta and testing status are already present.",
+        "maintainer_difference": "No maintainer added an area label within the first 48 hours, but the first-version body explicitly scopes the tracker to provider distributions, so the frozen taxonomy expects area:providers."
+      }
+    },
+    {
+      "case_id": "airflow-70503",
+      "expected": {
+        "case_id": "airflow-70503",
+        "labels_to_add": [],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The provider-wide restoration tracker already has area:providers and kind:meta, so no bounded first-pass addition is needed."
+      }
+    },
+    {
+      "case_id": "airflow-70631",
+      "expected": {
+        "case_id": "airflow-70631",
+        "labels_to_add": [
+          "kind:feature",
+          "area:providers",
+          "provider:google"
+        ],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The report requests new templating capability in a Google Vertex AI provider operator; kind:bug alone is present at creation.",
+        "maintainer_difference": "A maintainer later closed the issue. Closure is deliberately outside the agent's output language."
+      }
+    },
+    {
+      "case_id": "airflow-71747",
+      "expected": {
+        "case_id": "airflow-71747",
+        "labels_to_add": [],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "No-action control: kind:bug, area:core and the deadline-alerts sub-area are present at creation and remain unchanged."
+      }
+    },
+    {
+      "case_id": "airflow-72284",
+      "expected": {
+        "case_id": "airflow-72284",
+        "labels_to_add": [],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The documentation feature already has both relevant kind labels; no supported area or provider label is evidenced.",
+        "maintainer_difference": "Maintainers later added good first issue, a human suitability judgment outside the workflow's allowlist."
+      }
+    },
+    {
+      "case_id": "airflow-72612",
+      "expected": {
+        "case_id": "airflow-72612",
+        "labels_to_add": [],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "No-action control: the maintainer-authored optional follow-up is already labelled kind:meta and needs no bounded addition."
+      }
+    },
+    {
+      "case_id": "airflow-73941",
+      "expected": {
+        "case_id": "airflow-73941",
+        "labels_to_add": [
+          "area:providers",
+          "provider:fab"
+        ],
+        "duplicate_of": null,
+        "should_comment": false,
+        "comment_type": "none",
+        "oracle_basis": "The body states, \"LDAP Authentication fails with a referer host mismatch when Airflow 3 is exposed via HTTPRoute and the gateway listener port is different from original port used to access Airflow.\" The failure is in FAB/LDAP authentication and Flask XSRF validation behind the route, so the already-labelled bug maps to area:providers and provider:fab.",
+        "maintainer_difference": "No area or provider label had been added by collection time; the frozen taxonomy maps FAB/LDAP authentication to provider routing."
+      }
+    }
+  ]
+}

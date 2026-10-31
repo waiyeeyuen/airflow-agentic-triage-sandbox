@@ -1,0 +1,33 @@
+﻿2026-10-31T14:12:06.5797573Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:12:06.5798166Z with:
+2026-10-31T14:12:06.5806489Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-31T14:12:06.5810872Z   github-token: ***
+2026-10-31T14:12:06.5811419Z   debug: false
+2026-10-31T14:12:06.5811761Z   user-agent: actions/github-script
+2026-10-31T14:12:06.5812869Z   result-encoding: json
+2026-10-31T14:12:06.5813818Z   retries: 0
+2026-10-31T14:12:06.5814188Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:12:06.5814673Z env:
+2026-10-31T14:12:06.5815019Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:12:06.5815491Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:12:06.5817183Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:12:06.5836337Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:12:06.5836809Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:12:06.5837180Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:12:06.5838994Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T14:12:06.5839398Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:12:06.5839758Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:12:06.5840177Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 2316469b47503ee4
+2026-10-31T14:12:06.5840548Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455923140
+2026-10-31T14:12:06.5846026Z   GH_AW_ALLOWED_DOMAINS: api.snapcraft.io,archive.ubuntu.com,azure.archive.ubuntu.com,crl.geotrust.com,crl.globalsign.com,crl.identrust.com,crl.sectigo.com,crl.thawte.com,crl.usertrust.com,crl.verisign.com,crl3.digicert.com,crl4.digicert.com,crls.ssl.com,json-schema.org,json.schemastore.org,keyserver.ubuntu.com,ocsp.digicert.com,ocsp.geotrust.com,ocsp.globalsign.com,ocsp.identrust.com,ocsp.sectigo.com,ocsp.ssl.com,ocsp.thawte.com,ocsp.usertrust.com,ocsp.verisign.com,packagecloud.io,packages.cloud.google.com,packages.microsoft.com,ppa.launchpad.net,s.symcb.com,s.symcd.com,security.ubuntu.com,ts-crl.ws.symantec.com,ts-ocsp.ws.symantec.com,www.googleapis.com
+2026-10-31T14:12:06.5851755Z ##[endgroup]
+2026-10-31T14:12:07.1166473Z Repository permission level: admin
+2026-10-31T14:12:07.1177601Z text: 
+2026-10-31T14:12:07.1185685Z title: 
+2026-10-31T14:12:07.1189953Z body: 

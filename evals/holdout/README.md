@@ -80,3 +80,34 @@ The runner now keeps the switch on until `pre_activation` visibly completes succ
 turns it off. The one replacement dispatch,
 [41190831283](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41190831283),
 completed successfully and is the single retry of the first model attempt.
+
+## Results
+
+The 120-AIC admission rule stopped before the last two cases because 101.0540 AIC had been used and
+only 18.9460 remained, less than the submitted 25-AIC per-run maximum. Eight cases were decided:
+**3/8 exact (37.5%)**. The agent proposed labels on **0/5** decided cases that needed labels. Cases
+`airflow-72612` and `airflow-73941` are recorded as not evaluated, not failures or passes.
+
+| Case | Selected run | AIC | Decision |
+|---|---:|---:|---|
+| airflow-69262 | [41189325042](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41189325042) | 13.4744 | decided |
+| airflow-70164 | [41190831283](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41190831283) | 7.6068 | decided |
+| airflow-70232 | [41190371870](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41190371870) | 7.6376 | decided |
+| airflow-70355 | [41206754817](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41206754817) | 7.6008 | decided |
+| airflow-70503 | [41207336799](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41207336799) | 13.6826 | decided |
+| airflow-70631 | [41207830672](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41207830672) | 10.7406 | decided |
+| airflow-71747 | [41208422149](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41208422149) | 7.6066 | decided |
+| airflow-72284 | [41208931217](https://github.com/waiyeeyuen/airflow-agentic-triage-sandbox/actions/runs/41208931217) | 9.2728 | decided |
+| airflow-72612 | not run | 0 | not evaluated: aggregate cap |
+| airflow-73941 | not run | 0 | not evaluated: aggregate cap |
+
+The failed first model attempt for `airflow-70164` used 23.4318 AIC. Including it, the skipped
+0-AIC harness run and all selected attempts gives 101.0540 AIC. Reproduce verification and scoring:
+
+```powershell
+python evals/holdout/verify_cases.py
+python evals/holdout/score_holdout.py
+```
+
+The detailed comparison is in [`actual/proposal_score.md`](actual/proposal_score.md); audit records,
+logs and model outputs are below `actual/cases/`, and the attempt ledger is `actual/run_manifest.json`.

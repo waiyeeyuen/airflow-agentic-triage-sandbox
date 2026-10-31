@@ -1,0 +1,30 @@
+﻿2026-10-31T14:06:33.4181432Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:06:33.4181910Z with:
+2026-10-31T14:06:33.4183079Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'skill_inventory.cjs'));
+await main();
+
+2026-10-31T14:06:33.4186792Z   github-token: ***
+2026-10-31T14:06:33.4187026Z   debug: false
+2026-10-31T14:06:33.4187254Z   user-agent: actions/github-script
+2026-10-31T14:06:33.4187537Z   result-encoding: json
+2026-10-31T14:06:33.4187756Z   retries: 0
+2026-10-31T14:06:33.4228420Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:06:33.4228826Z env:
+2026-10-31T14:06:33.4229089Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:06:33.4229428Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:06:33.4230550Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208422149,github.run_id=41208422149,gh-aw.engine.id=copilot
+2026-10-31T14:06:33.4231716Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:06:33.4232307Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:06:33.4232698Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:06:33.4233025Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-10-31T14:06:33.4233335Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:06:33.4233621Z   GITHUB_AW_OTEL_TRACE_ID: f21d23832a9fac84b9dd38e31d599503
+2026-10-31T14:06:33.4233992Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: dfd32c1e43549e61
+2026-10-31T14:06:33.4234303Z   GITHUB_AW_OTEL_JOB_START_MS: 1793455589434
+2026-10-31T14:06:33.4234587Z   GH_AW_SKILL_DIR: .github/skills
+2026-10-31T14:06:33.4234864Z ##[endgroup]
+2026-10-31T14:06:33.5516450Z Inventoried 0 skills; 0 conflict(s)

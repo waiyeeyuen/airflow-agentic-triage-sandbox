@@ -1,0 +1,37 @@
+﻿2026-10-31T14:14:41.1926835Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-31T14:14:41.1927074Z with:
+2026-10-31T14:14:41.1927707Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'setup_threat_detection.cjs'));
+await main();
+
+2026-10-31T14:14:41.1929515Z   github-token: ***
+2026-10-31T14:14:41.1929647Z   debug: false
+2026-10-31T14:14:41.1929788Z   user-agent: actions/github-script
+2026-10-31T14:14:41.1929954Z   result-encoding: json
+2026-10-31T14:14:41.1930085Z   retries: 0
+2026-10-31T14:14:41.1930231Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-31T14:14:41.1930402Z env:
+2026-10-31T14:14:41.1930528Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-31T14:14:41.1930686Z   OTEL_SERVICE_NAME: gh-aw.issue-triage
+2026-10-31T14:14:41.1931178Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Bounded%20Airflow%20issue%20triage,gh-aw.repository=waiyeeyuen/airflow-agentic-triage-sandbox,gh-aw.run.id=41208931217,github.run_id=41208931217,gh-aw.engine.id=copilot
+2026-10-31T14:14:41.1931921Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-31T14:14:41.1932094Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-31T14:14:41.1932272Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-31T14:14:41.1932424Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-31T14:14:41.1932595Z   GITHUB_AW_OTEL_TRACE_ID: 842627486cd10be517f7fbcfe7b0ce27
+2026-10-31T14:14:41.1932860Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: b3b0b27de3fce02c
+2026-10-31T14:14:41.1933184Z   GITHUB_AW_OTEL_JOB_START_MS: 1793456068019
+2026-10-31T14:14:41.1933363Z   WORKFLOW_NAME: Bounded Airflow issue triage
+2026-10-31T14:14:41.1933640Z   WORKFLOW_DESCRIPTION: Bounded first-pass issue triage for the private Airflow evaluation sandbox.
+2026-10-31T14:14:41.1933903Z   HAS_PATCH: false
+2026-10-31T14:14:41.1934042Z   GH_AW_DETECTION_CONTINUE_ON_ERROR: false
+2026-10-31T14:14:41.1934215Z   GH_AW_DETECTION_SKIP_PROMPT_SUMMARY: true
+2026-10-31T14:14:41.1934379Z ##[endgroup]
+2026-10-31T14:14:41.2609155Z Removed framework system prompt block from /tmp/gh-aw/threat-detection/aw-prompts/prompt.txt
+2026-10-31T14:14:41.2609793Z Prompt file found: /tmp/gh-aw/threat-detection/aw-prompts/prompt.txt (1757 bytes)
+2026-10-31T14:14:41.2610278Z Agent output file found: /tmp/gh-aw/threat-detection/agent_output.json (130 bytes)
+2026-10-31T14:14:41.2615415Z Skipping threat detection prompt step summary (external detector renders its own prompt)
+2026-10-31T14:14:41.2616237Z Threat detection setup completed
